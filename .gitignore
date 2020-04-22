@@ -1,0 +1,32 @@
+/target/
+/mongodb/
+/elastic/*.zip*
+/logs/
+!.mvn/wrapper/maven-wrapper.jar
+
+*.zip
+.class
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+logs/
+jdk-11.0.1/
