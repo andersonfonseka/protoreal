@@ -1,4 +1,0 @@
-<div class="form-group">
-    <label for="$TextInputRenderer.uuid" class="col-form-label col-form-label-sm">$TextInputRenderer.label</label>
-    <input type="$TextInputRenderer.type" class="form-control form-control-sm" id="$TextInputRenderer.uuid" placeholder="$TextInputRenderer.placeholder">
-</div>
