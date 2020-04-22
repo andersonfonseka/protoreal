@@ -87,6 +87,14 @@ public abstract class Component {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	public abstract String doRender();
 

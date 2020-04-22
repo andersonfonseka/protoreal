@@ -7,7 +7,6 @@ function drag(ev) {
 }
 
 function drop(ev) {
-	ev.preventDefault();
 	var source = ev.dataTransfer.getData("text");
 	ev.target.classList.remove('over');
 	
@@ -16,4 +15,5 @@ function drop(ev) {
 		dwr.util.setValue('container-designer', data['data']);
 	});
   
+	ev.stopPropagation();
 }

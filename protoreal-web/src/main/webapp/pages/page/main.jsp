@@ -25,12 +25,16 @@
 			<span class="badge badge-pill">
 			
 			<span class="badge badge-primary badge-pill"><a href="#"
-				class="btn-sm btn-primary"><bean:message key="label.edit" /></a> </span> <span
+				class="btn-sm btn-primary"><bean:message key="label.edit" /></a> </span> 
+				
+			<span
 			class="badge badge-danger badge-pill"><a
 				href='Pages.do?method=remove&id=<bean:write name="pg" property="uuid"/>'
-				class="btn-sm btn-danger"><bean:message key="label.remove" /></a></span> <span
+				class="btn-sm btn-danger"><bean:message key="label.remove" /></a></span> 
+				
+			<span
 			class="badge badge-light badge-pill"><a
-				href='Pages.do?method=startDesign&id=<bean:write name="pg" property="uuid"/>'
+				href='PageDesign.do?method=startDesign&id=<bean:write name="pg" property="uuid"/>'
 				class="btn-sm btn-light"><bean:message key="label.design" /></a></span>
 				
 			</span>	

@@ -32,6 +32,7 @@
 		<!-- sample form bean descriptor for an ActionForm -->
 		<form-bean name="projectForm"	type="com.andersonfonseka.project.form.ProjectForm"/> 
 		<form-bean name="pageForm"	type="com.andersonfonseka.page.form.PageForm"/> 
+		<form-bean name="designForm"	type="com.andersonfonseka.page.form.DesignForm"/> 
 
 		<!-- sample form bean descriptor for a DynaActionForm <form-bean name="logonForm" 
 			type="org.apache.struts.action.DynaActionForm"> <form-property name="username" 
@@ -86,7 +87,6 @@
 			type="com.andersonfonseka.page.controller.PageAction">
 			<forward name="success" path="pages.main" />
 			<forward name="successForm" path="pages.edit" />
-			<forward name="successDesign" path="pages.design" />
 		</action>
 
 		<action path="/PageEdit" parameter="method"
@@ -97,6 +97,17 @@
 
 			<set-property property="cancellable" value="true"/>
 			<forward name="success" path="pages.main" />
+		</action>
+		
+		<action path="/PageDesign" parameter="method"
+			type="com.andersonfonseka.page.controller.PageAction"
+			name="designForm" 
+			scope="session"
+			input="pages.design">
+
+			<set-property property="cancellable" value="true"/>
+			<forward name="success" path="pages.main" />
+			<forward name="successDesign" path="pages.design" />
 		</action>
 
 

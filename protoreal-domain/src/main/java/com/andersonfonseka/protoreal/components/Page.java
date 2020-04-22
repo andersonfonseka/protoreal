@@ -1,6 +1,9 @@
 package com.andersonfonseka.protoreal.components;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.andersonfonseka.protoreal.components.render.PageRenderer;
@@ -16,6 +19,8 @@ public class Page extends Component {
 	private boolean initial = false;
 	
 	private boolean displayOnMenu = false;
+	
+	private List<Component> fastComponents = new ArrayList<Component>();
 	
 	public Page() {
 		super();
@@ -77,6 +82,14 @@ public class Page extends Component {
 	@Override
 	public String doRender() {
 		return new PageRenderer(this).render();
+	}
+	
+	public void addFastComponent(Component component) {
+		this.fastComponents.add(component);
+	}
+
+	public List<Component> getFastComponents() {
+		return fastComponents;
 	}
 	
 }

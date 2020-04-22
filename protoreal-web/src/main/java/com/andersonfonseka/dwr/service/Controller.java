@@ -37,11 +37,15 @@ public class Controller {
 		page.resetComponentAux();
 		Component parentComponent = page.getChildComponent(page, parent);
 		
+		Component component2 = mapComponents.get(component).newInstance();
+		
 		if (null != page.getComponentAux()) {
-			page.getComponentAux().addChild(mapComponents.get(component).newInstance());
+			page.getComponentAux().addChild(component2);
 		} else {
-			page.addChild(mapComponents.get(component).newInstance());
+			page.addChild(component2);
 		}
+		
+		page.addFastComponent(component2);
 		
 		Map<String, String> result = new HashMap<String, String>();
 		

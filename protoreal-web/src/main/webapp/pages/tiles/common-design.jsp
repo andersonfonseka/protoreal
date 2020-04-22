@@ -46,32 +46,22 @@
 
 			<div class="list-group list-group-flush">
 
-				<a href="#"
-					class="list-group-item list-group-item-action"><img
+				<a href="#" class="list-group-item list-group-item-action"><img
 					id="container" src="icons/icons8-health-data-32.png"
-					draggable="true" ondragstart="drag(event)"></a> 
-					
-				<a href="#"
+					draggable="true" ondragstart="drag(event)"></a> <a href="#"
 					class="list-group-item list-group-item-action"><img
 					id="textInput" src="icons/icons8-text-input-form-32.png"
-					draggable="true" ondragstart="drag(event)"></a> 
-
-				<a href="#"
+					draggable="true" ondragstart="drag(event)"></a> <a href="#"
 					class="list-group-item list-group-item-action"><img
 					id="textArea" src="icons/icons8-align-text-left-32.png"
-					draggable="true" ondragstart="drag(event)"></a> 				
-					
-				<a href="#"
+					draggable="true" ondragstart="drag(event)"></a> <a href="#"
 					class="list-group-item list-group-item-action"><img
 					id="selectItem" src="icons/icons8-checklist-48.png"
-					draggable="true" ondragstart="drag(event)" style="height:32px; width: 32px;"></a> 
-					
-				<a href="#"
-					class="list-group-item list-group-item-action"><img
-					id="button" src="icons/icons8-button-32.png"
-					draggable="true" ondragstart="drag(event)"></a> 					
-					
-				<a href="#"
+					draggable="true" ondragstart="drag(event)"
+					style="height: 32px; width: 32px;"></a> <a href="#"
+					class="list-group-item list-group-item-action"><img id="button"
+					src="icons/icons8-button-32.png" draggable="true"
+					ondragstart="drag(event)"></a> <a href="#"
 					class="list-group-item list-group-item-action"><img
 					id="dataTable" src="icons/icons8-data-grid-32.png" draggable="true"
 					ondragstart="drag(event)"></a>
@@ -85,35 +75,72 @@
 			<div id="container" style="height: 90%; margin: 10px 10px 10px 15px;">
 				<tiles:useAttribute name="title" />
 				<tiles:insert attribute="header">
-					<h2>
+					<h3>
 						<bean:message key="<%=(String) title%>" />
-					</h2>
+					</h3>
 				</tiles:insert>
-				<h5>
-					<bean:write name="page" property="parent.title" /> >> 
-					<bean:write name="page" property="title" />
-					<br />
-				</h5>
+
+				<html:form>
+
+					<div class="row">
+
+						<div class="col-sm-8">
+							<h5>
+								<bean:write name="page" property="parent.title" />
+								>>
+								<bean:write name="page" property="title" />
+								<br />
+							</h5>
+						</div>
+
+						<div class="col-sm">
+							<div class="form-inline">
+
+								<div class="form-group mx-sm-1 mb-2">
+									<html:select property="componentSelected"
+										styleClass="form-control" style="width:300px;">
+										<html:option value="0">
+											<bean:message key="label.select" />
+										</html:option>
+										<html:optionsCollection name="designForm"
+											property="componentList" label="name" value="uuid" />
+									</html:select>
+								</div>
+
+								<html:submit styleClass="btn btn-primary mx-sm-1 mb-2"> 
+									<bean:message key="label.button.submit" />
+								</html:submit>
+
+								<html:reset styleClass="btn btn-danger mb-2">
+									<bean:message key="label.button.cancel" />
+								</html:reset>
+
+							</div>
+						</div>
+
+					</div>
+
+				</html:form>
+
 				<hr />
 
 				<tiles:insert attribute="body" />
 			</div>
-		<!-- /#page-content-wrapper -->
+			<!-- /#page-content-wrapper -->
 
-	</div>
-	<!-- /#wrapper -->
+		</div>
+		<!-- /#wrapper -->
 
-	<!-- Bootstrap core JavaScript -->
-	<script src="js/protoreal.js"></script>
+		<!-- Bootstrap core JavaScript -->
+		<script src="js/protoreal.js"></script>
 
-	<!-- Menu Toggle Script -->
-	<script>
-		$("#menu-toggle").click(function(e) {
-			e.preventDefault();
-			$("#wrapper").toggleClass("toggled");
-		});
-	</script>
-
+		<!-- Menu Toggle Script -->
+		<script>
+			$("#menu-toggle").click(function(e) {
+				e.preventDefault();
+				$("#wrapper").toggleClass("toggled");
+			});
+		</script>
 </body>
 
 </html>

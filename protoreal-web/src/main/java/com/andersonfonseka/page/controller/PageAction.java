@@ -10,6 +10,7 @@ import org.apache.struts.actions.DispatchAction;
 
 import com.andersonfonseka.dao.PageRepository;
 import com.andersonfonseka.dao.SiteRepository;
+import com.andersonfonseka.page.form.DesignForm;
 import com.andersonfonseka.page.form.PageForm;
 import com.andersonfonseka.protoreal.components.Page;
 import com.andersonfonseka.protoreal.components.Site;
@@ -46,6 +47,11 @@ public class PageAction extends DispatchAction {
 		
 		PageRepository repository = PageRepository.getInstance();
 		Page page = repository.get(request.getParameter("id"));
+		
+		DesignForm designForm = new DesignForm();
+		designForm.setComponentList(page.getFastComponents());
+		
+		request.getSession().setAttribute("designForm", designForm);
 		
 		request.getSession().setAttribute("page", page);
 		request.setAttribute("pageRendered", page.doRender());

@@ -48,9 +48,9 @@
 			<div id="container" style="height: 90%; margin: 10px 10px 10px 15px;">
 				<tiles:useAttribute name="title" />
 				<tiles:insert attribute="header">
-					<h2>
+					<h3>
 						<bean:message key="<%=(String) title%>" />
-					</h2>
+					</h3>
 				</tiles:insert>
 
 				<logic:messagesPresent>
