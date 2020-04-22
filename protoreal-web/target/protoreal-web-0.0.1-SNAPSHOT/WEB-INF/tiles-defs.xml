@@ -1,0 +1,57 @@
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN"
+"http://struts.apache.org/dtds/tiles-config_1_3.dtd">
+<tiles-definitions>
+
+	<definition name="baseLayout"
+		path="/pages/tiles/common-layout.jsp">
+		<put name="title" value="Protoreal" />
+		<put name="header" value="/pages/tiles/header.jsp" />
+		<put name="body" value="" />
+	</definition>
+
+	<definition name="designLayout"
+		path="/pages/tiles/common-design.jsp">
+		<put name="title" value="Protoreal" />
+		<put name="header" value="/pages/tiles/header.jsp" />
+		<put name="body" value="" />
+	</definition>
+
+	<definition name="previewLayout"
+		path="/pages/tiles/common-preview.jsp">
+		<put name="title" value="Protoreal" />
+		<put name="header" value="/pages/tiles/header.jsp" />
+		<put name="body" value="" />
+	</definition>
+
+	<definition name="projects.main" extends="baseLayout">
+		<put name="title" value="label.projects" />
+		<put name="body" value="/pages/project/main.jsp" />
+	</definition>
+
+	<definition name="projects.edit" extends="baseLayout">
+		<put name="title" value="label.projects" />
+		<put name="body" value="/pages/project/edit.jsp" />
+	</definition>
+
+	<definition name="projects.preview" extends="previewLayout">
+		<put name="title" value="label.pages.preview" />
+		<put name="body" value="/pages/project/preview.jsp" />
+	</definition>
+
+	<definition name="pages.main" extends="baseLayout">
+		<put name="title" value="label.pages" />
+		<put name="body" value="/pages/page/main.jsp" />
+	</definition>
+
+	<definition name="pages.edit" extends="baseLayout">
+		<put name="title" value="label.pages" />
+		<put name="body" value="/pages/page/edit.jsp" />
+	</definition>
+
+	<definition name="pages.design" extends="designLayout">
+		<put name="title" value="label.pages.design" />
+		<put name="body" value="/pages/page/design.jsp" />
+	</definition>
+
+</tiles-definitions>

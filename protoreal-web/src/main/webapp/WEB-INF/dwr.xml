@@ -1,0 +1,6 @@
+<dwr>
+	<allow>
+		<create creator="new" javascript="Controller" class="com.andersonfonseka.dwr.service.Controller" />
+	</allow>
+	<convert match="java.lang.Exception" converter="exception"/>
+</dwr>

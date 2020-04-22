@@ -1,0 +1,7 @@
+<div class="jumbotron">
+  <h1 class="display-4">$JumbotronRenderer.title</h1>
+  <p class="lead">$JumbotronRenderer.subtitle</p>
+  <hr class="my-4">
+  <p>Ele usa classes utilit�rias para tipografia e espa�amento de conte�do, dentro do maior container.</p>
+  <a class="btn btn-primary btn-lg" href="#" role="button">Leia mais</a>
+</div>

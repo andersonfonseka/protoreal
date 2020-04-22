@@ -1,0 +1,1 @@
+<jsp:forward page="Projects.do?method=main"/>
