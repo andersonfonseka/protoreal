@@ -41,5 +41,12 @@ public class Button extends Input {
 		return new ButtonRenderer(this).execute();
 	}
 
+
+	@Override
+	public String doEdit() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

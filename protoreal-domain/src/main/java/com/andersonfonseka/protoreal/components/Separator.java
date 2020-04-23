@@ -9,4 +9,10 @@ public class Separator extends Component {
 		return new SeparatorRenderer(this).execute();
 	}
 
+	@Override
+	public String doEdit() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

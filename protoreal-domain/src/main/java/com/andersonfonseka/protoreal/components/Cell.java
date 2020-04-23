@@ -13,6 +13,12 @@ public class Cell extends Component {
 		super.addChild(child);
 	}
 
+	@Override
+	public String doEdit() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 	
 	

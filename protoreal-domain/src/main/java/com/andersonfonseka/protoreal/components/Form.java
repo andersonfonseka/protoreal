@@ -8,5 +8,11 @@ public class Form extends Component {
 	public String doRender() {
 		return new FormRenderer(this).execute();
 	}
+
+	@Override
+	public String doEdit() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

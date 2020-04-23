@@ -84,7 +84,7 @@
 
 					<div class="row">
 
-						<div class="col-sm-8">
+						<div class="col-sm-9">
 							<h5>
 								<bean:write name="page" property="parent.title" />
 								>>
@@ -98,7 +98,7 @@
 
 								<div class="form-group mx-sm-1 mb-2">
 									<html:select property="componentSelected"
-										styleClass="form-control" style="width:300px;">
+										styleClass="form-control" style="width:200px;">
 										<html:option value="0">
 											<bean:message key="label.select" />
 										</html:option>
@@ -107,12 +107,39 @@
 									</html:select>
 								</div>
 
-								<html:submit styleClass="btn btn-primary mx-sm-1 mb-2"> 
-									<bean:message key="label.button.submit" />
-								</html:submit>
+								<button type="button" class="btn btn-primary mx-sm-1 mb-2"
+									data-toggle="modal" data-target="#ExemploModalCentralizado" onclick="configure();">
+									<bean:message key="label.button.edit" />
+								</button>
+
+								<div class="modal fade" id="ExemploModalCentralizado"
+									tabindex="-1" role="dialog"
+									aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+									<div class="modal-dialog modal-dialog-centered" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="TituloModalCentralizado">Título
+													do modal</h5>
+												<button type="button" class="close" data-dismiss="modal"
+													aria-label="Fechar">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+											<div class="modal-body">
+												<div id="properties"></div>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary"
+													data-dismiss="modal">Fechar</button>
+												<button type="button" class="btn btn-primary">Salvar
+													mudanças</button>
+											</div>
+										</div>
+									</div>
+								</div>
 
 								<html:reset styleClass="btn btn-danger mb-2">
-									<bean:message key="label.button.cancel" />
+									<bean:message key="label.button.remove" />
 								</html:reset>
 
 							</div>

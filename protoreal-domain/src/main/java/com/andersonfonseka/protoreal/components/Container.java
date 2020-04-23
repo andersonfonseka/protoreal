@@ -66,6 +66,12 @@ public class Container extends Component {
 		return new ContainerRenderer(this).render();
 	}
 
+	@Override
+	public String doEdit() {
+		// TODO Auto-generated method stub
+		return this.getClass().getSimpleName();
+	}
+
 	
 	
 }

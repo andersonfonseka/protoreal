@@ -1,6 +1,6 @@
 package com.andersonfonseka.protoreal.components;
 
-public class Input extends Component {
+public abstract class Input extends Component {
 	
 	private String label;
 	
@@ -36,13 +36,6 @@ public class Input extends Component {
 	public void setDisabled(String disabled) {
 		this.readOnly = disabled;
 	}
-
-	@Override
-	public String doRender() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 
 	
 }

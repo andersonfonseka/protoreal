@@ -9,5 +9,11 @@ public class Navbar extends Component {
 		return new NavbarRenderer(this).execute();
 	}
 
+	@Override
+	public String doEdit() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

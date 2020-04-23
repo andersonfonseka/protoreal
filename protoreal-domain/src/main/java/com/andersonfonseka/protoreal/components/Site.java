@@ -100,4 +100,10 @@ public class Site extends Component {
 		return new SiteRenderer(this).execute();
 	}
 
+	@Override
+	public String doEdit() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

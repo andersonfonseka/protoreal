@@ -27,5 +27,11 @@ public class NavDropdown extends Input {
 		return new NavDropdownRenderer(this).execute();
 	}
 
+	@Override
+	public String doEdit() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

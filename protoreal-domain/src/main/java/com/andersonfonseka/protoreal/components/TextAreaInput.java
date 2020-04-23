@@ -30,5 +30,11 @@ public class TextAreaInput extends Input {
 		return new TextAreaInputRenderer(this).execute();
 	}
 
+	@Override
+	public String doEdit() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

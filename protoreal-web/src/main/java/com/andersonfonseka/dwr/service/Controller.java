@@ -53,6 +53,24 @@ public class Controller {
 		
 		return result;
 	}
+	
+	public Map<String, String> edit(String componentId, HttpSession session) throws InstantiationException, IllegalAccessException{
+		
+		Page page = (Page) session.getAttribute("page");
+	
+		page.resetComponentAux();
+		Component parentComponent = page.getChildComponent(page, componentId);
+		page.getComponentAux();
+		
+		
+		Map<String, String> result = new HashMap<String, String>();
+		
+		if (null != page.getComponentAux()) {
+			result.put("data", page.getComponentAux().doEdit());
+		}
+		
+		return result;
+	}
 
 	@SuppressWarnings("unchecked")
 	public Map<String, Object> getMap(HttpSession session) {

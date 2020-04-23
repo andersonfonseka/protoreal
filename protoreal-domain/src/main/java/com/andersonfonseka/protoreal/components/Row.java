@@ -26,6 +26,12 @@ public class Row extends Component {
 		return "";
 	}
 
+	@Override
+	public String doEdit() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 	
 }

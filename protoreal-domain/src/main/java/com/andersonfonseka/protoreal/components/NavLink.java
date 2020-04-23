@@ -13,5 +13,11 @@ public class NavLink extends Input {
 		return new NavLinkRenderer(this).execute();
 	}
 
+	@Override
+	public String doEdit() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

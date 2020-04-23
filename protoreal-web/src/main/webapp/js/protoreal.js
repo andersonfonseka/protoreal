@@ -17,3 +17,14 @@ function drop(ev) {
   
 	ev.stopPropagation();
 }
+
+function configure(){
+	
+	var sel = $('select[name ="componentSelected"]');
+	
+	Controller.edit(sel.val(), function(data){
+		dwr.util.setEscapeHtml(false);
+		dwr.util.setValue('properties', data['data']);
+	});
+	
+}

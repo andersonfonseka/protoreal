@@ -34,5 +34,11 @@ public class Jumbotron extends Component {
 	public String doRender() {
 		return new JumbotronRenderer(this).execute();
 	}
+
+	@Override
+	public String doEdit() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

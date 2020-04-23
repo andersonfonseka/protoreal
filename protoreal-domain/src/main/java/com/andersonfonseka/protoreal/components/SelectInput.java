@@ -28,5 +28,11 @@ public class SelectInput extends Input {
 		return new SelectInputRenderer(this).execute();
 	}
 
+	@Override
+	public String doEdit() {
+		// TODO Auto-generated method stub
+		return this.getClass().getSimpleName();
+	}
+
 	
 }

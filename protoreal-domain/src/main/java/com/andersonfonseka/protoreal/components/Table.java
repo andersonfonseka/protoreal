@@ -44,4 +44,10 @@ public class Table extends Component {
 		return new TableRenderer(this).execute();
 	}
 
+	@Override
+	public String doEdit() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

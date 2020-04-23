@@ -91,5 +91,11 @@ public class Page extends Component {
 	public List<Component> getFastComponents() {
 		return fastComponents;
 	}
+
+	@Override
+	public String doEdit() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
