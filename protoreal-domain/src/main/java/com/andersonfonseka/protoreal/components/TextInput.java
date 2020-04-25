@@ -29,8 +29,7 @@ public class TextInput extends Input {
 
 	@Override
 	public String doEdit() {
-		// TODO Auto-generated method stub
-		return this.getClass().getSimpleName();
+		return new TextInputRenderer(this).executeProperties();
 	}
 	
 }

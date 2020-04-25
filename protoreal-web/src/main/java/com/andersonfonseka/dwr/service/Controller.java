@@ -35,7 +35,7 @@ public class Controller {
 		Page page = (Page) session.getAttribute("page");
 	
 		page.resetComponentAux();
-		Component parentComponent = page.getChildComponent(page, parent);
+		page.getChildComponent(page, parent);
 		
 		Component component2 = mapComponents.get(component).newInstance();
 		
@@ -50,8 +50,29 @@ public class Controller {
 		Map<String, String> result = new HashMap<String, String>();
 		
 		result.put("data", page.doRender());
+		result.put("components", getComponents(page));
 		
 		return result;
+	}
+	
+	private String getComponents(Page page) {
+		
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("<div id=\"componentSelected\" class=\"form-group mx-sm-1 mb-2\">");
+		sb.append("<select name=\"componentSelected\" style=\"width:200px;\" class=\"form-control\" onchange=\"configure();\">");
+		sb.append("<option value=\"0\">Selecione</option>");
+	
+		
+		for (Component comp: page.getFastComponents()) {
+			sb.append("<option value=" + comp.getUuid() + ">" + comp.getName() + "</option>");
+		}
+		
+		sb.append("</select>");
+		sb.append("</div>");
+		
+		
+		return sb.toString();
 	}
 	
 	public Map<String, String> edit(String componentId, HttpSession session) throws InstantiationException, IllegalAccessException{
@@ -59,7 +80,7 @@ public class Controller {
 		Page page = (Page) session.getAttribute("page");
 	
 		page.resetComponentAux();
-		Component parentComponent = page.getChildComponent(page, componentId);
+		page.getChildComponent(page, componentId);
 		page.getComponentAux();
 		
 		

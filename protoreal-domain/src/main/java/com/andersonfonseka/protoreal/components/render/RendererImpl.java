@@ -12,6 +12,10 @@ public abstract class RendererImpl {
 	}
 
 	public String execute() {
-		return this.engine.execute();
+		return this.engine.execute(Engine.DESIGN);
+	}
+	
+	public String executeProperties() {
+		return this.engine.execute(Engine.PROPERTIES);
 	}
 }

@@ -33,10 +33,11 @@ public class PageForm extends ValidatorForm {
 	
 	private boolean displayOnMenu = false;
 	
-	private List pageList = new ArrayList<Page>();
+	private List<Page> pageList = new ArrayList<Page>();
 	
 	public PageForm() {}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public PageForm(String siteUUid) {
 		site = siteRepository.get(siteUUid);
 		if (null != site) {
@@ -44,11 +45,11 @@ public class PageForm extends ValidatorForm {
 		}
 	}
 		
-	public List getPageList() {
+	public List<Page> getPageList() {
 		return pageList;
 	}
 
-	public void setPageList(List pageList) {
+	public void setPageList(List<Page> pageList) {
 		this.pageList = pageList;
 	}
 

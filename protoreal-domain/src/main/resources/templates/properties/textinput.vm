@@ -1,0 +1,23 @@
+<form>
+	<div class="form-group">
+		<label for="inputProjectTitle" class="col-form-label">Tipo</label>
+		<select property="textType" styleClass="form-control" class="form-control">
+	        <option value="0">Selecione</html:option>
+	        <option value="1">Texto</html:option>
+	        <option value="2">Data</html:option>
+	        <option value="3">Numero</html:option>
+	    <select>
+	    </div>
+	    
+		<div class="form-group">
+			<label for="inputProjectTitle" class="col-form-label">Rótulo</label> 
+			<input type="text" class="form-control" property="title" size="25" />
+		</div>
+		
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary"	data-dismiss="modal">Fechar</button>
+			<button type="button" class="btn btn-primary">Salvar mudanças</button>
+		</div>
+		
+	</div>
+</form>

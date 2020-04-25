@@ -29,7 +29,7 @@ public class PageRepository {
 	
 	public List<Page> list(){
 		
-		List pages = new ArrayList<Page>();
+		List<Page> pages = new ArrayList<Page>();
 		
 		if (!this.respository.values().isEmpty()) {
 			pages = new ArrayList<Page>(this.respository.values());

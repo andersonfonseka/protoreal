@@ -96,9 +96,9 @@
 						<div class="col-sm">
 							<div class="form-inline">
 
-								<div class="form-group mx-sm-1 mb-2">
+								<div id="componentSelected" class="form-group mx-sm-1 mb-2">
 									<html:select property="componentSelected"
-										styleClass="form-control" style="width:200px;">
+										styleClass="form-control" style="width:200px;" onchange="configure();">
 										<html:option value="0">
 											<bean:message key="label.select" />
 										</html:option>
@@ -108,14 +108,12 @@
 								</div>
 
 								<button type="button" class="btn btn-primary mx-sm-1 mb-2"
-									data-toggle="modal" data-target="#ExemploModalCentralizado" onclick="configure();">
+									data-toggle="modal" data-target="#ExemploModalCentralizado">
 									<bean:message key="label.button.edit" />
 								</button>
 
-								<div class="modal fade" id="ExemploModalCentralizado"
-									tabindex="-1" role="dialog"
-									aria-labelledby="TituloModalCentralizado" aria-hidden="true">
-									<div class="modal-dialog modal-dialog-centered" role="document">
+								<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+									<div class="modal-dialog" role="document">
 										<div class="modal-content">
 											<div class="modal-header">
 												<h5 class="modal-title" id="TituloModalCentralizado">Título
@@ -127,12 +125,6 @@
 											</div>
 											<div class="modal-body">
 												<div id="properties"></div>
-											</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-secondary"
-													data-dismiss="modal">Fechar</button>
-												<button type="button" class="btn btn-primary">Salvar
-													mudanças</button>
 											</div>
 										</div>
 									</div>

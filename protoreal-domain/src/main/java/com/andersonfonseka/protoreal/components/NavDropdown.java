@@ -1,7 +1,6 @@
 package com.andersonfonseka.protoreal.components;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import com.andersonfonseka.protoreal.components.render.NavDropdownRenderer;

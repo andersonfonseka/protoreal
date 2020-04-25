@@ -15,6 +15,9 @@ public class Engine {
 	private Template template;
 	private VelocityContext context = new VelocityContext();
 	private String templateName;
+	
+	public static final String DESIGN = "design";
+	public static final String PROPERTIES = "properties";
 
 	public Engine(String templateName) {
 
@@ -28,19 +31,16 @@ public class Engine {
 		props.put("runtime.log.logsystem.log4j.logger", "velocity");
 
 		ve.init(props);
-
-		this.template = ve.getTemplate("templates/" + templateName);
-
 	}
 
 	public void putOnContext(String key, Object value) {
 		this.context.put(key, value);
 	}
 
-	public String execute() {
+	public String execute(String option) {
 		StringWriter writer = new StringWriter();
 
-		this.template = ve.getTemplate("templates/" + this.templateName);
+		this.template = ve.getTemplate("templates/" + option + "/" + this.templateName);
 		this.template.merge(context, writer);
 	
 

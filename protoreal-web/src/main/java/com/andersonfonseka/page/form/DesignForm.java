@@ -5,13 +5,15 @@ import java.util.List;
 
 import org.apache.struts.validator.ValidatorForm;
 
-import com.andersonfonseka.protoreal.components.Page;
+import com.andersonfonseka.protoreal.components.Component;
 
 public class DesignForm extends ValidatorForm {
 	
+	private static final long serialVersionUID = 1L;
+
 	private String componentSelected;
 	
-	private List componentList = new ArrayList<Page>();
+	private List<Component> componentList = new ArrayList<Component>();
 
 	public String getComponentSelected() {
 		return componentSelected;
@@ -21,11 +23,11 @@ public class DesignForm extends ValidatorForm {
 		this.componentSelected = componentSelected;
 	}
 
-	public List getComponentList() {
+	public List<Component> getComponentList() {
 		return componentList;
 	}
 
-	public void setComponentList(List componentList) {
+	public void setComponentList(List<Component> componentList) {
 		this.componentList = componentList;
 	}
 	

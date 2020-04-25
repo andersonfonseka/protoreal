@@ -13,6 +13,7 @@ function drop(ev) {
 	Controller.create(source, ev.target.id, function(data){
 		dwr.util.setEscapeHtml(false);
 		dwr.util.setValue('container-designer', data['data']);
+		dwr.util.setValue('componentSelected', data['components']);
 	});
   
 	ev.stopPropagation();
