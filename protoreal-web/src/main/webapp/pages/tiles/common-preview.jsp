@@ -42,10 +42,13 @@
 		<div id="page-content-wrapper">
 
 			<div id="container" style="height: 90%; margin: 10px 10px 10px 15px;">
+				
+				<!-- 
 				<tiles:useAttribute name="title" />
 				<tiles:insert attribute="header">
 					<h6><bean:message key="<%=(String) title%>"/></h6>
 				</tiles:insert>
+				 -->
 
 				<tiles:insert attribute="body" />
 			</div>
