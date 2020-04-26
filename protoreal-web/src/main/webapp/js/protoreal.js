@@ -23,9 +23,18 @@ function configure(){
 	
 	var sel = $('select[name ="componentSelected"]');
 	
-	Controller.edit(sel.val(), function(data){
+	Controller.startEdit(sel.val(), function(data){
 		dwr.util.setEscapeHtml(false);
 		dwr.util.setValue('properties', data['data']);
+	});
+	
+}
+
+function edit(id){
+	
+	Controller.edit(dwr.util.getValues(id), function(data){
+		dwr.util.setEscapeHtml(false);
+		dwr.util.setValue('container-designer', data['data']);
 	});
 	
 }

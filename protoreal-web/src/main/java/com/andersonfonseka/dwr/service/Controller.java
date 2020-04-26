@@ -1,6 +1,8 @@
 package com.andersonfonseka.dwr.service;
 
+import java.lang.reflect.Method;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -75,20 +77,47 @@ public class Controller {
 		return sb.toString();
 	}
 	
-	public Map<String, String> edit(String componentId, HttpSession session) throws InstantiationException, IllegalAccessException{
+	public Map<String, String> startEdit(String componentId, HttpSession session) throws InstantiationException, IllegalAccessException{
 		
 		Page page = (Page) session.getAttribute("page");
 	
-		page.resetComponentAux();
-		page.getChildComponent(page, componentId);
-		page.getComponentAux();
-		
-		
 		Map<String, String> result = new HashMap<String, String>();
 		
-		if (null != page.getComponentAux()) {
-			result.put("data", page.getComponentAux().doEdit());
+		if (null != page.getFastComponents(componentId)) {
+			result.put("data", page.getFastComponents(componentId).doEdit());
 		}
+		
+		return result;
+	}
+	
+	public Map<String, String> edit(Map<String, String> form, HttpSession session) throws Exception {
+		
+		Page page = (Page) session.getAttribute("page");
+		
+		String componentId = form.get("setUuid");
+	
+		Map<String, String> result = new HashMap<String, String>();
+		
+		if (null != page.getFastComponents(componentId)) {
+			
+			Component component = page.getFastComponents(componentId);
+			
+			Iterator<String> it = form.keySet().iterator();
+			
+			while(it.hasNext()) {
+				
+				String fieldName = it.next();
+				Method method = component.getClass().getMethod(fieldName, String.class);
+				
+				method.invoke(component, form.get(fieldName));
+					
+			}
+			
+			
+			result.put("data", page.doRender());
+		}
+		
+
 		
 		return result;
 	}

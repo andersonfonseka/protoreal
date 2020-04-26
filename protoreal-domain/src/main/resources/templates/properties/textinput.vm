@@ -1,23 +1,25 @@
-<form>
+<div class="form" id="frmInput">
+	<form id="frmInput" action="" method="">
+	<input type="hidden" id="setUuid" value="$TextInputRenderer.uuid" />
 	<div class="form-group">
 		<label for="inputProjectTitle" class="col-form-label">Tipo</label>
-		<select property="textType" styleClass="form-control" class="form-control">
-	        <option value="0">Selecione</html:option>
-	        <option value="1">Texto</html:option>
-	        <option value="2">Data</html:option>
-	        <option value="3">Numero</html:option>
+		<select property="type" id="setType" styleClass="form-control" class="form-control">
+	        <option value="">Selecione</html:option>
+	        <option value="text">Texto</html:option>
+	        <option value="date">Data</html:option>
+	        <option value="number">Numero</html:option>
 	    <select>
 	    </div>
 	    
 		<div class="form-group">
-			<label for="inputProjectTitle" class="col-form-label">Rótulo</label> 
-			<input type="text" class="form-control" property="title" size="25" />
+			<label for="inputProjectTitle" class="col-form-label">Rotulo</label> 
+			<input type="text" id="setLabel" class="form-control" property="title" value="$TextInputRenderer.label" size="25" />
 		</div>
 		
 		<div class="modal-footer">
 			<button type="button" class="btn btn-secondary"	data-dismiss="modal">Fechar</button>
-			<button type="button" class="btn btn-primary">Salvar mudanças</button>
+			<button type="button" class="btn btn-primary" onclick="edit('frmInput')">Salvar</button>
 		</div>
-		
 	</div>
-</form>
+	</form>
+</div>

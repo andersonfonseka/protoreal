@@ -98,7 +98,8 @@
 
 								<div id="componentSelected" class="form-group mx-sm-1 mb-2">
 									<html:select property="componentSelected"
-										styleClass="form-control" style="width:200px;" onchange="configure();">
+										styleClass="form-control" style="width:200px;"
+										onchange="configure();">
 										<html:option value="0">
 											<bean:message key="label.select" />
 										</html:option>
@@ -112,24 +113,6 @@
 									<bean:message key="label.button.edit" />
 								</button>
 
-								<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
-									<div class="modal-dialog" role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h5 class="modal-title" id="TituloModalCentralizado">Título
-													do modal</h5>
-												<button type="button" class="close" data-dismiss="modal"
-													aria-label="Fechar">
-													<span aria-hidden="true">&times;</span>
-												</button>
-											</div>
-											<div class="modal-body">
-												<div id="properties"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-
 								<html:reset styleClass="btn btn-danger mb-2">
 									<bean:message key="label.button.remove" />
 								</html:reset>
@@ -140,6 +123,27 @@
 					</div>
 
 				</html:form>
+
+				<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1"
+					role="dialog" aria-labelledby="TituloModalCentralizado"
+					aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="TituloModalCentralizado">Título
+									do modal</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Fechar">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div id="properties"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
 
 				<hr />
 
