@@ -96,7 +96,7 @@
 						<div class="col-sm">
 							<div class="form-inline">
 
-								<div id="componentSelected" class="form-group mx-sm-1 mb-2">
+								<div id="componentSelected" class="form-group mx-sm-1 mb-1">
 									<html:select property="componentSelected"
 										styleClass="form-control" style="width:200px;"
 										onchange="configure();">
@@ -108,12 +108,12 @@
 									</html:select>
 								</div>
 
-								<button type="button" class="btn btn-primary mx-sm-1 mb-2"
+								<button type="button" class="btn btn-primary mx-sm-1 mb-1"
 									data-toggle="modal" data-target="#ExemploModalCentralizado">
 									<bean:message key="label.button.edit" />
 								</button>
 
-								<html:reset styleClass="btn btn-danger mb-2">
+								<html:reset styleClass="btn btn-danger mb-1">
 									<bean:message key="label.button.remove" />
 								</html:reset>
 
@@ -130,8 +130,7 @@
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="TituloModalCentralizado">Título
-									do modal</h5>
+								<h5 class="modal-title" id="TituloModalCentralizado">Propriedades</h5>
 								<button type="button" class="close" data-dismiss="modal"
 									aria-label="Fechar">
 									<span aria-hidden="true">&times;</span>

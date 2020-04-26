@@ -8,10 +8,12 @@ import com.andersonfonseka.protoreal.components.render.SelectInputRenderer;
 
 public class SelectInput extends Input {
 	
+	private String type = "Select";
+	
 	private List<String> options = new ArrayList<String>();
 	
 	public SelectInput() {
-		this("Select", "Option1", "Option2", "Option3");
+		this("Selecione", "Option1", "Option2", "Option3");
 	}
 	
 	public SelectInput(String title, String... options) {
@@ -23,6 +25,19 @@ public class SelectInput extends Input {
 		return options;
 	}
 	
+	public void setOptions(String pOptions) {
+		String[] options = pOptions.split(";");
+		this.options = Arrays.asList(options);
+	}
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	@Override
 	public String doRender() {
 		return new SelectInputRenderer(this).execute();
@@ -30,9 +45,7 @@ public class SelectInput extends Input {
 
 	@Override
 	public String doEdit() {
-		// TODO Auto-generated method stub
-		return this.getClass().getSimpleName();
+		return new SelectInputRenderer(this).executeProperties();
 	}
-
 	
 }

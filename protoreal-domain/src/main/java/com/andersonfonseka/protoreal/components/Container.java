@@ -21,6 +21,10 @@ public class Container extends Component {
 	public Container(int rows, int columns) {
 		
 		super();
+		configure(rows, columns);
+	}
+
+	private void configure(int rows, int columns) {
 		this.rows = rows;
 		this.columns = columns;
 		
@@ -40,16 +44,20 @@ public class Container extends Component {
 		return rows;
 	}
 
-	public void setRows(int rows) {
-		this.rows = rows;
+	public void setRows(String rows) {
+		this.rows = Integer.valueOf(rows);
 	}
 
 	public int getColumns() {
 		return columns;
 	}
 
-	public void setColumns(int columns) {
-		this.columns = columns;
+	public void setColumns(String columns) {
+		this.columns = Integer.valueOf(columns);
+		
+		this.rowsMap.clear();
+		
+		configure(this.rows, this.columns);
 	}
 	
 	public void addComponent(int row, int column, Component component) {
@@ -63,13 +71,12 @@ public class Container extends Component {
 	
 	@Override
 	public String doRender() {
-		return new ContainerRenderer(this).render();
+		return new ContainerRenderer(this).execute();
 	}
 
 	@Override
 	public String doEdit() {
-		// TODO Auto-generated method stub
-		return this.getClass().getSimpleName();
+		return new ContainerRenderer(this).executeProperties();
 	}
 
 	

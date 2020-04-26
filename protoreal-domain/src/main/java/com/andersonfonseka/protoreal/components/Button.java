@@ -44,9 +44,7 @@ public class Button extends Input {
 
 	@Override
 	public String doEdit() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ButtonRenderer(this).executeProperties();
 	}
-
 	
 }
