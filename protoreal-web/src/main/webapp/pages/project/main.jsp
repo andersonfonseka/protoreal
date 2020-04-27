@@ -12,21 +12,26 @@
 		<div class="col-sm-3">
 			<div class="card">
 				<div class="card-header">
-					<bean:write name="project" property="title" />
+					<div class="dropdown">
+						<span style="font-weight: bold;"><bean:write name="project" property="title" /></span>
+						<button class="test btn btn-light float-md-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a class="dropdown-item" href="#"><bean:message key="label.edit" /></a> 
+							<a class="dropdown-item" href='Projects.do?method=remove&id=<bean:write name="project" property="uuid"/>'><bean:message key="label.remove" /></a> 
+							<a class="dropdown-item" href="#"><bean:message key="label.export" /></a>
+						</div>
+					</div>
 				</div>
-				
+
 				<div class="card-body">
 					<p class="card-text">
 						<bean:write name="project" property="description" />
 					</p>
-					<a href="#" class="btn-sm btn-primary"><bean:message
-							key="label.edit" /></a> <a
-						href='Projects.do?method=remove&id=<bean:write name="project" property="uuid"/>'
-						class="btn-sm btn-danger"><bean:message key="label.remove" /></a>
-					<a href="#" class="btn-sm btn-light"><bean:message
-							key="label.export" /></a> <a
-						href='Projects.do?method=preview&id=<bean:write name="project" property="uuid"/>'
-						class="btn-sm btn-dark"><bean:message key="label.preview" /></a> <a
+							
+					<a	href='Projects.do?method=preview&id=<bean:write name="project" property="uuid"/>'
+						class="btn-sm btn-dark"><bean:message key="label.preview" /></a>
+					
+					<a
 						href='Pages.do?method=main&siteId=<bean:write name="project" property="uuid"/>'
 						class="btn-sm btn-info"><bean:message key="label.pages" /></a>
 				</div>
