@@ -37,5 +37,10 @@ public abstract class Input extends Component {
 		this.readOnly = disabled;
 	}
 
+	@Override
+	public String getName() {
+		super.setName(this.getClass().getSimpleName() + "#" + this.label);
+		return super.getName();
+	}
 	
 }

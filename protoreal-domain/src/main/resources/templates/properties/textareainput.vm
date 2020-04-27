@@ -1,15 +1,15 @@
 <div class="form" id="frmInput">
 	<form id="frmInput" action="" method="">
-	<input type="hidden" id="setUuid" value="$TextInputRenderer.uuid" />
+	<input type="hidden" id="setUuid" value="$TextAreaInputRenderer.uuid" />
+	    
+	    <div class="form-group">
+			<label for="inputProjectTitle" class="col-form-label">Rotulo</label> 
+			<input type="text" id="setLabel" class="form-control" property="title" value="$TextAreaInputRenderer.label" size="25" />
+		</div>
 	    
 		<div class="form-group">
 			<label for="inputProjectTitle" class="col-form-label">Linhas</label> 
-			<input type="text" id="setRows" class="form-control" property="title" value="$ContainerRenderer.rows" size="25" />
-		</div>
-
-		<div class="form-group">
-			<label for="inputProjectTitle" class="col-form-label">Colunas</label> 
-			<input type="text" id="setColumn" class="form-control" property="title" value="$ContainerRenderer.columns" size="25" />
+			<input type="text" id="setRows" class="form-control" property="title" value="$TextAreaInputRenderer.rows" size="25" />
 		</div>
 		
 		<div class="modal-footer">

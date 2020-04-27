@@ -113,7 +113,6 @@ public class Controller {
 					
 			}
 			
-			
 			result.put("data", page.doRender());
 		}
 		

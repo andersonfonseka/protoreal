@@ -19,11 +19,9 @@ public class TextAreaInput extends Input {
 		return rows;
 	}
 
-	public void setRows(int rows) {
-		this.rows = rows;
+	public void setRows(String rows) {
+		this.rows = Integer.valueOf(rows);
 	}
-
-
 
 	@Override
 	public String doRender() {
@@ -32,8 +30,7 @@ public class TextAreaInput extends Input {
 
 	@Override
 	public String doEdit() {
-		// TODO Auto-generated method stub
-		return null;
+		return new TextAreaInputRenderer(this).executeProperties();
 	}
 
 	
