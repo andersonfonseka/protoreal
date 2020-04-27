@@ -8,8 +8,10 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
+import com.andersonfonseka.dao.PageRepository;
 import com.andersonfonseka.dao.SiteRepository;
 import com.andersonfonseka.project.form.ProjectForm;
+import com.andersonfonseka.protoreal.components.Page;
 import com.andersonfonseka.protoreal.components.Site;
 
 public class ProjectAction extends DispatchAction {
@@ -59,9 +61,19 @@ public class ProjectAction extends DispatchAction {
 			HttpServletResponse response) throws Exception {
 		
 		SiteRepository repository = SiteRepository.getInstance();
-		Site site = repository.get(request.getParameter("id"));
+		Site site = repository.get(request.getParameter("siteId"));
 		
 		request.setAttribute("sitePreview", site.doRender());
+
+		if (request.getParameter("pageId") != null) {
+			
+			PageRepository pageRepository = PageRepository.getInstance();
+			Page page = pageRepository.get(request.getParameter("pageId"));
+			
+			request.setAttribute("pageRendered", page.doRender());
+		} else {
+			request.setAttribute("pageRendered", "");
+		}
 		
 		return mapping.findForward("successPreview");
 	}

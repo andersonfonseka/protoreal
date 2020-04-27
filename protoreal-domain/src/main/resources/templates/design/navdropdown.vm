@@ -4,7 +4,7 @@
     </a>
     <div class="dropdown-menu" aria-labelledby="$NavDropdownRenderer.uuid">
       #foreach($item in $NavDropdownRenderer.getOptions())
-		<a class="dropdown-item" href="#">$item</a>
+		<a class="dropdown-item" href="$item.pageUuid">$item.label</a>
 	  #end
     </div>
   </li>

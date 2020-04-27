@@ -78,6 +78,13 @@ public class Page extends Component {
 	public List<Component> getPagesDisplayOnMenu(){
 		return getChildrenList().stream().filter(x -> x instanceof Page && ((Page) x).isDisplayOnMenu()).collect(Collectors.toList());
 	}
+	
+	public boolean getPageChildren(){
+	
+		boolean result = getChildrenList().stream().filter(x -> x instanceof Page).collect(Collectors.toList()).isEmpty();
+		
+		return result;
+	}
 
 	@Override
 	public String doRender() {

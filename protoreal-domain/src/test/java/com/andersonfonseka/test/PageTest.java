@@ -83,11 +83,11 @@ class PageTest {
 		page.addChild(container2);
 
 		Table table = new Table();
-		table.setHeader(new String[] { "#", "Sistema de origem", "Mensagem interna", "Mensagem externa", "Tipo de mensagem"});
-		table.addRow(new String[] { "1", "GACB", "lorem ipsum", "lorem ipsum", "Tipo A" });
-		table.addRow(new String[] { "2", "FNEB", "lorem ipsum", "lorem ipsum", "Tipo B" });
-		table.addRow(new String[] { "3", "NPC", "lorem ipsum", "lorem ipsum", "Tipo C" });
-		table.addRow(new String[] { "4", "LEAS", "lorem ipsum", "lorem ipsum", "Tipo C" });
+//		table.setHeader(new String[] { "#", "Sistema de origem", "Mensagem interna", "Mensagem externa", "Tipo de mensagem"});
+//		table.addRow(new String[] { "1", "GACB", "lorem ipsum", "lorem ipsum", "Tipo A" });
+//		table.addRow(new String[] { "2", "FNEB", "lorem ipsum", "lorem ipsum", "Tipo B" });
+//		table.addRow(new String[] { "3", "NPC", "lorem ipsum", "lorem ipsum", "Tipo C" });
+//		table.addRow(new String[] { "4", "LEAS", "lorem ipsum", "lorem ipsum", "Tipo C" });
 
 		container2.addComponent(0, 0, table);
 

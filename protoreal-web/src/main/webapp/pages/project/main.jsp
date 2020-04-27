@@ -28,7 +28,7 @@
 						<bean:write name="project" property="description" />
 					</p>
 							
-					<a	href='Projects.do?method=preview&id=<bean:write name="project" property="uuid"/>'
+					<a	href='Projects.do?method=preview&siteId=<bean:write name="project" property="uuid"/>'
 						class="btn-sm btn-dark"><bean:message key="label.preview" /></a>
 					
 					<a

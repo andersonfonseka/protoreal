@@ -24,6 +24,13 @@
 			
 			<span class="badge badge-pill">
 			
+			<logic:notEqual name="pg" property="pageChildren" value="false">	
+				<span class="badge badge-light badge-pill"><a
+					href='PageDesign.do?method=startDesign&id=<bean:write name="pg" property="uuid"/>'
+					class="btn-sm btn-light"><bean:message key="label.design" /></a>
+				</span>	
+			</logic:notEqual>
+
 			<span class="badge badge-primary badge-pill"><a href="#"
 				class="btn-sm btn-primary"><bean:message key="label.edit" /></a> </span> 
 				
@@ -31,11 +38,6 @@
 			class="badge badge-danger badge-pill"><a
 				href='Pages.do?method=remove&id=<bean:write name="pg" property="uuid"/>'
 				class="btn-sm btn-danger"><bean:message key="label.remove" /></a></span> 
-				
-			<span
-			class="badge badge-light badge-pill"><a
-				href='PageDesign.do?method=startDesign&id=<bean:write name="pg" property="uuid"/>'
-				class="btn-sm btn-light"><bean:message key="label.design" /></a></span>
 				
 			</span>	
 

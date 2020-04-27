@@ -67,6 +67,8 @@ public class Site extends Component {
 				if (page.getPagesDisplayOnMenu().isEmpty() && !(page.getParent() instanceof Page)) {
 					
 					NavLink navLink = new NavLink(page.getTitle());
+					navLink.setSiteUuid(page.getSite().getUuid());
+					navLink.setPageUuid(page.getUuid());
 					navbar.addChild(navLink);
 				
 				} else if (!page.getPagesDisplayOnMenu().isEmpty()) {
@@ -83,7 +85,11 @@ public class Site extends Component {
 								continue;
 							}
 							
-							dropdown.addOptions(subPage.getTitle());
+							NavLink link = new NavLink(subPage.getTitle());
+							link.setSiteUuid(page.getSite().getUuid());
+							link.setPageUuid(subPage.getUuid());
+							
+							dropdown.addOptions(link);
 						}
 					}
 				}

@@ -7,17 +7,17 @@ import com.andersonfonseka.protoreal.components.render.NavDropdownRenderer;
 
 public class NavDropdown extends Input {
 	
-	private List<String> options = new ArrayList<String>();
+	private List<NavLink> options = new ArrayList<NavLink>();
 	
 	public NavDropdown(String title) {
 		super(title);
 	}
 
-	public List<String> getOptions() {
+	public List<NavLink> getOptions() {
 		return options;
 	}
 	
-	public void addOptions(String option) {
+	public void addOptions(NavLink option) {
 		options.add(option);
 	}
 	

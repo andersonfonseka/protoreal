@@ -3,3 +3,4 @@
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
 
 <%= request.getAttribute("sitePreview") %>
+<%= request.getAttribute("pageRendered")%>
