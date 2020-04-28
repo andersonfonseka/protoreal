@@ -3,11 +3,11 @@
 
 **por que?**
 
-- em sua maioria existem várias ferramentas pagas; 
-- a curva de aprendizado dessas ferramentas é alta;
-- o foco é o analista de negócio/requisitos;
-- é open-source;
-- é uma necessidade recorrente, sendo resolvida de forma inequada;
-- algumas opções fornecem uma solução parcial e vendo lock-in.
+- em sua maioria existem vÃ¡rias ferramentas pagas; 
+- a curva de aprendizado dessas ferramentas Ã© alta;
+- o foco nÃ£o Ã© o analista de negÃ³cio/requisitos;
+- Ã© open-source;
+- Ã© uma necessidade recorrente, sendo resolvida de forma inequada;
+- algumas opÃ§Ãµes fornecem uma soluÃ§Ã£o parcial e vendo lock-in.
 
-abraços.
+abraÃ§os.
