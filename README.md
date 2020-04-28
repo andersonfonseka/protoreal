@@ -1,7 +1,7 @@
 # protoreal
 **desenhe e esclareca seus requisitos em tempo real**
 
-**por que protoreal?**
+**por que utilizar?**
 
 - baixa curva de aprendizado;
 - o foco está no analista de negócio/requisitos;
