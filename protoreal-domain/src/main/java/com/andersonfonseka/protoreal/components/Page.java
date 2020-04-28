@@ -109,5 +109,10 @@ public class Page extends Component {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public String doPreview() {
+		return new PageRenderer(this).executePreview();
+	}
 	
 }

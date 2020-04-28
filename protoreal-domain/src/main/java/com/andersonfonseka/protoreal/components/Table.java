@@ -63,4 +63,9 @@ public class Table extends Component {
 		return new TableRenderer(this).executeProperties();
 	}
 
+	@Override
+	public String doPreview() {
+		return new TableRenderer(this).executePreview();
+	}
+
 }

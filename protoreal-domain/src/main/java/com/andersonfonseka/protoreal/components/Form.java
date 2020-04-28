@@ -14,5 +14,11 @@ public class Form extends Component {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public String doPreview() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

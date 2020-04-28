@@ -46,5 +46,12 @@ public class Button extends Input {
 	public String doEdit() {
 		return new ButtonRenderer(this).executeProperties();
 	}
+
+
+	@Override
+	public String doPreview() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

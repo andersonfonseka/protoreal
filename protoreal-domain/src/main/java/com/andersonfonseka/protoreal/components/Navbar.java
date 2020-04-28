@@ -15,5 +15,11 @@ public class Navbar extends Component {
 		return null;
 	}
 
+	@Override
+	public String doPreview() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

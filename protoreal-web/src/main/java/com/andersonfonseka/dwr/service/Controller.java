@@ -61,8 +61,8 @@ public class Controller {
 		
 		StringBuilder sb = new StringBuilder();
 		
-		sb.append("<div id=\"componentSelected\" class=\"form-group mx-sm-1 mb-2\">");
-		sb.append("<select name=\"componentSelected\" style=\"width:200px;\" class=\"form-control\" onchange=\"configure();\">");
+		sb.append("<div id=\"componentSelected\" class=\"form-group mx-sm-1 mb-1\">");
+		sb.append("<select name=\"componentSelected\" style=\"width:200px;\" class=\"form-control-sm\" onchange=\"configure();\">");
 		sb.append("<option value=\"0\">Selecione</option>");
 	
 		

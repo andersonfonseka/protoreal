@@ -99,6 +99,8 @@ public abstract class Component {
 	public abstract String doRender();
 	
 	public abstract String doEdit();
+	
+	public abstract String doPreview();
 
 	@Override
 	public int hashCode() {

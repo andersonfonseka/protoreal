@@ -1,0 +1,9 @@
+<p>
+<div class="container-fluid">
+<h5>$PageRenderer.title</h5>
+<hr/>
+#foreach($item in $PageRenderer.getChildrenList())
+	$item.doPreview()
+	<p>
+#end
+</div>

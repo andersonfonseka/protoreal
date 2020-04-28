@@ -47,5 +47,11 @@ public class SelectInput extends Input {
 	public String doEdit() {
 		return new SelectInputRenderer(this).executeProperties();
 	}
+
+	@Override
+	public String doPreview() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

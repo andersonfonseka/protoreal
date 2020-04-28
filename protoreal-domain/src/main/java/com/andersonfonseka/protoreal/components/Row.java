@@ -32,6 +32,12 @@ public class Row extends Component {
 		return null;
 	}
 
+	@Override
+	public String doPreview() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 	
 }

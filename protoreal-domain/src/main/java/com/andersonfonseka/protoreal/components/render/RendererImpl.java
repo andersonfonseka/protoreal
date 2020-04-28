@@ -18,4 +18,8 @@ public abstract class RendererImpl {
 	public String executeProperties() {
 		return this.engine.execute(Engine.PROPERTIES);
 	}
+	
+	public String executePreview() {
+		return this.engine.execute(Engine.PREVIEW);
+	}
 }

@@ -18,6 +18,7 @@ public class Engine {
 	
 	public static final String DESIGN = "design";
 	public static final String PROPERTIES = "properties";
+	public static final String PREVIEW = "preview";
 
 	public Engine(String templateName) {
 

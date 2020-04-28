@@ -79,6 +79,11 @@ public class Container extends Component {
 		return new ContainerRenderer(this).executeProperties();
 	}
 
+	@Override
+	public String doPreview() {
+		return new ContainerRenderer(this).executePreview();
+	}
+
 	
 	
 }

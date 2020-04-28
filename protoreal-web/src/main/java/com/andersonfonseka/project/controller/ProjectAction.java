@@ -70,7 +70,7 @@ public class ProjectAction extends DispatchAction {
 			PageRepository pageRepository = PageRepository.getInstance();
 			Page page = pageRepository.get(request.getParameter("pageId"));
 			
-			request.setAttribute("pageRendered", page.doRender());
+			request.setAttribute("pageRendered", page.doPreview());
 		} else {
 			request.setAttribute("pageRendered", "");
 		}

@@ -31,5 +31,11 @@ public class TextInput extends Input {
 	public String doEdit() {
 		return new TextInputRenderer(this).executeProperties();
 	}
+
+	@Override
+	public String doPreview() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

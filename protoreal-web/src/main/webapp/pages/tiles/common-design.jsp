@@ -83,14 +83,10 @@
 				<html:form>
 
 					<div class="row">
-
 						<div class="col-sm-9">
-							<h5>
-								<bean:write name="page" property="parent.title" />
-								>>
-								<bean:write name="page" property="title" />
-								<br />
-							</h5>
+							<bean:write name="page" property="parent.title" />
+							>>
+							<bean:write name="page" property="title" />
 						</div>
 
 						<div class="col-sm">
@@ -98,7 +94,7 @@
 
 								<div id="componentSelected" class="form-group mx-sm-1 mb-1">
 									<html:select property="componentSelected"
-										styleClass="form-control" style="width:200px;"
+										styleClass="form-control-sm" style="width:200px;"
 										onchange="configure();">
 										<html:option value="0">
 											<bean:message key="label.select" />
@@ -108,12 +104,12 @@
 									</html:select>
 								</div>
 
-								<button type="button" class="btn btn-primary mx-sm-1 mb-1"
+								<button type="button" class="btn-sm btn-primary mx-sm-1 mb-1"
 									data-toggle="modal" data-target="#ExemploModalCentralizado">
 									<bean:message key="label.button.edit" />
 								</button>
 
-								<html:reset styleClass="btn btn-danger mb-1">
+								<html:reset styleClass="btn-sm btn-danger mb-1">
 									<bean:message key="label.button.remove" />
 								</html:reset>
 
@@ -142,10 +138,6 @@
 						</div>
 					</div>
 				</div>
-
-
-				<hr />
-
 				<tiles:insert attribute="body" />
 			</div>
 			<!-- /#page-content-wrapper -->
