@@ -1,5 +1,5 @@
 # protoreal
-**desenhe e esclareca seus requisitos em tempo real**
+**materialize seus requisitos em tempo real**
 
 **por que utilizar?**
 
@@ -10,4 +10,4 @@
 - permite customizar templates;
 - extensível.
 
-abraços.
+**instalação**
