@@ -3,7 +3,6 @@ package com.andersonfonseka.protoreal.components;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.andersonfonseka.protoreal.common.SelectItem;
 import com.andersonfonseka.protoreal.components.render.ButtonRenderer;
 
 public class Button extends Input {
