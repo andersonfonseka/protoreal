@@ -1,19 +1,19 @@
 <div class="form" id="frmInput">
 	<form id="frmInput" action="" method="">
 	<input type="hidden" id="setUuid" value="$ButtonRenderer.uuid" />
-	<div class="form-group">
+		<div class="form-group">
 		<label for="inputProjectTitle" class="col-form-label">Tipo</label>
 		<select property="type" id="setCssClass" styleClass="form-control" class="form-control">
-	        <option value="">Selecione</html:option>
-	        <option value="btn btn-primary">Primario</html:option>
-	        <option value="btn btn-secondary">Secundario</html:option>
-	        <option value="btn btn-success">Sucesso</html:option>
-	        <option value="btn btn-danger">Erro</html:option>
-	       	<option value="btn btn-warning">Advertencia</html:option>
-	       	<option value="btn btn-info">Informativo</html:option>
-	       	<option value="btn btn-light">Light</html:option>
-	       	<option value="btn btn-dark">Dark</html:option>
-	       	<option value="btn btn-link">Link</html:option>
+	        <option value="">Selecione</option>
+	        <option value="btn btn-primary">Primario</option>
+	        <option value="btn btn-secondary">Secundario</option>
+	        <option value="btn btn-success">Sucesso</option>
+	        <option value="btn btn-danger">Erro</option>
+	       	<option value="btn btn-warning">Advertencia</option>
+	       	<option value="btn btn-info">Informativo</option>
+	       	<option value="btn btn-light">Light</option>
+	       	<option value="btn btn-dark">Dark</option>
+	       	<option value="btn btn-link">Link</option>
 	    <select>
 	    </div>
 	    
@@ -21,6 +21,15 @@
 			<label for="inputProjectTitle" class="col-form-label">Rotulo</label> 
 			<input type="text" id="setLabel" class="form-control" property="title" value="$ButtonRenderer.label" size="25" />
 		</div>
+		
+		<div class="form-group">
+		<label for="inputProjectTitle" class="col-form-label">Pagina Relacionada</label>
+		<select property="type" id="setPageId" styleClass="form-control" class="form-control">
+		#foreach($page in $ButtonRenderer.getPages())
+			<option value="$page.uuid">$page.title</option>
+		#end
+		<select>
+	    </div>
 		
 		<div class="modal-footer">
 			<button type="button" class="btn btn-secondary"	data-dismiss="modal">Fechar</button>

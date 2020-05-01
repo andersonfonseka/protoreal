@@ -1,5 +1,9 @@
 package com.andersonfonseka.protoreal.components;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.andersonfonseka.protoreal.common.SelectItem;
 import com.andersonfonseka.protoreal.components.render.ButtonRenderer;
 
 public class Button extends Input {
@@ -16,12 +20,15 @@ public class Button extends Input {
 	public static final String DARK = "btn btn-dark";
 	public static final String LINK = "btn btn-link";
 	
+	private List<Component> pages = new ArrayList<Component>();
+	
+	private String pageId;
+	
 	
 	public Button() {
 		super("Button");
 		this.cssClass = PRIMARY;
 	}
-	
 	
 	public Button(String label, String cssClass) {
 		super(label);
@@ -34,6 +41,22 @@ public class Button extends Input {
 
 	public void setCssClass(String cssClass) {
 		this.cssClass = cssClass;
+	}
+	
+	public List<Component> getPages() {
+		return pages;
+	}
+
+	public void setPages(List<Component> pages) {
+		this.pages = pages;
+	}
+
+	public String getPageId() {
+		return pageId;
+	}
+
+	public void setPageId(String pageId) {
+		this.pageId = pageId;
 	}
 
 	@Override
@@ -50,8 +73,7 @@ public class Button extends Input {
 
 	@Override
 	public String doPreview() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ButtonRenderer(this).executePreview();
 	}
 	
 }

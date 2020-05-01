@@ -9,6 +9,7 @@ import javax.servlet.ServletRequest;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.validator.ValidatorForm;
 
+import com.andersonfonseka.common.SelectItem;
 import com.andersonfonseka.dao.SiteRepository;
 import com.andersonfonseka.protoreal.components.Page;
 import com.andersonfonseka.protoreal.components.Site;
@@ -29,6 +30,10 @@ public class PageForm extends ValidatorForm {
 	
 	private String parentPage;
 	
+	private String pagetType;
+	
+	private List<SelectItem> typeList = new ArrayList<SelectItem>();
+	
 	private boolean initial= false;
 	
 	private boolean displayOnMenu = false;
@@ -43,6 +48,9 @@ public class PageForm extends ValidatorForm {
 		if (null != site) {
 			this.pageList = new ArrayList(site.getPages().stream().filter(x -> !(x.getParent() instanceof Page)).collect(Collectors.toList()));	
 		}
+		
+		this.typeList.add(new SelectItem("padrao", "Padrao"));
+		this.typeList.add(new SelectItem("modal", "Modal"));
 	}
 		
 	public List<Page> getPageList() {
@@ -99,6 +107,22 @@ public class PageForm extends ValidatorForm {
 
 	public void setDisplayOnMenu(boolean displayOnMenu) {
 		this.displayOnMenu = displayOnMenu;
+	}
+	
+	public String getPagetType() {
+		return pagetType;
+	}
+
+	public void setPagetType(String pagetType) {
+		this.pagetType = pagetType;
+	}
+	
+	public List<SelectItem> getTypeList() {
+		return typeList;
+	}
+
+	public void setTypeList(List<SelectItem> typeList) {
+		this.typeList = typeList;
 	}
 
 	@Override

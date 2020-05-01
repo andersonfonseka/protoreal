@@ -20,6 +20,8 @@ public class Page extends Component {
 	
 	private boolean displayOnMenu = false;
 	
+	private String type;
+	
 	private Map<String, Component> fastComponents = new HashMap<String, Component>();
 	
 	public Page() {
@@ -103,6 +105,13 @@ public class Page extends Component {
 		return fastComponents.get(uuid);
 	}
 	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 
 	@Override
 	public String doEdit() {

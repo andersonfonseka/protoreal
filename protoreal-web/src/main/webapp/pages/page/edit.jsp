@@ -5,6 +5,14 @@
 <html:form action="/PageEdit.do?method=create">
 	
 	<div class="form-group">
+	<label for="inputProjectName"><bean:message key="label.type"/></label> 
+	<html:select property="pagetType" styleClass="form-control">
+        <html:optionsCollection name="pageForm" property="typeList" label="label" value="value" />
+    </html:select>
+    </div>
+	
+	
+	<div class="form-group">
 	<label for="inputProjectName"><bean:message key="label.pages.parent"/></label> 
 	<html:select property="parentPage" styleClass="form-control">
         <html:option value="0"><bean:message key="label.select"/></html:option>

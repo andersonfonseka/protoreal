@@ -49,6 +49,25 @@
 					<h6><bean:message key="<%=(String) title%>"/></h6>
 				</tiles:insert>
 				 -->
+				 
+				 <div class="modal fade" id="ExemploModalCentralizado" tabindex="-1"
+					role="dialog" aria-labelledby="TituloModalCentralizado"
+					aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="TituloModalCentralizado">Propriedades</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Fechar">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div id="modalPage"></div>
+							</div>
+						</div>
+					</div>
+				</div>
 
 				<tiles:insert attribute="body" />
 			</div>

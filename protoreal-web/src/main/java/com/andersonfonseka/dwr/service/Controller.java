@@ -12,6 +12,7 @@ import com.andersonfonseka.protoreal.components.Component;
 import com.andersonfonseka.protoreal.components.Container;
 import com.andersonfonseka.protoreal.components.Page;
 import com.andersonfonseka.protoreal.components.SelectInput;
+import com.andersonfonseka.protoreal.components.Site;
 import com.andersonfonseka.protoreal.components.Table;
 import com.andersonfonseka.protoreal.components.TextAreaInput;
 import com.andersonfonseka.protoreal.components.TextInput;
@@ -79,11 +80,19 @@ public class Controller {
 	
 	public Map<String, String> startEdit(String componentId, HttpSession session) throws InstantiationException, IllegalAccessException{
 		
+		Site site = (Site) session.getAttribute("site");
 		Page page = (Page) session.getAttribute("page");
 	
 		Map<String, String> result = new HashMap<String, String>();
 		
 		if (null != page.getFastComponents(componentId)) {
+			
+			if (page.getFastComponents(componentId) instanceof Button) {
+				Button btn = (Button) page.getFastComponents(componentId);
+				btn.setPages(site.getPages());
+			}
+			
+			
 			result.put("data", page.getFastComponents(componentId).doEdit());
 		}
 		

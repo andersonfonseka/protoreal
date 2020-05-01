@@ -1,0 +1,1 @@
+<button type="button" class="$ButtonRenderer.cssClass  btn-sm">$ButtonRenderer.label</button>
