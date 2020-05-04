@@ -50,8 +50,7 @@ public class SelectInput extends Input {
 
 	@Override
 	public String doPreview() {
-		// TODO Auto-generated method stub
-		return null;
+		return new SelectInputRenderer(this).executePreview();
 	}
 	
 }
