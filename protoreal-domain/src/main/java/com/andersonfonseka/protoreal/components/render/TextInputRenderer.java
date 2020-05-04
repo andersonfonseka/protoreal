@@ -1,14 +1,11 @@
 package com.andersonfonseka.protoreal.components.render;
 
+import com.andersonfonseka.protoreal.components.Component;
+
 public class TextInputRenderer extends RendererImpl implements Renderer {
 
-	public TextInputRenderer(Object component) {
+	public TextInputRenderer(Component component) {
 		super("textinput.vm", component);
-	}
-
-	@Override
-	public String render() {
-		return execute();
 	}
 	
 }

@@ -46,8 +46,13 @@
 
 			<div class="list-group list-group-flush">
 
-				<a href="#" class="list-group-item list-group-item-action"><img
+					<a href="#" class="list-group-item list-group-item-action"><img
 					id="container" src="icons/icons8-health-data-32.png"
+					draggable="true" ondragstart="drag(event)"></a> 
+					
+					<a href="#"
+					class="list-group-item list-group-item-action"><img
+					id="label" src="icons/icons8-tags-32.png"
 					draggable="true" ondragstart="drag(event)"></a> 
 					
 					<a href="#"
@@ -119,9 +124,10 @@
 									<bean:message key="label.button.edit" />
 								</button>
 
-								<html:reset styleClass="btn-sm btn-danger mb-1">
-									<bean:message key="label.button.remove" />
-								</html:reset>
+								<button type="button" class="btn-sm btn-danger mx-sm-1 mb-1" onclick="remove();">
+									<bean:message key="label.button.remove"/>
+								</button>
+
 
 							</div>
 						</div>

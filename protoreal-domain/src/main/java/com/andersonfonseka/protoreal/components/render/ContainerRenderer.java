@@ -1,14 +1,11 @@
 package com.andersonfonseka.protoreal.components.render;
 
+import com.andersonfonseka.protoreal.components.Component;
+
 public class ContainerRenderer extends RendererImpl implements Renderer {
 
-	public ContainerRenderer(Object component) {
+	public ContainerRenderer(Component component) {
 		super("container.vm", component);
-	}
-
-	@Override
-	public String render() {
-		return execute();
 	}
 	
 }

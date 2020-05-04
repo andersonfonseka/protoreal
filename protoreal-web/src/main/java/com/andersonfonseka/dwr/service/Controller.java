@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import com.andersonfonseka.protoreal.components.Button;
 import com.andersonfonseka.protoreal.components.Component;
 import com.andersonfonseka.protoreal.components.Container;
+import com.andersonfonseka.protoreal.components.Label;
 import com.andersonfonseka.protoreal.components.Page;
 import com.andersonfonseka.protoreal.components.SelectInput;
 import com.andersonfonseka.protoreal.components.Site;
@@ -30,6 +31,7 @@ public class Controller {
 		mapComponents.put("button", Button.class);
 		mapComponents.put("dataTable", Table.class);
 		mapComponents.put("selectItem", SelectInput.class);
+		mapComponents.put("label", Label.class);
 		
 	}
 	
@@ -70,7 +72,9 @@ public class Controller {
 	
 		
 		for (Component comp: page.getFastComponents()) {
-			sb.append("<option value=" + comp.getUuid() + ">" + comp.getName() + "</option>");
+			if (!comp.isDeleted()) {
+				sb.append("<option value=" + comp.getUuid() + ">" + comp.getName() + "</option>");	
+			}
 		}
 		
 		sb.append("</select>");
@@ -125,6 +129,22 @@ public class Controller {
 			
 			result.put("data", page.doRender());
 		}
+		
+		return result;
+	}
+	
+	public Map<String, String> remove(String componentId, HttpSession session) throws InstantiationException, IllegalAccessException{
+		
+		Site site = (Site) session.getAttribute("site");
+		Page page = (Page) session.getAttribute("page");
+	
+		Map<String, String> result = new HashMap<String, String>();
+		
+		if (null != page.getFastComponents(componentId)) {
+			page.getFastComponents(componentId).setDeleted(true);
+		}
+		
+		result.put("data", page.doRender());
 		
 		return result;
 	}

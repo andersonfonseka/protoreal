@@ -23,6 +23,8 @@ public abstract class Component {
 	
 	private List<Component> children = new ArrayList<Component>();
 	
+	private boolean deleted;
+	
 	public Component() {
 		this.name = this.getClass().getSimpleName() + "#" + this.uuid;
 	}
@@ -104,6 +106,14 @@ public abstract class Component {
 
 	public void setSiteUuid(String siteUuid) {
 		this.siteUuid = siteUuid;
+	}
+	
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 
 	public abstract String doRender();

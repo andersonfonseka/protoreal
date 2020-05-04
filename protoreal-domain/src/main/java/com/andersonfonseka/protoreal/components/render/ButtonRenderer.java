@@ -1,14 +1,11 @@
 package com.andersonfonseka.protoreal.components.render;
 
+import com.andersonfonseka.protoreal.components.Component;
+
 public class ButtonRenderer extends RendererImpl implements Renderer {
 
-	public ButtonRenderer(Object component) {
+	public ButtonRenderer(Component component) {
 		super("button.vm", component);
-	}
-
-	@Override
-	public String render() {
-		return execute();
 	}
 	
 }

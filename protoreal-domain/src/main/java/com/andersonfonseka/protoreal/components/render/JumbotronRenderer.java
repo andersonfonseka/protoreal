@@ -1,14 +1,11 @@
 package com.andersonfonseka.protoreal.components.render;
 
+import com.andersonfonseka.protoreal.components.Component;
+
 public class JumbotronRenderer extends RendererImpl implements Renderer {
 
-	public JumbotronRenderer(Object component) {
+	public JumbotronRenderer(Component component) {
 		super("jumbotron.vm", component);
-	}
-
-	@Override
-	public String render() {
-		return execute();
 	}
 	
 }

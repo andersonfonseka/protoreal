@@ -1,14 +1,11 @@
 package com.andersonfonseka.protoreal.components.render;
 
+import com.andersonfonseka.protoreal.components.Component;
+
 public class NavbarRenderer extends RendererImpl implements Renderer {
 
-	public NavbarRenderer(Object component) {
+	public NavbarRenderer(Component component) {
 		super("navbar.vm", component);
-	}
-
-	@Override
-	public String render() {
-		return execute();
 	}
 	
 }

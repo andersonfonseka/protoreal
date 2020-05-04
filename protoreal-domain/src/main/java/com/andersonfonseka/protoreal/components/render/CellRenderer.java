@@ -1,14 +1,11 @@
 package com.andersonfonseka.protoreal.components.render;
 
+import com.andersonfonseka.protoreal.components.Component;
+
 public class CellRenderer extends RendererImpl implements Renderer {
 
-	public CellRenderer(Object component) {
+	public CellRenderer(Component component) {
 		super("cell.vm", component);
-	}
-
-	@Override
-	public String render() {
-		return execute();
 	}
 	
 }

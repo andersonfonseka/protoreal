@@ -39,6 +39,17 @@ function edit(id){
 	
 }
 
+function remove(){
+	
+	var sel = $('select[name ="componentSelected"]');
+	
+	Controller.remove(sel.val(), function(data){
+		dwr.util.setEscapeHtml(false);
+		dwr.util.setValue('container-designer', data['data']);
+	});
+	
+}
+
 function goto(siteUuid, pageUuid){
 	
 	window.location.href = "Projects.do?method=preview&siteId=" + siteUuid + '&pageId=' +  pageUuid;

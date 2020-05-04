@@ -1,25 +1,38 @@
 package com.andersonfonseka.protoreal.components.render;
 
+import com.andersonfonseka.protoreal.components.Component;
 import com.andersonfonseka.protoreal.engine.Engine;
 
 public abstract class RendererImpl {
 
 	private Engine engine;
-	
-	public RendererImpl(String template, Object component) {
+
+	private Component component;
+
+	public RendererImpl(String template, Component comp) {
 		engine = new Engine(template);
-		engine.putOnContext(this.getClass().getSimpleName(), component);
+		engine.putOnContext(this.getClass().getSimpleName(), comp);
+		this.component = comp;
 	}
 
 	public String execute() {
-		return this.engine.execute(Engine.DESIGN);
+		if (!this.component.isDeleted()) {
+			return this.engine.execute(Engine.DESIGN);
+		}
+		return "";
 	}
-	
+
 	public String executeProperties() {
-		return this.engine.execute(Engine.PROPERTIES);
+		if (!this.component.isDeleted()) {
+			return this.engine.execute(Engine.PROPERTIES);
+		}
+		return "";
 	}
-	
+
 	public String executePreview() {
-		return this.engine.execute(Engine.PREVIEW);
+		if (!this.component.isDeleted()) {
+			return this.engine.execute(Engine.PREVIEW);
+		}
+		return "";
 	}
 }

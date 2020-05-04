@@ -90,7 +90,7 @@ public class Page extends Component {
 
 	@Override
 	public String doRender() {
-		return new PageRenderer(this).render();
+		return new PageRenderer(this).execute();
 	}
 	
 	public void addFastComponent(Component component) {
