@@ -9,6 +9,8 @@ import java.util.UUID;
 
 public abstract class Component {
 	
+	private String siteUuid;
+	
 	private String uuid = UUID.randomUUID().toString();
 	
 	private String name;
@@ -94,6 +96,14 @@ public abstract class Component {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getSiteUuid() {
+		return siteUuid;
+	}
+
+	public void setSiteUuid(String siteUuid) {
+		this.siteUuid = siteUuid;
 	}
 
 	public abstract String doRender();

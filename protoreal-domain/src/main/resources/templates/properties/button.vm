@@ -1,6 +1,10 @@
 <div class="form" id="frmInput">
 	<form id="frmInput" action="" method="">
-	<input type="hidden" id="setUuid" value="$ButtonRenderer.uuid" />
+	
+		<input type="hidden" id="setUuid" value="$ButtonRenderer.uuid" />
+	
+		<input type="hidden" id="setSiteUuid" value="$ButtonRenderer.siteUuid" />
+	
 		<div class="form-group">
 		<label for="inputProjectTitle" class="col-form-label">Tipo</label>
 		<select property="type" id="setCssClass" styleClass="form-control" class="form-control">
@@ -24,7 +28,7 @@
 		
 		<div class="form-group">
 		<label for="inputProjectTitle" class="col-form-label">Pagina Relacionada</label>
-		<select property="type" id="setPageId" styleClass="form-control" class="form-control">
+		<select property="type" id="setPageUuid" styleClass="form-control" class="form-control">
 		#foreach($page in $ButtonRenderer.getPages())
 			<option value="$page.uuid">$page.title</option>
 		#end

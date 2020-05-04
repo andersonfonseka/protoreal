@@ -35,12 +35,14 @@ public class Controller {
 	
 	public Map<String, String> create(String component, String parent, HttpSession session) throws InstantiationException, IllegalAccessException{
 		
+		Site site = (Site) session.getAttribute("site");
 		Page page = (Page) session.getAttribute("page");
 	
 		page.resetComponentAux();
 		page.getChildComponent(page, parent);
 		
 		Component component2 = mapComponents.get(component).newInstance();
+		component2.setSiteUuid(site.getUuid());
 		
 		if (null != page.getComponentAux()) {
 			page.getComponentAux().addChild(component2);
@@ -92,7 +94,6 @@ public class Controller {
 				btn.setPages(site.getPages());
 			}
 			
-			
 			result.put("data", page.getFastComponents(componentId).doEdit());
 		}
 		
@@ -125,19 +126,7 @@ public class Controller {
 			result.put("data", page.doRender());
 		}
 		
-
-		
 		return result;
 	}
-
-	@SuppressWarnings("unchecked")
-	public Map<String, Object> getMap(HttpSession session) {
-		return (Map<String, Object>) session.getAttribute("mapTree");
-	}
-	
-	public void setMap(HttpSession session, Map<String, Object> map) {
-		session.setAttribute("mapTree", map);
-	}
-
 
 }

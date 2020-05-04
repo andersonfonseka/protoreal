@@ -38,3 +38,9 @@ function edit(id){
 	});
 	
 }
+
+function goto(siteUuid, pageUuid){
+	
+	window.location.href = "Projects.do?method=preview&siteId=" + siteUuid + '&pageId=' +  pageUuid;
+	
+}

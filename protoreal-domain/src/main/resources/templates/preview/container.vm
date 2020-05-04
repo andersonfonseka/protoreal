@@ -1,7 +1,7 @@
 #foreach($item in $ContainerRenderer.getRowsList())
 	<div class="row">
   		#foreach($itemCell in $item.getCellList())
-			<div class="col-sm" id="$itemCell.uuid">$itemCell.doRender()</div>
+			<div class="col-sm" id="$itemCell.uuid">$itemCell.doPreview()</div>
 		#end
 	</div>	
 #end

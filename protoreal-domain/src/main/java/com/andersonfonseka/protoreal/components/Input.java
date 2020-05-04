@@ -6,7 +6,9 @@ public abstract class Input extends Component {
 	
 	private String placeholder = "";
 	
-	private String readOnly = "";
+	private String readonly = "";
+	
+	private String value = "";
 	
 	public Input(String label) {
 		super();
@@ -29,12 +31,25 @@ public abstract class Input extends Component {
 		this.placeholder = placeholder;
 	}
 	
-	public String isDisabled() {
-		return readOnly;
+	public String getReadonly() {
+		
+		if (readonly.equals("true")) {
+			readonly = "readonly"; 
+		}
+		
+		return readonly;
 	}
 
-	public void setDisabled(String disabled) {
-		this.readOnly = disabled;
+	public void setReadonly(String readonly) {
+		this.readonly = readonly;
+	}
+	
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
 	}
 
 	@Override

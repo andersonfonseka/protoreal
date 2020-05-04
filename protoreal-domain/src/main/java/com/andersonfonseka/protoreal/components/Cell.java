@@ -21,8 +21,7 @@ public class Cell extends Component {
 
 	@Override
 	public String doPreview() {
-		// TODO Auto-generated method stub
-		return null;
+		return new CellRenderer(this).executePreview();
 	}
 
 

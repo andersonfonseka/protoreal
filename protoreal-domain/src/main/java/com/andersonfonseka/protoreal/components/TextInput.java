@@ -21,7 +21,7 @@ public class TextInput extends Input {
 	public void setType(String type) {
 		this.type = type;
 	}
-
+	
 	@Override
 	public String doRender() {
 		return new TextInputRenderer(this).execute();
@@ -34,8 +34,7 @@ public class TextInput extends Input {
 
 	@Override
 	public String doPreview() {
-		// TODO Auto-generated method stub
-		return null;
+		return new TextInputRenderer(this).executePreview();
 	}
 	
 }

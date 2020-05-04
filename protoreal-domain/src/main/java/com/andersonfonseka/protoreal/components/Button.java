@@ -21,8 +21,7 @@ public class Button extends Input {
 	
 	private List<Component> pages = new ArrayList<Component>();
 	
-	private String pageId;
-	
+	private String pageUuid;
 	
 	public Button() {
 		super("Button");
@@ -50,12 +49,12 @@ public class Button extends Input {
 		this.pages = pages;
 	}
 
-	public String getPageId() {
-		return pageId;
+	public String getPageUuid() {
+		return pageUuid;
 	}
 
-	public void setPageId(String pageId) {
-		this.pageId = pageId;
+	public void setPageUuid(String pageUuid) {
+		this.pageUuid = pageUuid;
 	}
 
 	@Override

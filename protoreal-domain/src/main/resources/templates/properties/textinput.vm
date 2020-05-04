@@ -4,18 +4,34 @@
 	<div class="form-group">
 		<label for="inputProjectTitle" class="col-form-label">Tipo</label>
 		<select property="type" id="setType" styleClass="form-control" class="form-control">
-	        <option value="">Selecione</html:option>
-	        <option value="text">Texto</html:option>
-	        <option value="date">Data</html:option>
-	        <option value="number">Numero</html:option>
+	        <option value="text">Texto</option>
+	        <option value="date">Data</option>
+	        <option value="number">Numero</option>
 	    <select>
 	    </div>
 	    
 		<div class="form-group">
 			<label for="inputProjectTitle" class="col-form-label">Rotulo</label> 
-			<input type="text" id="setLabel" class="form-control" property="title" value="$TextInputRenderer.label" size="25" />
+			<input type="text" id="setLabel" class="form-control" value="$TextInputRenderer.label" size="25" />
 		</div>
 		
+		<div class="form-group">
+			<label for="inputProjectTitle" class="col-form-label">Valor</label>
+			<input type="text" id="setValue" class="form-control" value="$TextInputRenderer.value" size="25" />
+		</div>
+		
+		<div class="form-group">
+			<label for="inputProjectTitle" class="col-form-label">Placeholder</label>
+			<input type="text" id="setPlaceholder" class="form-control" value="$TextInputRenderer.placeholder" size="25" />
+		</div>
+		
+		<div class="form-check">
+		  <input class="form-check-input" type="checkbox" value="readonly" id="setReadonly">
+		  <label class="form-check-label" for="defaultCheck1">
+		    Somente-leitura
+		  </label>
+		</div>
+		<p>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-secondary"	data-dismiss="modal">Fechar</button>
 			<button type="button" class="btn btn-primary" onclick="edit('frmInput')">Salvar</button>

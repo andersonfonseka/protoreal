@@ -48,20 +48,30 @@
 
 				<a href="#" class="list-group-item list-group-item-action"><img
 					id="container" src="icons/icons8-health-data-32.png"
-					draggable="true" ondragstart="drag(event)"></a> <a href="#"
+					draggable="true" ondragstart="drag(event)"></a> 
+					
+					<a href="#"
 					class="list-group-item list-group-item-action"><img
 					id="textInput" src="icons/icons8-text-input-form-32.png"
-					draggable="true" ondragstart="drag(event)"></a> <a href="#"
+					draggable="true" ondragstart="drag(event)"></a> 
+					
+					<a href="#"
 					class="list-group-item list-group-item-action"><img
 					id="textArea" src="icons/icons8-align-text-left-32.png"
-					draggable="true" ondragstart="drag(event)"></a> <a href="#"
+					draggable="true" ondragstart="drag(event)"></a> 
+					
+					<a href="#"
 					class="list-group-item list-group-item-action"><img
 					id="selectItem" src="icons/icons8-checklist-48.png"
 					draggable="true" ondragstart="drag(event)"
-					style="height: 32px; width: 32px;"></a> <a href="#"
+					style="height: 32px; width: 32px;"></a> 
+					
+					<a href="#"
 					class="list-group-item list-group-item-action"><img id="button"
 					src="icons/icons8-button-32.png" draggable="true"
-					ondragstart="drag(event)"></a> <a href="#"
+					ondragstart="drag(event)"></a> 
+					
+					<a href="#"
 					class="list-group-item list-group-item-action"><img
 					id="dataTable" src="icons/icons8-data-grid-32.png" draggable="true"
 					ondragstart="drag(event)"></a>
