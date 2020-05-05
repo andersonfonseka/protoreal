@@ -3,7 +3,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
 <%@taglib uri="http://struts.apache.org/tags-logic" prefix="logic"%>
 
-<a href="Projects.do?method=startEdit" class="btn btn-primary"><bean:message
+<a href="Projects.do?method=startCreate" class="btn btn-primary"><bean:message
 		key="label.new" /></a>
 <p>
 <div class="row">
@@ -16,7 +16,7 @@
 						<span style="font-weight: bold;"><bean:write name="project" property="title" /></span>
 						<button class="test btn btn-light float-md-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							<a class="dropdown-item" href="#"><bean:message key="label.edit" /></a> 
+							<a class="dropdown-item" href='Projects.do?method=startEdit&id=<bean:write name="project" property="uuid"/>'><bean:message key="label.edit" /></a> 
 							<a class="dropdown-item" href='Projects.do?method=remove&id=<bean:write name="project" property="uuid"/>'><bean:message key="label.remove" /></a> 
 							<a class="dropdown-item" href="#"><bean:message key="label.export" /></a>
 						</div>

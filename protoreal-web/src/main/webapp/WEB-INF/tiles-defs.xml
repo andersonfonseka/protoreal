@@ -29,6 +29,11 @@
 		<put name="body" value="/pages/project/main.jsp" />
 	</definition>
 
+	<definition name="projects.create" extends="baseLayout">
+		<put name="title" value="label.projects" />
+		<put name="body" value="/pages/project/create.jsp" />
+	</definition>
+
 	<definition name="projects.edit" extends="baseLayout">
 		<put name="title" value="label.projects" />
 		<put name="body" value="/pages/project/edit.jsp" />

@@ -11,7 +11,6 @@
     </html:select>
     </div>
 	
-	
 	<div class="form-group">
 	<label for="inputProjectName"><bean:message key="label.pages.parent"/></label> 
 	<html:select property="parentPage" styleClass="form-control">
@@ -23,11 +22,6 @@
 	<div class="form-group">
 		<label for="inputProjectTitle"><bean:message key="label.title"/></label> 
 		<html:text styleClass="form-control" property="title" size="25" />
-	</div>
-	
-	<div class="form-group" style="margin-left: 20px;">
-		<html:checkbox styleClass="form-check-input" property="initial"/>
-		<label for="inputProjectName"><bean:message key="label.pages.initial"/></label> 
 	</div>
 
 	<div class="form-group" style="margin-left: 20px;">

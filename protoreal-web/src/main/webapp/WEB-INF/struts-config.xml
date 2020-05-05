@@ -68,20 +68,30 @@
 		<action path="/Projects" parameter="method"
 			type="com.andersonfonseka.project.controller.ProjectAction">
 			<forward name="success" path="projects.main" />
-			<forward name="successForm" path="projects.edit" />
+			<forward name="successCreateForm" path="projects.create" />
+			<forward name="successEditForm" path="projects.edit" />
 			<forward name="successPreview" path="projects.preview"/>
 		</action>
 
-		<action path="/ProjectEdit" parameter="method"
+		<action path="/ProjectCreate" parameter="method"
 			type="com.andersonfonseka.project.controller.ProjectAction"
 			name="projectForm" 
-			scope="request"
-			input="projects.edit">
+			scope="session"
+			input="projects.create">
 
 			<set-property property="cancellable" value="true"/>
 			<forward name="success" path="projects.main" />
 		</action>
 
+		<action path="/ProjectEdit" parameter="method"
+			type="com.andersonfonseka.project.controller.ProjectAction"
+			name="projectForm" 
+			scope="session"
+			input="projects.edit">
+
+			<set-property property="cancellable" value="true"/>
+			<forward name="success" path="projects.main" />
+		</action>
 
 		<action path="/Pages" parameter="method"
 			type="com.andersonfonseka.page.controller.PageAction">

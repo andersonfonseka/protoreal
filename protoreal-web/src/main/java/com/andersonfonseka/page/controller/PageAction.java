@@ -79,7 +79,6 @@ public class PageAction extends DispatchAction {
 		
 		page.setName(pageForm.getName());
 		page.setTitle(pageForm.getTitle());
-		page.setInitial(pageForm.isInitial());
 		page.setDisplayOnMenu(pageForm.isDisplayOnMenu());
 		page.setDescription(pageForm.getDescription());
 		page.setType(pageForm.getPagetType());

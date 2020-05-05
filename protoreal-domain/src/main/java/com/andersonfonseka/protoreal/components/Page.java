@@ -16,8 +16,6 @@ public class Page extends Component {
 	
 	private String description;
 	
-	private boolean initial = false;
-	
 	private boolean displayOnMenu = false;
 	
 	private String type;
@@ -59,14 +57,6 @@ public class Page extends Component {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public boolean isInitial() {
-		return initial;
-	}
-
-	public void setInitial(boolean initial) {
-		this.initial = initial;
 	}
 	
 	public boolean isDisplayOnMenu() {

@@ -25,8 +25,24 @@ public class ProjectAction extends DispatchAction {
 	    return mapping.findForward("success");
 	}
 	
+	public ActionForward startCreate(ActionMapping mapping, ActionForm  form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	    return mapping.findForward("successCreateForm");
+	}
+	
 	public ActionForward startEdit(ActionMapping mapping, ActionForm  form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-	    return mapping.findForward("successForm");
+		
+		SiteRepository repository = SiteRepository.getInstance();
+		
+		Site site = repository.get(request.getParameter("id"));
+		
+		ProjectForm projectForm = new ProjectForm(site.getUuid());
+		projectForm.setUuid(site.getUuid());
+		projectForm.setTitle(site.getTitle());
+		projectForm.setDescription(site.getDescription());
+		
+		request.getSession().setAttribute("projectForm", projectForm);
+		
+	    return mapping.findForward("successEditForm");
 	}
 	
 	public ActionForward create(ActionMapping mapping, ActionForm  form, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -40,8 +56,14 @@ public class ProjectAction extends DispatchAction {
 		site.setDescription(projectForm.getDescription());
 
 		SiteRepository repository = SiteRepository.getInstance();
-
-		repository.add(site);	
+		
+		if (projectForm.getOp().equals("C")) {
+			repository.add(site);	
+		} else if (projectForm.getOp().equals("U")){
+			site.setUuid(projectForm.getUuid());
+			repository.edit(site);
+		}
+		
 		request.setAttribute("projects", repository.list());
 		
 	    return mapping.findForward("success");
