@@ -2,6 +2,15 @@
 	<form id="frmInput" action="" method="">
 	<input type="hidden" id="setUuid" value="$LabelRenderer.uuid" />
 		<div class="form-group">
+		<label for="inputProjectTitle" class="col-form-label">Tipo</label>
+		<select property="type" id="setType" styleClass="form-control" class="form-control">
+	        <option value="text">Padrao</option>
+	        <option value="form-control-sm">Pequeno</option>
+	        <option value="form-control-lg">Grande</option>
+	    <select>
+	    </div>
+		
+		<div class="form-group">
 			<label for="inputProjectTitle" class="col-form-label">Rotulo</label> 
 			<input type="text" id="setLabel" class="form-control" value="$LabelRenderer.label" size="25" />
 		</div>
