@@ -12,6 +12,8 @@ public class Site extends Component {
 	private String title;
 
 	private String description;
+	
+	private String initialPage;
 
 	public Site() {
 		super();
@@ -46,6 +48,14 @@ public class Site extends Component {
 		this.description = description;
 	}
 	
+	public String getInitialPage() {
+		return initialPage;
+	}
+
+	public void setInitialPage(String initialPage) {
+		this.initialPage = initialPage;
+	}
+
 	public List<Component> getPages(){
 		return getChildrenList().stream().filter(x -> x instanceof Page).collect(Collectors.toList());
 	}
