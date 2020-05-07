@@ -1,5 +1,5 @@
 <p>
-<div class="container-fluid">
+<div class="container">
 <h5>$PageRenderer.title</h5>
 <hr/>
 #foreach($item in $PageRenderer.getChildrenList())
