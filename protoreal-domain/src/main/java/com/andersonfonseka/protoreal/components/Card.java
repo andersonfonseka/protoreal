@@ -1,19 +1,19 @@
 package com.andersonfonseka.protoreal.components;
 
-import com.andersonfonseka.protoreal.components.render.JumbotronRenderer;
+import com.andersonfonseka.protoreal.components.render.CardRenderer;
 
-public class Jumbotron extends Component {
+public class Card extends Component {
 	
 	private String title;
 	
 	private String subtitle;
 
 	
-	public Jumbotron() {
+	public Card() {
 		this("Teste", "Teste XXXX");
 	}
 	
-	public Jumbotron(String title, String subtitle) {
+	public Card(String title, String subtitle) {
 		super();
 		this.title = title;
 		this.subtitle = subtitle;
@@ -37,17 +37,17 @@ public class Jumbotron extends Component {
 
 	@Override
 	public String doRender() {
-		return new JumbotronRenderer(this).execute();
+		return new CardRenderer(this).execute();
 	}
 
 	@Override
 	public String doEdit() {
-		return new JumbotronRenderer(this).executeProperties();
+		return new CardRenderer(this).executeProperties();
 	}
 
 	@Override
 	public String doPreview() {
-		return new JumbotronRenderer(this).executePreview();
+		return new CardRenderer(this).executePreview();
 	}
 	
 }

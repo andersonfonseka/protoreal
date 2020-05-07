@@ -1,0 +1,8 @@
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="images/286x180.png" alt="Imagem de capa do card">
+  <div class="card-body">
+    <h5 class="card-title">Titulo do card</h5>
+    <p class="card-text">Um exemplo de texto rapido para construir o titulo do card e fazer preencher o conteudo do card.</p>
+    <a href="#" class="btn btn-primary">Visitar</a>
+  </div>
+</div>

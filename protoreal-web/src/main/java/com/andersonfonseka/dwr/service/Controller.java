@@ -8,8 +8,10 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import com.andersonfonseka.protoreal.components.Button;
+import com.andersonfonseka.protoreal.components.Card;
 import com.andersonfonseka.protoreal.components.Component;
 import com.andersonfonseka.protoreal.components.Container;
+import com.andersonfonseka.protoreal.components.Jumbotron;
 import com.andersonfonseka.protoreal.components.Label;
 import com.andersonfonseka.protoreal.components.Page;
 import com.andersonfonseka.protoreal.components.SelectInput;
@@ -32,6 +34,8 @@ public class Controller {
 		mapComponents.put("dataTable", Table.class);
 		mapComponents.put("selectItem", SelectInput.class);
 		mapComponents.put("label", Label.class);
+		mapComponents.put("jumbotron", Jumbotron.class);
+		mapComponents.put("cards", Card.class);
 		
 	}
 	
