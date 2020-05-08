@@ -82,6 +82,7 @@ public class PageAction extends DispatchAction {
 		page.setDisplayOnMenu(pageForm.isDisplayOnMenu());
 		page.setDescription(pageForm.getDescription());
 		page.setType(pageForm.getPagetType());
+		page.setContainerType(pageForm.getContainerType());
 		
 		if (null != site && null != parentPage) {
 			

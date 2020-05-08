@@ -10,6 +10,13 @@
         <html:optionsCollection name="pageForm" property="typeList" label="label" value="value" />
     </html:select>
     </div>
+    
+    <div class="form-group">
+	<label for="inputProjectName"><bean:message key="label.containerType"/></label> 
+	<html:select property="containerType" styleClass="form-control">
+        <html:optionsCollection name="pageForm" property="containerTypeList" label="label" value="value" />
+    </html:select>
+    </div>
 	
 	<div class="form-group">
 	<label for="inputProjectName"><bean:message key="label.pages.parent"/></label> 
@@ -18,7 +25,7 @@
         <html:optionsCollection name="pageForm" property="pageList" label="title" value="uuid" />
     </html:select>
     </div>
-    
+
 	<div class="form-group">
 		<label for="inputProjectTitle"><bean:message key="label.title"/></label> 
 		<html:text styleClass="form-control" property="title" size="25" />

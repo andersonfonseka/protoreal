@@ -34,7 +34,9 @@ public class PageForm extends ValidatorForm {
 	
 	private List<SelectItem> typeList = new ArrayList<SelectItem>();
 	
-	private boolean initial= false;
+	private String containerType = "container";
+	
+	private List<SelectItem> containerTypeList = new ArrayList<SelectItem>();
 	
 	private boolean displayOnMenu = false;
 	
@@ -51,6 +53,9 @@ public class PageForm extends ValidatorForm {
 		
 		this.typeList.add(new SelectItem("padrao", "Padrao"));
 		this.typeList.add(new SelectItem("modal", "Modal"));
+		
+		this.containerTypeList.add(new SelectItem("container", "Padrao"));
+		this.containerTypeList.add(new SelectItem("container-fluid", "Estendido"));
 	}
 		
 	public List<Page> getPageList() {
@@ -92,14 +97,6 @@ public class PageForm extends ValidatorForm {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	public boolean isInitial() {
-		return initial;
-	}
-
-	public void setInitial(boolean initial) {
-		this.initial = initial;
-	}
 
 	public boolean isDisplayOnMenu() {
 		return displayOnMenu;
@@ -123,6 +120,22 @@ public class PageForm extends ValidatorForm {
 
 	public void setTypeList(List<SelectItem> typeList) {
 		this.typeList = typeList;
+	}
+	
+	public String getContainerType() {
+		return containerType;
+	}
+
+	public void setContainerType(String containerType) {
+		this.containerType = containerType;
+	}
+
+	public List<SelectItem> getContainerTypeList() {
+		return containerTypeList;
+	}
+
+	public void setContainerTypeList(List<SelectItem> containerTypeList) {
+		this.containerTypeList = containerTypeList;
 	}
 
 	@Override

@@ -35,8 +35,7 @@ public class TextAreaInput extends Input {
 
 	@Override
 	public String doPreview() {
-		// TODO Auto-generated method stub
-		return null;
+		return new TextAreaInputRenderer(this).executePreview();
 	}
 
 	

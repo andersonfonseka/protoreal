@@ -18,7 +18,7 @@
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							<a class="dropdown-item" href='Projects.do?method=startEdit&id=<bean:write name="project" property="uuid"/>'><bean:message key="label.edit" /></a> 
 							<a class="dropdown-item" href='Projects.do?method=remove&id=<bean:write name="project" property="uuid"/>'><bean:message key="label.remove" /></a> 
-							<a class="dropdown-item" href="#"><bean:message key="label.export" /></a>
+							<!--  <a class="dropdown-item" href="#"><bean:message key="label.export" /></a> -->
 						</div>
 					</div>
 				</div>

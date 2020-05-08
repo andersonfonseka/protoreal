@@ -90,6 +90,11 @@
 					class="list-group-item list-group-item-action"><img
 					id="cards" src="icons/icons8-credit-card-32.png" draggable="true"
 					ondragstart="drag(event)"></a>
+					
+					<a href="#"
+					class="list-group-item list-group-item-action"><img
+					id="carousel" src="icons/icons8-merry-go-round-32.png" draggable="true"
+					ondragstart="drag(event)"></a>
 			</div>
 		</div>
 		<!-- /#sidebar-wrapper -->

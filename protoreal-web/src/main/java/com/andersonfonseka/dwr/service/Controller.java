@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import com.andersonfonseka.protoreal.components.Button;
 import com.andersonfonseka.protoreal.components.Card;
+import com.andersonfonseka.protoreal.components.Carousel;
 import com.andersonfonseka.protoreal.components.Component;
 import com.andersonfonseka.protoreal.components.Container;
 import com.andersonfonseka.protoreal.components.Jumbotron;
@@ -36,6 +37,7 @@ public class Controller {
 		mapComponents.put("label", Label.class);
 		mapComponents.put("jumbotron", Jumbotron.class);
 		mapComponents.put("cards", Card.class);
+		mapComponents.put("carousel", Carousel.class);
 		
 	}
 	

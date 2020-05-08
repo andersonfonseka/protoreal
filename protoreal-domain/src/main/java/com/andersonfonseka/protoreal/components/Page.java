@@ -18,6 +18,8 @@ public class Page extends Component {
 	
 	private boolean displayOnMenu = false;
 	
+	private String containerType = "container"; 
+	
 	private String type;
 	
 	private Map<String, Component> fastComponents = new HashMap<String, Component>();
@@ -76,6 +78,14 @@ public class Page extends Component {
 		boolean result = getChildrenList().stream().filter(x -> x instanceof Page).collect(Collectors.toList()).isEmpty();
 		
 		return result;
+	}
+	
+	public String getContainerType() {
+		return containerType;
+	}
+
+	public void setContainerType(String containerType) {
+		this.containerType = containerType;
 	}
 
 	@Override
