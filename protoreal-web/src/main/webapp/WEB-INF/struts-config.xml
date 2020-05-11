@@ -96,7 +96,18 @@
 		<action path="/Pages" parameter="method"
 			type="com.andersonfonseka.page.controller.PageAction">
 			<forward name="success" path="pages.main" />
-			<forward name="successForm" path="pages.edit" />
+			<forward name="successCreateForm" path="pages.create" />
+			<forward name="successEditForm" path="pages.edit" />
+		</action>
+
+		<action path="/PageCreate" parameter="method"
+			type="com.andersonfonseka.page.controller.PageAction"
+			name="pageForm" 
+			scope="session"
+			input="pages.create">
+
+			<set-property property="cancellable" value="true"/>
+			<forward name="success" path="pages.main" />
 		</action>
 
 		<action path="/PageEdit" parameter="method"
@@ -119,8 +130,6 @@
 			<forward name="success" path="pages.main" />
 			<forward name="successDesign" path="pages.design" />
 		</action>
-
-
 
 	</action-mappings>
 

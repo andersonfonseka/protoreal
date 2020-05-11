@@ -3,10 +3,12 @@
 	<input type="hidden" id="setUuid" value="$TextInputRenderer.uuid" />
 	<div class="form-group">
 		<label for="inputProjectTitle" class="col-form-label">Tipo</label>
-		<select property="type" id="setType" styleClass="form-control" class="form-control">
+		<select property="type" id="setType" styleClass="form-control" class="form-control" value="$TextInputRenderer.type">
 	        <option value="text">Texto</option>
 	        <option value="date">Data</option>
 	        <option value="number">Numero</option>
+	        <option value="password">Senha</option>
+	        <option value="email">E-mail</option>
 	    <select>
 	    </div>
 	    

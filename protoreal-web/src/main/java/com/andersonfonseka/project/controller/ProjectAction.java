@@ -39,6 +39,7 @@ public class ProjectAction extends DispatchAction {
 		projectForm.setUuid(site.getUuid());
 		projectForm.setTitle(site.getTitle());
 		projectForm.setDescription(site.getDescription());
+		projectForm.setInitialPage(site.getInitialPage());
 		
 		request.getSession().setAttribute("projectForm", projectForm);
 		
@@ -107,8 +108,11 @@ public class ProjectAction extends DispatchAction {
 			PageRepository pageRepository = PageRepository.getInstance();
 			Page page = pageRepository.get(site.getInitialPage());
 			
-			request.setAttribute("pageRendered", page.doPreview());
-		
+			if (null != page) {
+				request.setAttribute("pageRendered", page.doPreview());	
+			} else {
+				request.setAttribute("pageRendered", "");
+			}
 		
 		} else {
 			request.setAttribute("pageRendered", "");

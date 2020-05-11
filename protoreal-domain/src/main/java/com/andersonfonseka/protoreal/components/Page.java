@@ -29,7 +29,12 @@ public class Page extends Component {
 	}
 	
 	public Site getSite() {
-		return (Site) getParent();
+		
+		if (getParent() instanceof Site) {
+			return (Site) getParent();
+		}
+		
+		return (Site) ((Page) getParent()).getParent();
 	}
 
 	public Page(String title) {

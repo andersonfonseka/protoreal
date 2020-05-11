@@ -3,8 +3,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
 
 <html:form action="/PageEdit.do?method=create">
-	<html:hidden property="op" name="pageForm" value="U"/>
-	<html:hidden property="uuid" name="pageForm"/>
+	<html:hidden property="op" name="pageForm" value="C"/>
 	
 	<div class="form-group">
 	<label for="inputProjectName"><bean:message key="label.type"/></label> 
@@ -23,7 +22,7 @@
 	<div class="form-group">
 	<label for="inputProjectName"><bean:message key="label.pages.parent"/></label> 
 	<html:select property="parentPage" styleClass="form-control">
-        <html:option value=""><bean:message key="label.select"/></html:option>
+        <html:option value="0"><bean:message key="label.select"/></html:option>
         <html:optionsCollection name="pageForm" property="pageList" label="title" value="uuid" />
     </html:select>
     </div>

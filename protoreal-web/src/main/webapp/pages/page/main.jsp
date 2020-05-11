@@ -8,7 +8,7 @@
 	<br />
 </h5>
 <hr />
-<a href="Pages.do?method=startEdit" class="btn btn-primary"><bean:message
+<a href="Pages.do?method=startCreate" class="btn btn-primary"><bean:message
 		key="label.new" /></a>
 <p>
 <div class="list-group">
@@ -18,22 +18,23 @@
 		<li
 			class="list-group-item d-flex">
 
+
+			
 			<div class="dropdown">
-				<button class="test btn btn-light" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+				<button class="test btn btn-light float-md-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<bean:write name="pg" property="title" />
+				</button>
+
 				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<logic:notEqual name="pg" property="pageChildren" value="false">	
+					<a class="dropdown-item" href='PageDesign.do?method=startDesign&id=<bean:write name="pg" property="uuid"/>'><bean:message key="label.design" /></a> 
+					</logic:notEqual>
+					
 					<a class="dropdown-item" href='Pages.do?method=startEdit&id=<bean:write name="pg" property="uuid"/>'><bean:message key="label.edit" /></a> 
 					<a class="dropdown-item" href='Pages.do?method=remove&id=<bean:write name="pg" property="uuid"/>'><bean:message key="label.remove" /></a> 
 					<!--  <a class="dropdown-item" href="#"><bean:message key="label.export" /></a> -->
 				</div>
 			</div>
-
-			<logic:notEqual name="pg" property="pageChildren" value="false">	
-				<a href='PageDesign.do?method=startDesign&id=<bean:write name="pg" property="uuid"/>'><bean:write name="pg" property="title" /></a>
-			</logic:notEqual>
-
-			<logic:notEqual name="pg" property="pageChildren" value="true">	
-				<bean:write name="pg" property="title" />
-			</logic:notEqual>
 
 		</li>
 

@@ -48,6 +48,11 @@
 		<put name="title" value="label.pages" />
 		<put name="body" value="/pages/page/main.jsp" />
 	</definition>
+	
+	<definition name="pages.create" extends="baseLayout">
+		<put name="title" value="label.pages" />
+		<put name="body" value="/pages/page/create.jsp" />
+	</definition>
 
 	<definition name="pages.edit" extends="baseLayout">
 		<put name="title" value="label.pages" />

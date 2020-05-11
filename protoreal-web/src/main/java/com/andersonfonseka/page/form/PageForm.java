@@ -16,6 +16,8 @@ import com.andersonfonseka.protoreal.components.Site;
 
 public class PageForm extends ValidatorForm {
 	
+	private String uuid;
+	
 	private SiteRepository siteRepository = SiteRepository.getInstance();
 	
 	private Site site;
@@ -30,7 +32,7 @@ public class PageForm extends ValidatorForm {
 	
 	private String parentPage;
 	
-	private String pagetType;
+	private String pageType;
 	
 	private List<SelectItem> typeList = new ArrayList<SelectItem>();
 	
@@ -42,11 +44,15 @@ public class PageForm extends ValidatorForm {
 	
 	private List<Page> pageList = new ArrayList<Page>();
 	
+	private String op = "N";
+	
 	public PageForm() {}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public PageForm(String siteUUid) {
+		
 		site = siteRepository.get(siteUUid);
+		
 		if (null != site) {
 			this.pageList = new ArrayList(site.getPages().stream().filter(x -> !(x.getParent() instanceof Page)).collect(Collectors.toList()));	
 		}
@@ -106,12 +112,12 @@ public class PageForm extends ValidatorForm {
 		this.displayOnMenu = displayOnMenu;
 	}
 	
-	public String getPagetType() {
-		return pagetType;
+	public String getPageType() {
+		return pageType;
 	}
 
-	public void setPagetType(String pagetType) {
-		this.pagetType = pagetType;
+	public void setPageType(String pagetType) {
+		this.pageType = pagetType;
 	}
 	
 	public List<SelectItem> getTypeList() {
@@ -136,6 +142,22 @@ public class PageForm extends ValidatorForm {
 
 	public void setContainerTypeList(List<SelectItem> containerTypeList) {
 		this.containerTypeList = containerTypeList;
+	}
+	
+	public String getOp() {
+		return op;
+	}
+
+	public void setOp(String op) {
+		this.op = op;
+	}
+	
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
 	}
 
 	@Override

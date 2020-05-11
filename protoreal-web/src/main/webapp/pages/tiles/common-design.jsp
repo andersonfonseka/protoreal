@@ -81,6 +81,7 @@
 					id="dataTable" src="icons/icons8-data-grid-32.png" draggable="true"
 					ondragstart="drag(event)"></a>
 					
+					<!-- 
 					<a href="#"
 					class="list-group-item list-group-item-action"><img
 					id="jumbotron" src="icons/icons8-billboard-30.png" draggable="true"
@@ -95,6 +96,7 @@
 					class="list-group-item list-group-item-action"><img
 					id="carousel" src="icons/icons8-merry-go-round-32.png" draggable="true"
 					ondragstart="drag(event)"></a>
+					-->
 			</div>
 		</div>
 		<!-- /#sidebar-wrapper -->

@@ -19,7 +19,7 @@
 	<div class="form-group">
 	<label for="inputProjectName"><bean:message key="label.pages.initial"/></label> 
 	<html:select property="initialPage" styleClass="form-control">
-        <html:option value="0"><bean:message key="label.select"/></html:option>
+        <html:option value=""><bean:message key="label.select"/></html:option>
         <html:optionsCollection name="projectForm" property="pageList" label="title" value="uuid" />
     </html:select>
     </div>

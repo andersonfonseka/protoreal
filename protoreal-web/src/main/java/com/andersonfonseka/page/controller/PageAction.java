@@ -21,7 +21,7 @@ public class PageAction extends DispatchAction {
 			HttpServletResponse response) throws Exception {
 
 		request.getSession().setAttribute("siteId", request.getParameter("siteId"));
-		
+
 		SiteRepository siteRepository = SiteRepository.getInstance();
 		Site site = siteRepository.get(request.getParameter("siteId"));
 
@@ -30,32 +30,53 @@ public class PageAction extends DispatchAction {
 
 		return mapping.findForward("success");
 	}
+	
+	public ActionForward startCreate(ActionMapping mapping, ActionForm  form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		PageForm pageForm = new PageForm(request.getSession().getAttribute("siteId").toString());
+		
+		request.getSession().setAttribute("pageForm", pageForm);
+		
+	    return mapping.findForward("successCreateForm");
+	}
 
 	public ActionForward startEdit(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		
-		PageForm pageForm = new PageForm(request.getSession().getAttribute("siteId").toString());
-		request.getSession().setAttribute("pageForm", pageForm);
-		
-		return mapping.findForward("successForm");
-	}
-	
-	public ActionForward startDesign(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		
-		request.getSession().setAttribute("pageId", request.getParameter("id"));
-		
+
 		PageRepository repository = PageRepository.getInstance();
 		Page page = repository.get(request.getParameter("id"));
 		
+		PageForm pageForm = new PageForm(page.getSite().getUuid());
+		
+		pageForm.setUuid(page.getUuid());
+		pageForm.setTitle(page.getTitle());
+		pageForm.setOp("U");
+		pageForm.setDescription(page.getDescription());
+		pageForm.setDisplayOnMenu(page.isDisplayOnMenu());
+		pageForm.setPageType(page.getType());
+		pageForm.setContainerType(page.getContainerType());
+		
+		request.getSession().setAttribute("pageForm", pageForm);
+
+		return mapping.findForward("successEditForm");
+	}
+
+	public ActionForward startDesign(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+
+		request.getSession().setAttribute("pageId", request.getParameter("id"));
+
+		PageRepository repository = PageRepository.getInstance();
+		Page page = repository.get(request.getParameter("id"));
+
 		DesignForm designForm = new DesignForm();
 		designForm.setComponentList(page.getFastComponents());
-		
+
 		request.getSession().setAttribute("designForm", designForm);
-		
+
 		request.getSession().setAttribute("page", page);
 		request.setAttribute("pageRendered", page.doRender());
-		
+
 		return mapping.findForward("successDesign");
 	}
 
@@ -66,40 +87,72 @@ public class PageAction extends DispatchAction {
 		PageRepository pageRepository = PageRepository.getInstance();
 
 		PageForm pageForm = (PageForm) form;
-		
+
 		Site site = siteRepository.get(request.getSession().getAttribute("siteId").toString());
-		
+
 		Page parentPage = null;
-		
+
 		if (null != pageForm.getParentPage()) {
 			parentPage = pageRepository.get(pageForm.getParentPage());
 		}
-		
-		Page page = new Page(pageForm.getName());
-		
-		page.setName(pageForm.getName());
-		page.setTitle(pageForm.getTitle());
-		page.setDisplayOnMenu(pageForm.isDisplayOnMenu());
-		page.setDescription(pageForm.getDescription());
-		page.setType(pageForm.getPagetType());
-		page.setContainerType(pageForm.getContainerType());
-		
-		if (null != site && null != parentPage) {
+
+		if (pageForm.getOp().equals("C")) {
+
+			Page page = new Page(pageForm.getName());
+
+			page.setName(pageForm.getName());
+			page.setTitle(pageForm.getTitle());
+			page.setDisplayOnMenu(pageForm.isDisplayOnMenu());
+			page.setDescription(pageForm.getDescription());
+			page.setType(pageForm.getPageType());
+			page.setContainerType(pageForm.getContainerType());
 			
-			page.setParent(parentPage);
-			site.addChild(page);
-			parentPage.addChild(page);
 			
-		} else {
+			if (null != site && null != parentPage) {
+
+				page.setParent(parentPage);
+				site.addChild(page);
 			
-			page.setParent(site);
-			site.addChild(page);
+				parentPage.addChild(page);
+
+			} else {
+
+				page.setParent(site);
+				site.addChild(page);
+			}
+
+			pageRepository.add(page);
+
+		} else if (pageForm.getOp().equals("U")) {
+			
+			Page page = pageRepository.get(pageForm.getUuid());
+			
+			page.setName(pageForm.getName());
+			page.setTitle(pageForm.getTitle());
+			page.setDisplayOnMenu(pageForm.isDisplayOnMenu());
+			page.setDescription(pageForm.getDescription());
+			page.setType(pageForm.getPageType());
+			page.setContainerType(pageForm.getContainerType());
+			
+			if (null != site && null != parentPage) {
+
+				if (page.getParent() != null) {
+					page.getParent().removeChild(page);
+				}
+				
+				page.setParent(parentPage);
+				parentPage.addChild(page);
+
+			} else {
+				page.setParent(site);
+			}
+
+			pageRepository.edit(page);
+			
 		}
-		
-		pageRepository.add(page);
-		
+
 		request.setAttribute("pages", site.getPages());
-		
+
 		pageForm.reset(mapping, request);
 
 		return mapping.findForward("success");
@@ -110,17 +163,17 @@ public class PageAction extends DispatchAction {
 
 		PageRepository repository = PageRepository.getInstance();
 		Page pageToBeRemoved = repository.get(request.getParameter("id"));
-		
+
 		pageToBeRemoved.getParent().removeChild(pageToBeRemoved);
 		repository.remove(pageToBeRemoved.getUuid());
-		
+
 		Page page = new Page();
 		page.setUuid(request.getParameter("id"));
-		
+
 		SiteRepository siteRepository = SiteRepository.getInstance();
 		Site site = siteRepository.get(request.getSession().getAttribute("siteId").toString());
 		site.removeChild(page);
-		
+
 		request.setAttribute("pages", site.getPages());
 
 		return mapping.findForward("success");
