@@ -18,6 +18,8 @@ public class Page extends Component {
 	
 	private boolean displayOnMenu = false;
 	
+	private boolean hideMenu = false;
+	
 	private String containerType = "container"; 
 	
 	private String type;
@@ -74,6 +76,14 @@ public class Page extends Component {
 		this.displayOnMenu = displayOnMenu;
 	}
 	
+	public boolean isHideMenu() {
+		return hideMenu;
+	}
+
+	public void setHideMenu(boolean hideMenu) {
+		this.hideMenu = hideMenu;
+	}
+
 	public List<Component> getPagesDisplayOnMenu(){
 		return getChildrenList().stream().filter(x -> x instanceof Page && ((Page) x).isDisplayOnMenu()).collect(Collectors.toList());
 	}

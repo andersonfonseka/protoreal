@@ -55,6 +55,7 @@ public class PageAction extends DispatchAction {
 		pageForm.setDisplayOnMenu(page.isDisplayOnMenu());
 		pageForm.setPageType(page.getType());
 		pageForm.setContainerType(page.getContainerType());
+		pageForm.setHideMenu(page.isHideMenu());
 		
 		request.getSession().setAttribute("pageForm", pageForm);
 
@@ -106,6 +107,7 @@ public class PageAction extends DispatchAction {
 			page.setDescription(pageForm.getDescription());
 			page.setType(pageForm.getPageType());
 			page.setContainerType(pageForm.getContainerType());
+			page.setHideMenu(pageForm.isHideMenu());
 			
 			
 			if (null != site && null != parentPage) {

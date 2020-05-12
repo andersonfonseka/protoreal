@@ -93,14 +93,14 @@ public class ProjectAction extends DispatchAction {
 		
 		SiteRepository repository = SiteRepository.getInstance();
 		Site site = repository.get(request.getParameter("siteId"));
-		
-		request.setAttribute("sitePreview", site.doRender());
 
 		if (request.getParameter("pageId") != null) {
 			
 			PageRepository pageRepository = PageRepository.getInstance();
 			Page page = pageRepository.get(request.getParameter("pageId"));
+
 			
+			request.setAttribute("sitePreview", site.getNavBar(page.isHideMenu()));
 			request.setAttribute("pageRendered", page.doPreview());
 		
 		} else if (site.getInitialPage() != null) {
@@ -109,12 +109,15 @@ public class ProjectAction extends DispatchAction {
 			Page page = pageRepository.get(site.getInitialPage());
 			
 			if (null != page) {
+				
+				request.setAttribute("sitePreview", site.getNavBar(page.isHideMenu()));
 				request.setAttribute("pageRendered", page.doPreview());	
 			} else {
 				request.setAttribute("pageRendered", "");
 			}
 		
 		} else {
+			request.setAttribute("sitePreview", site.getNavBar(true));
 			request.setAttribute("pageRendered", "");
 		}
 		

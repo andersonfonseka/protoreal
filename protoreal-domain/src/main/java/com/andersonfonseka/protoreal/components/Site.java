@@ -60,46 +60,49 @@ public class Site extends Component {
 		return getChildrenList().stream().filter(x -> x instanceof Page).collect(Collectors.toList());
 	}
 	
-	public String getNavBar() {
+	public String getNavBar(boolean render) {
 		
 		Navbar navbar = new Navbar();
 		navbar.setTitle(this.title);
 		
-		for(Component component : this.getChildrenList()) {
-			if (component instanceof Page) {
-				
-				Page page = (Page) component;
-				
-				if (!page.isDisplayOnMenu()) {
-					continue;
-				}
-				
-				if (page.getPagesDisplayOnMenu().isEmpty() && !(page.getParent() instanceof Page)) {
+		if (!render) {
+			
+			for(Component component : this.getChildrenList()) {
+				if (component instanceof Page) {
 					
-					NavLink navLink = new NavLink(page.getTitle());
-					navLink.setSiteUuid(page.getSite().getUuid());
-					navLink.setPageUuid(page.getUuid());
-					navbar.addChild(navLink);
-				
-				} else if (!page.getPagesDisplayOnMenu().isEmpty()) {
+					Page page = (Page) component;
 					
-					NavDropdown dropdown = new NavDropdown(page.getTitle());
-					navbar.addChild(dropdown);
+					if (!page.isDisplayOnMenu()) {
+						continue;
+					}
+					
+					if (page.getPagesDisplayOnMenu().isEmpty() && !(page.getParent() instanceof Page)) {
+						
+						NavLink navLink = new NavLink(page.getTitle());
+						navLink.setSiteUuid(page.getSite().getUuid());
+						navLink.setPageUuid(page.getUuid());
+						navbar.addChild(navLink);
+					
+					} else if (!page.getPagesDisplayOnMenu().isEmpty()) {
+						
+						NavDropdown dropdown = new NavDropdown(page.getTitle());
+						navbar.addChild(dropdown);
 
-					for(Component componentPage : page.getPagesDisplayOnMenu()) {
-					
-						if (componentPage instanceof Page) {
-							Page subPage = (Page) componentPage;
-							
-							if (!subPage.isDisplayOnMenu()) {
-								continue;
+						for(Component componentPage : page.getPagesDisplayOnMenu()) {
+						
+							if (componentPage instanceof Page) {
+								Page subPage = (Page) componentPage;
+								
+								if (!subPage.isDisplayOnMenu()) {
+									continue;
+								}
+								
+								NavLink link = new NavLink(subPage.getTitle());
+								link.setSiteUuid(page.getSite().getUuid());
+								link.setPageUuid(subPage.getUuid());
+								
+								dropdown.addOptions(link);
 							}
-							
-							NavLink link = new NavLink(subPage.getTitle());
-							link.setSiteUuid(page.getSite().getUuid());
-							link.setPageUuid(subPage.getUuid());
-							
-							dropdown.addOptions(link);
 						}
 					}
 				}
@@ -111,20 +114,16 @@ public class Site extends Component {
 
 	@Override
 	public String doRender() {
-		
-		
 		return new SiteRenderer(this).execute();
 	}
 
 	@Override
 	public String doEdit() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String doPreview() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

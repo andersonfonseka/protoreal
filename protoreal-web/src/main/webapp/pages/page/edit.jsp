@@ -38,6 +38,11 @@
 		<label for="inputProjectName"><bean:message key="label.pages.displayOnMenu"/></label> 
 	</div>
 	
+	<div class="form-group" style="margin-left: 20px;">
+		<html:checkbox styleClass="form-check-input" property="hideMenu"/>
+		<label for="inputProjectName"><bean:message key="label.pages.hideMenu"/></label> 
+	</div>
+	
 	<div class="form-group">
 		<label for="inputProjectDescription"><bean:message key="label.description"/></label>
 		<html:textarea property="description" cols="5" rows="10" styleClass="form-control"></html:textarea>

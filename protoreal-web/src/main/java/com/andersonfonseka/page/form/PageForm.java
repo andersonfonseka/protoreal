@@ -42,6 +42,8 @@ public class PageForm extends ValidatorForm {
 	
 	private boolean displayOnMenu = false;
 	
+	private boolean hideMenu = false;
+	
 	private List<Page> pageList = new ArrayList<Page>();
 	
 	private String op = "N";
@@ -158,6 +160,14 @@ public class PageForm extends ValidatorForm {
 
 	public void setUuid(String uuid) {
 		this.uuid = uuid;
+	}
+	
+	public boolean isHideMenu() {
+		return hideMenu;
+	}
+
+	public void setHideMenu(boolean hideMenu) {
+		this.hideMenu = hideMenu;
 	}
 
 	@Override
