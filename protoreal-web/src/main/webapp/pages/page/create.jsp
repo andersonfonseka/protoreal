@@ -50,7 +50,8 @@
 	<html:submit styleClass="btn btn-primary">
 		<bean:message key="label.button.submit"/>
 	</html:submit>
-	<html:reset styleClass="btn btn-danger">
+	
+	<html:cancel styleClass="btn btn-danger" onclick="cancelarOp('X');">
 		<bean:message key="label.button.cancel"/>
-	</html:reset>
+	</html:cancel>
 </html:form>

@@ -51,7 +51,22 @@ function remove(){
 }
 
 function goto(siteUuid, pageUuid){
-	
 	window.location.href = "Projects.do?method=preview&siteId=" + siteUuid + '&pageId=' +  pageUuid;
+}
+
+
+function cancelarOp(value){
+	$('input[name ="op"]').val(value);
+}
+
+function changeCheckbox(value){
 	
+	var obj = $('input[name ="' + value + '"]').val();
+	
+	if (obj == 'true'){
+		$('input[name ="' + value + '"]').val('false');
+	} else {
+		$('input[name ="' + value + '"]').val('true');
+	}
+
 }

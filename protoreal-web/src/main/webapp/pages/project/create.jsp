@@ -2,6 +2,7 @@
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
 
+
 <html:form action="/ProjectCreate.do?method=create">
 	<html:hidden property="op" name="projectForm" value="C"/>
 	
@@ -19,7 +20,7 @@
 		<bean:message key="label.button.submit"/>
 	</html:submit>
 	
-	<html:reset styleClass="btn btn-danger">
+	<html:cancel styleClass="btn btn-danger" onclick="cancelarOp('X');">
 		<bean:message key="label.button.cancel"/>
-	</html:reset>
+	</html:cancel>
 </html:form>

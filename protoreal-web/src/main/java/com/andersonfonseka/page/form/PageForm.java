@@ -48,6 +48,10 @@ public class PageForm extends ValidatorForm {
 	
 	private String op = "N";
 	
+	private String checkDisplayMenu;
+	
+	private String checkHideMenu;
+	
 	public PageForm() {}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -168,6 +172,22 @@ public class PageForm extends ValidatorForm {
 
 	public void setHideMenu(boolean hideMenu) {
 		this.hideMenu = hideMenu;
+	}
+	
+	public String getCheckDisplayMenu() {
+		return checkDisplayMenu;
+	}
+
+	public void setCheckDisplayMenu(String checkDisplayMenu) {
+		this.checkDisplayMenu = checkDisplayMenu;
+	}
+
+	public String getCheckHideMenu() {
+		return checkHideMenu;
+	}
+
+	public void setCheckHideMenu(String checkHideMenu) {
+		this.checkHideMenu = checkHideMenu;
 	}
 
 	@Override

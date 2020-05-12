@@ -57,6 +57,9 @@ public class PageAction extends DispatchAction {
 		pageForm.setContainerType(page.getContainerType());
 		pageForm.setHideMenu(page.isHideMenu());
 		
+		pageForm.setCheckDisplayMenu(String.valueOf(page.isDisplayOnMenu()));
+		pageForm.setCheckHideMenu(String.valueOf(page.isHideMenu()));
+		
 		request.getSession().setAttribute("pageForm", pageForm);
 
 		return mapping.findForward("successEditForm");
@@ -91,6 +94,12 @@ public class PageAction extends DispatchAction {
 
 		Site site = siteRepository.get(request.getSession().getAttribute("siteId").toString());
 
+		if (pageForm.getOp().equals("X")) {
+			request.setAttribute("pages", site.getPages());
+			return mapping.findForward("success");
+		}
+		
+		
 		Page parentPage = null;
 
 		if (null != pageForm.getParentPage()) {
@@ -131,10 +140,11 @@ public class PageAction extends DispatchAction {
 			
 			page.setName(pageForm.getName());
 			page.setTitle(pageForm.getTitle());
-			page.setDisplayOnMenu(pageForm.isDisplayOnMenu());
+			page.setDisplayOnMenu(new Boolean(pageForm.getCheckDisplayMenu()));
 			page.setDescription(pageForm.getDescription());
 			page.setType(pageForm.getPageType());
 			page.setContainerType(pageForm.getContainerType());
+			page.setHideMenu(new Boolean(pageForm.getCheckHideMenu()));
 			
 			if (null != site && null != parentPage) {
 

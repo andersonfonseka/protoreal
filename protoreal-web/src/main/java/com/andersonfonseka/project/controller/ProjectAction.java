@@ -25,6 +25,10 @@ public class ProjectAction extends DispatchAction {
 	    return mapping.findForward("success");
 	}
 	
+	public ActionForward cancel(ActionMapping mapping, ActionForm  form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	    return mapping.findForward("success");
+	}
+	
 	public ActionForward startCreate(ActionMapping mapping, ActionForm  form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 	    return mapping.findForward("successCreateForm");
 	}
@@ -47,11 +51,16 @@ public class ProjectAction extends DispatchAction {
 	}
 	
 	public ActionForward create(ActionMapping mapping, ActionForm  form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+		Site site = new Site();
+		SiteRepository repository = SiteRepository.getInstance();
 		
 		ProjectForm projectForm = (ProjectForm) form;
 		
-		Site site = new Site();
-		SiteRepository repository = SiteRepository.getInstance();
+		if (projectForm.getOp().equals("X")) {
+		   request.setAttribute("projects", repository.list());
+		   return mapping.findForward("success");
+		}
 		
 		if (projectForm.getOp().equals("C")) {
 
@@ -103,7 +112,7 @@ public class ProjectAction extends DispatchAction {
 			request.setAttribute("sitePreview", site.getNavBar(page.isHideMenu()));
 			request.setAttribute("pageRendered", page.doPreview());
 		
-		} else if (site.getInitialPage() != null) {
+		} else if (site.getInitialPage() != null && site.getInitialPage().trim().length() > 0) {
 			
 			PageRepository pageRepository = PageRepository.getInstance();
 			Page page = pageRepository.get(site.getInitialPage());

@@ -5,6 +5,8 @@
 <html:form action="/PageEdit.do?method=create">
 	<html:hidden property="op" name="pageForm" value="U"/>
 	<html:hidden property="uuid" name="pageForm"/>
+	<html:hidden property="checkDisplayMenu" name="pageForm"/>
+	<html:hidden property="checkHideMenu" name="pageForm"/>
 	
 	<div class="form-group">
 	<label for="inputProjectName"><bean:message key="label.type"/></label> 
@@ -34,12 +36,12 @@
 	</div>
 
 	<div class="form-group" style="margin-left: 20px;">
-		<html:checkbox styleClass="form-check-input" property="displayOnMenu"/>
+		<html:checkbox styleClass="form-check-input" property="displayOnMenu" onchange="changeCheckbox('checkDisplayMenu')"/>
 		<label for="inputProjectName"><bean:message key="label.pages.displayOnMenu"/></label> 
 	</div>
 	
 	<div class="form-group" style="margin-left: 20px;">
-		<html:checkbox styleClass="form-check-input" property="hideMenu"/>
+		<html:checkbox styleClass="form-check-input" property="hideMenu" onchange="changeCheckbox('checkHideMenu')"/>
 		<label for="inputProjectName"><bean:message key="label.pages.hideMenu"/></label> 
 	</div>
 	
@@ -51,7 +53,8 @@
 	<html:submit styleClass="btn btn-primary">
 		<bean:message key="label.button.submit"/>
 	</html:submit>
-	<html:reset styleClass="btn btn-danger">
+	
+	<html:cancel styleClass="btn btn-danger" onclick="cancelarOp('X');">
 		<bean:message key="label.button.cancel"/>
-	</html:reset>
+	</html:cancel>
 </html:form>
