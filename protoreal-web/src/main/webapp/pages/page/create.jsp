@@ -2,7 +2,7 @@
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
 
-<html:form action="/PageEdit.do?method=create">
+<html:form action="/PageCreate.do?method=create">
 	<html:hidden property="op" name="pageForm" value="C"/>
 	
 	<div class="form-group">
