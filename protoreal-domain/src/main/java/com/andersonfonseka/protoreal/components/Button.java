@@ -19,7 +19,11 @@ public class Button extends Input {
 	public static final String DARK = "btn btn-dark";
 	public static final String LINK = "btn btn-link";
 	
+	private String openType = "default";
+	
 	private List<Component> pages = new ArrayList<Component>();
+	
+	private Page page;
 	
 	private String pageUuid;
 	
@@ -55,6 +59,22 @@ public class Button extends Input {
 
 	public void setPageUuid(String pageUuid) {
 		this.pageUuid = pageUuid;
+	}
+	
+	public String getOpenType() {
+		return openType;
+	}
+
+	public void setOpenType(String openType) {
+		this.openType = openType;
+	}
+	
+	public Page getPage() {
+		return page;
+	}
+
+	public void setPage(Page page) {
+		this.page = page;
 	}
 
 	@Override

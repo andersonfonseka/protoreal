@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import com.andersonfonseka.dao.PageRepository;
 import com.andersonfonseka.protoreal.components.Button;
 import com.andersonfonseka.protoreal.components.Card;
 import com.andersonfonseka.protoreal.components.Carousel;
@@ -130,7 +131,12 @@ public class Controller {
 				Method method = component.getClass().getMethod(fieldName, String.class);
 				
 				method.invoke(component, form.get(fieldName));
-					
+			}
+			
+			if (component instanceof Button) {
+				PageRepository pageRepository = PageRepository.getInstance();
+				Button btn = (Button) component;
+				btn.setPage(pageRepository.get(btn.getPageUuid()));
 			}
 			
 			result.put("data", page.doRender());

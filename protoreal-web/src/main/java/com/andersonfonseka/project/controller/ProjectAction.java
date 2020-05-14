@@ -126,7 +126,7 @@ public class ProjectAction extends DispatchAction {
 			}
 		
 		} else {
-			request.setAttribute("sitePreview", site.getNavBar(true));
+			request.setAttribute("sitePreview", site.getNavBar(false));
 			request.setAttribute("pageRendered", "");
 		}
 		

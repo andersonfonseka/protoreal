@@ -19,6 +19,14 @@
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+<script src="vendor/jquery/jquery.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="js/loader.js"></script>
+
+<script src='dwr/engine.js'></script>
+<script src='dwr/util.js'></script>
+<script src='dwr/interface/Controller.js'></script>
+
 <!-- Custom styles for this template -->
 <link href="css/simple-sidebar.css" rel="stylesheet">
 
@@ -49,25 +57,6 @@
 					<h6><bean:message key="<%=(String) title%>"/></h6>
 				</tiles:insert>
 				 -->
-				 
-				 <div class="modal fade" id="ExemploModalCentralizado" tabindex="-1"
-					role="dialog" aria-labelledby="TituloModalCentralizado"
-					aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="TituloModalCentralizado">Propriedades</h5>
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Fechar">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<div id="modalPage"></div>
-							</div>
-						</div>
-					</div>
-				</div>
 
 				<tiles:insert attribute="body" />
 			</div>
@@ -78,8 +67,6 @@
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="js/protoreal.js"></script>
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Menu Toggle Script -->
 	<script>
