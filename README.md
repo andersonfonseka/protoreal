@@ -12,14 +12,16 @@
 
 **instalação**
 
-- Ferramentas
+Ferramentas
 
 - Java 1.8
 - Apache Tomcat v8.5
 - Apache Maven 3 ou superior
 
+Procedimentos
+
 - git clone https://github.com/andersonfonseka/protoreal.git
-- mvn build
+- mvn clean install
 
 - Copiar protoreal-web-0.0.1-SNAPSHOT para a pasta webapp no Tomcat.
 
