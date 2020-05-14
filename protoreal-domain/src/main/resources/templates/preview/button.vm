@@ -4,12 +4,12 @@
 
 #else
 
-<button type="button" class="btn-sm btn-primary mx-sm"
-	data-toggle="modal" data-target="#$ButtonRenderer.label">
+<button type="button" class="$ButtonRenderer.cssClass btn-sm"
+	data-toggle="modal" data-target="#$ButtonRenderer.getSimpleName()">
 	$ButtonRenderer.label
 </button>
 
-<div class="modal fade" id="$ButtonRenderer.label" tabindex="-1"
+<div class="modal fade" id="$ButtonRenderer.getSimpleName()" tabindex="-1"
 	role="dialog" aria-labelledby="TituloModalCentralizado"
 	aria-hidden="true">
 	<div class="modal-dialog modal-lg" role="document">

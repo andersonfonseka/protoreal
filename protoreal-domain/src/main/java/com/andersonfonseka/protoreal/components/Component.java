@@ -92,8 +92,13 @@ public abstract class Component {
 		this.title = title;
 	}
 	
+	public String getSimpleName() {
+		String simpleUuid = this.uuid.substring(0, this.uuid.indexOf("-"));
+		return this.getClass().getSimpleName() + "-" + simpleUuid;
+	}
+	
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
