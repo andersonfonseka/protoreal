@@ -12,13 +12,13 @@
 
 **instalação**
 
-Ferramentas
+ferramentas
 
 - Java 1.8
 - Apache Tomcat v8.5
 - Apache Maven 3 ou superior
 
-Procedimentos
+procedimentos
 
 - git clone https://github.com/andersonfonseka/protoreal.git
 - mvn clean install
