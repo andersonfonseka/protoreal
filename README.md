@@ -11,3 +11,17 @@
 - extensível.
 
 **instalação**
+
+- Ferramentas
+
+- Java 1.8
+- Apache Tomcat v8.5
+- Apache Maven 3 ou superior
+
+- git clone https://github.com/andersonfonseka/protoreal.git
+- mvn build
+
+- Copiar protoreal-web-0.0.1-SNAPSHOT para a pasta webapp no Tomcat.
+
+- Acessar no browser: http://localhost:8080/protoreal-web
+
