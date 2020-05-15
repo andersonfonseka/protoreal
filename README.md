@@ -27,3 +27,12 @@ procedimentos
 
 - Acessar no browser: http://localhost:8080/protoreal-web
 
+**exemplos de uso**
+
+Modais - https://youtu.be/sMNhFCZmkOM
+
+Bem-vindo - https://youtu.be/GWTBNfk07HI
+
+Boas vindas - https://youtu.be/8Rke03lEr1I
+
+Apresentação - https://youtu.be/JbSnE15jrt0
