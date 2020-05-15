@@ -5,9 +5,9 @@
 		<label for="inputProjectTitle" class="col-form-label">Tipo</label>
 		<select property="type" id="setType" styleClass="form-control" class="form-control">
 	        <option value="">Selecione</html:option>
-	        <option value="text">Select</html:option>
-	        <option value="date">Radio</html:option>
-	        <option value="number">Checkbox</html:option>
+	        <option value="Select">Select</html:option>
+	        <option value="Radio">Radio</html:option>
+	        <option value="Checkbox">Checkbox</html:option>
 	    <select>
 	    </div>
 	    
