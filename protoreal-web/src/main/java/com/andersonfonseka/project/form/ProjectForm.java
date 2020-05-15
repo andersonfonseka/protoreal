@@ -101,7 +101,6 @@ public class ProjectForm extends ValidatorForm {
 	public void setPageList(List<Page> pageList) {
 		this.pageList = pageList;
 	}
-
 	
 	@Override
 	public void reset(ActionMapping mapping, ServletRequest request) {

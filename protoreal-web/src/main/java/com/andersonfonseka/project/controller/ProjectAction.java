@@ -133,6 +133,4 @@ public class ProjectAction extends DispatchAction {
 		return mapping.findForward("successPreview");
 	}
 
-
-	
 }
