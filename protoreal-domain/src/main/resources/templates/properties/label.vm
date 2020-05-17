@@ -4,9 +4,9 @@
 		<div class="form-group">
 		<label for="inputProjectTitle" class="col-form-label">Tipo</label>
 		<select property="type" id="setType" styleClass="form-control" class="form-control">
-	        <option value="text">Padrao</option>
-	        <option value="form-control-sm">Pequeno</option>
-	        <option value="form-control-lg">Grande</option>
+	        <option value="lb-md">Padrao</option>
+	        <option value="lb-sm">Pequeno</option>
+	        <option value="lb-lg">Grande</option>
 	    <select>
 	    </div>
 		

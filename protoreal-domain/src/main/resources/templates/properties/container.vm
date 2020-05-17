@@ -4,12 +4,12 @@
 	    
 		<div class="form-group">
 			<label for="inputProjectTitle" class="col-form-label">Linhas</label> 
-			<input type="text" id="setRows" class="form-control" property="title" value="$ContainerRenderer.rows" size="25" />
+			<input type="number" id="setRows" class="form-control" property="title" value="$ContainerRenderer.rows" size="25" />
 		</div>
 
 		<div class="form-group">
 			<label for="inputProjectTitle" class="col-form-label">Colunas</label> 
-			<input type="text" id="setColumns" class="form-control" property="title" value="$ContainerRenderer.columns" size="25" />
+			<input type="number" id="setColumns" class="form-control" property="title" value="$ContainerRenderer.columns" size="25" />
 		</div>
 		
 		<div class="modal-footer">

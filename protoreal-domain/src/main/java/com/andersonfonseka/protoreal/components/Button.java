@@ -3,6 +3,7 @@ package com.andersonfonseka.protoreal.components;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.andersonfonseka.protoreal.components.common.SelectItem;
 import com.andersonfonseka.protoreal.components.render.ButtonRenderer;
 
 public class Button extends Input {
@@ -21,7 +22,11 @@ public class Button extends Input {
 	
 	private String openType = "default";
 	
+	private List<SelectItem> selectPages = new ArrayList<SelectItem>();
+	
 	private List<Component> pages = new ArrayList<Component>();
+	
+	private List<SelectItem> cssStyles = new ArrayList<SelectItem>(); 
 	
 	private Page page;
 	
@@ -45,12 +50,26 @@ public class Button extends Input {
 		this.cssClass = cssClass;
 	}
 	
-	public List<Component> getPages() {
-		return pages;
+	public List<SelectItem> getPages() {
+		
+		this.selectPages.clear();
+		
+		for (Component  component : this.pages) {
+			Page page = (Page) component;
+
+			SelectItem selectItem = new SelectItem(page.getUuid(), page.getTitle());
+			if (page.getUuid().equals(this.pageUuid)) {
+				selectItem.setSelected("selected");
+			}
+			
+			this.selectPages.add(selectItem);
+		}
+		
+		return selectPages;
 	}
 
-	public void setPages(List<Component> pages) {
-		this.pages = pages;
+	public void setPages(List<Component> pPages) {
+		this.pages = pPages;
 	}
 
 	public String getPageUuid() {
@@ -75,6 +94,33 @@ public class Button extends Input {
 
 	public void setPage(Page page) {
 		this.page = page;
+	}
+	
+	public List<SelectItem> getCssStyles() {
+		
+		cssStyles.clear();
+		
+		cssStyles.add(new SelectItem("btn btn-primary", "Primario"));
+		cssStyles.add(new SelectItem("btn btn-secondary", "Secundario"));
+		cssStyles.add(new SelectItem("btn btn-success", "Sucesso"));
+		cssStyles.add(new SelectItem("btn btn-danger", "Erro"));
+		cssStyles.add(new SelectItem("btn btn-warning", "Advertencia"));
+		cssStyles.add(new SelectItem("btn btn-info", "Informativo"));
+		cssStyles.add(new SelectItem("btn btn-light", "Light"));
+		cssStyles.add(new SelectItem("btn btn-dark", "Dark"));
+		cssStyles.add(new SelectItem("btn btn-link", "Link"));
+		
+		for (SelectItem selectItem : cssStyles) {
+			if (selectItem.getValue().equals(cssClass)) {
+				selectItem.setSelected("selected");
+			}
+		}
+		
+		return cssStyles;
+	}
+
+	public void setCssStyles(List<SelectItem> cssStyles) {
+		this.cssStyles = cssStyles;
 	}
 
 	@Override
