@@ -9,7 +9,7 @@
 	    
 		<div class="form-group">
 			<label for="inputProjectTitle" class="col-form-label">Linhas</label> 
-			<input type="text" id="setRows" class="form-control" property="title" value="$TextAreaInputRenderer.rows" size="25" />
+			<input type="number" id="setRows" class="form-control" property="title" value="$TextAreaInputRenderer.rows" size="25" />
 		</div>
 		
 		<div class="modal-footer">

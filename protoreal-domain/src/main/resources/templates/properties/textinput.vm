@@ -4,11 +4,9 @@
 	<div class="form-group">
 		<label for="inputProjectTitle" class="col-form-label">Tipo</label>
 		<select property="type" id="setType" styleClass="form-control" class="form-control" value="$TextInputRenderer.type">
-	        <option value="text">Texto</option>
-	        <option value="date">Data</option>
-	        <option value="number">Numero</option>
-	        <option value="password">Senha</option>
-	        <option value="email">E-mail</option>
+			#foreach($item in $TextInputRenderer.getListTypes())
+				<option value="$item.value" $item.selected>$item.label</option>
+			#end
 	    <select>
 	    </div>
 	    
