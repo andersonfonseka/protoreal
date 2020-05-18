@@ -7,7 +7,7 @@ public class TextInput extends Input {
 	private String type = "text";
 	
 	public TextInput() {
-		this("Text");
+		this("Rotulo");
 	}
 	
 	public TextInput(String label) {

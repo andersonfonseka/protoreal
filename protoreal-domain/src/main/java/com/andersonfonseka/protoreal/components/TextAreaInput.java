@@ -7,7 +7,7 @@ public class TextAreaInput extends Input {
 	private int rows = 1;
 	
 	public TextAreaInput() {
-		this("TextArea", 10);
+		this("Rotulo", 10);
 	}
 	
 	public TextAreaInput(String label, int rows) {

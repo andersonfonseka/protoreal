@@ -8,7 +8,6 @@
 		<div class="form-group">
 		<label for="inputProjectTitle" class="col-form-label">Tipo</label>
 		<select property="type" id="setCssClass" styleClass="form-control" class="form-control">
-	        <option value="">Selecione</option>
 			#foreach($item in $ButtonRenderer.cssStyles)
 			 <option value="$item.value" $item.selected>$item.label</option>
 			#end
@@ -23,7 +22,6 @@
 		<div class="form-group">
 		<label for="inputProjectTitle" class="col-form-label">Pagina Relacionada</label>
 		<select property="type" id="setPageUuid" styleClass="form-control" class="form-control">
-			<option value="">Selecione</option>
 			#foreach($page in $ButtonRenderer.getPages())
 				<option value="$page.value" $page.selected>$page.label</option>
 			#end

@@ -9,20 +9,27 @@
 </div>
 #elseif( $SelectInputRenderer.type == "Radio" )
 
+
+<div class="form-group">
+<label for="$SelectInputRenderer.uuid" class="col-form-label col-form-label-sm">$SelectInputRenderer.label</label>
  #foreach($item in $SelectInputRenderer.getOptions())
 <div class="form-check">
-	  <input class="form-check-input" type="radio" name="setOpenType" id="exampleRadios2" value="modal">
-	  <label class="form-check-label" for="exampleRadios2">$item</label>
+	  <input class="form-check-input col-form-label-sm" type="radio" name="setOpenType" id="exampleRadios2" value="modal">
+	  <label class="form-check-label col-form-label-sm" for="exampleRadios2">$item</label>
 </div>
-#end		
+#end
+</div>		
 
 #elseif( $SelectInputRenderer.type == "Checkbox" )
 
+<div class="form-group">
+<label for="$SelectInputRenderer.uuid" class="col-form-label col-form-label-sm">$SelectInputRenderer.label</label>
  #foreach($item in $SelectInputRenderer.getOptions())
 <div class="form-check">
-	  <input class="form-check-input" type="checkbox" name="setOpenType" id="exampleRadios2" value="modal">
-	  <label class="form-check-label" for="exampleRadios2">$item</label>
+	  <input class="form-check-input col-form-label-sm" type="checkbox" name="setOpenType" id="exampleRadios2" value="modal">
+	  <label class="form-check-label col-form-label-sm" for="exampleRadios2">$item</label>
 </div>
 #end	
+</div>		
 
 #end

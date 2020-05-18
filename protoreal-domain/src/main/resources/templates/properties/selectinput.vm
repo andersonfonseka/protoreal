@@ -4,10 +4,9 @@
 	<div class="form-group">
 		<label for="inputProjectTitle" class="col-form-label">Tipo</label>
 		<select property="type" id="setType" styleClass="form-control" class="form-control">
-	        <option value="">Selecione</html:option>
-	        <option value="Select">Select</html:option>
-	        <option value="Radio">Radio</html:option>
-	        <option value="Checkbox">Checkbox</html:option>
+			#foreach($item in $SelectInputRenderer.getListTypes())
+				<option value="$item.value" $item.selected>$item.label</option>
+			#end
 	    <select>
 	    </div>
 	    
@@ -18,7 +17,7 @@
 		
 		<div class="form-group">
 			<label for="inputProjectTitle" class="col-form-label">Opcoes</label> 
-			<input type="text" id="setOptions" class="form-control" property="title" value="$SelectInputRenderer.options" size="25" />
+			<input type="text" id="setOptions" class="form-control" property="title" value="$SelectInputRenderer.getOptionValues()" size="25" />
 		</div>
 		
 		<div class="modal-footer">
