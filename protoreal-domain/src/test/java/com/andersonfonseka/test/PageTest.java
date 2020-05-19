@@ -70,9 +70,9 @@ class PageTest {
 		Container container1 = new Container(1, 1);
 		page.addChild(container1);
 
-		Button button1 = new Button("Limpar", Button.INFO);
-		Button button2 = new Button("Cadastrar", Button.SECONDARY);
-		Button button0 = new Button("Pesquisar", Button.PRIMARY);
+		Button button1 = new Button("Limpar", "");
+		Button button2 = new Button("Cadastrar", "");
+		Button button0 = new Button("Pesquisar","");
 
 		container1.addComponent(0, 0, button1);
 		container1.addComponent(0, 0, button2);

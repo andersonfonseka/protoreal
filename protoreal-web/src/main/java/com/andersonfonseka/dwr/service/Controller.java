@@ -140,6 +140,7 @@ public class Controller {
 			}
 			
 			result.put("data", page.doRender());
+			result.put("components", getComponents(page));
 		}
 		
 		return result;
@@ -157,6 +158,7 @@ public class Controller {
 		}
 		
 		result.put("data", page.doRender());
+		result.put("components", getComponents(page));
 		
 		return result;
 	}

@@ -12,7 +12,7 @@
 <div class="modal fade" id="$ButtonRenderer.getSimpleName()" tabindex="-1"
 	role="dialog" aria-labelledby="TituloModalCentralizado"
 	aria-hidden="true">
-	<div class="modal-dialog modal-lg" role="document">
+	<div class="modal-dialog $ButtonRenderer.openType" role="document">
 		<div class="modal-content">
 			<div class="modal-body">
 				$ButtonRenderer.page.doPreview()

@@ -125,8 +125,10 @@ public class Button extends Input {
 		
 		navOpenType.clear();
 		
-		navOpenType.add(new SelectItem("default", "Padrao"));
-		navOpenType.add(new SelectItem("modal", "Modal"));
+		navOpenType.add(new SelectItem("default", "Navegacao Padrao"));
+		navOpenType.add(new SelectItem("", "Modal Padrao"));
+		navOpenType.add(new SelectItem("modal-sm", "Modal Pequeno"));
+		navOpenType.add(new SelectItem("modal-lg", "Modal Grande"));
 		
 		
 		for (SelectItem selectItem : navOpenType) {

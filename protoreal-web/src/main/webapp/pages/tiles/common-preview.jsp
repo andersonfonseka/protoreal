@@ -49,7 +49,7 @@
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
 
-			<div id="container" style="height: 90%; margin: 10px 10px 10px 15px;">
+			<div id="container" style="height: 100%;">
 				
 				<!-- 
 				<tiles:useAttribute name="title" />
