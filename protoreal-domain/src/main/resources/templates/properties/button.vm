@@ -20,6 +20,18 @@
 		</div>
 		
 		<div class="form-group">
+		<label for="inputProjectTitle" class="col-form-label">Alinhamento</label> 
+		#foreach($item in $ButtonRenderer.alignmentOptions)
+		    <div class="form-check-inline">
+			  <input class="form-check-input" type="radio" name="setAlignment" id="exampleRadios1" value="$item.value" $item.selected>
+			  <label class="form-check-label" for="exampleRadios1">
+			    $item.label
+			  </label>
+			</div>
+		#end
+		</div>
+		
+		<div class="form-group">
 		<label for="inputProjectTitle" class="col-form-label">Pagina Relacionada</label>
 		<select property="type" id="setPageUuid" styleClass="form-control" class="form-control">
 			#foreach($page in $ButtonRenderer.getPages())
@@ -27,19 +39,15 @@
 			#end
 		<select>
 	    </div>
-		
-		<div class="form-check">
-		  <input class="form-check-input" type="radio" name="setOpenType" id="exampleRadios1" value="default" checked>
-		  <label class="form-check-label" for="exampleRadios1">
-		    Padrao
-		  </label>
-		</div>
-		<div class="form-check">
-		  <input class="form-check-input" type="radio" name="setOpenType" id="exampleRadios2" value="modal">
-		  <label class="form-check-label" for="exampleRadios2">
-		    Modal
-		  </label>
-		</div>
+	    
+	    #foreach($item in $ButtonRenderer.navOpenType)
+		    <div class="form-check">
+			  <input class="form-check-input" type="radio" name="setOpenType" id="exampleRadios1" value="$item.value" $item.selected>
+			  <label class="form-check-label" for="exampleRadios1">
+			    $item.label
+			  </label>
+			</div>
+		#end
 		
 		<div class="modal-footer">
 			<button type="button" class="btn btn-secondary"	data-dismiss="modal">Fechar</button>
