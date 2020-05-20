@@ -3,12 +3,13 @@
 
 **por que utilizar?**
 
+- construa e faça um test-drive de suas interações rapidamente;
 - baixa curva de aprendizado;
 - foco no analista de negócio/requisitos;
 - necessidade recorrente resolvida de forma adequada;
 - código aberto 
 - gratuita;
-- fáacil customização de templates;
+- fácil customização de templates;
 - extensível
 
 **instalação**
