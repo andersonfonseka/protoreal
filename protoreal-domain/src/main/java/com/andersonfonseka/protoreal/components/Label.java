@@ -12,6 +12,10 @@ public class Label extends Input {
 	
 	private List<SelectItem> listTypes = new ArrayList<SelectItem>();
 	
+	private String style = "";
+	
+	private List<SelectItem> listStyles = new ArrayList<SelectItem>();
+	
 	public Label() {
 		this("Text");
 	}
@@ -49,7 +53,34 @@ public class Label extends Input {
 	public void setListTypes(List<SelectItem> listTypes) {
 		this.listTypes = listTypes;
 	}
+	
+	public String getStyle() {
+		return style;
+	}
 
+	public void setStyle(String style) {
+		this.style = style;
+	}
+	
+	
+	public List<SelectItem> getListStyles() {
+		
+		listStyles.clear();
+		
+		listStyles.add(new SelectItem("font-weight-normal", "Normal"));
+		listStyles.add(new SelectItem("font-weight-bold", "Negrito"));
+		listStyles.add(new SelectItem("font-weight-light", "Light"));
+		listStyles.add(new SelectItem("font-italic", "Italico"));
+		
+		for (SelectItem selectItem : listStyles) {
+			if (selectItem.getValue().equals(this.style)) {
+				selectItem.setSelected("selected");
+			}
+		}
+		
+		return listStyles;
+	}
+	
 	@Override
 	public String doRender() {
 		return new LabelRenderer(this).execute();

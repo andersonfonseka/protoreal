@@ -1,16 +1,22 @@
 <div class="form" id="frmInput">
 	<form id="frmInput" action="" method="">
 	<input type="hidden" id="setUuid" value="$TableRenderer.uuid" />
-	    
+	    <div class="form-group">
+		<label for="inputProjectTitle" class="col-form-label">Tipo</label>
+		<select property="type" id="setType" styleClass="form-control" class="form-control">
+			#foreach($item in $TableRenderer.getListTypes())
+				<option value="$item.value" $item.selected>$item.label</option>
+			#end
+	    <select>
+	    </div>
 		<div class="form-group">
 			<label for="inputProjectTitle" class="col-form-label">Cabecalho</label> 
-			<input type="text" id="setHeader" class="form-control" property="title" value="$TableRenderer.header" size="25" />
+			<input type="text" id="setHeader" class="form-control" property="title" value="$TableRenderer.headerValues" size="25" />
 		</div>
 
 		<div class="form-group">
 			<label for="inputProjectTitle" class="col-form-label">Registros</label> 
-			<textarea id="setRows" class="form-control" property="title" value="$TableRenderer.rows" rows="10">
-			</textarea>
+			<textarea id="setRows" class="form-control" property="title" rows="10">$TableRenderer.dataValues</textarea>
 		</div>
 		
 		<div class="modal-footer">

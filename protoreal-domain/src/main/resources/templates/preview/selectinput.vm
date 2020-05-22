@@ -7,6 +7,15 @@
 		#end
     </select>
 </div>
+#elseif( $SelectInputRenderer.type == "SelectM" )
+<div class="form-group">
+    <label for="$SelectInputRenderer.uuid" class="col-form-label col-form-label-sm">$SelectInputRenderer.label</label>
+    <select class="form-control form-control-sm" id="$SelectInputRenderer.uuid" multiple>
+	    #foreach($item in $SelectInputRenderer.getOptions())
+		  <option>$item</option>
+		#end
+    </select>
+</div>
 #elseif( $SelectInputRenderer.type == "Radio" )
 
 

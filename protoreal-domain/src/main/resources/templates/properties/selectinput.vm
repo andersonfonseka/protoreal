@@ -1,7 +1,7 @@
 <div class="form" id="frmInput">
 	<form id="frmInput" action="" method="">
 	<input type="hidden" id="setUuid" value="$SelectInputRenderer.uuid" />
-	<div class="form-group">
+		<div class="form-group">
 		<label for="inputProjectTitle" class="col-form-label">Tipo</label>
 		<select property="type" id="setType" styleClass="form-control" class="form-control">
 			#foreach($item in $SelectInputRenderer.getListTypes())

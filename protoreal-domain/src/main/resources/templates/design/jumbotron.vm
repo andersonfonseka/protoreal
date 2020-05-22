@@ -1,7 +1,6 @@
-<div class="jumbotron">
-  <h1 class="display-4">$JumbotronRenderer.title</h1>
-  <p class="lead">$JumbotronRenderer.subtitle</p>
-  <hr class="my-4">
-  <p>Ele usa classes utilitarias para tipografia e espacamento de conteudo, dentro do maior container.</p>
-  <a class="btn btn-primary btn-lg" href="#" role="button">Leia mais</a>
-</div>
+<section class="jumbotron text-center" style="background-color: white; padding: 0px;">
+     <div class="container">
+     <h1 class="jumbotron-heading">Exemplo de álbum</h1>
+     <p class="lead text-muted">Algo curto e direto, sobre a coleção abaixo (conteúdo, criador e etc). Faça com que seja curto e legal, mas não tão curto ao ponto de as pessoas pularem ele.</p>
+     </div>
+</section>

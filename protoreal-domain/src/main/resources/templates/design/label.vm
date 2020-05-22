@@ -1,1 +1,1 @@
-<label for="$LabelRenderer.uuid" class="$LabelRenderer.type">$LabelRenderer.label</label>
+<label for="$LabelRenderer.uuid" class="$LabelRenderer.type $LabelRenderer.style">$LabelRenderer.label</label>

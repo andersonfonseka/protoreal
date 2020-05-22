@@ -56,7 +56,8 @@ public class SelectInput extends Input {
 		
 		listTypes.clear();
 		
-		listTypes.add(new SelectItem("Select", "Select"));
+		listTypes.add(new SelectItem("Select", "Selecao simples"));
+		listTypes.add(new SelectItem("SelectM", "Selecao multipla"));
 		listTypes.add(new SelectItem("Radio", "Radio"));
 		listTypes.add(new SelectItem("Checkbox", "Checkbox"));
 		

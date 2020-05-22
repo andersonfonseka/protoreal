@@ -46,6 +46,7 @@ function remove(){
 	Controller.remove(sel.val(), function(data){
 		dwr.util.setEscapeHtml(false);
 		dwr.util.setValue('container-designer', data['data']);
+		dwr.util.setValue('componentSelected', data['components']);
 	});
 	
 }
@@ -69,4 +70,16 @@ function changeCheckbox(value){
 		$('input[name ="' + value + '"]').val('true');
 	}
 
+}
+
+function showHide(id){
+	
+	var obj = $('#' + id);
+	
+	if (obj.css('visibility') == 'visible'){
+		obj.css('visibility', 'hidden');
+	} else {
+		obj.css('visibility', 'visible');
+	}
+	
 }

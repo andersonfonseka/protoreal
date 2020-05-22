@@ -1,6 +1,19 @@
+#if( $TableRenderer.type == "Search" )
+<button type="button" class="btn btn-primary btn-sm float-right" onclick="showHide('$TableRenderer.uuid')">Pesquisar</button><br/>
+<hr/>
+#end
+
+
+<div id="$TableRenderer.uuid" style="visibility: visible;">
 <table class="table table-sm table-striped table-hover">
   <thead class="thead-light">
     <tr>
+
+    #if( $TableRenderer.type == "Search" )
+		<th scope="col">#</th>
+	#end
+
+
     #foreach($item in $TableRenderer.getHeader())
       <th scope="col">$item</th>
     #end
@@ -10,6 +23,11 @@
   <tbody>
     #foreach($row in $TableRenderer.getRows())
     <tr>
+    
+	    #if( $TableRenderer.type == "Search" )
+			<td><input type="radio" name="radio#"></td>
+		#end
+    
       #foreach($itm in $row)
       <td>$itm</td>
       #end
@@ -33,3 +51,4 @@
     </li>
   </ul>
 </nav>
+</div>

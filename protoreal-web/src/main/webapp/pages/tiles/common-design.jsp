@@ -81,7 +81,7 @@
 					id="dataTable" src="icons/icons8-data-grid-32.png" draggable="true"
 					ondragstart="drag(event)"></a>
 					
-					<!-- 
+					
 					<a href="#"
 					class="list-group-item list-group-item-action"><img
 					id="jumbotron" src="icons/icons8-billboard-30.png" draggable="true"
@@ -92,6 +92,7 @@
 					id="cards" src="icons/icons8-credit-card-32.png" draggable="true"
 					ondragstart="drag(event)"></a>
 					
+					<!-- 
 					<a href="#"
 					class="list-group-item list-group-item-action"><img
 					id="carousel" src="icons/icons8-merry-go-round-32.png" draggable="true"
@@ -144,13 +145,9 @@
 								<button type="button" class="btn-sm btn-danger mx-sm-1 mb-1" onclick="remove();">
 									<bean:message key="label.button.remove"/>
 								</button>
-
-
 							</div>
 						</div>
-
 					</div>
-
 				</html:form>
 
 				<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1"
@@ -171,6 +168,7 @@
 						</div>
 					</div>
 				</div>
+				<p>
 				<tiles:insert attribute="body" />
 			</div>
 			<!-- /#page-content-wrapper -->

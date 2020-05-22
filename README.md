@@ -1,5 +1,5 @@
 # protoreal
-**materialize seus requisitos em tempo real**
+**crie protótipos completamente interativos e obtenha feedbacks do processo de forma rápida**
 
 **por que utilizar?**
 
