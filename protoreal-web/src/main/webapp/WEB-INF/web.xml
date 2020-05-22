@@ -50,6 +50,25 @@
 		<servlet-name>dwr-invoker</servlet-name>
 		<url-pattern>/dwr/*</url-pattern>
 	</servlet-mapping>
+	
+	<filter>
+
+	<filter-name>EncodingFilter</filter-name>
+	<filter-class>
+		com.andersonfonseka.filter.EncodingFilter
+	</filter-class>
+
+	<init-param>
+		<param-name>encoding</param-name>
+		<param-value>ISO-8859-1</param-value>
+	</init-param>
+
+</filter>
+
+<filter-mapping>
+	<filter-name>EncodingFilter</filter-name>
+	<url-pattern>/*</url-pattern>
+</filter-mapping>
 
 
 	<!-- The Usual Welcome File List -->

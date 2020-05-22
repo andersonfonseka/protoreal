@@ -3,4 +3,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles"%>
 
 <%= request.getAttribute("sitePreview") %>
+
+<div id="divMainContainer" class="style-3" style="float:left;height: 93%; width: 96%;position:fixed;padding:5px;overflow-y:auto;display: block;">
 <%= request.getAttribute("pageRendered")%>
+</div>

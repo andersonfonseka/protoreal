@@ -59,6 +59,7 @@
 				 -->
 
 				<tiles:insert attribute="body" />
+
 			</div>
 		<!-- /#page-content-wrapper -->
 
