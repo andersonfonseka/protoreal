@@ -20,6 +20,8 @@ public class Page extends Component {
 	
 	private boolean hideMenu = false;
 	
+	private boolean showTitle = true;
+	
 	private String containerType = "container"; 
 	
 	private String type;
@@ -82,6 +84,14 @@ public class Page extends Component {
 
 	public void setHideMenu(boolean hideMenu) {
 		this.hideMenu = hideMenu;
+	}
+	
+	public boolean isShowTitle() {
+		return showTitle;
+	}
+
+	public void setShowTitle(boolean showTitle) {
+		this.showTitle = showTitle;
 	}
 
 	public List<Component> getPagesDisplayOnMenu(){

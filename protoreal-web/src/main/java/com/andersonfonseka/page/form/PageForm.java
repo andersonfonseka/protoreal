@@ -44,6 +44,8 @@ public class PageForm extends ValidatorForm {
 	
 	private boolean hideMenu = false;
 	
+	private boolean showTitle = true;
+	
 	private List<Page> pageList = new ArrayList<Page>();
 	
 	private String op = "N";
@@ -51,6 +53,8 @@ public class PageForm extends ValidatorForm {
 	private String checkDisplayMenu;
 	
 	private String checkHideMenu;
+	
+	private String checkShowTitle;
 	
 	public PageForm() {}
 	
@@ -174,6 +178,14 @@ public class PageForm extends ValidatorForm {
 		this.hideMenu = hideMenu;
 	}
 	
+	public boolean isShowTitle() {
+		return showTitle;
+	}
+
+	public void setShowTitle(boolean showTitle) {
+		this.showTitle = showTitle;
+	}
+
 	public String getCheckDisplayMenu() {
 		return checkDisplayMenu;
 	}
@@ -188,6 +200,14 @@ public class PageForm extends ValidatorForm {
 
 	public void setCheckHideMenu(String checkHideMenu) {
 		this.checkHideMenu = checkHideMenu;
+	}
+	
+	public String getCheckShowTitle() {
+		return checkShowTitle;
+	}
+
+	public void setCheckShowTitle(String checkShowTitle) {
+		this.checkShowTitle = checkShowTitle;
 	}
 
 	@Override

@@ -7,6 +7,7 @@
 	<html:hidden property="uuid" name="pageForm"/>
 	<html:hidden property="checkDisplayMenu" name="pageForm"/>
 	<html:hidden property="checkHideMenu" name="pageForm"/>
+	<html:hidden property="checkShowTitle" name="pageForm"/>
 	
 	<div class="form-group">
 	<label for="inputProjectName"><bean:message key="label.type"/></label> 
@@ -33,6 +34,11 @@
 	<div class="form-group">
 		<label for="inputProjectTitle"><bean:message key="label.title"/></label> 
 		<html:text styleClass="form-control" property="title" size="25" />
+	</div>
+
+	<div class="form-group" style="margin-left: 20px;">
+		<html:checkbox styleClass="form-check-input" property="showTitle" onchange="changeCheckbox('checkShowTitle')"/>
+		<label for="inputProjectName"><bean:message key="label.pages.showTitle"/></label> 
 	</div>
 
 	<div class="form-group" style="margin-left: 20px;">

@@ -1,7 +1,12 @@
 <p>
 <div class="$PageRenderer.containerType">
+
+#if($PageRenderer.showTitle == "true")
 <h5>$PageRenderer.title</h5>
 <hr/>
+#end
+
+
 #foreach($item in $PageRenderer.getChildrenList())
 	$item.doPreview()
 	<p>
