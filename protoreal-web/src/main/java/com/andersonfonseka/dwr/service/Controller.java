@@ -7,7 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import com.andersonfonseka.dao.PageRepository;
+import com.andersonfonseka.dao.impl.PageRepository;
 import com.andersonfonseka.protoreal.components.Button;
 import com.andersonfonseka.protoreal.components.Card;
 import com.andersonfonseka.protoreal.components.Carousel;
@@ -148,7 +148,6 @@ public class Controller {
 	
 	public Map<String, String> remove(String componentId, HttpSession session) throws InstantiationException, IllegalAccessException{
 		
-		Site site = (Site) session.getAttribute("site");
 		Page page = (Page) session.getAttribute("page");
 	
 		Map<String, String> result = new HashMap<String, String>();

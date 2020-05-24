@@ -8,8 +8,8 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
 
-import com.andersonfonseka.dao.PageRepository;
-import com.andersonfonseka.dao.SiteRepository;
+import com.andersonfonseka.dao.impl.PageRepository;
+import com.andersonfonseka.dao.impl.SiteRepository;
 import com.andersonfonseka.project.form.ProjectForm;
 import com.andersonfonseka.protoreal.components.Page;
 import com.andersonfonseka.protoreal.components.Site;

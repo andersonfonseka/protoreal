@@ -10,7 +10,7 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.validator.ValidatorForm;
 
 import com.andersonfonseka.common.SelectItem;
-import com.andersonfonseka.dao.SiteRepository;
+import com.andersonfonseka.dao.impl.SiteRepository;
 import com.andersonfonseka.protoreal.components.Page;
 import com.andersonfonseka.protoreal.components.Site;
 
