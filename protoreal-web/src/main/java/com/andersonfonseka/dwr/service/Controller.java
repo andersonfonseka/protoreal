@@ -7,6 +7,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import com.andersonfonseka.dao.impl.ComponentRepository;
+import com.andersonfonseka.dao.impl.ContainerRepository;
 import com.andersonfonseka.dao.impl.PageRepository;
 import com.andersonfonseka.protoreal.components.Button;
 import com.andersonfonseka.protoreal.components.Card;
@@ -42,24 +44,32 @@ public class Controller {
 		
 	}
 	
-	public Map<String, String> create(String component, String parent, HttpSession session) throws InstantiationException, IllegalAccessException{
+	public Map<String, String> create(String component, String parent, HttpSession session) throws InstantiationException, IllegalAccessException {
+		
+		ComponentRepository repository = new ComponentRepository();
+		PageRepository pageRepository = PageRepository.getInstance();
 		
 		Site site = (Site) session.getAttribute("site");
 		Page page = (Page) session.getAttribute("page");
 	
-		page.resetComponentAux();
-		page.getChildComponent(page, parent);
+//		page.resetComponentAux();
+//		page.getChildComponent(page, parent);
+
+		Component comp = repository.get(parent);
 		
 		Component component2 = mapComponents.get(component).newInstance();
 		component2.setSiteUuid(site.getUuid());
 		
-		if (null != page.getComponentAux()) {
-			page.getComponentAux().addChild(component2);
+		
+		if (null != comp) {
+			component2.setParent(comp);
 		} else {
-			page.addChild(component2);
+			component2.setParent(page);
 		}
 		
-		page.addFastComponent(component2);
+		repository.add(component2);
+		
+		page = pageRepository.getFull(page.getUuid());
 		
 		Map<String, String> result = new HashMap<String, String>();
 		
@@ -129,7 +139,7 @@ public class Controller {
 				
 				String fieldName = it.next();
 				Method method = component.getClass().getMethod(fieldName, String.class);
-				
+
 				method.invoke(component, form.get(fieldName));
 			}
 			

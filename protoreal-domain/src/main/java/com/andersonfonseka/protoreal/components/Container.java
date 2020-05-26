@@ -19,7 +19,6 @@ public class Container extends Component {
 	}
 	
 	public Container(int rows, int columns) {
-		
 		super();
 		configure(rows, columns);
 	}
@@ -35,7 +34,7 @@ public class Container extends Component {
 			this.addChild(row);
 			
 			for (int j = 0; j < this.columns; j++) {
-				row.addCell(j, new Cell());;
+				row.addCell(j, new Cell());
 			}
 		}
 	}
@@ -64,6 +63,10 @@ public class Container extends Component {
 		this.rowsMap.get(row).getCell(column).addChild(component);
 		this.addChild(component);
 	}
+	
+	public void addComponentFromDatabase(int row, int column, Component component) {
+		this.rowsMap.get(row).getCell(column).addChild(component);
+	}
 
 	public Collection<Row> getRowsList(){
 		return this.rowsMap.values();
@@ -83,7 +86,5 @@ public class Container extends Component {
 	public String doPreview() {
 		return new ContainerRenderer(this).executePreview();
 	}
-
-	
 	
 }

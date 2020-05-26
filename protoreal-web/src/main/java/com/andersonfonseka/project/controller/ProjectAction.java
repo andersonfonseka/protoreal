@@ -39,6 +39,9 @@ public class ProjectAction extends DispatchAction {
 		
 		Site site = repository.get(request.getParameter("id"));
 		
+		PageRepository pageRepository = PageRepository.getInstance();
+		site.setChildren(pageRepository.list(site.getUuid()));
+		
 		ProjectForm projectForm = new ProjectForm(site.getUuid());
 		projectForm.setUuid(site.getUuid());
 		projectForm.setTitle(site.getTitle());
@@ -103,19 +106,19 @@ public class ProjectAction extends DispatchAction {
 		SiteRepository repository = SiteRepository.getInstance();
 		Site site = repository.get(request.getParameter("siteId"));
 
+		PageRepository pageRepository = PageRepository.getInstance();
+		site.setChildren(pageRepository.list(site.getUuid()));
+		
 		if (request.getParameter("pageId") != null) {
 			
-			PageRepository pageRepository = PageRepository.getInstance();
-			Page page = pageRepository.get(request.getParameter("pageId"));
-
+			Page page = pageRepository.getFull(request.getParameter("pageId"));
 			
 			request.setAttribute("sitePreview", site.getNavBar(page.isHideMenu()));
 			request.setAttribute("pageRendered", page.doPreview());
 		
 		} else if (site.getInitialPage() != null && site.getInitialPage().trim().length() > 0) {
-			
-			PageRepository pageRepository = PageRepository.getInstance();
-			Page page = pageRepository.get(site.getInitialPage());
+
+			Page page = pageRepository.getFull(site.getInitialPage());
 			
 			if (null != page) {
 				

@@ -24,6 +24,9 @@ public class PageAction extends DispatchAction {
 
 		SiteRepository siteRepository = SiteRepository.getInstance();
 		Site site = siteRepository.get(request.getParameter("siteId"));
+		
+		PageRepository repository = PageRepository.getInstance();
+		site.setChildren(repository.list(site.getUuid()));
 
 		request.getSession().setAttribute("site", site);
 		request.setAttribute("pages", site.getPages());
@@ -44,9 +47,10 @@ public class PageAction extends DispatchAction {
 			HttpServletResponse response) throws Exception {
 
 		PageRepository repository = PageRepository.getInstance();
+		
 		Page page = repository.get(request.getParameter("id"));
 		
-		PageForm pageForm = new PageForm(page.getSite().getUuid());
+		PageForm pageForm = new PageForm(page.getSiteUuid());
 		
 		pageForm.setUuid(page.getUuid());
 		pageForm.setTitle(page.getTitle());
@@ -73,7 +77,7 @@ public class PageAction extends DispatchAction {
 		request.getSession().setAttribute("pageId", request.getParameter("id"));
 
 		PageRepository repository = PageRepository.getInstance();
-		Page page = repository.get(request.getParameter("id"));
+		Page page = repository.getFull(request.getParameter("id"));
 
 		DesignForm designForm = new DesignForm();
 		designForm.setComponentList(page.getFastComponents());
@@ -120,7 +124,7 @@ public class PageAction extends DispatchAction {
 			page.setContainerType(pageForm.getContainerType());
 			page.setHideMenu(pageForm.isHideMenu());
 			page.setShowTitle(pageForm.isShowTitle());
-			
+			page.setSiteUuid(site.getUuid());
 			
 			if (null != site && null != parentPage) {
 

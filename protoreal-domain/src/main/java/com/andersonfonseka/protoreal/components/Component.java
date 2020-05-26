@@ -45,8 +45,12 @@ public abstract class Component {
 		this.parent = parent;
 	}
 	
-	public Collection<Component> getChildrenList() {
+	public List<Component> getChildrenList() {
 		return this.children;
+	}
+	
+	public void setChildren(List<Component> children) {
+		this.children = children;
 	}
 
 	public void addChild(Component child) {

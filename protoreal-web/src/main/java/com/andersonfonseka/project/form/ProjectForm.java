@@ -9,6 +9,7 @@ import javax.servlet.ServletRequest;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.validator.ValidatorForm;
 
+import com.andersonfonseka.dao.impl.PageRepository;
 import com.andersonfonseka.dao.impl.SiteRepository;
 import com.andersonfonseka.protoreal.components.Page;
 import com.andersonfonseka.protoreal.components.Site;
@@ -18,6 +19,8 @@ public class ProjectForm extends ValidatorForm {
 	private String uuid;
 	
 	private SiteRepository siteRepository = SiteRepository.getInstance();
+	
+	private PageRepository repository = PageRepository.getInstance();
 	
 	private Site site;
 	
@@ -39,9 +42,12 @@ public class ProjectForm extends ValidatorForm {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public ProjectForm(String siteUUid) {
+		
 		site = siteRepository.get(siteUUid);
+		site.setChildren(repository.list(site.getUuid()));
+		
 		if (null != site) {
-			this.pageList = new ArrayList(site.getPages().stream().filter(x -> !(x.getParent() instanceof Page)).collect(Collectors.toList()));	
+			this.pageList = new ArrayList(site.getPages());	
 		}
 
 	}

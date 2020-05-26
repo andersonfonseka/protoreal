@@ -98,7 +98,7 @@ public class Site extends Component {
 								}
 								
 								NavLink link = new NavLink(subPage.getTitle());
-								link.setSiteUuid(page.getSite().getUuid());
+								link.setSiteUuid(page.getSiteUuid());
 								link.setPageUuid(subPage.getUuid());
 								
 								dropdown.addOptions(link);
