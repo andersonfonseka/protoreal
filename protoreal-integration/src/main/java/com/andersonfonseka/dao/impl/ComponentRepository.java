@@ -24,6 +24,9 @@ public class ComponentRepository {
 		this.repositories.put("com.andersonfonseka.protoreal.components.Button", new ButtonRepository());
 		this.repositories.put("com.andersonfonseka.protoreal.components.Label", new LabelRepository());
 		this.repositories.put("com.andersonfonseka.protoreal.components.TextAreaInput", new TextAreaInputRepository());
+		this.repositories.put("com.andersonfonseka.protoreal.components.Table", new TableRepository());
+		this.repositories.put("com.andersonfonseka.protoreal.components.Jumbotron", new JumbotronRepository());
+		this.repositories.put("com.andersonfonseka.protoreal.components.Card", new CardRepository());
 		
 	}
 	

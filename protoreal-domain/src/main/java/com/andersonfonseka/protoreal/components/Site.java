@@ -76,10 +76,10 @@ public class Site extends Component {
 						continue;
 					}
 					
-					if (page.getPagesDisplayOnMenu().isEmpty() && !(page.getParent() instanceof Page)) {
+					if (page.getPagesDisplayOnMenu().isEmpty() && page.getSiteUuid().equals(page.getParent().getUuid())) {
 						
 						NavLink navLink = new NavLink(page.getTitle());
-						navLink.setSiteUuid(page.getSite().getUuid());
+						navLink.setSiteUuid(page.getSiteUuid());
 						navLink.setPageUuid(page.getUuid());
 						navbar.addChild(navLink);
 					
