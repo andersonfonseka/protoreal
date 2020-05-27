@@ -114,6 +114,10 @@ public class ComponentRepository {
 	}
 
 	
+	public void remove(Component component) {
+		this.repositories.get(component.getClass().getName()).edit(component);
+	}
+	
 	public void remove(String uuid) {
 		//this.repository.remove(uuid);
 	}
@@ -137,29 +141,7 @@ public class ComponentRepository {
 			ResultSet resultSet = pstmt.executeQuery();
 			
 			while(resultSet.next()) {
-				
-				component = new Component() {
-					
-					@Override
-					public String doRender() {
-						// TODO Auto-generated method stub
-						return null;
-					}
-					
-					@Override
-					public String doPreview() {
-						// TODO Auto-generated method stub
-						return null;
-					}
-					
-					@Override
-					public String doEdit() {
-						// TODO Auto-generated method stub
-						return null;
-					}
-				};
-				
-				component.setUuid(resultSet.getString(1));
+				component = this.repositories.get(resultSet.getString(3)).get(resultSet.getString(1));
 			}
 			
 			pstmt.execute();

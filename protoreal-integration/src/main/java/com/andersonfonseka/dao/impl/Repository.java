@@ -8,4 +8,6 @@ public interface Repository<T extends Component> {
 	
 	public void add(T component);
 	
+	public void edit(T component);
+	
 }

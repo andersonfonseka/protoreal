@@ -91,5 +91,37 @@ public class JumbotronRepository implements Repository<Jumbotron> {
 		
 		return jumbotron;
 	}
+
+	@Override
+	public void edit(Jumbotron jumbotron) {
+		String EDIT_JUMBOTRON = "UPDATE JUMBOTRON SET TITLE=?, SUBTITLE=? WHERE UUID=?";
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			connection = DbConnection.getInstance().getConnection();
+			
+			pstmt = connection.prepareStatement(EDIT_JUMBOTRON);
+			
+			pstmt.setString(3, jumbotron.getUuid());
+			
+			pstmt.setString(1, jumbotron.getTitle());
+			pstmt.setString(2, jumbotron.getSubtitle());
+			
+			pstmt.execute();
+			pstmt.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
 	
 }

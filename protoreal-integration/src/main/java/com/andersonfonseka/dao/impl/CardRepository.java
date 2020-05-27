@@ -90,5 +90,11 @@ public class CardRepository implements Repository<Card> {
 		
 		return card;
 	}
+
+	@Override
+	public void edit(Card component) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

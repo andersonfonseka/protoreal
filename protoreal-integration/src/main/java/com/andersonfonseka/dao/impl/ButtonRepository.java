@@ -97,5 +97,11 @@ public class ButtonRepository implements Repository<Button> {
 		
 		return button;
 	}
+
+	@Override
+	public void edit(Button component) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

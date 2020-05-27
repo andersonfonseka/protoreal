@@ -80,7 +80,7 @@ public class PageAction extends DispatchAction {
 		Page page = repository.getFull(request.getParameter("id"));
 
 		DesignForm designForm = new DesignForm();
-		designForm.setComponentList(page.getFastComponents());
+		designForm.setComponentList(repository.listComponents(page.getUuid()));
 
 		request.getSession().setAttribute("designForm", designForm);
 

@@ -188,6 +188,48 @@ public class PageRepository {
 		return results;
 	}
 	
+	public List<Component> listComponents(String uuid) {
+		
+		ComponentRepository componentRepository = new ComponentRepository();
+		
+		List<Component> results = new ArrayList<Component>();
+		
+		String SELECT_ALL = "SELECT * FROM COMPONENTS WHERE PARENT = ?";
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			connection = DbConnection.getInstance().getConnection();
+			
+			pstmt = connection.prepareStatement(SELECT_ALL);
+			
+			pstmt.setString(1, uuid);
+			
+			ResultSet resultSet = pstmt.executeQuery();
+			
+			while(resultSet.next()) {
+				
+				Component component = componentRepository.get(resultSet.getString(1));
+				results.add(component);
+			}
+			
+			pstmt.execute();
+			pstmt.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return results;
+	}
+	
 	public void edit(Page page) {
 		this.repository.put(page.getUuid(), page);
 		

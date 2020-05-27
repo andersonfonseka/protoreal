@@ -95,5 +95,11 @@ public class LabelRepository implements Repository<Label> {
 		
 		return label;
 	}
+
+	@Override
+	public void edit(Label component) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

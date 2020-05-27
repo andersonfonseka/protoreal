@@ -92,6 +92,13 @@ public class RowsRepository implements Repository<Row> {
 		
 		return row;
 	}
+
+
+	@Override
+	public void edit(Row component) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	

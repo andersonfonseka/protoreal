@@ -97,5 +97,11 @@ public class TextInputRepository implements Repository<TextInput> {
 		
 		return textInput;
 	}
+
+	@Override
+	public void edit(TextInput component) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

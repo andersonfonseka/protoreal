@@ -92,6 +92,12 @@ public class CellRepository implements Repository<Cell> {
 		
 		return cell;
 	}
+
+	@Override
+	public void edit(Cell component) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	

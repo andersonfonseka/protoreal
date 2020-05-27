@@ -98,5 +98,11 @@ public class SelectInputRepository implements Repository<SelectInput> {
 		
 		return selectInput;
 	}
+
+	@Override
+	public void edit(SelectInput component) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

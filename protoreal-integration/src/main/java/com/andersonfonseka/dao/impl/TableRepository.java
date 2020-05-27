@@ -93,5 +93,11 @@ public class TableRepository implements Repository<Table> {
 		
 		return table;
 	}
+
+	@Override
+	public void edit(Table component) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

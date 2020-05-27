@@ -3,12 +3,12 @@ package com.andersonfonseka.dwr.service;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import com.andersonfonseka.dao.impl.ComponentRepository;
-import com.andersonfonseka.dao.impl.ContainerRepository;
 import com.andersonfonseka.dao.impl.PageRepository;
 import com.andersonfonseka.protoreal.components.Button;
 import com.andersonfonseka.protoreal.components.Card;
@@ -51,15 +51,11 @@ public class Controller {
 		
 		Site site = (Site) session.getAttribute("site");
 		Page page = (Page) session.getAttribute("page");
-	
-//		page.resetComponentAux();
-//		page.getChildComponent(page, parent);
 
 		Component comp = repository.get(parent);
 		
 		Component component2 = mapComponents.get(component).newInstance();
 		component2.setSiteUuid(site.getUuid());
-		
 		
 		if (null != comp) {
 			component2.setParent(comp);
@@ -81,14 +77,17 @@ public class Controller {
 	
 	private String getComponents(Page page) {
 		
+		PageRepository pageRepository = PageRepository.getInstance();
+		
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append("<div id=\"componentSelected\" class=\"form-group mx-sm-1 mb-1\">");
 		sb.append("<select name=\"componentSelected\" style=\"width:200px;\" class=\"form-control-sm\" onchange=\"configure();\">");
 		sb.append("<option value=\"0\">Selecione</option>");
 	
+		List<Component> components = pageRepository.listComponents(page.getUuid());
 		
-		for (Component comp: page.getFastComponents()) {
+		for (Component comp: components) {
 			if (!comp.isDeleted()) {
 				sb.append("<option value=" + comp.getUuid() + ">" + comp.getName() + "</option>");	
 			}
@@ -105,17 +104,21 @@ public class Controller {
 		
 		Site site = (Site) session.getAttribute("site");
 		Page page = (Page) session.getAttribute("page");
-	
+		
+		ComponentRepository componentRepository = new ComponentRepository();
+		
 		Map<String, String> result = new HashMap<String, String>();
 		
-		if (null != page.getFastComponents(componentId)) {
+		Component component = componentRepository.get(componentId);
+		
+		if (null != component) {
 			
-			if (page.getFastComponents(componentId) instanceof Button) {
-				Button btn = (Button) page.getFastComponents(componentId);
+			if (component instanceof Button) {
+				Button btn = (Button) component;
 				btn.setPages(site.getPages());
 			}
 			
-			result.put("data", page.getFastComponents(componentId).doEdit());
+			result.put("data", component.doEdit());
 		}
 		
 		return result;

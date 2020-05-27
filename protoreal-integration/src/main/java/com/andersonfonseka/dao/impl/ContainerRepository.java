@@ -106,5 +106,11 @@ public class ContainerRepository implements Repository {
 		
 		return container;
 	}
+
+	@Override
+	public void edit(Component component) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
