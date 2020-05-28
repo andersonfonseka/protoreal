@@ -170,6 +170,9 @@ public class PageAction extends DispatchAction {
 			pageRepository.edit(page);
 			
 		}
+		
+		PageRepository repository = PageRepository.getInstance();
+		site.setChildren(repository.list(site.getUuid()));
 
 		request.setAttribute("pages", site.getPages());
 

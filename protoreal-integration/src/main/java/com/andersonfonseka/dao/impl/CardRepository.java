@@ -15,7 +15,7 @@ public class CardRepository implements Repository<Card> {
 	
 	public void add(Card card) {
 		
-		String INSERT_PAGE = "INSERT INTO CARD (UUID, TITLE, SUBTITLE) VALUES (?,?,?)";
+		String INSERT_PAGE = "INSERT INTO CARD (UUID, TITLE, SUBTITLE, CONTENT) VALUES (?,?,?,?)";
 		PreparedStatement pstmt = null;
 		
 		try {
@@ -27,6 +27,7 @@ public class CardRepository implements Repository<Card> {
 			pstmt.setString(1, card.getUuid());
 			pstmt.setString(2, card.getTitle());
 			pstmt.setString(3, card.getSubtitle());
+			pstmt.setString(4, card.getContent());
 			
 			pstmt.execute();
 			pstmt.close();
@@ -72,6 +73,7 @@ public class CardRepository implements Repository<Card> {
 				card.setUuid(resultSet.getString(1));
 				card.setTitle(resultSet.getString(2));
 				card.setSubtitle(resultSet.getString(3));
+				card.setContent(resultSet.getString(4));
 			}
 			
 			pstmt.execute();
@@ -94,7 +96,7 @@ public class CardRepository implements Repository<Card> {
 	@Override
 	public void edit(Card card) {
 		
-		String INSERT_PAGE = "UPDATE CARD SET TITLE=?, SUBTITLE=? WHERE UUID=?";
+		String INSERT_PAGE = "UPDATE CARD SET TITLE=?, SUBTITLE=?, CONTENT=? WHERE UUID=?";
 		PreparedStatement pstmt = null;
 		
 		try {
@@ -103,10 +105,11 @@ public class CardRepository implements Repository<Card> {
 			
 			pstmt = connection.prepareStatement(INSERT_PAGE);
 			
-			pstmt.setString(3, card.getUuid());
+			pstmt.setString(4, card.getUuid());
 			
 			pstmt.setString(1, card.getTitle());
 			pstmt.setString(2, card.getSubtitle());
+			pstmt.setString(3, card.getContent());
 			
 			pstmt.execute();
 			pstmt.close();

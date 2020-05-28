@@ -1,8 +1,26 @@
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="images/286x180.png" alt="Imagem de capa do card">
-  <div class="card-body">
-    <h5 class="card-title">Titulo do card</h5>
-    <p class="card-text">Um exemplo de texto rapido para construir o titulo do card e fazer preencher o conteudo do card.</p>
-    <a href="#" class="btn btn-primary">Visitar</a>
-  </div>
+<div class="form" id="frmInput">
+	<form id="frmInput" action="" method="">
+	<input type="hidden" id="setUuid" value="$CardRenderer.uuid" />
+		
+		<div class="form-group">
+			<label for="inputProjectTitle" class="col-form-label">Titulo</label> 
+			<input type="text" id="setTitle" class="form-control" value="$CardRenderer.title" size="25" />
+		</div>
+		
+		<div class="form-group">
+			<label for="inputProjectTitle" class="col-form-label">Sub-titulo</label> 
+			<input type="text" id="setSubtitle" class="form-control" value="$CardRenderer.subtitle" size="25" />
+		</div>
+		
+		<div class="form-group">
+			<label for="inputProjectTitle" class="col-form-label">Descricao</label> 
+			<textarea id="setContent" class="form-control" property="title" rows="10">$CardRenderer.content</textarea>
+		</div>
+		<p>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary"	data-dismiss="modal">Fechar</button>
+			<button type="button" class="btn btn-primary" onclick="edit('frmInput')">Salvar</button>
+		</div>
+	</div>
+	</form>
 </div>

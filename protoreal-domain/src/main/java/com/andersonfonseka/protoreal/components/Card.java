@@ -8,6 +8,7 @@ public class Card extends Component {
 	
 	private String subtitle;
 
+	private String content;
 	
 	public Card() {
 		this("Teste", "Teste XXXX");
@@ -33,6 +34,14 @@ public class Card extends Component {
 
 	public void setSubtitle(String subtitle) {
 		this.subtitle = subtitle;
+	}
+	
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	@Override
