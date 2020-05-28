@@ -121,11 +121,34 @@ public class ComponentRepository {
 
 	
 	public void remove(Component component) {
-		this.repositories.get(component.getClass().getName()).edit(component);
-	}
-	
-	public void remove(String uuid) {
-		//this.repository.remove(uuid);
+		
+		String GET_SITE = "DELETE FROM COMPONENTS WHERE UUID=?";
+		PreparedStatement pstmt = null;
+		Connection connection = null;
+		
+		try {
+			
+			connection = DbConnection.getInstance().getConnection();
+			
+			pstmt = connection.prepareStatement(GET_SITE);
+			
+			pstmt.setString(1, component.getUuid());
+			
+			pstmt.execute();
+			pstmt.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		this.repositories.get(component.getClass().getName()).remove(component.getUuid());;
 	}
 	
 	public Component get(String uuid) {

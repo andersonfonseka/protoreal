@@ -23,7 +23,12 @@ public class Container extends Component {
 		configure(rows, columns);
 	}
 
-	private void configure(int rows, int columns) {
+	public void configure(int rows, int columns) {
+		
+		this.getChildrenList().clear();
+		this.rowsMap.clear();
+		
+		
 		this.rows = rows;
 		this.columns = columns;
 		
@@ -53,10 +58,6 @@ public class Container extends Component {
 
 	public void setColumns(String columns) {
 		this.columns = Integer.valueOf(columns);
-		
-		this.rowsMap.clear();
-		
-		configure(this.rows, this.columns);
 	}
 	
 	public void addComponent(int row, int column, Component component) {

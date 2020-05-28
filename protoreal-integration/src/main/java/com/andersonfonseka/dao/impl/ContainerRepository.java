@@ -108,20 +108,34 @@ public class ContainerRepository implements Repository<Container> {
 	@Override
 	public void edit(Container container) {
 		
-		ComponentRepository componentRepository = new ComponentRepository();
-		
-		Container container2 = (Container) container;
-		
-		for (Component row : container2.getChildrenList()) {
-			componentRepository.add(row);
-			
-			for (Component cell: row.getChildrenList()) {
-				componentRepository.add(cell);
+	
+		String SELECT_ALL = "DELETE FROM COMPONENTS WHERE PARENT = ?";
+		PreparedStatement pstmt = null;
+
+		try {
+
+			connection = DbConnection.getInstance().getConnection();
+
+			pstmt = connection.prepareStatement(SELECT_ALL);
+
+			pstmt.setString(1, container.getUuid());
+
+			pstmt.execute();
+			pstmt.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		}
 		
+		
 		String INSERT_CONTAINER = "UPDATE CONTAINER SET ROWCOUNT=?, COLUMNS=? WHERE UUID=? ";
-		PreparedStatement pstmt = null;
 		
 		try {
 			
@@ -129,10 +143,10 @@ public class ContainerRepository implements Repository<Container> {
 			
 			pstmt = connection.prepareStatement(INSERT_CONTAINER);
 			
-			pstmt.setString(3, container2.getUuid());
+			pstmt.setString(3, container.getUuid());
 			
-			pstmt.setInt(1, container2.getRows());
-			pstmt.setInt(2, container2.getColumns());
+			pstmt.setInt(1, container.getRows());
+			pstmt.setInt(2, container.getColumns());
 
 			pstmt.execute();
 			pstmt.close();
@@ -147,6 +161,22 @@ public class ContainerRepository implements Repository<Container> {
 				e.printStackTrace();
 			}
 		}
+		
+		ComponentRepository componentRepository =  new ComponentRepository();
+		
+		for (Component row : container.getChildrenList()) {
+			componentRepository.add(row);
+			
+			for (Component cell: row.getChildrenList()) {
+				componentRepository.add(cell);
+			}
+		}
+		
+	}
+
+	@Override
+	public void remove(String uuid) {
+		// TODO Auto-generated method stub
 		
 	}
 	

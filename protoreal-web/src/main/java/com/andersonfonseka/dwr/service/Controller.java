@@ -149,12 +149,16 @@ public class Controller {
 			method.invoke(component, form.get(fieldName));
 		}
 		
-		componentRepository.edit(component);
-		
 		if (component instanceof Button) {
 			Button btn = (Button) component;
 			btn.setPage(pageRepository.get(btn.getPageUuid()));
+		
+		} else if (component instanceof Container) {
+			Container container = (Container) component;
+			container.configure(container.getRows(), container.getColumns());
 		}
+
+		componentRepository.edit(component);
 		
 		page = pageRepository.getFull(page.getUuid());
 		
@@ -166,6 +170,12 @@ public class Controller {
 	}
 	
 	public Map<String, String> remove(String componentId, HttpSession session) throws InstantiationException, IllegalAccessException{
+		
+		ComponentRepository componentRepository = new ComponentRepository();
+		
+		Component component = componentRepository.get(componentId);
+		
+		componentRepository.remove(component);
 		
 		Page page = (Page) session.getAttribute("page");
 	

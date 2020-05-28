@@ -10,4 +10,6 @@ public interface Repository<T extends Component> {
 	
 	public void edit(T component);
 	
+	public void remove(String uuid);
+	
 }
