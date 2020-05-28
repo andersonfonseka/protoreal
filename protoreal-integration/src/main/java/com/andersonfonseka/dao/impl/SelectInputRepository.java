@@ -100,8 +100,39 @@ public class SelectInputRepository implements Repository<SelectInput> {
 	}
 
 	@Override
-	public void edit(SelectInput component) {
-		// TODO Auto-generated method stub
+	public void edit(SelectInput selectInput) {
+		
+		String INSERT_PAGE = "UPDATE SELECTINPUT SET  TYPE=?, LABEL=?, PLACEHOLDER=?, READONLY=?, VALUE=?, OPTIONVALUES=?) WHERE UUID=? ";
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			connection = DbConnection.getInstance().getConnection();
+			
+			pstmt = connection.prepareStatement(INSERT_PAGE);
+			
+			pstmt.setString(7, selectInput.getUuid());
+			
+			pstmt.setString(1, selectInput.getType());
+			pstmt.setString(2, selectInput.getLabel());
+			pstmt.setString(3, selectInput.getPlaceholder());
+			pstmt.setString(4, selectInput.getReadonly());
+			pstmt.setString(5, selectInput.getValue());
+			pstmt.setString(6, selectInput.getOptionValues());
+			
+			pstmt.execute();
+			pstmt.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		
 	}
 	

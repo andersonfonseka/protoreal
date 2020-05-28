@@ -95,8 +95,36 @@ public class TableRepository implements Repository<Table> {
 	}
 
 	@Override
-	public void edit(Table component) {
-		// TODO Auto-generated method stub
+	public void edit(Table table) {
+		
+		String INSERT_PAGE = "UPDATE TABLEINPUT SET TYPE=?, HEADERVALUES=?, DATAVALUES=? WHERE UUID=? ";
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			connection = DbConnection.getInstance().getConnection();
+			
+			pstmt = connection.prepareStatement(INSERT_PAGE);
+			
+			pstmt.setString(4, table.getUuid());
+			
+			pstmt.setString(1, table.getType());
+			pstmt.setString(2, table.getHeaderValues());
+			pstmt.setString(3, table.getDataValues());
+			
+			pstmt.execute();
+			pstmt.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		
 	}
 	

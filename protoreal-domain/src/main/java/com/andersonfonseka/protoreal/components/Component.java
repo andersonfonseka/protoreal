@@ -11,6 +11,8 @@ public abstract class Component {
 	
 	private String siteUuid;
 	
+	private String pageUuid;
+	
 	private String uuid = UUID.randomUUID().toString();
 	
 	private String name;
@@ -117,6 +119,14 @@ public abstract class Component {
 		this.siteUuid = siteUuid;
 	}
 	
+	public String getPageUuid() {
+		return pageUuid;
+	}
+
+	public void setPageUuid(String pageUuid) {
+		this.pageUuid = pageUuid;
+	}
+
 	public boolean isDeleted() {
 		return deleted;
 	}

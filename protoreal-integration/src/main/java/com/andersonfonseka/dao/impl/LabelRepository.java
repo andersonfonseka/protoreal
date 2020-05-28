@@ -97,8 +97,37 @@ public class LabelRepository implements Repository<Label> {
 	}
 
 	@Override
-	public void edit(Label component) {
-		// TODO Auto-generated method stub
+	public void edit(Label label) {
+		
+		String INSERT_PAGE = "UPDATE LABEL SET TYPE=?, STYLE=?, LABEL=?, VALUE=? WHERE UUID=? ";
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			connection = DbConnection.getInstance().getConnection();
+			
+			pstmt = connection.prepareStatement(INSERT_PAGE);
+			
+			pstmt.setString(5, label.getUuid());
+			
+			pstmt.setString(1, label.getType());
+			pstmt.setString(2, label.getStyle());
+			pstmt.setString(3, label.getLabel());
+			pstmt.setString(4, label.getValue());
+			
+			pstmt.execute();
+			pstmt.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		
 	}
 	

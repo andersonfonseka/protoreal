@@ -99,8 +99,37 @@ public class TextInputRepository implements Repository<TextInput> {
 	}
 
 	@Override
-	public void edit(TextInput component) {
-		// TODO Auto-generated method stub
+	public void edit(TextInput textInput) {
+		
+		String INSERT_PAGE = "UPDATE TEXTINPUT SET TYPE=?, LABEL=?, PLACEHOLDER=?, READONLY=?, VALUE=? WHERE UUID=? ";
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			connection = DbConnection.getInstance().getConnection();
+			
+			pstmt = connection.prepareStatement(INSERT_PAGE);
+			
+			pstmt.setString(6, textInput.getUuid());
+			pstmt.setString(1, textInput.getType());
+			pstmt.setString(2, textInput.getLabel());
+			pstmt.setString(3, textInput.getPlaceholder());
+			pstmt.setString(4, textInput.getReadonly());
+			pstmt.setString(5, textInput.getValue());
+			
+			pstmt.execute();
+			pstmt.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		
 	}
 	

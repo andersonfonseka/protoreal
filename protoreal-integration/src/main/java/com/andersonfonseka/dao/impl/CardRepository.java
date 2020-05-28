@@ -92,8 +92,35 @@ public class CardRepository implements Repository<Card> {
 	}
 
 	@Override
-	public void edit(Card component) {
-		// TODO Auto-generated method stub
+	public void edit(Card card) {
+		
+		String INSERT_PAGE = "UPDATE CARD SET TITLE=?, SUBTITLE=? WHERE UUID=?";
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			connection = DbConnection.getInstance().getConnection();
+			
+			pstmt = connection.prepareStatement(INSERT_PAGE);
+			
+			pstmt.setString(3, card.getUuid());
+			
+			pstmt.setString(1, card.getTitle());
+			pstmt.setString(2, card.getSubtitle());
+			
+			pstmt.execute();
+			pstmt.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		
 	}
 	

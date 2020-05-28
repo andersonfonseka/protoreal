@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.andersonfonseka.protoreal.components.Button;
 import com.andersonfonseka.protoreal.components.Component;
 
 public class ComponentRepository {
@@ -32,7 +33,7 @@ public class ComponentRepository {
 	
 	public void add(Component component) {
 		
-		String INSERT_SITE = "INSERT INTO COMPONENTS (UUID, PARENT, TYPE, SITEUUID) VALUES (?,?,?,?) ";
+		String INSERT_SITE = "INSERT INTO COMPONENTS (UUID, PARENT, TYPE, SITEUUID, PAGEUUID) VALUES (?,?,?,?,?) ";
 		
 		Connection connection = null;
 		PreparedStatement pstmt = null;
@@ -54,6 +55,7 @@ public class ComponentRepository {
 			
 			pstmt.setString(3, component.getClass().getName());
 			pstmt.setString(4, component.getSiteUuid());
+			pstmt.setString(5, component.getPageUuid());
 		
 			pstmt.execute();
 			pstmt.close();
@@ -72,11 +74,15 @@ public class ComponentRepository {
 		}
 	}
 	
+	public void edit(Component component) {
+		this.repositories.get(component.getClass().getName()).edit(component);
+	}
+	
 	public List<Component> list(String uuid){
 		
 		List<Component> results = new ArrayList<Component>();
 		
-		String SELECT_ALL = "SELECT * FROM COMPONENTS WHERE PARENT = ?";
+		String SELECT_ALL = "SELECT * FROM COMPONENTS WHERE PARENT = ? ORDER BY TIMESTAMP";
 		PreparedStatement pstmt = null;
 		Connection connection = null;
 		

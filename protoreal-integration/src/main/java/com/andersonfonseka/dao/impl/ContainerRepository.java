@@ -10,18 +10,16 @@ import com.andersonfonseka.protoreal.components.Component;
 import com.andersonfonseka.protoreal.components.Container;
 import com.andersonfonseka.protoreal.components.Row;
 
-public class ContainerRepository implements Repository {
+public class ContainerRepository implements Repository<Container> {
 	
 	private static Connection connection = null;
 	
 	public ContainerRepository() {}
 	
-	public void add(Component container) {	
+	public void add(Container container) {	
 		
 		ComponentRepository componentRepository = new ComponentRepository();
-		RowsRepository rowsRepository = new RowsRepository();
-		CellRepository cellRepository = new CellRepository();
-		
+	
 		Container container2 = (Container) container;
 		
 		for (Component row : container2.getChildrenList()) {
@@ -108,8 +106,47 @@ public class ContainerRepository implements Repository {
 	}
 
 	@Override
-	public void edit(Component component) {
-		// TODO Auto-generated method stub
+	public void edit(Container container) {
+		
+		ComponentRepository componentRepository = new ComponentRepository();
+		
+		Container container2 = (Container) container;
+		
+		for (Component row : container2.getChildrenList()) {
+			componentRepository.add(row);
+			
+			for (Component cell: row.getChildrenList()) {
+				componentRepository.add(cell);
+			}
+		}
+		
+		String INSERT_CONTAINER = "UPDATE CONTAINER SET ROWCOUNT=?, COLUMNS=? WHERE UUID=? ";
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			connection = DbConnection.getInstance().getConnection();
+			
+			pstmt = connection.prepareStatement(INSERT_CONTAINER);
+			
+			pstmt.setString(3, container2.getUuid());
+			
+			pstmt.setInt(1, container2.getRows());
+			pstmt.setInt(2, container2.getColumns());
+
+			pstmt.execute();
+			pstmt.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		
 	}
 	

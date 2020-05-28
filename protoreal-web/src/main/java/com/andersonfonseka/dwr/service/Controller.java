@@ -56,6 +56,7 @@ public class Controller {
 		
 		Component component2 = mapComponents.get(component).newInstance();
 		component2.setSiteUuid(site.getUuid());
+		component2.setPageUuid(page.getUuid());
 		
 		if (null != comp) {
 			component2.setParent(comp);
@@ -126,36 +127,41 @@ public class Controller {
 	
 	public Map<String, String> edit(Map<String, String> form, HttpSession session) throws Exception {
 		
+		PageRepository pageRepository = PageRepository.getInstance();
+		
 		Page page = (Page) session.getAttribute("page");
 		
 		String componentId = form.get("setUuid");
+		
+		ComponentRepository componentRepository = new ComponentRepository();
+		
+		Component component = componentRepository.get(componentId);
 	
 		Map<String, String> result = new HashMap<String, String>();
+			
+		Iterator<String> it = form.keySet().iterator();
 		
-		if (null != page.getFastComponents(componentId)) {
+		while(it.hasNext()) {
 			
-			Component component = page.getFastComponents(componentId);
-			
-			Iterator<String> it = form.keySet().iterator();
-			
-			while(it.hasNext()) {
-				
-				String fieldName = it.next();
-				Method method = component.getClass().getMethod(fieldName, String.class);
+			String fieldName = it.next();
+			Method method = component.getClass().getMethod(fieldName, String.class);
 
-				method.invoke(component, form.get(fieldName));
-			}
-			
-			if (component instanceof Button) {
-				PageRepository pageRepository = PageRepository.getInstance();
-				Button btn = (Button) component;
-				btn.setPage(pageRepository.get(btn.getPageUuid()));
-			}
-			
-			result.put("data", page.doRender());
-			result.put("components", getComponents(page));
+			method.invoke(component, form.get(fieldName));
 		}
 		
+		componentRepository.edit(component);
+		
+		if (component instanceof Button) {
+			Button btn = (Button) component;
+			btn.setPage(pageRepository.get(btn.getPageUuid()));
+		}
+		
+		page = pageRepository.getFull(page.getUuid());
+		
+		result.put("data", page.doRender());
+		result.put("components", getComponents(page));
+
+			
 		return result;
 	}
 	

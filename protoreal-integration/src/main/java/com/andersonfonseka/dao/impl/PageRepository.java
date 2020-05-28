@@ -194,7 +194,7 @@ public class PageRepository {
 		
 		List<Component> results = new ArrayList<Component>();
 		
-		String SELECT_ALL = "SELECT * FROM COMPONENTS WHERE PARENT = ?";
+		String SELECT_ALL = "SELECT * FROM COMPONENTS WHERE PAGEUUID = ?";
 		PreparedStatement pstmt = null;
 		
 		try {

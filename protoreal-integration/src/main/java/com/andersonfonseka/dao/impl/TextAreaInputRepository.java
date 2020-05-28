@@ -92,8 +92,35 @@ public class TextAreaInputRepository implements Repository<TextAreaInput> {
 	}
 
 	@Override
-	public void edit(TextAreaInput component) {
-		// TODO Auto-generated method stub
+	public void edit(TextAreaInput textInput) {
+		
+		String INSERT_PAGE = "UPDATE TEXTAREAINPUT SET LABEL=?, ROWCOUNT=? WHERE UUID=?";
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			connection = DbConnection.getInstance().getConnection();
+			
+			pstmt = connection.prepareStatement(INSERT_PAGE);
+			
+			pstmt.setString(3, textInput.getUuid());
+			
+			pstmt.setString(1, textInput.getLabel());
+			pstmt.setInt(2, textInput.getRows());
+			
+			pstmt.execute();
+			pstmt.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		
 	}
 	
