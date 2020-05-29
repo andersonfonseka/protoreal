@@ -1,4 +1,4 @@
-package com.andersonfonseka.dao.impl;
+package com.andersonfonseka.dao;
 
 public class DatabaseProps {
 

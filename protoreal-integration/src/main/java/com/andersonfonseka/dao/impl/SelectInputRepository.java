@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.SelectInput;
 
 public class SelectInputRepository implements Repository<SelectInput> {

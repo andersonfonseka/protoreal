@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.Cell;
 import com.andersonfonseka.protoreal.components.Row;
 
