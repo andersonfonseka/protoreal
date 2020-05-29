@@ -103,7 +103,7 @@ public class SelectInputRepository implements Repository<SelectInput> {
 	@Override
 	public void edit(SelectInput selectInput) {
 		
-		String INSERT_PAGE = "UPDATE SELECTINPUT SET  TYPE=?, LABEL=?, PLACEHOLDER=?, READONLY=?, VALUE=?, OPTIONVALUES=?) WHERE UUID=? ";
+		String INSERT_PAGE = "UPDATE SELECTINPUT SET  TYPE=?, LABEL=?, PLACEHOLDER=?, READONLY=?, VALUE=?, OPTIONVALUES=? WHERE UUID=? ";
 		PreparedStatement pstmt = null;
 		
 		try {

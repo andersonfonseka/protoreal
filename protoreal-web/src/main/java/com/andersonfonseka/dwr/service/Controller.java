@@ -171,6 +171,8 @@ public class Controller {
 	
 	public Map<String, String> remove(String componentId, HttpSession session) throws InstantiationException, IllegalAccessException{
 		
+		PageRepository pageRepository = PageRepository.getInstance();
+		
 		ComponentRepository componentRepository = new ComponentRepository();
 		
 		Component component = componentRepository.get(componentId);
@@ -184,6 +186,8 @@ public class Controller {
 		if (null != page.getFastComponents(componentId)) {
 			page.getFastComponents(componentId).setDeleted(true);
 		}
+		
+		page = pageRepository.getFull(page.getUuid());
 		
 		result.put("data", page.doRender());
 		result.put("components", getComponents(page));
