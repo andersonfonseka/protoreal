@@ -1,5 +1,7 @@
 package com.andersonfonseka.dao.impl;
 
+import java.util.List;
+
 import com.andersonfonseka.protoreal.components.Component;
 
 public interface Repository<T extends Component> {
@@ -10,6 +12,8 @@ public interface Repository<T extends Component> {
 	
 	public void edit(T component);
 	
-	public void remove(String uuid);
+	public void remove(T component);
+	
+	public List<T> list(String uuid);
 	
 }

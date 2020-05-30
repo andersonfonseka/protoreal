@@ -8,8 +8,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import com.andersonfonseka.dao.impl.ComponentRepository;
+import com.andersonfonseka.dao.impl.ComponentRepositoryFactory;
 import com.andersonfonseka.dao.impl.PageRepository;
+import com.andersonfonseka.dao.impl.Repository;
 import com.andersonfonseka.protoreal.components.Button;
 import com.andersonfonseka.protoreal.components.Card;
 import com.andersonfonseka.protoreal.components.Carousel;
@@ -25,6 +26,8 @@ import com.andersonfonseka.protoreal.components.TextAreaInput;
 import com.andersonfonseka.protoreal.components.TextInput;
 
 public class Controller {
+	
+	private Repository componentRepository = ComponentRepositoryFactory.getComponentRepository();
 	
 	private Map<String, Class<? extends Component>> mapComponents;
 	
@@ -46,13 +49,12 @@ public class Controller {
 	
 	public Map<String, String> create(String component, String parent, HttpSession session) throws InstantiationException, IllegalAccessException {
 		
-		ComponentRepository repository = new ComponentRepository();
 		PageRepository pageRepository = PageRepository.getInstance();
 		
 		Site site = (Site) session.getAttribute("site");
 		Page page = (Page) session.getAttribute("page");
 
-		Component comp = repository.get(parent);
+		Component comp = componentRepository.get(parent);
 		
 		Component component2 = mapComponents.get(component).newInstance();
 		component2.setSiteUuid(site.getUuid());
@@ -64,7 +66,7 @@ public class Controller {
 			component2.setParent(page);
 		}
 		
-		repository.add(component2);
+		componentRepository.add(component2);
 		
 		page = pageRepository.getFull(page.getUuid());
 		
@@ -104,9 +106,6 @@ public class Controller {
 	public Map<String, String> startEdit(String componentId, HttpSession session) throws InstantiationException, IllegalAccessException{
 		
 		Site site = (Site) session.getAttribute("site");
-		Page page = (Page) session.getAttribute("page");
-		
-		ComponentRepository componentRepository = new ComponentRepository();
 		
 		Map<String, String> result = new HashMap<String, String>();
 		
@@ -132,8 +131,6 @@ public class Controller {
 		Page page = (Page) session.getAttribute("page");
 		
 		String componentId = form.get("setUuid");
-		
-		ComponentRepository componentRepository = new ComponentRepository();
 		
 		Component component = componentRepository.get(componentId);
 	
@@ -172,8 +169,6 @@ public class Controller {
 	public Map<String, String> remove(String componentId, HttpSession session) throws InstantiationException, IllegalAccessException{
 		
 		PageRepository pageRepository = PageRepository.getInstance();
-		
-		ComponentRepository componentRepository = new ComponentRepository();
 		
 		Component component = componentRepository.get(componentId);
 		

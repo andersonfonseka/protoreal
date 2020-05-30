@@ -4,11 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.Row;
 
-public class RowsRepository implements Repository<Row> {
+class RowsRepository implements Repository<Row> {
 
 	private static Connection connection = null;
 
@@ -122,6 +123,18 @@ public class RowsRepository implements Repository<Row> {
 	public void edit(Row component) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void remove(Row component) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Row> list(String uuid) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

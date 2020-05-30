@@ -21,9 +21,11 @@ public class PageRepository {
 	
 	private static Connection connection = null;
 	
-	private ComponentRepository componentRepository = new ComponentRepository();
+	private ComponentRepository componentRepository;
 	
-	private PageRepository() {}
+	private PageRepository() {
+		componentRepository = new ComponentRepository();
+	}
 	
 	public static PageRepository getInstance() {
 		if (INSTANCE == null) {

@@ -3,6 +3,8 @@ package com.andersonfonseka.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+import org.jdbi.v3.core.Jdbi;
+
 public class DbConnection {
 
 	private static DbConnection instance;
@@ -24,8 +26,14 @@ public class DbConnection {
 
 		return instance;
 	}
+	
+	public Jdbi getHandle() {
+		Jdbi jdbi = Jdbi.create(this.props.getUrl(), this.props.getUser(), this.props.getPwd());
+		return jdbi;
+	}
 
 	public Connection getConnection() {
+		
 		Connection connection = null;
 
 		try {

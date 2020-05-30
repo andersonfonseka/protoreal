@@ -10,15 +10,14 @@ import java.util.List;
 import java.util.Map;
 
 import com.andersonfonseka.dao.DbConnection;
-import com.andersonfonseka.protoreal.components.Button;
 import com.andersonfonseka.protoreal.components.Component;
 
-public class ComponentRepository {
+class ComponentRepository implements Repository<Component> {
 
 	private Map<String, Repository> repositories = new HashMap<String, Repository>();
 	
 	public ComponentRepository() {
-		this.repositories.put("com.andersonfonseka.protoreal.components.Container", new ContainerRepository());
+		this.repositories.put("com.andersonfonseka.protoreal.components.Container", new ContainerRepository(this));
 		this.repositories.put("com.andersonfonseka.protoreal.components.Row", new RowsRepository());
 		this.repositories.put("com.andersonfonseka.protoreal.components.Cell", new CellRepository());
 		this.repositories.put("com.andersonfonseka.protoreal.components.TextInput", new TextInputRepository());
@@ -29,7 +28,6 @@ public class ComponentRepository {
 		this.repositories.put("com.andersonfonseka.protoreal.components.Table", new TableRepository());
 		this.repositories.put("com.andersonfonseka.protoreal.components.Jumbotron", new JumbotronRepository());
 		this.repositories.put("com.andersonfonseka.protoreal.components.Card", new CardRepository());
-		
 	}
 	
 	public void add(Component component) {
@@ -149,7 +147,7 @@ public class ComponentRepository {
 			}
 		}
 		
-		this.repositories.get(component.getClass().getName()).remove(component.getUuid());;
+		this.repositories.get(component.getClass().getName()).remove(component);
 	}
 	
 	public Component get(String uuid) {
@@ -190,5 +188,5 @@ public class ComponentRepository {
 		
 		return component;
 		
-	}
+	}	
 }

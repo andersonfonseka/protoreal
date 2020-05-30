@@ -4,22 +4,23 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.andersonfonseka.dao.DbConnection;
-import com.andersonfonseka.protoreal.components.Cell;
 import com.andersonfonseka.protoreal.components.Component;
 import com.andersonfonseka.protoreal.components.Container;
-import com.andersonfonseka.protoreal.components.Row;
 
-public class ContainerRepository implements Repository<Container> {
+class ContainerRepository implements Repository<Container> {
+	
+	private Repository componentRepository;
 	
 	private static Connection connection = null;
 	
-	public ContainerRepository() {}
+	public ContainerRepository(Repository repository) {
+		componentRepository =  repository;
+	}
 	
 	public void add(Container container) {	
-		
-		ComponentRepository componentRepository = new ComponentRepository();
 	
 		Container container2 = (Container) container;
 		
@@ -60,8 +61,6 @@ public class ContainerRepository implements Repository<Container> {
 	}
 	
 	public Container get(String uuid) {
-		
-		ComponentRepository componentRepository = new ComponentRepository();
 		
 		Container container = null; 
 		
@@ -163,7 +162,6 @@ public class ContainerRepository implements Repository<Container> {
 			}
 		}
 		
-		ComponentRepository componentRepository =  new ComponentRepository();
 		
 		for (Component row : container.getChildrenList()) {
 			componentRepository.add(row);
@@ -176,9 +174,15 @@ public class ContainerRepository implements Repository<Container> {
 	}
 
 	@Override
-	public void remove(String uuid) {
+	public void remove(Container component) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<Container> list(String uuid) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

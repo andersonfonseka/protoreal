@@ -4,12 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.Jumbotron;
-import com.andersonfonseka.protoreal.components.Label;
 
-public class JumbotronRepository implements Repository<Jumbotron> {
+class JumbotronRepository implements Repository<Jumbotron> {
 	
 	private static Connection connection = null;
 	
@@ -123,6 +123,18 @@ public class JumbotronRepository implements Repository<Jumbotron> {
 			}
 		}
 		
+	}
+
+	@Override
+	public void remove(Jumbotron component) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Jumbotron> list(String uuid) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

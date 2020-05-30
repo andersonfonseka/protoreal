@@ -4,11 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.TextAreaInput;
 
-public class TextAreaInputRepository implements Repository<TextAreaInput> {
+class TextAreaInputRepository implements Repository<TextAreaInput> {
 	
 	private static Connection connection = null;
 	
@@ -123,6 +124,18 @@ public class TextAreaInputRepository implements Repository<TextAreaInput> {
 			}
 		}
 		
+	}
+
+	@Override
+	public void remove(TextAreaInput component) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<TextAreaInput> list(String uuid) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
