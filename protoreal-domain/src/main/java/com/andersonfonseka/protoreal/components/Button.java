@@ -6,27 +6,22 @@ import java.util.List;
 import com.andersonfonseka.protoreal.components.common.SelectItem;
 import com.andersonfonseka.protoreal.components.render.ButtonRenderer;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter 
+@Setter
 public class Button extends Input {
 	
-	
 	private List<SelectItem> selectPages = new ArrayList<SelectItem>();
-	
 	private List<Component> pages = new ArrayList<Component>();
-
 	private String cssClass = "btn btn-primary";
-	
 	private List<SelectItem> cssStyles = new ArrayList<SelectItem>(); 
-	
 	private String openType = "default";
-	
 	private List<SelectItem> navOpenType = new ArrayList<SelectItem>(); 
-	
 	private String alignment = "float-left";
-	
 	private List<SelectItem> alignmentOptions = new ArrayList<SelectItem>(); 
-	
 	private Page page;
-	
 	private String pageUuid;
 	
 	public Button() {
@@ -35,14 +30,6 @@ public class Button extends Input {
 	
 	public Button(String label, String cssClass) {
 		super(label);
-		this.cssClass = cssClass;
-	}
-	
-	public String getCssClass() {
-		return cssClass;
-	}
-
-	public void setCssClass(String cssClass) {
 		this.cssClass = cssClass;
 	}
 	
@@ -62,34 +49,6 @@ public class Button extends Input {
 		}
 		
 		return selectPages;
-	}
-
-	public void setPages(List<Component> pPages) {
-		this.pages = pPages;
-	}
-
-	public String getPageUuid() {
-		return pageUuid;
-	}
-
-	public void setPageUuid(String pageUuid) {
-		this.pageUuid = pageUuid;
-	}
-	
-	public String getOpenType() {
-		return openType;
-	}
-
-	public void setOpenType(String openType) {
-		this.openType = openType;
-	}
-	
-	public Page getPage() {
-		return page;
-	}
-
-	public void setPage(Page page) {
-		this.page = page;
 	}
 	
 	public List<SelectItem> getCssStyles() {
@@ -115,12 +74,6 @@ public class Button extends Input {
 		return cssStyles;
 	}
 
-	public void setCssStyles(List<SelectItem> cssStyles) {
-		this.cssStyles = cssStyles;
-	}
-	
-	
-
 	public List<SelectItem> getNavOpenType() {
 		
 		navOpenType.clear();
@@ -140,18 +93,6 @@ public class Button extends Input {
 		return navOpenType;
 	}
 
-	public void setNavOpenType(List<SelectItem> navOpenType) {
-		this.navOpenType = navOpenType;
-	}
-	
-	public String getAlignment() {
-		return alignment;
-	}
-
-	public void setAlignment(String alignment) {
-		this.alignment = alignment;
-	}
-
 	public List<SelectItem> getAlignmentOptions() {
 		
 		alignmentOptions.clear();
@@ -168,15 +109,10 @@ public class Button extends Input {
 		return alignmentOptions;
 	}
 
-	public void setAlignmentOptions(List<SelectItem> alignmentOptions) {
-		this.alignmentOptions = alignmentOptions;
-	}
-
 	@Override
 	public String doRender() {
 		return new ButtonRenderer(this).execute();
 	}
-
 
 	@Override
 	public String doEdit() {
@@ -188,5 +124,4 @@ public class Button extends Input {
 	public String doPreview() {
 		return new ButtonRenderer(this).executePreview();
 	}
-	
 }

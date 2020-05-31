@@ -2,6 +2,11 @@ package com.andersonfonseka.protoreal.components;
 
 import com.andersonfonseka.protoreal.components.render.CardRenderer;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter 
+@Setter
 public class Card extends Component {
 	
 	private String title;
@@ -11,36 +16,13 @@ public class Card extends Component {
 	private String content;
 	
 	public Card() {
-		this("Teste", "Teste XXXX");
+		this("Teste", "Teste XXXX", "");
 	}
 	
-	public Card(String title, String subtitle) {
+	public Card(String title, String subtitle, String content) {
 		super();
 		this.title = title;
 		this.subtitle = subtitle;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getSubtitle() {
-		return subtitle;
-	}
-
-	public void setSubtitle(String subtitle) {
-		this.subtitle = subtitle;
-	}
-	
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
 		this.content = content;
 	}
 

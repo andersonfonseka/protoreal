@@ -3,7 +3,14 @@ package com.andersonfonseka.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 import org.jdbi.v3.core.Jdbi;
+
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 
 public class DbConnection {
 
@@ -28,7 +35,26 @@ public class DbConnection {
 	}
 	
 	public Jdbi getHandle() {
-		Jdbi jdbi = Jdbi.create(this.props.getUrl(), this.props.getUser(), this.props.getPwd());
+		
+		Jdbi jdbi = null;
+		
+		try {
+
+			Context initContext = new InitialContext();
+			Context envContext  = (Context)initContext.lookup("java:/comp/env");
+			
+			DataSource dataSource = (DataSource) envContext.lookup("jdbc/protoreal");
+			
+			HikariConfig hc = new HikariConfig();
+			hc.setDataSource(dataSource);
+			hc.setMaximumPoolSize(16);
+			
+			jdbi = Jdbi.create(new HikariDataSource(hc));
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return jdbi;
 	}
 
