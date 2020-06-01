@@ -2,6 +2,7 @@
 **crie protótipos completamente interativos e obtenha feedbacks do processo de forma rápida**
 
 [![Build Status](https://travis-ci.org/andersonfonseka/protoreal.svg?branch=master)](https://travis-ci.org/andersonfonseka/protoreal)
+[![BCH compliance](https://bettercodehub.com/edge/badge/andersonfonseka/protoreal?branch=master)](https://bettercodehub.com/)
 
 **por que utilizar?**
 
