@@ -188,7 +188,7 @@ public class PageAction extends DispatchAction {
 		Page pageToBeRemoved = repository.get(request.getParameter("id"));
 
 		pageToBeRemoved.getParentComponent().removeChild(pageToBeRemoved);
-		repository.remove(pageToBeRemoved.getUuid());
+		repository.remove(pageToBeRemoved);
 
 		Page page = new Page();
 		page.setUuid(request.getParameter("id"));

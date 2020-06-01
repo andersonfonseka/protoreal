@@ -1,8 +1,5 @@
 package com.andersonfonseka.dao.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.List;
 
 import org.jdbi.v3.core.Jdbi;
@@ -13,8 +10,6 @@ import com.andersonfonseka.protoreal.components.SelectInput;
 class SelectInputRepository extends RepositoryImpl implements Repository<SelectInput> {
 	
 	private static Jdbi handle;	
-	
-	private static Connection connection = null;
 	
 	public SelectInputRepository() {}
 	

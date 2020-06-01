@@ -27,6 +27,7 @@ import com.andersonfonseka.protoreal.components.TextInput;
 
 public class Controller {
 	
+	@SuppressWarnings("rawtypes")
 	private Repository componentRepository = ComponentRepositoryFactory.getComponentRepository();
 	
 	private Map<String, Class<? extends Component>> mapComponents;

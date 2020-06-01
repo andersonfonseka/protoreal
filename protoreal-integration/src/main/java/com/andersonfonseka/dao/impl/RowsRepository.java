@@ -1,6 +1,5 @@
 package com.andersonfonseka.dao.impl;
 
-import java.sql.Connection;
 import java.util.List;
 
 import org.jdbi.v3.core.Jdbi;
