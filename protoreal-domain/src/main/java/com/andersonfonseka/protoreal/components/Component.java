@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-public abstract class Component {
+public class Component {
 	
 	private String siteUuid;
 	
@@ -16,7 +16,11 @@ public abstract class Component {
 	
 	private String name;
 	
-	private Component parent;
+	private String parent;
+	
+	private Component parentComponent;
+	
+	private String type;
 	
 	private String title;
 	
@@ -38,14 +42,22 @@ public abstract class Component {
 		this.uuid = uuid;
 	}
 
-	public Component getParent() {
+	public String getParent() {
 		return parent;
 	}
 
-	public void setParent(Component parent) {
+	public void setParent(String parent) {
 		this.parent = parent;
 	}
 	
+	public Component getParentComponent() {
+		return parentComponent;
+	}
+
+	public void setParentComponent(Component parentComponent) {
+		this.parentComponent = parentComponent;
+	}
+
 	public List<Component> getChildrenList() {
 		return this.children;
 	}
@@ -55,7 +67,7 @@ public abstract class Component {
 	}
 
 	public void addChild(Component child) {
-		child.setParent(this);
+		child.setParent(this.getUuid());
 		this.children.add(child);
 		this.childrenMap.put(child.getUuid(), child);
 	}
@@ -133,12 +145,20 @@ public abstract class Component {
 	public void setDeleted(boolean deleted) {
 		this.deleted = deleted;
 	}
+	
+	public String getType() {
+		return type;
+	}
 
-	public abstract String doRender();
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String doRender() {return "";}
 	
-	public abstract String doEdit();
+	public String doEdit() {return "";}
 	
-	public abstract String doPreview();
+	public String doPreview() {return "";}
 
 	@Override
 	public int hashCode() {

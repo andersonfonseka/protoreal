@@ -1,19 +1,20 @@
 package com.andersonfonseka.dao.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.jdbi.v3.core.Jdbi;
+
 import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.Component;
 
-class ComponentRepository implements Repository<Component> {
+class ComponentRepository extends RepositoryImpl implements Repository<Component> {
+	
+	private static Jdbi handle;	
 
+	@SuppressWarnings("rawtypes")
 	private Map<String, Repository> repositories = new HashMap<String, Repository>();
 	
 	public ComponentRepository() {
@@ -32,45 +33,20 @@ class ComponentRepository implements Repository<Component> {
 	
 	public void add(Component component) {
 		
-		String INSERT_SITE = "INSERT INTO COMPONENTS (UUID, PARENT, TYPE, SITEUUID, PAGEUUID) VALUES (?,?,?,?,?) ";
+		handle = DbConnection.getInstance().getHandle();
+		handle.useHandle(handle -> {
+					handle
+						.createUpdate("INSERT INTO COMPONENTS (UUID, PARENT, TYPE, SITEUUID, PAGEUUID) VALUES (?,?,?,?,?)") 
+							.bind(0, component.getUuid())
+							.bind(1, component.getParent())
+							.bind(2, component.getClass().getName())
+							.bind(3, component.getSiteUuid())
+							.bind(4, component.getPageUuid())
+						.execute();
+			});
 		
-		Connection connection = null;
-		PreparedStatement pstmt = null;
-
 		
-		try {
-			
-			connection = DbConnection.getInstance().getConnection();
-			
-			pstmt = connection.prepareStatement(INSERT_SITE);
-			
-			pstmt.setString(1, component.getUuid());
-			
-			if (component.getParent() != null) {
-				pstmt.setString(2, component.getParent().getUuid());
-			} else {
-				pstmt.setNull(2, java.sql.Types.NULL);
-			}
-			
-			pstmt.setString(3, component.getClass().getName());
-			pstmt.setString(4, component.getSiteUuid());
-			pstmt.setString(5, component.getPageUuid());
-		
-			pstmt.execute();
-			pstmt.close();
-			
-			this.repositories.get(component.getClass().getName()).add(component);
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
+		this.repositories.get(component.getClass().getName()).add(component);
 	}
 	
 	public void edit(Component component) {
@@ -79,40 +55,18 @@ class ComponentRepository implements Repository<Component> {
 	
 	public List<Component> list(String uuid){
 		
+		handle = DbConnection.getInstance().getHandle();
+		
+		List<Component> components = handle.withHandle(handle -> 
+			 handle.createQuery("SELECT * FROM COMPONENTS WHERE PARENT = ? ORDER BY TIMESTAMP")
+			.bind(0, uuid)
+            .mapToBean(Component.class)
+            .list());
+		
 		List<Component> results = new ArrayList<Component>();
 		
-		String SELECT_ALL = "SELECT * FROM COMPONENTS WHERE PARENT = ? ORDER BY TIMESTAMP";
-		PreparedStatement pstmt = null;
-		Connection connection = null;
-		
-		try {
-			
-			connection = DbConnection.getInstance().getConnection();
-			
-			pstmt = connection.prepareStatement(SELECT_ALL);
-			
-			pstmt.setString(1, uuid);
-			
-			ResultSet resultSet = pstmt.executeQuery();
-			
-			while(resultSet.next()) {
-				
-				String type = resultSet.getString(3);
-				results.add(this.repositories.get(type).get(resultSet.getString(1)));
-			}
-			
-			pstmt.execute();
-			pstmt.close();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		for (Component component : components) {
+			results.add(this.repositories.get(component.getType()).get(component.getUuid()));
 		}
 		
 		return results;
@@ -120,72 +74,18 @@ class ComponentRepository implements Repository<Component> {
 
 	
 	public void remove(Component component) {
-		
-		String GET_SITE = "DELETE FROM COMPONENTS WHERE UUID=?";
-		PreparedStatement pstmt = null;
-		Connection connection = null;
-		
-		try {
-			
-			connection = DbConnection.getInstance().getConnection();
-			
-			pstmt = connection.prepareStatement(GET_SITE);
-			
-			pstmt.setString(1, component.getUuid());
-			
-			pstmt.execute();
-			pstmt.close();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
+		remove(component.getUuid(), "DELETE FROM COMPONENTS WHERE UUID=?");
 		this.repositories.get(component.getClass().getName()).remove(component);
 	}
 	
 	public Component get(String uuid) {
 		
-		Component component = null;
+		Component component = (Component) get(uuid, "SELECT * FROM COMPONENTS WHERE UUID=?", Component.class);
 		
-		String GET_SITE = "SELECT * FROM COMPONENTS WHERE UUID=?";
-		PreparedStatement pstmt = null;
-		Connection connection = null;
-		
-		try {
-			
-			connection = DbConnection.getInstance().getConnection();
-			
-			pstmt = connection.prepareStatement(GET_SITE);
-			
-			pstmt.setString(1, uuid);
-			
-			ResultSet resultSet = pstmt.executeQuery();
-			
-			while(resultSet.next()) {
-				component = this.repositories.get(resultSet.getString(3)).get(resultSet.getString(1));
-			}
-			
-			pstmt.execute();
-			pstmt.close();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		if (null != component) {
+			component = this.repositories.get(component.getType()).get(component.getUuid());
 		}
-		
+				
 		return component;
 		
 	}	

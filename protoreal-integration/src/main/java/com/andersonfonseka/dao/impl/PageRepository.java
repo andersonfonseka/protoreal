@@ -38,7 +38,7 @@ public class PageRepository {
 	public void add(Page page) {
 		this.repository.put(page.getUuid(), page);
 		
-		String INSERT_PAGE = "INSERT INTO PAGE (UUID, NAME, TITLE, DESCRIPTION, DISPLAYONMENU, HIDEMENU, SHOWTITLE, CONTAINERTYPE, PARENT, SITEUUID) VALUES (?,?,?,?,?,?,?,?,?,?) ";
+		String INSERT_PAGE = "INSERT INTO PAGE (UUID, NAME, TITLE, DESCRIPTION, DISPLAYONMENU, HIDEMENU, SHOWTITLE, CONTAINERTYPE, PARENT, SITEUUID) VALUES (?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement pstmt = null;
 		
 		try {
@@ -55,7 +55,7 @@ public class PageRepository {
 			pstmt.setString(6, Boolean.valueOf(page.isHideMenu()).toString());
 			pstmt.setString(7, Boolean.valueOf(page.isShowTitle()).toString());
 			pstmt.setString(8, page.getContainerType());
-			pstmt.setString(9, page.getParent().getUuid());
+			pstmt.setString(9, page.getParent());
 			pstmt.setString(10, page.getSiteUuid());
 			
 			
@@ -109,11 +109,11 @@ public class PageRepository {
 				Page parent = new Page();
 						parent.setUuid(resultSet.getString(9));
 				
-				page.setParent(parent);
+				page.setParent(parent.getUuid());
 				
 				page.setSiteUuid(resultSet.getString(10));
 				
-				if (page.getParent().getUuid().equals(page.getSiteUuid())) {
+				if (page.getParent().equals(page.getSiteUuid())) {
 					list(page.getUuid(), page.getChildrenList());
 				}
 				
@@ -168,7 +168,7 @@ public class PageRepository {
 				Page parent = new Page();
 						parent.setUuid(resultSet.getString(9));
 				
-				page.setParent(parent);
+				page.setParent(parent.getUuid());
 				
 				page.setSiteUuid(resultSet.getString(10));
 				results.add(page);
@@ -252,7 +252,7 @@ public class PageRepository {
 			pstmt.setString(5, Boolean.valueOf(page.isHideMenu()).toString());
 			pstmt.setString(6, Boolean.valueOf(page.isShowTitle()).toString());
 			pstmt.setString(7, page.getContainerType());
-			pstmt.setString(8, page.getParent().getUuid());
+			pstmt.setString(8, page.getParent());
 			pstmt.setString(9, page.getUuid());
 			
 			pstmt.execute();
@@ -307,7 +307,8 @@ public class PageRepository {
 				Page parent = new Page();
 						parent.setUuid(resultSet.getString(9));
 				
-				page.setParent(parent);
+				page.setParent(parent.getUuid());
+				page.setParentComponent(parent);
 				
 				page.setSiteUuid(resultSet.getString(10));
 				

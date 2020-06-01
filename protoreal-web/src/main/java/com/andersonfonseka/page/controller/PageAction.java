@@ -128,14 +128,14 @@ public class PageAction extends DispatchAction {
 			
 			if (null != site && null != parentPage) {
 
-				page.setParent(parentPage);
+				page.setParentComponent(parentPage);
 				site.addChild(page);
 			
 				parentPage.addChild(page);
 
 			} else {
 
-				page.setParent(site);
+				page.setParentComponent(site);
 				site.addChild(page);
 			}
 
@@ -157,14 +157,14 @@ public class PageAction extends DispatchAction {
 			if (null != site && null != parentPage) {
 
 				if (page.getParent() != null) {
-					page.getParent().removeChild(page);
+					page.getParentComponent().removeChild(page);
 				}
 				
-				page.setParent(parentPage);
+				page.setParentComponent(parentPage);
 				parentPage.addChild(page);
 
 			} else {
-				page.setParent(site);
+				page.setParentComponent(site);
 			}
 
 			pageRepository.edit(page);
@@ -187,7 +187,7 @@ public class PageAction extends DispatchAction {
 		PageRepository repository = PageRepository.getInstance();
 		Page pageToBeRemoved = repository.get(request.getParameter("id"));
 
-		pageToBeRemoved.getParent().removeChild(pageToBeRemoved);
+		pageToBeRemoved.getParentComponent().removeChild(pageToBeRemoved);
 		repository.remove(pageToBeRemoved.getUuid());
 
 		Page page = new Page();

@@ -1,134 +1,52 @@
 package com.andersonfonseka.dao.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
+
+import org.jdbi.v3.core.Jdbi;
 
 import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.Jumbotron;
 
-class JumbotronRepository implements Repository<Jumbotron> {
+class JumbotronRepository extends RepositoryImpl implements Repository<Jumbotron> {
 	
-	private static Connection connection = null;
+	private static Jdbi handle;	
 	
 	public JumbotronRepository() {}
 	
 	public void add(Jumbotron jumbotron) {
 		
-		String INSERT_PAGE = "INSERT INTO JUMBOTRON (UUID, TITLE, SUBTITLE) VALUES (?,?,?)";
-		PreparedStatement pstmt = null;
-		
-		try {
-			
-			connection = DbConnection.getInstance().getConnection();
-			
-			pstmt = connection.prepareStatement(INSERT_PAGE);
-			
-			pstmt.setString(1, jumbotron.getUuid());
-			pstmt.setString(2, jumbotron.getTitle());
-			pstmt.setString(3, jumbotron.getSubtitle());
-			
-			pstmt.execute();
-			pstmt.close();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
-	
-	public void remove(String uuid) {
-	//	this.repository.remove(uuid);
+		handle = DbConnection.getInstance().getHandle();
+		handle.useHandle(handle -> {
+					handle
+						.createUpdate("INSERT INTO JUMBOTRON (UUID, TITLE, SUBTITLE) VALUES (?,?,?)") 
+							.bind(0, jumbotron.getUuid())
+							.bind(1, jumbotron.getTitle())
+							.bind(2, jumbotron.getSubtitle())
+						.execute();
+			});
 	}
 	
 	public Jumbotron get(String uuid) {
-		
-		Jumbotron jumbotron = null;
-		
-		String SELECT_ALL = "SELECT * FROM JUMBOTRON WHERE UUID = ?";
-		PreparedStatement pstmt = null;
-		
-		try {
-			
-			connection = DbConnection.getInstance().getConnection();
-			
-			pstmt = connection.prepareStatement(SELECT_ALL);
-			
-			pstmt.setString(1, uuid);
-			
-			ResultSet resultSet = pstmt.executeQuery();
-			
-			while(resultSet.next()) {
-				
-				jumbotron = new Jumbotron();
-				
-				jumbotron.setUuid(resultSet.getString(1));
-				jumbotron.setTitle(resultSet.getString(2));
-				jumbotron.setSubtitle(resultSet.getString(3));
-			}
-			
-			pstmt.execute();
-			pstmt.close();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return jumbotron;
+		return (Jumbotron) get(uuid, "SELECT * FROM JUMBOTRON WHERE UUID = ?", Jumbotron.class);
 	}
 
 	@Override
 	public void edit(Jumbotron jumbotron) {
-		String EDIT_JUMBOTRON = "UPDATE JUMBOTRON SET TITLE=?, SUBTITLE=? WHERE UUID=?";
-		PreparedStatement pstmt = null;
 		
-		try {
-			
-			connection = DbConnection.getInstance().getConnection();
-			
-			pstmt = connection.prepareStatement(EDIT_JUMBOTRON);
-			
-			pstmt.setString(3, jumbotron.getUuid());
-			
-			pstmt.setString(1, jumbotron.getTitle());
-			pstmt.setString(2, jumbotron.getSubtitle());
-			
-			pstmt.execute();
-			pstmt.close();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
+		handle = DbConnection.getInstance().getHandle();
+		handle.useHandle(handle -> {
+					handle
+						.createUpdate("UPDATE JUMBOTRON SET TITLE=?, SUBTITLE=? WHERE UUID=?") 
+							.bind(2, jumbotron.getUuid())
+							.bind(0, jumbotron.getTitle())
+							.bind(1, jumbotron.getSubtitle())
+						.execute();
+			});
 	}
 
 	@Override
 	public void remove(Jumbotron component) {
-		// TODO Auto-generated method stub
-		
+		remove(component.getUuid(), "DELETE FROM JUMBOTRON WHERE UUID=?");
 	}
 
 	@Override

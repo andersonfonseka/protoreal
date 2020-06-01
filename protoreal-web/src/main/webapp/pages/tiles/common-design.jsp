@@ -117,7 +117,7 @@
 
 					<div class="row">
 						<div class="col-sm-9">
-							<bean:write name="page" property="parent.title" />
+							<bean:write name="page" property="parentComponent.title" />
 							>>
 							<bean:write name="page" property="title" />
 						</div>

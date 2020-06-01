@@ -76,7 +76,7 @@ public class Site extends Component {
 						continue;
 					}
 					
-					if (page.getPagesDisplayOnMenu().isEmpty() && page.getSiteUuid().equals(page.getParent().getUuid())) {
+					if (page.getPagesDisplayOnMenu().isEmpty() && page.getSiteUuid().equals(page.getParent())) {
 						
 						NavLink navLink = new NavLink(page.getTitle());
 						navLink.setSiteUuid(page.getSiteUuid());

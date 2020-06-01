@@ -1,22 +1,20 @@
 package com.andersonfonseka.dao.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
+
+import org.jdbi.v3.core.Jdbi;
 
 import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.Component;
 import com.andersonfonseka.protoreal.components.Container;
 
-class ContainerRepository implements Repository<Container> {
+class ContainerRepository extends RepositoryImpl implements Repository<Container> {
 	
-	private Repository componentRepository;
+	private Repository<Component> componentRepository;
 	
-	private static Connection connection = null;
+	private static Jdbi handle;	
 	
-	public ContainerRepository(Repository repository) {
+	public ContainerRepository(Repository<Component> repository) {
 		componentRepository =  repository;
 	}
 	
@@ -32,136 +30,42 @@ class ContainerRepository implements Repository<Container> {
 			}
 		}
 		
-		String INSERT_CONTAINER = "INSERT INTO CONTAINER (UUID, ROWCOUNT, COLUMNS) VALUES (?,?,?) ";
-		PreparedStatement pstmt = null;
-		
-		try {
-			
-			connection = DbConnection.getInstance().getConnection();
-			
-			pstmt = connection.prepareStatement(INSERT_CONTAINER);
-			
-			pstmt.setString(1, container2.getUuid());
-			pstmt.setInt(2, container2.getRows());
-			pstmt.setInt(3, container2.getColumns());
-
-			pstmt.execute();
-			pstmt.close();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
+		handle = DbConnection.getInstance().getHandle();
+		handle.useHandle(handle -> {
+					handle
+						.createUpdate("INSERT INTO CONTAINER (UUID, ROWCOUNT, COLUMNS) VALUES (?,?,?)") 
+							.bind(0, container.getUuid())
+							.bind(1, container.getRows())
+							.bind(2, container.getColumns())
+						.execute();
+			});
 	}
 	
 	public Container get(String uuid) {
 		
-		Container container = null; 
+		Container container = (Container) get(uuid, "SELECT * FROM CONTAINER WHERE UUID = ?", Container.class);
 		
-		String SELECT_ALL = "SELECT * FROM CONTAINER WHERE UUID = ?";
-		PreparedStatement pstmt = null;
-		
-		try {
-			
-			connection = DbConnection.getInstance().getConnection();
-			
-			pstmt = connection.prepareStatement(SELECT_ALL);
-			
-			pstmt.setString(1, uuid);
-			
-			ResultSet resultSet = pstmt.executeQuery();
-			
-			while(resultSet.next()) {
-				
-				container = new Container();
-				
-				container.setUuid(resultSet.getString(1));
-				container.setRows(resultSet.getString(2));
-				container.setColumns(resultSet.getString(3));
-				
-				container.setChildren(componentRepository.list(container.getUuid()));
-			}
-			
-			pstmt.execute();
-			pstmt.close();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		if (null != container) {
+			container.setChildren(componentRepository.list(container.getUuid()));
 		}
-		
+			
 		return container;
 	}
 
 	@Override
 	public void edit(Container container) {
 		
-	
-		String SELECT_ALL = "DELETE FROM COMPONENTS WHERE PARENT = ?";
-		PreparedStatement pstmt = null;
-
-		try {
-
-			connection = DbConnection.getInstance().getConnection();
-
-			pstmt = connection.prepareStatement(SELECT_ALL);
-
-			pstmt.setString(1, container.getUuid());
-
-			pstmt.execute();
-			pstmt.close();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
+		remove(container.getUuid(),  "DELETE FROM COMPONENTS WHERE PARENT = ?");
 		
-		
-		String INSERT_CONTAINER = "UPDATE CONTAINER SET ROWCOUNT=?, COLUMNS=? WHERE UUID=? ";
-		
-		try {
-			
-			connection = DbConnection.getInstance().getConnection();
-			
-			pstmt = connection.prepareStatement(INSERT_CONTAINER);
-			
-			pstmt.setString(3, container.getUuid());
-			
-			pstmt.setInt(1, container.getRows());
-			pstmt.setInt(2, container.getColumns());
-
-			pstmt.execute();
-			pstmt.close();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
+		handle = DbConnection.getInstance().getHandle();
+		handle.useHandle(handle -> {
+					handle
+						.createUpdate("UPDATE CONTAINER SET ROWCOUNT=?, COLUMNS=? WHERE UUID=?") 
+							.bind(2, container.getUuid())
+							.bind(0, container.getRows())
+							.bind(1, container.getColumns())
+						.execute();
+			});
 		
 		for (Component row : container.getChildrenList()) {
 			componentRepository.add(row);
@@ -174,15 +78,9 @@ class ContainerRepository implements Repository<Container> {
 	}
 
 	@Override
-	public void remove(Container component) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void remove(Container component) {}
 
 	@Override
-	public List<Container> list(String uuid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public List<Container> list(String uuid) {return null;}
 	
 }

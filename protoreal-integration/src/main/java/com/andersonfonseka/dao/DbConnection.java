@@ -17,12 +17,25 @@ public class DbConnection {
 	private static DbConnection instance;
 	
 	private DatabaseProps props = new DatabaseProps();
+	
+	private HikariConfig hc;
 
 	private DbConnection(){
 		
-		props.setUrl("jdbc:mysql://localhost/protoreal");
-		props.setPwd("root");
-		props.setUser("root");
+		try {
+
+			Context initContext = new InitialContext();
+			Context envContext  = (Context)initContext.lookup("java:/comp/env");
+			
+			DataSource dataSource = (DataSource) envContext.lookup("jdbc/protoreal");
+			
+			hc = new HikariConfig();
+			hc.setDataSource(dataSource);
+			hc.setMaximumPoolSize(5);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 
@@ -36,31 +49,18 @@ public class DbConnection {
 	
 	public Jdbi getHandle() {
 		
-		Jdbi jdbi = null;
-		
-		try {
-
-			Context initContext = new InitialContext();
-			Context envContext  = (Context)initContext.lookup("java:/comp/env");
-			
-			DataSource dataSource = (DataSource) envContext.lookup("jdbc/protoreal");
-			
-			HikariConfig hc = new HikariConfig();
-			hc.setDataSource(dataSource);
-			hc.setMaximumPoolSize(16);
-			
-			jdbi = Jdbi.create(new HikariDataSource(hc));
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
+		Jdbi jdbi = Jdbi.create(new HikariDataSource(hc));
 		return jdbi;
 	}
 
 	public Connection getConnection() {
 		
 		Connection connection = null;
+		
+		props.setUrl("jdbc:mysql://localhost:3306/protoreal");
+		props.setUser("root");
+		props.setPwd("root");
+		
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");

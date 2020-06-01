@@ -61,9 +61,9 @@ public class Controller {
 		component2.setPageUuid(page.getUuid());
 		
 		if (null != comp) {
-			component2.setParent(comp);
+			component2.setParentComponent(comp);
 		} else {
-			component2.setParent(page);
+			component2.setParentComponent(page);
 		}
 		
 		componentRepository.add(component2);

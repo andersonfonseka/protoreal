@@ -1,111 +1,47 @@
 package com.andersonfonseka.dao.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
+
+import org.jdbi.v3.core.Jdbi;
 
 import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.Cell;
 
-class CellRepository implements Repository<Cell> {
+class CellRepository extends RepositoryImpl implements Repository<Cell> {
 	
-	private static Connection connection = null;
+	private static Jdbi handle;	
 	
 	public CellRepository() {}
 	
 	public void add(Cell cell) {
 		
-		String INSERT_PAGE = "INSERT INTO CELL (UUID) VALUES (?) ";
-		PreparedStatement pstmt = null;
-		
-		try {
-			
-			connection = DbConnection.getInstance().getConnection();
-			
-			pstmt = connection.prepareStatement(INSERT_PAGE);
-			
-			pstmt.setString(1, cell.getUuid());
-			
-			pstmt.execute();
-			pstmt.close();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
+		handle = DbConnection.getInstance().getHandle();
+		handle.useHandle(handle -> {
+					handle
+						.createUpdate("INSERT INTO CELL (UUID) VALUES (?)") 
+							.bind(0, cell.getUuid())
+						.execute();
+			});
 	}
 	
 	public Cell get(String uuid) {
 		
 		ComponentRepository componentRepository = new ComponentRepository();
 		
-		Cell cell = null;
-		
-		String SELECT_ALL = "SELECT * FROM CELL WHERE UUID = ?";
-		PreparedStatement pstmt = null;
-		
-		try {
-			
-			connection = DbConnection.getInstance().getConnection();
-			
-			pstmt = connection.prepareStatement(SELECT_ALL);
-			
-			pstmt.setString(1, uuid);
-			
-			ResultSet resultSet = pstmt.executeQuery();
-			
-			while(resultSet.next()) {
-				
-				cell = new Cell();
-				
-				cell.setUuid(resultSet.getString(1));
-				
-				cell.setChildren(componentRepository.list(cell.getUuid()));
-				
-			}
-			
-			pstmt.execute();
-			pstmt.close();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
+		Cell cell  = (Cell) get(uuid, "SELECT * FROM CELL WHERE UUID = ?", Cell.class);
+		cell.setChildren(componentRepository.list(cell.getUuid()));
 		
 		return cell;
 	}
 
 	@Override
-	public void edit(Cell component) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void edit(Cell component) {}
 
 	@Override
-	public void remove(Cell component) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void remove(Cell component) {}
 
 	@Override
-	public List<Cell> list(String uuid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public List<Cell> list(String uuid) {return null;}
 	
 	
 	

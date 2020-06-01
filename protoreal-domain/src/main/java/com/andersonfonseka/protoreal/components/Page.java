@@ -34,11 +34,11 @@ public class Page extends Component {
 	
 	public Site getSite() {
 		
-		if (getParent() instanceof Site) {
-			return (Site) getParent();
+		if (getParentComponent() instanceof Site) {
+			return (Site) getParentComponent();
 		}
 		
-		return (Site) ((Page) getParent()).getParent();
+		return (Site) ((Page) getParentComponent()).getParentComponent();
 	}
 
 	public Page(String title) {
