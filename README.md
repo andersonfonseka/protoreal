@@ -1,6 +1,8 @@
 # protoreal
 **crie protótipos completamente interativos e obtenha feedbacks do processo de forma rápida**
 
+[![Build Status](https://travis-ci.org/andersonfonseka/protoreal.svg?branch=master)](https://travis-ci.org/andersonfonseka/protoreal)
+
 **por que utilizar?**
 
 - construa e faça um test-drive de suas interações rapidamente;
