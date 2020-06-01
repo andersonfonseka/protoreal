@@ -1,150 +1,59 @@
 package com.andersonfonseka.dao.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
+
+import org.jdbi.v3.core.Jdbi;
 
 import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.TextInput;
 
-class TextInputRepository implements Repository<TextInput> {
+class TextInputRepository extends RepositoryImpl implements Repository<TextInput> {
 	
-	private static Connection connection = null;
-	
-	public TextInputRepository() {}
+	private static Jdbi handle;	
 	
 	public void add(TextInput textInput) {
 		
-		String INSERT_PAGE = "INSERT INTO TEXTINPUT (UUID, TYPE, LABEL, PLACEHOLDER, READONLY, VALUE) VALUES (?,?,?,?,?,?) ";
-		PreparedStatement pstmt = null;
-		
-		try {
-			
-			connection = DbConnection.getInstance().getConnection();
-			
-			pstmt = connection.prepareStatement(INSERT_PAGE);
-			
-			pstmt.setString(1, textInput.getUuid());
-			pstmt.setString(2, textInput.getType());
-			pstmt.setString(3, textInput.getLabel());
-			pstmt.setString(4, textInput.getPlaceholder());
-			pstmt.setString(5, textInput.getReadonly());
-			pstmt.setString(6, textInput.getValue());
-			
-			pstmt.execute();
-			pstmt.close();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
-	
-	public void remove(String uuid) {
-	//	this.repository.remove(uuid);
+		handle = DbConnection.getInstance().getHandle();
+		handle.useHandle(handle -> {
+					handle
+						.createUpdate("INSERT INTO TEXTINPUT (UUID, TYPE, LABEL, PLACEHOLDER, READONLY, VALUE) VALUES (?,?,?,?,?,?)") 
+							.bind(0, textInput.getUuid())
+							.bind(1, textInput.getType())
+							.bind(2, textInput.getLabel())
+							.bind(3, textInput.getPlaceholder())
+							.bind(4, textInput.getReadonly())
+							.bind(5, textInput.getValue())
+						.execute();
+			});
 	}
 	
 	public TextInput get(String uuid) {
-		
-		TextInput textInput = null;
-		
-		String SELECT_ALL = "SELECT * FROM TEXTINPUT WHERE UUID = ?";
-		PreparedStatement pstmt = null;
-		
-		try {
-			
-			connection = DbConnection.getInstance().getConnection();
-			
-			pstmt = connection.prepareStatement(SELECT_ALL);
-			
-			pstmt.setString(1, uuid);
-			
-			ResultSet resultSet = pstmt.executeQuery();
-			
-			while(resultSet.next()) {
-				
-				textInput = new TextInput();
-				
-				textInput.setUuid(resultSet.getString(1));
-				textInput.setType(resultSet.getString(2));
-				textInput.setLabel(resultSet.getString(3));
-				textInput.setPlaceholder(resultSet.getString(4));
-				textInput.setReadonly(resultSet.getString(5));
-				textInput.setValue(resultSet.getString(6));
-				
-			}
-			
-			pstmt.execute();
-			pstmt.close();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return textInput;
+		return (TextInput) get(uuid, "SELECT * FROM TEXTINPUT WHERE UUID = ?", TextInput.class);
 	}
 
 	@Override
 	public void edit(TextInput textInput) {
 		
-		String INSERT_PAGE = "UPDATE TEXTINPUT SET TYPE=?, LABEL=?, PLACEHOLDER=?, READONLY=?, VALUE=? WHERE UUID=? ";
-		PreparedStatement pstmt = null;
-		
-		try {
-			
-			connection = DbConnection.getInstance().getConnection();
-			
-			pstmt = connection.prepareStatement(INSERT_PAGE);
-			
-			pstmt.setString(6, textInput.getUuid());
-			pstmt.setString(1, textInput.getType());
-			pstmt.setString(2, textInput.getLabel());
-			pstmt.setString(3, textInput.getPlaceholder());
-			pstmt.setString(4, textInput.getReadonly());
-			pstmt.setString(5, textInput.getValue());
-			
-			pstmt.execute();
-			pstmt.close();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				pstmt.close();
-				connection.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
+		handle = DbConnection.getInstance().getHandle();
+		handle.useHandle(handle -> {
+					handle
+						.createUpdate("UPDATE TEXTINPUT SET TYPE=?, LABEL=?, PLACEHOLDER=?, READONLY=?, VALUE=? WHERE UUID=?") 
+							.bind(5, textInput.getUuid())
+							.bind(0, textInput.getType())
+							.bind(1, textInput.getLabel())
+							.bind(2, textInput.getPlaceholder())
+							.bind(3, textInput.getReadonly())
+							.bind(4, textInput.getValue())
+						.execute();
+			});
 	}
 
 	@Override
 	public void remove(TextInput component) {
-		// TODO Auto-generated method stub
-		
+		remove(component.getUuid(), "DELETE FROM TEXTINPUT WHERE UUID = ?");
 	}
 
 	@Override
-	public List<TextInput> list(String uuid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public List<TextInput> list(String uuid) {return null;}
 	
 }
