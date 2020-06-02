@@ -1,15 +1,16 @@
 package com.andersonfonseka.dao.impl;
 
-import java.awt.Button;
+
 import java.util.List;
 
 import org.jdbi.v3.core.Jdbi;
 
 import com.andersonfonseka.dao.DbConnection;
+import com.andersonfonseka.protoreal.components.impl.Button;
 import com.andersonfonseka.protoreal.components.spec.IButton;
 import com.andersonfonseka.protoreal.components.spec.IComponent;
 
-class ButtonRepository extends RepositoryImpl {
+class ButtonRepository extends RepositoryImpl implements Repository<IButton> {
 	
 	private static Jdbi handle;	
 	

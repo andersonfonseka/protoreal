@@ -7,7 +7,7 @@ import org.jdbi.v3.core.Jdbi;
 import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.TextAreaInput;
 
-class TextAreaInputRepository extends RepositoryImpl {
+class TextAreaInputRepository extends RepositoryImpl implements Repository<TextAreaInput> {
 	
 	private static Jdbi handle;	
 	

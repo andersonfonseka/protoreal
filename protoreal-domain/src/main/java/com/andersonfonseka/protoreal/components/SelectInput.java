@@ -40,6 +40,11 @@ public class SelectInput extends Input {
 		return sb.toString();
 	}
 	
+	public void setOptionValues(String pOptions) {
+		String[] options = pOptions.split(";");
+		this.options = Arrays.asList(options);
+	}
+	
 	public void setOptions(String pOptions) {
 		String[] options = pOptions.split(";");
 		this.options = Arrays.asList(options);

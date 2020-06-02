@@ -26,8 +26,6 @@ public interface IComponent {
 	
 	public void setTitle(String title);
 	
-	public String getSimpleName();
-	
 	public String getName();
 
 	public void setName(String name);

@@ -8,7 +8,7 @@ import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.Jumbotron;
 import com.andersonfonseka.protoreal.components.spec.IComponent;
 
-class JumbotronRepository extends RepositoryImpl {
+class JumbotronRepository extends RepositoryImpl implements Repository<Jumbotron> {
 	
 	private static Jdbi handle;	
 	

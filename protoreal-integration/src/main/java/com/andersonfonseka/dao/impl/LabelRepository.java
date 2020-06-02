@@ -8,7 +8,7 @@ import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.Label;
 import com.andersonfonseka.protoreal.components.spec.IComponent;
 
-class LabelRepository extends RepositoryImpl {
+class LabelRepository extends RepositoryImpl implements Repository<Label> {
 	
 	private static Jdbi handle;	
 	
@@ -23,8 +23,8 @@ class LabelRepository extends RepositoryImpl {
 							.bind(0, label.getUuid())
 							.bind(1, label.getType())
 							.bind(2, label.getStyle())
-							.bind(2, label.getLabel())
-							.bind(2, label.getValue())
+							.bind(3, label.getLabel())
+							.bind(4, label.getValue())
 						.execute();
 			});
 	}

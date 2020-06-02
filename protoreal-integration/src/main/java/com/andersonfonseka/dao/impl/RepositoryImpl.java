@@ -1,6 +1,5 @@
 package com.andersonfonseka.dao.impl;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.jdbi.v3.core.Jdbi;
@@ -8,7 +7,7 @@ import org.jdbi.v3.core.Jdbi;
 import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.spec.IComponent;
 
-public class RepositoryImpl implements Repository<IComponent> {
+public abstract class RepositoryImpl {
 
 	private static Jdbi handle;
 
@@ -38,30 +37,4 @@ public class RepositoryImpl implements Repository<IComponent> {
             .execute());
 	}
 
-	public void add(IComponent component) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void edit(IComponent component) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void remove(IComponent component) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public IComponent get(String uuid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<? extends IComponent> list(String uuid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 }

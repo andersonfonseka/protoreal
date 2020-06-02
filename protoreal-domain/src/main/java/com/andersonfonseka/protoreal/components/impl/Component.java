@@ -59,7 +59,7 @@ public class Component implements IComponent {
 		this.children.remove(child);
 	}
 	
-	public String getSimpleName() {
+	public String toString() {
 		String simpleUuid = this.uuid.substring(0, this.uuid.indexOf("-"));
 		return this.getClass().getSimpleName() + "-" + simpleUuid;
 	}

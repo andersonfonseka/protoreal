@@ -7,11 +7,11 @@ import com.andersonfonseka.protoreal.components.impl.Component;
 
 public interface IContainer extends IComponent {
 	
-	public int getRows();
+	public String getRows();
 
 	public void setRows(String rows);
 
-	public int getColumns();
+	public String getColumns();
 
 	public void setColumns(String columns);
 	
@@ -21,6 +21,6 @@ public interface IContainer extends IComponent {
 
 	public Collection<Row> getRowsList();
 	
-	public void configure(int rows, int columns);
+	public void configure(String rows, String columns);
 
 }

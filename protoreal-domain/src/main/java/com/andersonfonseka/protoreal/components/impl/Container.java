@@ -16,48 +16,46 @@ import lombok.Setter;
 @Setter
 public class Container extends Component implements IContainer {
 
-	private int rows;
+	private String rows;
 	
-	private int columns;
+	private String rowCount;
+	
+	private String columns;
 	
 	private Map<Integer, Row> rowsMap = new HashMap<Integer, Row>();
 	
 	public Container() {
-		this(2, 2);
+		this("2", "2");
 	}
 	
-	public Container(int rows, int columns) {
+	public Container(String rows, String columns) {
 		super();
 		configure(rows, columns);
 	}
 
-	public void configure(int rows, int columns) {
+	public void configure(String rows, String columns) {
 		
 		this.getChildrenList().clear();
 		this.rowsMap.clear();
 		
 		
-		this.rows = rows;
-		this.columns = columns;
+		this.rows = String.valueOf(rows);
+		this.columns = String.valueOf(columns);
 		
-		for (int i = 0; i < this.rows; i++) {
+		for (int i = 0; i <  Integer.valueOf(rows).intValue(); i++) {
 			
 			Row row = new Row();
 			rowsMap.put(i, row);
 			this.addChild(row);
 			
-			for (int j = 0; j < this.columns; j++) {
+			for (int j = 0; j < Integer.valueOf(columns).intValue(); j++) {
 				row.addCell(j, new Cell());
 			}
 		}
 	}
-
-	public void setColumns(String columns) {
-		this.columns = Integer.valueOf(columns);
-	}
 	
 	public void setRows(String rows) {
-		this.rows = Integer.valueOf(rows);
+		this.rows = rows;
 	}
 	
 	public void addComponent(int row, int column, Component component) {

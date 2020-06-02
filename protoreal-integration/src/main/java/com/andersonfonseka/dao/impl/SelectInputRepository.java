@@ -8,7 +8,7 @@ import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.SelectInput;
 import com.andersonfonseka.protoreal.components.spec.IComponent;
 
-class SelectInputRepository extends RepositoryImpl {
+class SelectInputRepository extends RepositoryImpl implements Repository<SelectInput> {
 	
 	private static Jdbi handle;	
 	

@@ -10,7 +10,7 @@ import com.andersonfonseka.protoreal.components.impl.Container;
 import com.andersonfonseka.protoreal.components.spec.IComponent;
 import com.andersonfonseka.protoreal.components.spec.IContainer;
 
-class ContainerRepository extends RepositoryImpl {
+class ContainerRepository extends RepositoryImpl implements Repository<IContainer> {
 	
 	private Repository<IComponent> componentRepository;
 	

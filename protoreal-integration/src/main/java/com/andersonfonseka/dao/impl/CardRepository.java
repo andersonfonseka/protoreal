@@ -8,7 +8,7 @@ import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.Card;
 import com.andersonfonseka.protoreal.components.spec.IComponent;
 
-class CardRepository extends RepositoryImpl {
+class CardRepository extends RepositoryImpl implements Repository<Card> {
 	
 	private static Jdbi handle;	
 	

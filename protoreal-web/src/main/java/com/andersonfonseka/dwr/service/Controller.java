@@ -11,42 +11,21 @@ import javax.servlet.http.HttpSession;
 import com.andersonfonseka.dao.impl.ComponentRepositoryFactory;
 import com.andersonfonseka.dao.impl.PageRepository;
 import com.andersonfonseka.dao.impl.Repository;
-import com.andersonfonseka.protoreal.components.Card;
-import com.andersonfonseka.protoreal.components.Carousel;
-import com.andersonfonseka.protoreal.components.Jumbotron;
-import com.andersonfonseka.protoreal.components.Label;
-import com.andersonfonseka.protoreal.components.SelectInput;
+import com.andersonfonseka.protoreal.components.ComponentAbsFactory;
 import com.andersonfonseka.protoreal.components.Site;
-import com.andersonfonseka.protoreal.components.Table;
-import com.andersonfonseka.protoreal.components.TextAreaInput;
-import com.andersonfonseka.protoreal.components.TextInput;
-import com.andersonfonseka.protoreal.components.impl.Button;
-import com.andersonfonseka.protoreal.components.impl.Container;
-import com.andersonfonseka.protoreal.components.impl.Page;
 import com.andersonfonseka.protoreal.components.spec.IButton;
 import com.andersonfonseka.protoreal.components.spec.IComponent;
 import com.andersonfonseka.protoreal.components.spec.IContainer;
+import com.andersonfonseka.protoreal.components.spec.IPage;
 
 public class Controller {
 	
 	private Repository<IComponent> componentRepository = ComponentRepositoryFactory.getComponentRepository();
 	
-	private Map<String, Class<? extends IComponent>> mapComponents;
+	private ComponentAbsFactory absFactory;
 	
 	public Controller(){
-		mapComponents = new HashMap<String, Class<? extends IComponent>>();
-		
-		mapComponents.put("container", Container.class);
-		mapComponents.put("textInput", TextInput.class);
-		mapComponents.put("textArea", TextAreaInput.class);
-		mapComponents.put("button", Button.class);
-		mapComponents.put("dataTable", Table.class);
-		mapComponents.put("selectItem", SelectInput.class);
-		mapComponents.put("label", Label.class);
-		mapComponents.put("jumbotron", Jumbotron.class);
-		mapComponents.put("cards", Card.class);
-		mapComponents.put("carousel", Carousel.class);
-		
+		absFactory = ComponentAbsFactory.getInstance();
 	}
 	
 	public Map<String, String> create(String component, String parent, HttpSession session) throws InstantiationException, IllegalAccessException {
@@ -54,18 +33,21 @@ public class Controller {
 		PageRepository pageRepository = PageRepository.getInstance();
 		
 		Site site = (Site) session.getAttribute("site");
-		Page page = (Page) session.getAttribute("page");
+		IPage page = (IPage) session.getAttribute("page");
 
 		IComponent comp = componentRepository.get(parent);
 		
-		IComponent component2 = mapComponents.get(component).newInstance();
+		IComponent component2 = absFactory.create(component);
+		
 		component2.setSiteUuid(site.getUuid());
 		component2.setPageUuid(page.getUuid());
 		
 		if (null != comp) {
 			component2.setParentComponent(comp);
+			component2.setParent(comp.getUuid());
 		} else {
 			component2.setParentComponent(page);
+			component2.setParent(page.getUuid());
 		}
 		
 		componentRepository.add(component2);
@@ -80,7 +62,7 @@ public class Controller {
 		return result;
 	}
 	
-	private String getComponents(Page page) {
+	private String getComponents(IPage page) {
 		
 		PageRepository pageRepository = PageRepository.getInstance();
 		
@@ -94,7 +76,7 @@ public class Controller {
 		
 		for (IComponent comp: components) {
 			if (!comp.isDeleted()) {
-				sb.append("<option value=" + comp.getUuid() + ">" + comp.getName() + "</option>");	
+				sb.append("<option value=" + comp.getUuid() + ">" + comp + "</option>");	
 			}
 		}
 		
@@ -130,7 +112,7 @@ public class Controller {
 		
 		PageRepository pageRepository = PageRepository.getInstance();
 		
-		Page page = (Page) session.getAttribute("page");
+		IPage page = (IPage) session.getAttribute("page");
 		
 		String componentId = form.get("setUuid");
 		
@@ -153,7 +135,7 @@ public class Controller {
 			btn.setPage(pageRepository.get(btn.getPageUuid()));
 		
 		} else if (component instanceof IContainer) {
-			IContainer container = (Container) component;
+			IContainer container = (IContainer) component;
 			container.configure(container.getRows(), container.getColumns());
 		}
 
@@ -176,7 +158,7 @@ public class Controller {
 		
 		componentRepository.remove(component);
 		
-		Page page = (Page) session.getAttribute("page");
+		IPage page = (IPage) session.getAttribute("page");
 	
 		Map<String, String> result = new HashMap<String, String>();
 		

@@ -15,15 +15,15 @@ class ComponentRepository extends RepositoryImpl implements Repository<IComponen
 	
 	private static Jdbi handle;	
 
-	private Map<String, Repository<IComponent>> repositories = new HashMap<String, Repository<IComponent>>();
+	private Map<String, Repository> repositories = new HashMap<String, Repository>();
 	
 	public ComponentRepository() {
-		this.repositories.put("com.andersonfonseka.protoreal.components.Container", new ContainerRepository(this));
+		this.repositories.put("com.andersonfonseka.protoreal.components.impl.Container", new ContainerRepository(this));
 		this.repositories.put("com.andersonfonseka.protoreal.components.Row", new RowsRepository());
 		this.repositories.put("com.andersonfonseka.protoreal.components.Cell", new CellRepository());
 		this.repositories.put("com.andersonfonseka.protoreal.components.TextInput", new TextInputRepository());
 		this.repositories.put("com.andersonfonseka.protoreal.components.SelectInput", new SelectInputRepository());
-		this.repositories.put("com.andersonfonseka.protoreal.components.Button", new ButtonRepository());
+		this.repositories.put("com.andersonfonseka.protoreal.components.impl.Button", new ButtonRepository());
 		this.repositories.put("com.andersonfonseka.protoreal.components.Label", new LabelRepository());
 		this.repositories.put("com.andersonfonseka.protoreal.components.TextAreaInput", new TextAreaInputRepository());
 		this.repositories.put("com.andersonfonseka.protoreal.components.Table", new TableRepository());

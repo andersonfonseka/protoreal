@@ -7,7 +7,7 @@ import org.jdbi.v3.core.Jdbi;
 import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.Table;
 
-class TableRepository extends RepositoryImpl {
+class TableRepository extends RepositoryImpl implements Repository<Table> {
 	
 	private static Jdbi handle;	
 	
