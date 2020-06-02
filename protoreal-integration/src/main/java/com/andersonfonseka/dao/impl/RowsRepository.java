@@ -6,8 +6,9 @@ import org.jdbi.v3.core.Jdbi;
 
 import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.Row;
+import com.andersonfonseka.protoreal.components.spec.IComponent;
 
-class RowsRepository extends RepositoryImpl implements Repository<Row> {
+class RowsRepository extends RepositoryImpl {
 	
 	private static Jdbi handle;	
 
@@ -38,15 +39,12 @@ class RowsRepository extends RepositoryImpl implements Repository<Row> {
 		return row;
 	}
 
-	@Override
 	public void edit(Row component) {}
 
-	@Override
 	public void remove(Row component) {
 		remove(component.getUuid(), "DELETE FROM ROWSCOUNT WHERE UUID = ?");
 	}
 
-	@Override
-	public List<Row> list(String uuid) {return null;}
+	public List<IComponent> list(String uuid) {return null;}
 
 }

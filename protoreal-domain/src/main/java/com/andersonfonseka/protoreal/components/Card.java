@@ -1,5 +1,6 @@
 package com.andersonfonseka.protoreal.components;
 
+import com.andersonfonseka.protoreal.components.impl.Component;
 import com.andersonfonseka.protoreal.components.render.CardRenderer;
 
 import lombok.Getter;
@@ -26,17 +27,17 @@ public class Card extends Component {
 		this.content = content;
 	}
 
-	@Override
+	
 	public String doRender() {
 		return new CardRenderer(this).execute();
 	}
 
-	@Override
+	
 	public String doEdit() {
 		return new CardRenderer(this).executeProperties();
 	}
 
-	@Override
+	
 	public String doPreview() {
 		return new CardRenderer(this).executePreview();
 	}

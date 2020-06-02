@@ -1,6 +1,6 @@
 package com.andersonfonseka.protoreal.components.render;
 
-import com.andersonfonseka.protoreal.components.Component;
+import com.andersonfonseka.protoreal.components.impl.Component;
 import com.andersonfonseka.protoreal.engine.Engine;
 
 public abstract class RendererImpl {

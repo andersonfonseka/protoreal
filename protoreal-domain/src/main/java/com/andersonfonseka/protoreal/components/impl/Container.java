@@ -1,12 +1,20 @@
-package com.andersonfonseka.protoreal.components;
+package com.andersonfonseka.protoreal.components.impl;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.andersonfonseka.protoreal.components.Cell;
+import com.andersonfonseka.protoreal.components.Row;
 import com.andersonfonseka.protoreal.components.render.ContainerRenderer;
+import com.andersonfonseka.protoreal.components.spec.IContainer;
 
-public class Container extends Component {
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class Container extends Component implements IContainer {
 
 	private int rows;
 	
@@ -44,20 +52,12 @@ public class Container extends Component {
 		}
 	}
 
-	public int getRows() {
-		return rows;
-	}
-
-	public void setRows(String rows) {
-		this.rows = Integer.valueOf(rows);
-	}
-
-	public int getColumns() {
-		return columns;
-	}
-
 	public void setColumns(String columns) {
 		this.columns = Integer.valueOf(columns);
+	}
+	
+	public void setRows(String rows) {
+		this.rows = Integer.valueOf(rows);
 	}
 	
 	public void addComponent(int row, int column, Component component) {
@@ -73,19 +73,20 @@ public class Container extends Component {
 		return this.rowsMap.values();
 	}
 	
-	@Override
 	public String doRender() {
 		return new ContainerRenderer(this).execute();
 	}
 
-	@Override
+	
 	public String doEdit() {
 		return new ContainerRenderer(this).executeProperties();
 	}
 
-	@Override
+	
 	public String doPreview() {
 		return new ContainerRenderer(this).executePreview();
 	}
+
+
 	
 }

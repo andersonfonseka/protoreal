@@ -6,8 +6,9 @@ import org.jdbi.v3.core.Jdbi;
 
 import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.Jumbotron;
+import com.andersonfonseka.protoreal.components.spec.IComponent;
 
-class JumbotronRepository extends RepositoryImpl implements Repository<Jumbotron> {
+class JumbotronRepository extends RepositoryImpl {
 	
 	private static Jdbi handle;	
 	
@@ -30,7 +31,6 @@ class JumbotronRepository extends RepositoryImpl implements Repository<Jumbotron
 		return (Jumbotron) get(uuid, "SELECT * FROM JUMBOTRON WHERE UUID = ?", Jumbotron.class);
 	}
 
-	@Override
 	public void edit(Jumbotron jumbotron) {
 		
 		handle = DbConnection.getInstance().getHandle();
@@ -44,14 +44,11 @@ class JumbotronRepository extends RepositoryImpl implements Repository<Jumbotron
 			});
 	}
 
-	@Override
 	public void remove(Jumbotron component) {
 		remove(component.getUuid(), "DELETE FROM JUMBOTRON WHERE UUID=?");
 	}
 
-	@Override
-	public List<Jumbotron> list(String uuid) {
-		// TODO Auto-generated method stub
+	public List<IComponent> list(String uuid) {
 		return null;
 	}
 	

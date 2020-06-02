@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.apache.struts.validator.ValidatorForm;
 
-import com.andersonfonseka.protoreal.components.Component;
+import com.andersonfonseka.protoreal.components.spec.IComponent;
 
 public class DesignForm extends ValidatorForm {
 	
@@ -13,7 +13,7 @@ public class DesignForm extends ValidatorForm {
 
 	private String componentSelected;
 	
-	private List<Component> componentList = new ArrayList<Component>();
+	private List<IComponent> componentList = new ArrayList<IComponent>();
 
 	public String getComponentSelected() {
 		return componentSelected;
@@ -23,11 +23,11 @@ public class DesignForm extends ValidatorForm {
 		this.componentSelected = componentSelected;
 	}
 
-	public List<Component> getComponentList() {
+	public List<IComponent> getComponentList() {
 		return componentList;
 	}
 
-	public void setComponentList(List<Component> componentList) {
+	public void setComponentList(List<IComponent> componentList) {
 		this.componentList = componentList;
 	}
 	

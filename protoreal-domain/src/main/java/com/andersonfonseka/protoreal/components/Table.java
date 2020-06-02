@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 import com.andersonfonseka.protoreal.components.common.SelectItem;
+import com.andersonfonseka.protoreal.components.impl.Component;
 import com.andersonfonseka.protoreal.components.render.TableRenderer;
 
 public class Table extends Component {
@@ -116,17 +117,14 @@ public class Table extends Component {
 		this.dataValues = dataValues;
 	}
 
-	@Override
 	public String doRender() {
 		return new TableRenderer(this).execute();
 	}
 
-	@Override
 	public String doEdit() {
 		return new TableRenderer(this).executeProperties();
 	}
 
-	@Override
 	public String doPreview() {
 		return new TableRenderer(this).executePreview();
 	}

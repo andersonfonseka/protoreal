@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.andersonfonseka.protoreal.components.common.SelectItem;
+import com.andersonfonseka.protoreal.components.impl.Input;
 import com.andersonfonseka.protoreal.components.render.LabelRenderer;
 
 public class Label extends Input {
@@ -81,17 +82,17 @@ public class Label extends Input {
 		return listStyles;
 	}
 	
-	@Override
+	
 	public String doRender() {
 		return new LabelRenderer(this).execute();
 	}
 
-	@Override
+	
 	public String doEdit() {
 		return new LabelRenderer(this).executeProperties();
 	}
 
-	@Override
+	
 	public String doPreview() {
 		return new LabelRenderer(this).executePreview();
 	}

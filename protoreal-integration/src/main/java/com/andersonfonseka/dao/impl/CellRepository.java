@@ -6,8 +6,9 @@ import org.jdbi.v3.core.Jdbi;
 
 import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.Cell;
+import com.andersonfonseka.protoreal.components.spec.IComponent;
 
-class CellRepository extends RepositoryImpl implements Repository<Cell> {
+class CellRepository extends RepositoryImpl {
 	
 	private static Jdbi handle;	
 	
@@ -34,14 +35,11 @@ class CellRepository extends RepositoryImpl implements Repository<Cell> {
 		return cell;
 	}
 
-	@Override
 	public void edit(Cell component) {}
 
-	@Override
 	public void remove(Cell component) {}
 
-	@Override
-	public List<Cell> list(String uuid) {return null;}
+	public List<IComponent> list(String uuid) {return null;}
 	
 	
 	

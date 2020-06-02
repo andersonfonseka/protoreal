@@ -1,27 +1,38 @@
-package com.andersonfonseka.protoreal.components;
+package com.andersonfonseka.protoreal.components.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.andersonfonseka.protoreal.components.common.SelectItem;
 import com.andersonfonseka.protoreal.components.render.ButtonRenderer;
+import com.andersonfonseka.protoreal.components.spec.IButton;
+import com.andersonfonseka.protoreal.components.spec.IComponent;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter 
 @Setter
-public class Button extends Input {
+public class Button extends Input implements IButton {
 	
 	private List<SelectItem> selectPages = new ArrayList<SelectItem>();
-	private List<Component> pages = new ArrayList<Component>();
+	
+	private List<IComponent> pages = new ArrayList<IComponent>();
+	
 	private String cssClass = "btn btn-primary";
+	
 	private List<SelectItem> cssStyles = new ArrayList<SelectItem>(); 
+	
 	private String openType = "default";
+	
 	private List<SelectItem> navOpenType = new ArrayList<SelectItem>(); 
+	
 	private String alignment = "float-left";
+	
 	private List<SelectItem> alignmentOptions = new ArrayList<SelectItem>(); 
+	
 	private Page page;
+	
 	private String pageUuid;
 	
 	public Button() {
@@ -37,7 +48,7 @@ public class Button extends Input {
 		
 		this.selectPages.clear();
 		
-		for (Component  component : this.pages) {
+		for (IComponent  component : this.pages) {
 			Page page = (Page) component;
 
 			SelectItem selectItem = new SelectItem(page.getUuid(), page.getTitle());
@@ -109,19 +120,16 @@ public class Button extends Input {
 		return alignmentOptions;
 	}
 
-	@Override
 	public String doRender() {
 		return new ButtonRenderer(this).execute();
 	}
 
-	@Override
 	public String doEdit() {
 		return new ButtonRenderer(this).executeProperties();
 	}
 
-
-	@Override
 	public String doPreview() {
 		return new ButtonRenderer(this).executePreview();
 	}
+
 }

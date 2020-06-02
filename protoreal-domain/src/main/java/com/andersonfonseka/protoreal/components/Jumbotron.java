@@ -1,5 +1,6 @@
 package com.andersonfonseka.protoreal.components;
 
+import com.andersonfonseka.protoreal.components.impl.Component;
 import com.andersonfonseka.protoreal.components.render.JumbotronRenderer;
 
 public class Jumbotron extends Component {
@@ -35,17 +36,17 @@ public class Jumbotron extends Component {
 		this.subtitle = subtitle;
 	}
 
-	@Override
+	
 	public String doRender() {
 		return new JumbotronRenderer(this).execute();
 	}
 
-	@Override
+	
 	public String doEdit() {
 		return new JumbotronRenderer(this).executeProperties();
 	}
 
-	@Override
+	
 	public String doPreview() {
 		return new JumbotronRenderer(this).executePreview();
 	}

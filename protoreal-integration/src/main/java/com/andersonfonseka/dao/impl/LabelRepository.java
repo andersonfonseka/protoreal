@@ -6,8 +6,9 @@ import org.jdbi.v3.core.Jdbi;
 
 import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.Label;
+import com.andersonfonseka.protoreal.components.spec.IComponent;
 
-class LabelRepository extends RepositoryImpl implements Repository<Label> {
+class LabelRepository extends RepositoryImpl {
 	
 	private static Jdbi handle;	
 	
@@ -34,7 +35,6 @@ class LabelRepository extends RepositoryImpl implements Repository<Label> {
 		return (Label) get(uuid, "SELECT * FROM LABEL WHERE UUID = ?", Label.class);
 	}
 
-	@Override
 	public void edit(Label label) {
 		
 		handle = DbConnection.getInstance().getHandle();
@@ -50,12 +50,10 @@ class LabelRepository extends RepositoryImpl implements Repository<Label> {
 			});
 	}
 
-	@Override
 	public void remove(Label component) {
 		remove(component.getUuid(), "DELETE FROM LABEL WHERE UUID = ?");
 	}
 
-	@Override
-	public List<Label> list(String uuid) {return null;}
+	public List<IComponent> list(String uuid) {return null;}
 	
 }

@@ -8,14 +8,14 @@ import java.util.Map;
 import org.jdbi.v3.core.Jdbi;
 
 import com.andersonfonseka.dao.DbConnection;
-import com.andersonfonseka.protoreal.components.Component;
+import com.andersonfonseka.protoreal.components.impl.Component;
+import com.andersonfonseka.protoreal.components.spec.IComponent;
 
-class ComponentRepository extends RepositoryImpl implements Repository<Component> {
+class ComponentRepository extends RepositoryImpl implements Repository<IComponent> {
 	
 	private static Jdbi handle;	
 
-	@SuppressWarnings("rawtypes")
-	private Map<String, Repository> repositories = new HashMap<String, Repository>();
+	private Map<String, Repository<IComponent>> repositories = new HashMap<String, Repository<IComponent>>();
 	
 	public ComponentRepository() {
 		this.repositories.put("com.andersonfonseka.protoreal.components.Container", new ContainerRepository(this));
@@ -31,7 +31,7 @@ class ComponentRepository extends RepositoryImpl implements Repository<Component
 		this.repositories.put("com.andersonfonseka.protoreal.components.Card", new CardRepository());
 	}
 	
-	public void add(Component component) {
+	public void add(IComponent component) {
 		
 		handle = DbConnection.getInstance().getHandle();
 		handle.useHandle(handle -> {
@@ -49,11 +49,11 @@ class ComponentRepository extends RepositoryImpl implements Repository<Component
 		this.repositories.get(component.getClass().getName()).add(component);
 	}
 	
-	public void edit(Component component) {
+	public void edit(IComponent component) {
 		this.repositories.get(component.getClass().getName()).edit(component);
 	}
 	
-	public List<Component> list(String uuid){
+	public List<IComponent> list(String uuid){
 		
 		handle = DbConnection.getInstance().getHandle();
 		
@@ -63,7 +63,7 @@ class ComponentRepository extends RepositoryImpl implements Repository<Component
             .mapToBean(Component.class)
             .list());
 		
-		List<Component> results = new ArrayList<Component>();
+		List<IComponent> results = new ArrayList<IComponent>();
 		
 		for (Component component : components) {
 			results.add(this.repositories.get(component.getType()).get(component.getUuid()));
@@ -73,14 +73,14 @@ class ComponentRepository extends RepositoryImpl implements Repository<Component
 	}
 
 	
-	public void remove(Component component) {
+	public void remove(IComponent component) {
 		remove(component.getUuid(), "DELETE FROM COMPONENTS WHERE UUID=?");
 		this.repositories.get(component.getClass().getName()).remove(component);
 	}
 	
-	public Component get(String uuid) {
+	public IComponent get(String uuid) {
 		
-		Component component = (Component) get(uuid, "SELECT * FROM COMPONENTS WHERE UUID=?", Component.class);
+		IComponent component = (IComponent) get(uuid, "SELECT * FROM COMPONENTS WHERE UUID=?", Component.class);
 		
 		if (null != component) {
 			component = this.repositories.get(component.getType()).get(component.getUuid());

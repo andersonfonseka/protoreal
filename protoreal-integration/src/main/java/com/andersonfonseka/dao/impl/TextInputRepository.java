@@ -7,7 +7,7 @@ import org.jdbi.v3.core.Jdbi;
 import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.TextInput;
 
-class TextInputRepository extends RepositoryImpl implements Repository<TextInput> {
+class TextInputRepository extends RepositoryImpl {
 	
 	private static Jdbi handle;	
 	
@@ -31,7 +31,6 @@ class TextInputRepository extends RepositoryImpl implements Repository<TextInput
 		return (TextInput) get(uuid, "SELECT * FROM TEXTINPUT WHERE UUID = ?", TextInput.class);
 	}
 
-	@Override
 	public void edit(TextInput textInput) {
 		
 		handle = DbConnection.getInstance().getHandle();
@@ -48,12 +47,10 @@ class TextInputRepository extends RepositoryImpl implements Repository<TextInput
 			});
 	}
 
-	@Override
 	public void remove(TextInput component) {
 		remove(component.getUuid(), "DELETE FROM TEXTINPUT WHERE UUID = ?");
 	}
 
-	@Override
 	public List<TextInput> list(String uuid) {return null;}
 	
 }

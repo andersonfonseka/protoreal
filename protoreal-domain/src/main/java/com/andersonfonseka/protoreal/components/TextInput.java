@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.andersonfonseka.protoreal.components.common.SelectItem;
+import com.andersonfonseka.protoreal.components.impl.Input;
 import com.andersonfonseka.protoreal.components.render.TextInputRenderer;
 
 public class TextInput extends Input {
@@ -52,17 +53,17 @@ public class TextInput extends Input {
 		this.listTypes = listTypes;
 	}
 	
-	@Override
+	
 	public String doRender() {
 		return new TextInputRenderer(this).execute();
 	}
 
-	@Override
+	
 	public String doEdit() {
 		return new TextInputRenderer(this).executeProperties();
 	}
 
-	@Override
+	
 	public String doPreview() {
 		return new TextInputRenderer(this).executePreview();
 	}

@@ -1,5 +1,6 @@
 package com.andersonfonseka.protoreal.components;
 
+import com.andersonfonseka.protoreal.components.impl.Component;
 import com.andersonfonseka.protoreal.components.render.CarouselRenderer;
 
 public class Carousel extends Component {
@@ -35,17 +36,17 @@ public class Carousel extends Component {
 		this.subtitle = subtitle;
 	}
 
-	@Override
+	
 	public String doRender() {
 		return new CarouselRenderer(this).execute();
 	}
 
-	@Override
+	
 	public String doEdit() {
 		return new CarouselRenderer(this).executeProperties();
 	}
 
-	@Override
+	
 	public String doPreview() {
 		return new CarouselRenderer(this).executePreview();
 	}

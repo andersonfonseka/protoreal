@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.andersonfonseka.protoreal.components.impl.Component;
+
 public class Row extends Component {
 	
 	private Map<Integer, Cell> cellsMap = new HashMap<Integer, Cell>();
@@ -21,20 +23,16 @@ public class Row extends Component {
 		return this.cellsMap.values();
 	}
 	
-	@Override
+
 	public String doRender() {
 		return "";
 	}
 
-	@Override
 	public String doEdit() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public String doPreview() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

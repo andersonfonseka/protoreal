@@ -6,8 +6,9 @@ import org.jdbi.v3.core.Jdbi;
 
 import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.SelectInput;
+import com.andersonfonseka.protoreal.components.spec.IComponent;
 
-class SelectInputRepository extends RepositoryImpl implements Repository<SelectInput> {
+class SelectInputRepository extends RepositoryImpl {
 	
 	private static Jdbi handle;	
 	
@@ -34,7 +35,6 @@ class SelectInputRepository extends RepositoryImpl implements Repository<SelectI
 		return (SelectInput) get(uuid, "SELECT * FROM SELECTINPUT WHERE UUID = ?", SelectInput.class);
 	}
 
-	@Override
 	public void edit(SelectInput selectInput) {
 		
 		handle = DbConnection.getInstance().getHandle();
@@ -52,12 +52,10 @@ class SelectInputRepository extends RepositoryImpl implements Repository<SelectI
 			});
 	}
 
-	@Override
 	public void remove(SelectInput component) {
 		remove(component.getUuid(), "DELETE FROM SELECTINPUT WHERE UUID = ?");
 	}
 
-	@Override
-	public List<SelectInput> list(String uuid) {return null;}
+	public List<IComponent> list(String uuid) {return null;}
 	
 }

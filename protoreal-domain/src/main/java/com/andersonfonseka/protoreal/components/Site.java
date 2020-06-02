@@ -3,7 +3,10 @@ package com.andersonfonseka.protoreal.components;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.andersonfonseka.protoreal.components.impl.Component;
+import com.andersonfonseka.protoreal.components.impl.Page;
 import com.andersonfonseka.protoreal.components.render.SiteRenderer;
+import com.andersonfonseka.protoreal.components.spec.IComponent;
 
 public class Site extends Component {
 
@@ -56,7 +59,7 @@ public class Site extends Component {
 		this.initialPage = initialPage;
 	}
 
-	public List<Component> getPages(){
+	public List<IComponent> getPages(){
 		return getChildrenList().stream().filter(x -> x instanceof Page).collect(Collectors.toList());
 	}
 	
@@ -67,7 +70,7 @@ public class Site extends Component {
 		
 		if (!render) {
 			
-			for(Component component : this.getChildrenList()) {
+			for(IComponent component : this.getChildrenList()) {
 				if (component instanceof Page) {
 					
 					Page page = (Page) component;
@@ -88,7 +91,7 @@ public class Site extends Component {
 						NavDropdown dropdown = new NavDropdown(page.getTitle());
 						navbar.addChild(dropdown);
 
-						for(Component componentPage : page.getPagesDisplayOnMenu()) {
+						for(IComponent componentPage : page.getPagesDisplayOnMenu()) {
 						
 							if (componentPage instanceof Page) {
 								Page subPage = (Page) componentPage;
@@ -112,17 +115,14 @@ public class Site extends Component {
 		return navbar.doRender();
 	}
 
-	@Override
 	public String doRender() {
 		return new SiteRenderer(this).execute();
 	}
 
-	@Override
 	public String doEdit() {
 		return null;
 	}
 
-	@Override
 	public String doPreview() {
 		return null;
 	}

@@ -7,7 +7,7 @@ import org.jdbi.v3.core.Jdbi;
 import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.Table;
 
-class TableRepository extends RepositoryImpl implements Repository<Table> {
+class TableRepository extends RepositoryImpl {
 	
 	private static Jdbi handle;	
 	
@@ -31,7 +31,6 @@ class TableRepository extends RepositoryImpl implements Repository<Table> {
 		return (Table) get(uuid, "SELECT * FROM TABLEINPUT WHERE UUID = ?", Table.class);
 	}
 
-	@Override
 	public void edit(Table table) {
 		
 		handle = DbConnection.getInstance().getHandle();
@@ -46,12 +45,10 @@ class TableRepository extends RepositoryImpl implements Repository<Table> {
 			});
 	}
 
-	@Override
 	public void remove(Table component) {
 		remove(component.getUuid(), "DELETE FROM TABLEINPUT WHERE UUID = ?");
 	}
 
-	@Override
 	public List<Table> list(String uuid) {return null;}
 	
 }

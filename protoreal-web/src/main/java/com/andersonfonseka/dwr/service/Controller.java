@@ -11,29 +11,30 @@ import javax.servlet.http.HttpSession;
 import com.andersonfonseka.dao.impl.ComponentRepositoryFactory;
 import com.andersonfonseka.dao.impl.PageRepository;
 import com.andersonfonseka.dao.impl.Repository;
-import com.andersonfonseka.protoreal.components.Button;
 import com.andersonfonseka.protoreal.components.Card;
 import com.andersonfonseka.protoreal.components.Carousel;
-import com.andersonfonseka.protoreal.components.Component;
-import com.andersonfonseka.protoreal.components.Container;
 import com.andersonfonseka.protoreal.components.Jumbotron;
 import com.andersonfonseka.protoreal.components.Label;
-import com.andersonfonseka.protoreal.components.Page;
 import com.andersonfonseka.protoreal.components.SelectInput;
 import com.andersonfonseka.protoreal.components.Site;
 import com.andersonfonseka.protoreal.components.Table;
 import com.andersonfonseka.protoreal.components.TextAreaInput;
 import com.andersonfonseka.protoreal.components.TextInput;
+import com.andersonfonseka.protoreal.components.impl.Button;
+import com.andersonfonseka.protoreal.components.impl.Container;
+import com.andersonfonseka.protoreal.components.impl.Page;
+import com.andersonfonseka.protoreal.components.spec.IButton;
+import com.andersonfonseka.protoreal.components.spec.IComponent;
+import com.andersonfonseka.protoreal.components.spec.IContainer;
 
 public class Controller {
 	
-	@SuppressWarnings("rawtypes")
-	private Repository componentRepository = ComponentRepositoryFactory.getComponentRepository();
+	private Repository<IComponent> componentRepository = ComponentRepositoryFactory.getComponentRepository();
 	
-	private Map<String, Class<? extends Component>> mapComponents;
+	private Map<String, Class<? extends IComponent>> mapComponents;
 	
 	public Controller(){
-		mapComponents = new HashMap<String, Class<? extends Component>>();
+		mapComponents = new HashMap<String, Class<? extends IComponent>>();
 		
 		mapComponents.put("container", Container.class);
 		mapComponents.put("textInput", TextInput.class);
@@ -55,9 +56,9 @@ public class Controller {
 		Site site = (Site) session.getAttribute("site");
 		Page page = (Page) session.getAttribute("page");
 
-		Component comp = componentRepository.get(parent);
+		IComponent comp = componentRepository.get(parent);
 		
-		Component component2 = mapComponents.get(component).newInstance();
+		IComponent component2 = mapComponents.get(component).newInstance();
 		component2.setSiteUuid(site.getUuid());
 		component2.setPageUuid(page.getUuid());
 		
@@ -89,9 +90,9 @@ public class Controller {
 		sb.append("<select name=\"componentSelected\" style=\"width:200px;\" class=\"form-control-sm\" onchange=\"configure();\">");
 		sb.append("<option value=\"0\">Selecione</option>");
 	
-		List<Component> components = pageRepository.listComponents(page.getUuid());
+		List<IComponent> components = pageRepository.listComponents(page.getUuid());
 		
-		for (Component comp: components) {
+		for (IComponent comp: components) {
 			if (!comp.isDeleted()) {
 				sb.append("<option value=" + comp.getUuid() + ">" + comp.getName() + "</option>");	
 			}
@@ -110,12 +111,12 @@ public class Controller {
 		
 		Map<String, String> result = new HashMap<String, String>();
 		
-		Component component = componentRepository.get(componentId);
+		IComponent component = componentRepository.get(componentId);
 		
 		if (null != component) {
 			
-			if (component instanceof Button) {
-				Button btn = (Button) component;
+			if (component instanceof IButton) {
+				IButton btn = (IButton) component;
 				btn.setPages(site.getPages());
 			}
 			
@@ -133,7 +134,7 @@ public class Controller {
 		
 		String componentId = form.get("setUuid");
 		
-		Component component = componentRepository.get(componentId);
+		IComponent component = componentRepository.get(componentId);
 	
 		Map<String, String> result = new HashMap<String, String>();
 			
@@ -147,12 +148,12 @@ public class Controller {
 			method.invoke(component, form.get(fieldName));
 		}
 		
-		if (component instanceof Button) {
-			Button btn = (Button) component;
+		if (component instanceof IButton) {
+			IButton btn = (IButton) component;
 			btn.setPage(pageRepository.get(btn.getPageUuid()));
 		
-		} else if (component instanceof Container) {
-			Container container = (Container) component;
+		} else if (component instanceof IContainer) {
+			IContainer container = (Container) component;
 			container.configure(container.getRows(), container.getColumns());
 		}
 
@@ -171,7 +172,7 @@ public class Controller {
 		
 		PageRepository pageRepository = PageRepository.getInstance();
 		
-		Component component = componentRepository.get(componentId);
+		IComponent component = componentRepository.get(componentId);
 		
 		componentRepository.remove(component);
 		

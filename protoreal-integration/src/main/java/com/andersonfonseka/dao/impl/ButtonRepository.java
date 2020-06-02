@@ -1,19 +1,21 @@
 package com.andersonfonseka.dao.impl;
 
+import java.awt.Button;
 import java.util.List;
 
 import org.jdbi.v3.core.Jdbi;
 
 import com.andersonfonseka.dao.DbConnection;
-import com.andersonfonseka.protoreal.components.Button;
+import com.andersonfonseka.protoreal.components.spec.IButton;
+import com.andersonfonseka.protoreal.components.spec.IComponent;
 
-class ButtonRepository extends RepositoryImpl implements Repository<Button> {
+class ButtonRepository extends RepositoryImpl {
 	
 	private static Jdbi handle;	
 	
 	public ButtonRepository() {}
 	
-	public void add(Button button) {
+	public void add(IButton button) {
 			
 		handle = DbConnection.getInstance().getHandle();
 		handle.useHandle(handle -> {
@@ -30,16 +32,17 @@ class ButtonRepository extends RepositoryImpl implements Repository<Button> {
 			});
 	}
 	
-	public void remove(Button button) {
+	public void remove(IButton button) {
 		remove(button.getUuid(), "DELETE FROM BUTTON WHERE UUID=?");
 	}
 	
-	public Button get(String uuid) {
-		return (Button) get(uuid, "SELECT * FROM BUTTON WHERE UUID=?", Button.class);
+	public IButton get(String uuid) {
+		return (IButton) get(uuid, "SELECT * FROM BUTTON WHERE UUID=?", Button.class);
 	}
 
-	@Override
-	public void edit(Button button) {
+	public void edit(Button button) {}
+
+	public void edit(IButton button) {
 		
 		handle = DbConnection.getInstance().getHandle();
 		handle.useHandle(handle -> {
@@ -57,7 +60,7 @@ class ButtonRepository extends RepositoryImpl implements Repository<Button> {
 	}
 
 	@Override
-	public List<Button> list(String uuid) {
+	public List<IComponent> list(String uuid) {
 		return null;
 	}
 	

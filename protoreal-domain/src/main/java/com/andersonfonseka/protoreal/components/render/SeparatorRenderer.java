@@ -1,6 +1,6 @@
 package com.andersonfonseka.protoreal.components.render;
 
-import com.andersonfonseka.protoreal.components.Component;
+import com.andersonfonseka.protoreal.components.impl.Component;
 
 public class SeparatorRenderer extends RendererImpl implements Renderer {
 

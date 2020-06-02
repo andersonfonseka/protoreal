@@ -11,8 +11,8 @@ import org.apache.struts.actions.DispatchAction;
 import com.andersonfonseka.dao.impl.PageRepository;
 import com.andersonfonseka.dao.impl.SiteRepository;
 import com.andersonfonseka.project.form.ProjectForm;
-import com.andersonfonseka.protoreal.components.Page;
 import com.andersonfonseka.protoreal.components.Site;
+import com.andersonfonseka.protoreal.components.impl.Page;
 
 public class ProjectAction extends DispatchAction {
 

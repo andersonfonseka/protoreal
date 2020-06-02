@@ -1,5 +1,6 @@
 package com.andersonfonseka.protoreal.components;
 
+import com.andersonfonseka.protoreal.components.impl.Input;
 import com.andersonfonseka.protoreal.components.render.NavLinkRenderer;
 
 public class NavLink extends Input {
@@ -28,20 +29,15 @@ public class NavLink extends Input {
 		this.siteUuid = siteUuid;
 	}
 
-	@Override
 	public String doRender() {
 		return new NavLinkRenderer(this).execute();
 	}
 
-	@Override
 	public String doEdit() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public String doPreview() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

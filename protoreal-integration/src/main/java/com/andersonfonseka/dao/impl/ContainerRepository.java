@@ -5,27 +5,29 @@ import java.util.List;
 import org.jdbi.v3.core.Jdbi;
 
 import com.andersonfonseka.dao.DbConnection;
-import com.andersonfonseka.protoreal.components.Component;
-import com.andersonfonseka.protoreal.components.Container;
+import com.andersonfonseka.protoreal.components.impl.Component;
+import com.andersonfonseka.protoreal.components.impl.Container;
+import com.andersonfonseka.protoreal.components.spec.IComponent;
+import com.andersonfonseka.protoreal.components.spec.IContainer;
 
-class ContainerRepository extends RepositoryImpl implements Repository<Container> {
+class ContainerRepository extends RepositoryImpl {
 	
-	private Repository<Component> componentRepository;
+	private Repository<IComponent> componentRepository;
 	
 	private static Jdbi handle;	
 	
-	public ContainerRepository(Repository<Component> repository) {
+	public ContainerRepository(Repository<IComponent> repository) {
 		componentRepository =  repository;
 	}
 	
-	public void add(Container container) {	
+	public void add(IContainer container) {	
 	
-		Container container2 = (Container) container;
+		IContainer container2 = (Container) container;
 		
-		for (Component row : container2.getChildrenList()) {
+		for (IComponent row : container2.getChildrenList()) {
 			componentRepository.add(row);
 			
-			for (Component cell: row.getChildrenList()) {
+			for (IComponent cell: row.getChildrenList()) {
 				componentRepository.add(cell);
 			}
 		}
@@ -41,19 +43,18 @@ class ContainerRepository extends RepositoryImpl implements Repository<Container
 			});
 	}
 	
-	public Container get(String uuid) {
+	public IContainer get(String uuid) {
 		
-		Container container = (Container) get(uuid, "SELECT * FROM CONTAINER WHERE UUID = ?", Container.class);
+		IContainer container = (IContainer) get(uuid, "SELECT * FROM CONTAINER WHERE UUID = ?", Container.class);
 		
 		if (null != container) {
-			container.setChildren(componentRepository.list(container.getUuid()));
+			((Component) container).setChildren(componentRepository.list(container.getUuid()));
 		}
 			
 		return container;
 	}
 
-	@Override
-	public void edit(Container container) {
+	public void edit(IContainer container) {
 		
 		remove(container.getUuid(),  "DELETE FROM COMPONENTS WHERE PARENT = ?");
 		
@@ -67,20 +68,20 @@ class ContainerRepository extends RepositoryImpl implements Repository<Container
 						.execute();
 			});
 		
-		for (Component row : container.getChildrenList()) {
+		for (IComponent row : container.getChildrenList()) {
 			componentRepository.add(row);
 			
-			for (Component cell: row.getChildrenList()) {
+			for (IComponent cell: row.getChildrenList()) {
 				componentRepository.add(cell);
 			}
 		}
 		
 	}
 
-	@Override
-	public void remove(Container component) {}
+	public void remove(IContainer component) {
+		remove(component.getUuid(), "DELETE FROM CONTAINER WHERE UUID=?");
+	}
 
-	@Override
-	public List<Container> list(String uuid) {return null;}
+	public List<IContainer> list(String uuid) {return null;}
 	
 }

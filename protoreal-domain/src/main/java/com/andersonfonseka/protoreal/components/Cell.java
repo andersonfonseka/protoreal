@@ -1,10 +1,11 @@
 package com.andersonfonseka.protoreal.components;
 
+import com.andersonfonseka.protoreal.components.impl.Component;
 import com.andersonfonseka.protoreal.components.render.CellRenderer;
 
 public class Cell extends Component {
 
-	@Override
+	
 	public String doRender() {
 		return new CellRenderer(this).execute();
 	}
@@ -13,13 +14,13 @@ public class Cell extends Component {
 		super.addChild(child);
 	}
 
-	@Override
+	
 	public String doEdit() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	
 	public String doPreview() {
 		return new CellRenderer(this).executePreview();
 	}

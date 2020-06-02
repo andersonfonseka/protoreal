@@ -6,10 +6,12 @@ import java.util.List;
 import org.jdbi.v3.core.Jdbi;
 
 import com.andersonfonseka.dao.DbConnection;
-import com.andersonfonseka.protoreal.components.Component;
-import com.andersonfonseka.protoreal.components.Page;
+import com.andersonfonseka.protoreal.components.impl.Component;
+import com.andersonfonseka.protoreal.components.impl.Page;
+import com.andersonfonseka.protoreal.components.spec.IComponent;
+import com.andersonfonseka.protoreal.components.spec.IPage;
 
-public class PageRepository extends RepositoryImpl implements Repository {
+public class PageRepository extends RepositoryImpl {
 	
 	private static PageRepository INSTANCE;
 	
@@ -29,7 +31,7 @@ public class PageRepository extends RepositoryImpl implements Repository {
 		return INSTANCE;
 	}
 	
-	public void add(Page page) {
+	public void add(IPage page) {
 		
 		handle = DbConnection.getInstance().getHandle();
 		handle.useHandle(handle -> {
@@ -50,9 +52,9 @@ public class PageRepository extends RepositoryImpl implements Repository {
 		
 	}
 
-	List<Component> results = new ArrayList<Component>();
+	List<IPage> results = new ArrayList<IPage>();
 	
-	public List<Component> list(String uuid){
+	public List<IPage> list(String uuid){
 		
 		this.results.clear();
 		
@@ -82,7 +84,7 @@ public class PageRepository extends RepositoryImpl implements Repository {
 		return results;
 	}
 	
-	public List<Component> list(String uuid, List<Component> results){
+	public List<IComponent> list(String uuid, List<IComponent> results){
 		
 		handle = DbConnection.getInstance().getHandle();
 		
@@ -110,11 +112,11 @@ public class PageRepository extends RepositoryImpl implements Repository {
 		return results;
 	}
 	
-	public List<Component> listComponents(String uuid) {
+	public List<IComponent> listComponents(String uuid) {
 		
 		ComponentRepository componentRepository = new ComponentRepository();
 		
-		List<Component> results = new ArrayList<Component>();
+		List<IComponent> results = new ArrayList<IComponent>();
 		
 		List<Component> resultComponent = handle.withHandle(handle -> 
 		 			handle.createQuery("SELECT * FROM COMPONENTS WHERE PAGEUUID = ?")
@@ -122,16 +124,16 @@ public class PageRepository extends RepositoryImpl implements Repository {
 			        .mapToBean(Component.class)
 			       .list());
 		
-		for (Component comp : resultComponent) {
+		for (IComponent comp : resultComponent) {
 			
-			Component component = componentRepository.get(comp.getUuid());
+			IComponent component = componentRepository.get(comp.getUuid());
 			results.add(component);
 		}
 		
 		return results;
 	}
 	
-	public void edit(Page page) {
+	public void edit(IPage page) {
 		
 		handle = DbConnection.getInstance().getHandle();
 		handle.useHandle(handle -> {
@@ -180,15 +182,8 @@ public class PageRepository extends RepositoryImpl implements Repository {
 		return page;
 		
 	}
-
-	@Override
-	public void add(Component component) {}
-
-	@Override
-	public void edit(Component component) {}
-
-	@Override
-	public void remove(Component component) {
+	
+	public void remove(IPage component) {
 		remove(component.getUuid(), "DELETE FROM PAGE WHERE UUID = ?");
 	}
 	

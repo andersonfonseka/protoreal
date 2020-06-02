@@ -1,5 +1,6 @@
 package com.andersonfonseka.protoreal.components;
 
+import com.andersonfonseka.protoreal.components.impl.Input;
 import com.andersonfonseka.protoreal.components.render.TextAreaInputRenderer;
 
 public class TextAreaInput extends Input {
@@ -23,17 +24,17 @@ public class TextAreaInput extends Input {
 		this.rows = Integer.valueOf(rows);
 	}
 
-	@Override
+	
 	public String doRender() {
 		return new TextAreaInputRenderer(this).execute();
 	}
 
-	@Override
+	
 	public String doEdit() {
 		return new TextAreaInputRenderer(this).executeProperties();
 	}
 
-	@Override
+	
 	public String doPreview() {
 		return new TextAreaInputRenderer(this).executePreview();
 	}

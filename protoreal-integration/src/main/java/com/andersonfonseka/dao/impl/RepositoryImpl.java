@@ -1,20 +1,21 @@
 package com.andersonfonseka.dao.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.jdbi.v3.core.Jdbi;
 
 import com.andersonfonseka.dao.DbConnection;
-import com.andersonfonseka.protoreal.components.Component;
+import com.andersonfonseka.protoreal.components.spec.IComponent;
 
-public class RepositoryImpl {
+public class RepositoryImpl implements Repository<IComponent> {
 
 	private static Jdbi handle;
 
-	public Component get(String uuid, String query, Class<? extends Component> clazz) {
+	public IComponent get(String uuid, String query, Class<?> clazz) {
 
 		handle = DbConnection.getInstance().getHandle();
-		Optional<Component> component = (Optional<Component>) handle.withHandle(handle -> 
+		Optional<IComponent> component = (Optional<IComponent>) handle.withHandle(handle -> 
 				handle.createQuery(query)
 				.bind(0, uuid)
 				.mapToBean(clazz)
@@ -37,5 +38,30 @@ public class RepositoryImpl {
             .execute());
 	}
 
+	public void add(IComponent component) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void edit(IComponent component) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void remove(IComponent component) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public IComponent get(String uuid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<? extends IComponent> list(String uuid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

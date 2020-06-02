@@ -6,8 +6,9 @@ import org.jdbi.v3.core.Jdbi;
 
 import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.protoreal.components.Card;
+import com.andersonfonseka.protoreal.components.spec.IComponent;
 
-class CardRepository extends RepositoryImpl implements Repository<Card> {
+class CardRepository extends RepositoryImpl {
 	
 	private static Jdbi handle;	
 	
@@ -32,7 +33,7 @@ class CardRepository extends RepositoryImpl implements Repository<Card> {
 		return (Card) get(uuid, "SELECT * FROM CARD WHERE UUID=?", Card.class);
 	}
 
-	@Override
+
 	public void edit(Card card) {
 		
 		handle = DbConnection.getInstance().getHandle();
@@ -48,12 +49,10 @@ class CardRepository extends RepositoryImpl implements Repository<Card> {
 
 	}
 
-	@Override
 	public void remove(Card component) {
 		remove(component.getUuid(), "DELETE FROM CARD WHERE UUID=?");
 	}
 
-	@Override
-	public List<Card> list(String uuid) {return null;}
+	public List<IComponent> list(String uuid) {return null;}
 	
 }
