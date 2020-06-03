@@ -3,6 +3,7 @@
 
 [![Build Status](https://travis-ci.org/andersonfonseka/protoreal.svg?branch=master)](https://travis-ci.org/andersonfonseka/protoreal)
 [![BCH compliance](https://bettercodehub.com/edge/badge/andersonfonseka/protoreal?branch=master)](https://bettercodehub.com/)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/94e489d8b3f8f3452081/test_coverage)](https://codeclimate.com/github/andersonfonseka/protoreal/test_coverage)
 
 **por que utilizar?**
 
