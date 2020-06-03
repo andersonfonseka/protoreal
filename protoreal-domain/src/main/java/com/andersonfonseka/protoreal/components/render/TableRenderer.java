@@ -1,6 +1,8 @@
 package com.andersonfonseka.protoreal.components.render;
 
-import com.andersonfonseka.protoreal.components.impl.Component;
+import com.andersonfonseka.Component;
+import com.andersonfonseka.Renderer;
+import com.andersonfonseka.RendererImpl;
 
 public class TableRenderer extends RendererImpl implements Renderer {
 

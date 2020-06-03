@@ -1,0 +1,23 @@
+#if( $ButtonRenderer.openType == "default" )
+
+<button type="button" class="$ButtonRenderer.cssClass $ButtonRenderer.alignment" onclick="goto('$ButtonRenderer.siteUuid', '$ButtonRenderer.pageUuid')">$ButtonRenderer.label</button><br/>
+
+#else
+
+<button type="button" class="$ButtonRenderer.cssClass $ButtonRenderer.alignment"
+	data-toggle="modal" data-target="#$ButtonRenderer.getSimpleName()">
+	$ButtonRenderer.label
+</button>
+
+<div class="modal fade" id="$ButtonRenderer.getSimpleName()" tabindex="-1"
+	role="dialog" aria-labelledby="TituloModalCentralizado"
+	aria-hidden="true">
+	<div class="modal-dialog $ButtonRenderer.openType" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				$ButtonRenderer.page.doPreview()
+			</div>
+		</div>
+	</div>
+</div>
+#end

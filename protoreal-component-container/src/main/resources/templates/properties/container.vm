@@ -1,0 +1,21 @@
+<div class="form" id="frmInput">
+	<form id="frmInput" action="" method="">
+	<input type="hidden" id="setUuid" value="$ContainerRenderer.uuid" />
+	    
+		<div class="form-group">
+			<label for="inputProjectTitle" class="col-form-label">Linhas</label> 
+			<input type="number" id="setRows" class="form-control" property="title" value="$ContainerRenderer.rows" size="25" />
+		</div>
+
+		<div class="form-group">
+			<label for="inputProjectTitle" class="col-form-label">Colunas</label> 
+			<input type="number" id="setColumns" class="form-control" property="title" value="$ContainerRenderer.columns" size="25" />
+		</div>
+		
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary"	data-dismiss="modal">Fechar</button>
+			<button type="button" class="btn btn-primary" onclick="edit('frmInput')">Salvar</button>
+		</div>
+	</div>
+	</form>
+</div>

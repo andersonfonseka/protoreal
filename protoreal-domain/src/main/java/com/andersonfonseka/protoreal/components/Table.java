@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import com.andersonfonseka.protoreal.components.common.SelectItem;
-import com.andersonfonseka.protoreal.components.impl.Component;
+import com.andersonfonseka.Component;
+import com.andersonfonseka.SelectItem;
 import com.andersonfonseka.protoreal.components.render.TableRenderer;
 
 public class Table extends Component {

@@ -8,11 +8,11 @@ import javax.servlet.ServletRequest;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.validator.ValidatorForm;
 
+import com.andersonfonseka.Page;
+import com.andersonfonseka.Site;
 import com.andersonfonseka.common.SelectItem;
-import com.andersonfonseka.dao.impl.PageRepository;
-import com.andersonfonseka.dao.impl.SiteRepository;
-import com.andersonfonseka.protoreal.components.Site;
-import com.andersonfonseka.protoreal.components.impl.Page;
+import com.andersonfonseka.dao.PageRepository;
+import com.andersonfonseka.dao.SiteRepository;
 
 public class PageForm extends ValidatorForm {
 	

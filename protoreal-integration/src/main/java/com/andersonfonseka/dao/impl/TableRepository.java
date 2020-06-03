@@ -5,6 +5,8 @@ import java.util.List;
 import org.jdbi.v3.core.Jdbi;
 
 import com.andersonfonseka.dao.DbConnection;
+import com.andersonfonseka.dao.Repository;
+import com.andersonfonseka.dao.RepositoryImpl;
 import com.andersonfonseka.protoreal.components.Table;
 
 class TableRepository extends RepositoryImpl implements Repository<Table> {

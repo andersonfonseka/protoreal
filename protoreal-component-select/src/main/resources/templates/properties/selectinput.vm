@@ -1,0 +1,29 @@
+<div class="form" id="frmInput">
+	<form id="frmInput" action="" method="">
+	<input type="hidden" id="setUuid" value="$SelectInputRenderer.uuid" />
+		<div class="form-group">
+		<label for="inputProjectTitle" class="col-form-label">Tipo</label>
+		<select property="type" id="setType" styleClass="form-control" class="form-control">
+			#foreach($item in $SelectInputRenderer.getListTypes())
+				<option value="$item.value" $item.selected>$item.label</option>
+			#end
+	    <select>
+	    </div>
+	    
+		<div class="form-group">
+			<label for="inputProjectTitle" class="col-form-label">Rotulo</label> 
+			<input type="text" id="setLabel" class="form-control" property="title" value="$SelectInputRenderer.label" size="25" />
+		</div>
+		
+		<div class="form-group">
+			<label for="inputProjectTitle" class="col-form-label">Opcoes</label> 
+			<input type="text" id="setOptions" class="form-control" property="title" value="$SelectInputRenderer.getOptionValues()" size="25" />
+		</div>
+		
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary"	data-dismiss="modal">Fechar</button>
+			<button type="button" class="btn btn-primary" onclick="edit('frmInput')">Salvar</button>
+		</div>
+	</div>
+	</form>
+</div>

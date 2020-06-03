@@ -44,16 +44,53 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.andersonfonseka</groupId>
-			<artifactId>protoreal-integration</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-
-		<dependency>
 			<groupId>org.directwebremoting</groupId>
 			<artifactId>dwr</artifactId>
 			<version>3.0.0-RELEASE</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.andersonfonseka</groupId>
+			<artifactId>protoreal-core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.andersonfonseka</groupId>
+			<artifactId>protoreal-component-button</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.andersonfonseka</groupId>
+			<artifactId>protoreal-component-container</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.andersonfonseka</groupId>
+			<artifactId>protoreal-component-card</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.andersonfonseka</groupId>
+			<artifactId>protoreal-component-text</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.andersonfonseka</groupId>
+			<artifactId>protoreal-component-select</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.andersonfonseka</groupId>
+			<artifactId>protoreal-component-jumbotron</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
 
 	</dependencies>
 

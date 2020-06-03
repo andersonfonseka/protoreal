@@ -8,15 +8,13 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import com.andersonfonseka.dao.impl.ComponentRepositoryFactory;
-import com.andersonfonseka.dao.impl.PageRepository;
-import com.andersonfonseka.dao.impl.Repository;
-import com.andersonfonseka.protoreal.components.ComponentAbsFactory;
-import com.andersonfonseka.protoreal.components.Site;
-import com.andersonfonseka.protoreal.components.spec.IButton;
-import com.andersonfonseka.protoreal.components.spec.IComponent;
-import com.andersonfonseka.protoreal.components.spec.IContainer;
-import com.andersonfonseka.protoreal.components.spec.IPage;
+import com.andersonfonseka.ComponentAbsFactory;
+import com.andersonfonseka.IComponent;
+import com.andersonfonseka.IPage;
+import com.andersonfonseka.Site;
+import com.andersonfonseka.dao.ComponentRepositoryFactory;
+import com.andersonfonseka.dao.PageRepository;
+import com.andersonfonseka.dao.Repository;
 
 public class Controller {
 	
@@ -97,10 +95,10 @@ public class Controller {
 		
 		if (null != component) {
 			
-			if (component instanceof IButton) {
-				IButton btn = (IButton) component;
-				btn.setPages(site.getPages());
-			}
+//			if (component instanceof IButton) {
+//				IButton btn = (IButton) component;
+//				btn.setPages(site.getPages());
+//			}
 			
 			result.put("data", component.doEdit());
 		}
@@ -130,14 +128,16 @@ public class Controller {
 			method.invoke(component, form.get(fieldName));
 		}
 		
-		if (component instanceof IButton) {
-			IButton btn = (IButton) component;
-			btn.setPage(pageRepository.get(btn.getPageUuid()));
-		
-		} else if (component instanceof IContainer) {
-			IContainer container = (IContainer) component;
-			container.configure(container.getRows(), container.getColumns());
-		}
+//		if (component instanceof IButton) {
+//			IButton btn = (IButton) component;
+//			btn.setPage(pageRepository.get(btn.getPageUuid()));
+//		
+//		} else 
+			
+//		if (component instanceof IContainer) {
+//			IContainer container = (IContainer) component;
+//			container.configure(container.getRows(), container.getColumns());
+//		}
 
 		componentRepository.edit(component);
 		

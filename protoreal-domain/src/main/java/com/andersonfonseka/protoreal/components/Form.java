@@ -1,6 +1,6 @@
 package com.andersonfonseka.protoreal.components;
 
-import com.andersonfonseka.protoreal.components.impl.Component;
+import com.andersonfonseka.Component;
 import com.andersonfonseka.protoreal.components.render.FormRenderer;
 
 public class Form extends Component {

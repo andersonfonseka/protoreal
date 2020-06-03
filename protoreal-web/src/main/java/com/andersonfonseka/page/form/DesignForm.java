@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.apache.struts.validator.ValidatorForm;
 
-import com.andersonfonseka.protoreal.components.spec.IComponent;
+import com.andersonfonseka.IComponent;
 
 public class DesignForm extends ValidatorForm {
 	

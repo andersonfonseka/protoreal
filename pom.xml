@@ -10,10 +10,34 @@
 		<module>protoreal-integration</module>
 		<module>protoreal-domain</module>
 		<module>protoreal-web</module>
+		<module>protoreal-component-button</module>
+		<module>protoreal-core</module>
+		<module>protoreal-component-container</module>
+		<module>protoreal-component-card</module>
+		<module>protoreal-component-text</module>
+		<module>protoreal-component-select</module>
+		<module>protoreal-component-jumbotron</module>
 	</modules>
 
 	<properties>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
 	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity-engine-core</artifactId>
+			<version>2.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.12</version>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
 </project>
