@@ -6,7 +6,14 @@ import org.jdbi.v3.core.Jdbi;
 
 import com.andersonfonseka.IComponent;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public abstract class RepositoryImpl<T extends IComponent> {
+	
+	private Repository<IComponent> componentRepository;
 
 	private static Jdbi handle;
 

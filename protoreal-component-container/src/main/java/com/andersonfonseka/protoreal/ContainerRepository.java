@@ -10,27 +10,22 @@ import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.dao.Repository;
 import com.andersonfonseka.dao.RepositoryImpl;
 
+
 public class ContainerRepository extends RepositoryImpl implements Repository<IContainer> {
-	
-	private Repository<IComponent> componentRepository;
 	
 	private static Jdbi handle;	
 	
 	public ContainerRepository() {}
-	
-	public ContainerRepository(Repository<IComponent> repository) {
-		componentRepository =  repository;
-	}
 	
 	public void add(IContainer container) {	
 	
 		IContainer container2 = (Container) container;
 		
 		for (IComponent row : container2.getChildrenList()) {
-			componentRepository.add(row);
+			super.getComponentRepository().add(row);
 			
 			for (IComponent cell: row.getChildrenList()) {
-				componentRepository.add(cell);
+				super.getComponentRepository().add(cell);
 			}
 		}
 		
@@ -50,7 +45,7 @@ public class ContainerRepository extends RepositoryImpl implements Repository<IC
 		IContainer container = (IContainer) get(uuid, "SELECT * FROM CONTAINER WHERE UUID = ?", Container.class);
 		
 		if (null != container) {
-			((Component) container).setChildren(componentRepository.list(container.getUuid()));
+			((Component) container).setChildren(super.getComponentRepository().list(container.getUuid()));
 		}
 			
 		return container;
@@ -71,10 +66,10 @@ public class ContainerRepository extends RepositoryImpl implements Repository<IC
 			});
 		
 		for (IComponent row : container.getChildrenList()) {
-			componentRepository.add(row);
+			super.getComponentRepository().add(row);
 			
 			for (IComponent cell: row.getChildrenList()) {
-				componentRepository.add(cell);
+				super.getComponentRepository().add(cell);
 			}
 		}
 		
