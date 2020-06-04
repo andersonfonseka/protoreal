@@ -1,0 +1,5 @@
+<form>
+#foreach($item in $FormRenderer.getChildrenList())
+	$item.doRender()
+#end
+</form>

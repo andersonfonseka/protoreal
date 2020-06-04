@@ -16,4 +16,6 @@ public interface Repository<T extends IComponent> {
 
 	public List<? extends IComponent> list(String uuid);
 	
+	public void setComponentRepository(Repository<IComponent> componentRepository);
+	
 }

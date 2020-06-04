@@ -54,6 +54,11 @@ public class Container extends Component implements IContainer {
 	public void setRows(String rows) {
 		this.rows = rows;
 	}
+
+	public void setColumns(String pColumns) {
+		this.columns = pColumns;
+	}
+	
 	
 	public void addComponent(int row, int column, Component component) {
 		this.rowsMap.get(row).getCell(column).addChild(component);

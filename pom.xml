@@ -8,7 +8,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>protoreal-integration</module>
-		<module>protoreal-domain</module>
+		
 		<module>protoreal-web</module>
 		<module>protoreal-component-button</module>
 		<module>protoreal-core</module>
@@ -17,6 +17,7 @@
 		<module>protoreal-component-text</module>
 		<module>protoreal-component-select</module>
 		<module>protoreal-component-jumbotron</module>
+		<module>protoreal-component-table</module>
 	</modules>
 
 	<properties>

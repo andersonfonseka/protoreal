@@ -11,6 +11,7 @@
 	<packaging>war</packaging>
 
 	<dependencies>
+	
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts-tiles</artifactId>
@@ -90,7 +91,12 @@
 			<artifactId>protoreal-component-jumbotron</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-
+		
+		<dependency>
+			<groupId>com.andersonfonseka</groupId>
+			<artifactId>protoreal-component-table</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 
 	</dependencies>
 

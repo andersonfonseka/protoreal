@@ -1,6 +1,0 @@
-<section class="jumbotron jumbotron-fluid text-center">
-     <div class="container">
-     <h1 class="jumbotron-heading">$JumbotronRenderer.title</h1>
-     <p class="lead text-muted">$JumbotronRenderer.subtitle</p>
-     </div>
-</section>

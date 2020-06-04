@@ -25,7 +25,7 @@ public class ComponentRepository extends RepositoryImpl implements Repository<IC
 		this.repositories.put("com.andersonfonseka.protoreal.SelectInput", "com.andersonfonseka.protoreal.SelectInputRepository");
 		this.repositories.put("com.andersonfonseka.protoreal.Label", "com.andersonfonseka.protoreal.LabelRepository");
 		this.repositories.put("com.andersonfonseka.protoreal.TextAreaInput", "com.andersonfonseka.protoreal.TextAreaInputRepository");
-//		this.repositories.put("com.andersonfonseka.protoreal.components.Table", new TableRepository());
+		this.repositories.put("com.andersonfonseka.protoreal.Table", "com.andersonfonseka.protoreal.TableRepository");
 		this.repositories.put("com.andersonfonseka.protoreal.Jumbotron", "com.andersonfonseka.protoreal.JumbotronRepository");
 		this.repositories.put("com.andersonfonseka.protoreal.Card", "com.andersonfonseka.protoreal.CardRepository");
 	}
@@ -46,6 +46,8 @@ public class ComponentRepository extends RepositoryImpl implements Repository<IC
 		
 		try {
 			Repository repository = (Repository) Class.forName(this.repositories.get(component.getClass().getName())).newInstance();
+			repository.setComponentRepository(this);
+			
 			repository.add(component);
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -58,6 +60,8 @@ public class ComponentRepository extends RepositoryImpl implements Repository<IC
 		
 		try {
 			Repository repository = (Repository) Class.forName(this.repositories.get(component.getClass().getName())).newInstance();
+			repository.setComponentRepository(this);
+			
 			repository.edit(component);
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -77,12 +81,12 @@ public class ComponentRepository extends RepositoryImpl implements Repository<IC
 		
 		List<IComponent> results = new ArrayList<IComponent>();
 		
-		
-		
 		for (Component component : components) {
 			
 			try {
 				Repository repository = (Repository) Class.forName(this.repositories.get(component.getType())).newInstance();
+				repository.setComponentRepository(this);
+				
 				results.add(repository.get(component.getUuid()));
 				
 			} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
@@ -99,6 +103,8 @@ public class ComponentRepository extends RepositoryImpl implements Repository<IC
 		
 		try {
 			Repository repository = (Repository) Class.forName(this.repositories.get(component.getClass().getName())).newInstance();
+			repository.setComponentRepository(this);
+			
 			repository.remove(component);
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			e.printStackTrace();
@@ -113,6 +119,8 @@ public class ComponentRepository extends RepositoryImpl implements Repository<IC
 
 			try {
 				Repository repository = (Repository) Class.forName(this.repositories.get(component.getType())).newInstance();
+				repository.setComponentRepository(this);
+				
 				component = repository.get(component.getUuid());
 			} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 				e.printStackTrace();

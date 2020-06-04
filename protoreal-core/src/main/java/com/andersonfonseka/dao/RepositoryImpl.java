@@ -6,12 +6,7 @@ import org.jdbi.v3.core.Jdbi;
 
 import com.andersonfonseka.IComponent;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
-public abstract class RepositoryImpl<T extends IComponent> {
+public abstract class RepositoryImpl<T extends IComponent>{
 	
 	private Repository<IComponent> componentRepository;
 
@@ -42,5 +37,14 @@ public abstract class RepositoryImpl<T extends IComponent> {
 			.bind(0, uuid)
             .execute());
 	}
+
+	public Repository<IComponent> getComponentRepository() {
+		return componentRepository;
+	}
+
+	public void setComponentRepository(Repository<IComponent> componentRepository) {
+		this.componentRepository = componentRepository;
+	}
+	
 
 }

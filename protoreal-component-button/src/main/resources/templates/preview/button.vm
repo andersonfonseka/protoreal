@@ -1,10 +1,10 @@
 #if( $ButtonRenderer.openType == "default" )
 
-<button type="button" class="$ButtonRenderer.cssClass $ButtonRenderer.alignment" onclick="goto('$ButtonRenderer.siteUuid', '$ButtonRenderer.pageUuid')">$ButtonRenderer.label</button><br/>
+<button type="button" class="$ButtonRenderer.cssClass $ButtonRenderer.alignment mx-sm-1 mb-1" onclick="goto('$ButtonRenderer.siteUuid', '$ButtonRenderer.pageUuid')">$ButtonRenderer.label</button>
 
 #else
 
-<button type="button" class="$ButtonRenderer.cssClass $ButtonRenderer.alignment"
+<button type="button" class="$ButtonRenderer.cssClass $ButtonRenderer.alignment mx-sm-1 mb-1"
 	data-toggle="modal" data-target="#$ButtonRenderer.getSimpleName()">
 	$ButtonRenderer.label
 </button>

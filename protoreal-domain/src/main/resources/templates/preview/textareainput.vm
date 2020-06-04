@@ -1,4 +1,0 @@
- <div class="form-group">
-    <label for="$TextAreaInputRenderer.uuid"  class="col-form-label col-form-label-sm">$TextAreaInputRenderer.label</label>
-    <textarea class="form-control form-control-sm" id="$TextAreaInputRenderer.uuid" rows="$TextAreaInputRenderer.rows"></textarea>
-  </div>

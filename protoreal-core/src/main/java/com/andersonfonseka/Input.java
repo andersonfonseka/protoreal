@@ -37,4 +37,9 @@ public class Input extends Component implements IInput {
 		return super.getName();
 	}
 	
+	public String getSimpleName() {
+		super.setName(this.getClass().getSimpleName() + "#" + this.value);
+		return super.getName();
+	}
+	
 }

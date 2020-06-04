@@ -74,7 +74,7 @@ public class Controller {
 		
 		for (IComponent comp: components) {
 			if (!comp.isDeleted()) {
-				sb.append("<option value=" + comp.getUuid() + ">" + comp + "</option>");	
+				sb.append("<option value=" + comp.getUuid() + ">" + comp.getSimpleName() + "</option>");	
 			}
 		}
 		

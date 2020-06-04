@@ -1,1 +1,1 @@
-<button type="button" class="$ButtonRenderer.cssClass $ButtonRenderer.alignment">$ButtonRenderer.label</button><br/>
+<button type="button" class="$ButtonRenderer.cssClass $ButtonRenderer.alignment mx-sm-1 mb-1">$ButtonRenderer.label</button>

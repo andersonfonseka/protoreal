@@ -65,6 +65,8 @@ public class ContainerRepository extends RepositoryImpl implements Repository<IC
 						.execute();
 			});
 		
+		container.configure(container.getRows(), container.getColumns());
+		
 		for (IComponent row : container.getChildrenList()) {
 			super.getComponentRepository().add(row);
 			
