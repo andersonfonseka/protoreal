@@ -6,12 +6,12 @@ import org.jdbi.v3.core.Jdbi;
 
 import com.andersonfonseka.IComponent;
 
-public abstract class RepositoryImpl {
+public abstract class RepositoryImpl<T extends IComponent> {
 
 	private static Jdbi handle;
 
 	public IComponent get(String uuid, String query, Class<?> clazz) {
-
+		
 		handle = DbConnection.getInstance().getHandle();
 		Optional<IComponent> component = (Optional<IComponent>) handle.withHandle(handle -> 
 				handle.createQuery(query)
