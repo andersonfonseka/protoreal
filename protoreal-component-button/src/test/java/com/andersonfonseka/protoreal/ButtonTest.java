@@ -1,6 +1,6 @@
 package com.andersonfonseka.protoreal;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.jboss.weld.junit5.EnableWeld;
 import org.jboss.weld.junit5.WeldInitiator;
@@ -11,7 +11,7 @@ import com.andersonfonseka.ComponentFactory;
 import com.andersonfonseka.dao.ComponentRepositoryFactory;
 
 @EnableWeld
-class ButtonTest {
+public class ButtonTest {
 	
 	
 	@WeldSetup
