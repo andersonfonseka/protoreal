@@ -1,6 +1,6 @@
 #if( $ButtonRenderer.openType == "default" )
 
-<button type="button" class="$ButtonRenderer.cssClass $ButtonRenderer.alignment mx-sm-1 mb-1" onclick="goto('$ButtonRenderer.siteUuid', '$ButtonRenderer.pageUuid')">$ButtonRenderer.label</button>
+<button type="button" class="$ButtonRenderer.cssClass $ButtonRenderer.alignment mx-sm-1 mb-1" onclick="goto('$ButtonRenderer.siteUuid', '$ButtonRenderer.pageRelatedUuid')">$ButtonRenderer.label</button>
 
 #else
 
@@ -12,7 +12,7 @@
 <div class="modal fade" id="$ButtonRenderer.getSimpleName()" tabindex="-1"
 	role="dialog" aria-labelledby="TituloModalCentralizado"
 	aria-hidden="true">
-	<div class="modal-dialog $ButtonRenderer.openType" role="document">
+	<div class="modal-dialog shadow $ButtonRenderer.openType" role="document">
 		<div class="modal-content">
 			<div class="modal-body">
 				$ButtonRenderer.page.doPreview()

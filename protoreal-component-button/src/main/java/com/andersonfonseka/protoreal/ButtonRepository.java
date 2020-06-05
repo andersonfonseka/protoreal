@@ -6,7 +6,9 @@ import java.util.List;
 import org.jdbi.v3.core.Jdbi;
 
 import com.andersonfonseka.IComponent;
+import com.andersonfonseka.IPage;
 import com.andersonfonseka.dao.DbConnection;
+import com.andersonfonseka.dao.PageRepository;
 import com.andersonfonseka.dao.Repository;
 import com.andersonfonseka.dao.RepositoryImpl;
 
@@ -21,7 +23,7 @@ public class ButtonRepository extends RepositoryImpl implements Repository<IButt
 		handle = DbConnection.getInstance().getHandle();
 		handle.useHandle(handle -> {
 					handle
-						.createUpdate("INSERT INTO BUTTON (UUID, CSSCLASS, OPENTYPE, ALIGNMENT, PAGEUUID, LABEL, SITEUUID) VALUES (?,?,?,?,?,?,?)") 
+						.createUpdate("INSERT INTO BUTTON (UUID, CSSCLASS, OPENTYPE, ALIGNMENT, PAGEUUID, LABEL, SITEUUID, PAGERELATEDUUID) VALUES (?,?,?,?,?,?,?,?)") 
 							.bind(0, button.getUuid())
 							.bind(1, button.getCssClass())
 							.bind(2, button.getOpenType())
@@ -29,6 +31,7 @@ public class ButtonRepository extends RepositoryImpl implements Repository<IButt
 							.bind(4, button.getPageUuid())
 							.bind(5, button.getLabel())
 							.bind(6, button.getSiteUuid())
+							.bind(7, button.getPageRelatedUuid())
 						.execute();
 			});
 	}
@@ -38,7 +41,22 @@ public class ButtonRepository extends RepositoryImpl implements Repository<IButt
 	}
 	
 	public IButton get(String uuid) {
-		return (IButton) get(uuid, "SELECT * FROM BUTTON WHERE UUID=?", Button.class);
+		
+		IButton button = (IButton) get(uuid, "SELECT * FROM BUTTON WHERE UUID=?", Button.class);
+		
+		List<IPage> pages = PageRepository.getInstance().list(button.getSiteUuid());
+		button.setPages(pages);
+
+		if (button.getPageRelatedUuid() != null) {
+			if (button.getPageRelatedUuid().equals(button.getPageUuid())) {
+				button.setPage(PageRepository.getInstance().get(button.getPageRelatedUuid()));	
+			} else {
+				button.setPage(PageRepository.getInstance().getFull(button.getPageRelatedUuid()));
+			}
+		}
+		
+		return button;
+		
 	}
 
 	public void edit(Button button) {}
@@ -48,14 +66,15 @@ public class ButtonRepository extends RepositoryImpl implements Repository<IButt
 		handle = DbConnection.getInstance().getHandle();
 		handle.useHandle(handle -> {
 					handle
-						.createUpdate("UPDATE BUTTON SET CSSCLASS=?, OPENTYPE=?, ALIGNMENT=?, PAGEUUID=?, LABEL=?, SITEUUID=? WHERE UUID=?") 
-							.bind(6, button.getUuid())
+						.createUpdate("UPDATE BUTTON SET CSSCLASS=?, OPENTYPE=?, ALIGNMENT=?, PAGEUUID=?, LABEL=?, SITEUUID=?, PAGERELATEDUUID=? WHERE UUID=?") 
+							.bind(7, button.getUuid())
 							.bind(0, button.getCssClass())
 							.bind(1, button.getOpenType())
 							.bind(2, button.getAlignment())
 							.bind(3, button.getPageUuid())
 							.bind(4, button.getLabel())
 							.bind(5, button.getSiteUuid())
+							.bind(6, button.getPageRelatedUuid())
 						.execute();
 			});
 	}

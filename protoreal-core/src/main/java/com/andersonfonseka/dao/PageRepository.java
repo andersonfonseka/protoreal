@@ -118,7 +118,7 @@ public class PageRepository extends RepositoryImpl {
 		List<IComponent> results = new ArrayList<IComponent>();
 		
 		List<Component> resultComponent = handle.withHandle(handle -> 
-		 			handle.createQuery("SELECT * FROM COMPONENTS WHERE PAGEUUID = ?")
+		 			handle.createQuery("SELECT * FROM COMPONENTS WHERE PAGEUUID = ? ORDER BY TIMESTAMP")
 					.bind(0, uuid)
 			        .mapToBean(Component.class)
 			       .list());
@@ -137,7 +137,7 @@ public class PageRepository extends RepositoryImpl {
 		handle = DbConnection.getInstance().getHandle();
 		handle.useHandle(handle -> {
 					handle
-						.createUpdate("UPDATE PAGE SET NAME=?, TITLE=?, DESCRIPTION=?, DISPLAYONMENU=?, HIDEMENU=?, SHOWTITLE=?, CONTAINERTYPE=?, PARENT=? WHERE UUID=?") 
+						.createUpdate("UPDATE PAGE SET NAME=?, TITLE=?, DESCRIPTION=?, DISPLAYONMENU=?, HIDEMENU=?, SHOWTITLE=?, CONTAINERTYPE=?, PARENT=?, SITEUUID=? WHERE UUID=?") 
 							.bind(9, page.getUuid())
 							.bind(0, page.getName())
 							.bind(1, page.getTitle())

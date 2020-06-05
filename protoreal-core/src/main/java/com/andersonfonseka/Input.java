@@ -33,13 +33,13 @@ public class Input extends Component implements IInput {
 	
 	@Override
 	public String getName() {
-		super.setName(this.getClass().getSimpleName() + "#" + this.label);
+		super.setName(this.getClass().getSimpleName() + "#" + this.value);
 		return super.getName();
 	}
 	
 	public String getSimpleName() {
-		super.setName(this.getClass().getSimpleName() + "#" + this.value);
-		return super.getName();
+		String simpleUuid = this.getUuid().substring(0, this.getUuid().indexOf("-"));
+		return this.getClass().getSimpleName() + "-" + simpleUuid;
 	}
 	
 }

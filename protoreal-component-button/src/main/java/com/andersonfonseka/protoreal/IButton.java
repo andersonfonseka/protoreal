@@ -3,6 +3,7 @@ package com.andersonfonseka.protoreal;
 import java.util.List;
 
 import com.andersonfonseka.IComponent;
+import com.andersonfonseka.IPage;
 import com.andersonfonseka.Page;
 import com.andersonfonseka.SelectItem;
 
@@ -26,7 +27,7 @@ public interface IButton extends IComponent {
 
 	public void setSelectPages(List<SelectItem> selectPages);
 
-	public void setPages(List<IComponent> pages);
+	public void setPages(List<IPage> pages);
 
 	public void setCssClass(String cssClass);
 
@@ -43,5 +44,12 @@ public interface IButton extends IComponent {
 	public void setPage(Page page);
 
 	public void setPageUuid(String pageUuid);
+	
+	public void setPageRelatedUuid(String pageUuid);
+	
+	public String getPageUuid();
+	
+	public String getPageRelatedUuid();
+	
 
 }

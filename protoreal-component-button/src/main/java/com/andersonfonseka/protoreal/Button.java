@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.andersonfonseka.IComponent;
+import com.andersonfonseka.IPage;
 import com.andersonfonseka.Input;
 import com.andersonfonseka.Page;
 import com.andersonfonseka.SelectItem;
@@ -17,7 +18,7 @@ public class Button extends Input implements IButton {
 	
 	private List<SelectItem> selectPages = new ArrayList<SelectItem>();
 	
-	private List<IComponent> pages = new ArrayList<IComponent>();
+	private List<IPage> pages = new ArrayList<IPage>();
 	
 	private String cssClass = "btn btn-primary";
 	
@@ -34,6 +35,8 @@ public class Button extends Input implements IButton {
 	private Page page;
 	
 	private String pageUuid;
+	
+	private String pageRelatedUuid;
 	
 	public Button() {
 		super("Button");
@@ -118,6 +121,15 @@ public class Button extends Input implements IButton {
 		}
 		
 		return alignmentOptions;
+	}
+	
+	public Page getPage() {
+		return page;
+	}
+	
+	public String getSimpleName() {
+		String simpleUuid = this.getUuid().substring(0, this.getUuid().indexOf("-"));
+		return this.getClass().getSimpleName() + "-" + simpleUuid;
 	}
 
 	public String doRender() {
