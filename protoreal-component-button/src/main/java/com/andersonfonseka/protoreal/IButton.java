@@ -24,6 +24,8 @@ public interface IButton extends IComponent {
 	public String getAlignment();
 
 	public String getLabel();
+	
+	public void setLabel(String label);
 
 	public void setSelectPages(List<SelectItem> selectPages);
 
