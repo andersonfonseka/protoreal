@@ -4,6 +4,7 @@
 [![Build Status](https://travis-ci.org/andersonfonseka/protoreal.svg?branch=master)](https://travis-ci.org/andersonfonseka/protoreal)
 [![BCH compliance](https://bettercodehub.com/edge/badge/andersonfonseka/protoreal?branch=master)](https://bettercodehub.com/)
 [![Maintainability](https://api.codeclimate.com/v1/badges/94e489d8b3f8f3452081/maintainability)](https://codeclimate.com/github/andersonfonseka/protoreal/maintainability)
+[![Coverage Status](https://coveralls.io/repos/github/andersonfonseka/protoreal/badge.svg?branch=master)](https://coveralls.io/github/andersonfonseka/protoreal?branch=master)
 
 **por que utilizar?**
 
