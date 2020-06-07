@@ -3,6 +3,11 @@ package com.andersonfonseka;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Site extends Component {
 
 	private String name;
@@ -17,41 +22,9 @@ public class Site extends Component {
 		super();
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public Site(String title) {
 		super();
 		this.title = title;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
-	public String getInitialPage() {
-		return initialPage;
-	}
-
-	public void setInitialPage(String initialPage) {
-		this.initialPage = initialPage;
 	}
 
 	public List<IComponent> getPages(){
