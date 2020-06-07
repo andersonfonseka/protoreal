@@ -150,7 +150,7 @@
 					</div>
 				</html:form>
 
-				<div class="modal fade" id="modalCentralized" tabindex="-1"
+				<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1"
 					role="dialog" aria-labelledby="TituloModalCentralizado"
 					aria-hidden="true">
 					<div class="modal-dialog shadow" role="document">

@@ -25,7 +25,9 @@ public class PageRepository extends RepositoryImpl implements Repository<IPage> 
 	
 	private ComponentRepository componentRepository;
 	
-	public PageRepository() {}
+	public PageRepository() {
+		this.componentRepository = (ComponentRepository) ComponentRepositoryFactory.getComponentRepository();
+	}
 	
 	
 	public void add(IPage page) {
