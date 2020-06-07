@@ -25,7 +25,7 @@ public class PageAction extends DispatchAction {
 		SiteRepository siteRepository = SiteRepository.getInstance();
 		Site site = siteRepository.get(request.getParameter("siteId"));
 		
-		PageRepository repository = PageRepository.getInstance();
+		PageRepository repository =  new PageRepository();
 		site.setChildren(repository.list(site.getUuid()));
 
 		request.getSession().setAttribute("site", site);
@@ -46,7 +46,7 @@ public class PageAction extends DispatchAction {
 	public ActionForward startEdit(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
-		PageRepository repository = PageRepository.getInstance();
+		PageRepository repository =  new PageRepository();
 		
 		Page page = repository.get(request.getParameter("id"));
 		
@@ -76,7 +76,7 @@ public class PageAction extends DispatchAction {
 
 		request.getSession().setAttribute("pageId", request.getParameter("id"));
 
-		PageRepository repository = PageRepository.getInstance();
+		PageRepository repository =  new PageRepository();
 		Page page = repository.getFull(request.getParameter("id"));
 
 		DesignForm designForm = new DesignForm();
@@ -94,7 +94,7 @@ public class PageAction extends DispatchAction {
 			HttpServletResponse response) throws Exception {
 
 		SiteRepository siteRepository = SiteRepository.getInstance();
-		PageRepository pageRepository = PageRepository.getInstance();
+		PageRepository pageRepository =  new PageRepository();
 
 		PageForm pageForm = (PageForm) form;
 
@@ -171,7 +171,7 @@ public class PageAction extends DispatchAction {
 			
 		}
 		
-		PageRepository repository = PageRepository.getInstance();
+		PageRepository repository = new PageRepository();
 		site.setChildren(repository.list(site.getUuid()));
 
 		request.setAttribute("pages", site.getPages());
@@ -184,7 +184,7 @@ public class PageAction extends DispatchAction {
 	public ActionForward remove(ActionMapping mapping, ActionForm form, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
-		PageRepository repository = PageRepository.getInstance();
+		PageRepository repository =  new PageRepository();
 		Page pageToBeRemoved = repository.get(request.getParameter("id"));
 
 		pageToBeRemoved.getParentComponent().removeChild(pageToBeRemoved);

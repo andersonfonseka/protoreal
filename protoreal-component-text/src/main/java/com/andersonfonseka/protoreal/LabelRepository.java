@@ -33,7 +33,7 @@ public class LabelRepository extends RepositoryImpl implements Repository<Label>
 	
 	
 	public Label get(String uuid) {
-		return (Label) get(uuid, "SELECT * FROM LABEL WHERE UUID = ?", Label.class);
+		return (Label) get(getMode(),uuid, "SELECT * FROM LABEL WHERE UUID = ?", Label.class);
 	}
 
 	public void edit(Label label) {
@@ -52,9 +52,23 @@ public class LabelRepository extends RepositoryImpl implements Repository<Label>
 	}
 
 	public void remove(Label component) {
-		remove(component.getUuid(), "DELETE FROM LABEL WHERE UUID = ?");
+		remove(getMode(), component.getUuid(), "DELETE FROM LABEL WHERE UUID = ?");
 	}
 
 	public List<IComponent> list(String uuid) {return null;}
+	
+	public void setMode(String mode) {
+		
+		super.setMode(mode);
+		
+		if (this.getMode().equals(DbConnection.TEST_MODE)) {
+			
+			handle = DbConnection.getInstance(getMode()).getHandle();
+			
+			handle.useHandle(handle -> {
+				handle.execute("CREATE TABLE IF NOT EXISTS LABEL (UUID VARCHAR, TYPE VARCHAR, STYLE VARCHAR, LABEL VARCHAR, VALUE VARCHAR)");
+			});
+		}
+	}
 	
 }

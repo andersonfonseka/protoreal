@@ -29,7 +29,7 @@ public class JumbotronRepository extends RepositoryImpl implements Repository<Ju
 	}
 	
 	public Jumbotron get(String uuid) {
-		return (Jumbotron) get(uuid, "SELECT * FROM JUMBOTRON WHERE UUID = ?", Jumbotron.class);
+		return (Jumbotron) get(getMode(), uuid, "SELECT * FROM JUMBOTRON WHERE UUID = ?", Jumbotron.class);
 	}
 
 	public void edit(Jumbotron jumbotron) {
@@ -46,11 +46,25 @@ public class JumbotronRepository extends RepositoryImpl implements Repository<Ju
 	}
 
 	public void remove(Jumbotron component) {
-		remove(component.getUuid(), "DELETE FROM JUMBOTRON WHERE UUID=?");
+		remove(getMode(), component.getUuid(), "DELETE FROM JUMBOTRON WHERE UUID=?");
 	}
 
 	public List<IComponent> list(String uuid) {
 		return null;
+	}
+	
+	public void setMode(String mode) {
+		
+		super.setMode(mode);
+		
+		if (this.getMode().equals(DbConnection.TEST_MODE)) {
+			
+			handle = DbConnection.getInstance(getMode()).getHandle();
+			
+			handle.useHandle(handle -> {
+				handle.execute("CREATE TABLE IF NOT EXISTS JUMBOTRON (UUID VARCHAR, TITLE VARCHAR, SUBTITLE VARCHAR)");
+			});
+		}
 	}
 	
 }

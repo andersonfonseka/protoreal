@@ -10,25 +10,23 @@ import com.andersonfonseka.IComponent;
 import com.andersonfonseka.IPage;
 import com.andersonfonseka.Page;
 
-public class PageRepository extends RepositoryImpl {
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class PageRepository extends RepositoryImpl implements Repository<IPage> {
 	
 	private static PageRepository INSTANCE;
 	
 	private static Jdbi handle;	
 	
+	private String mode = "run";
+	
 	private ComponentRepository componentRepository;
 	
-	private PageRepository() {
-		componentRepository = new ComponentRepository();
-	}
+	public PageRepository() {}
 	
-	public static PageRepository getInstance() {
-		if (INSTANCE == null) {
-			INSTANCE = new PageRepository();
-		}
-
-		return INSTANCE;
-	}
 	
 	public void add(IPage page) {
 		
@@ -156,7 +154,7 @@ public class PageRepository extends RepositoryImpl {
 	
 	public Page get(String uuid) {
 		
-		Page page = (Page) get(uuid, "SELECT * FROM PAGE WHERE UUID = ?", Page.class);
+		Page page = (Page) get(getMode(), uuid, "SELECT * FROM PAGE WHERE UUID = ?", Page.class);
 		
 		Page parent = new Page();
 		
@@ -183,7 +181,20 @@ public class PageRepository extends RepositoryImpl {
 	}
 	
 	public void remove(IPage component) {
-		remove(component.getUuid(), "DELETE FROM PAGE WHERE UUID = ?");
+		remove(getMode(), component.getUuid(), "DELETE FROM PAGE WHERE UUID = ?");
 	}
+	
+	public void setMode(String mode) {
+		this.mode = mode;
+		
+		if (this.mode.equals(DbConnection.TEST_MODE)) {
+			
+			handle = DbConnection.getInstance(getMode()).getHandle();
+			
+			handle.useHandle(handle -> {
+				handle.execute("CREATE TABLE IF NOT EXISTS PAGE (UUID VARCHAR, NAME VARCHAR, TITLE VARCHAR, DESCRIPTION VARCHAR, DISPLAYONMENU VARCHAR, HIDEMENU VARCHAR, SHOWTITLE VARCHAR, CONTAINERTYPE VARCHAR, PARENT VARCHAR, SITEUUID VARCHAR)");
+			});
+		}
+	}	
 	
 }

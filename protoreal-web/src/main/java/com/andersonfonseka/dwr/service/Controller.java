@@ -28,7 +28,7 @@ public class Controller {
 	
 	public Map<String, String> create(String component, String parent, HttpSession session) throws InstantiationException, IllegalAccessException {
 		
-		PageRepository pageRepository = PageRepository.getInstance();
+		PageRepository pageRepository = new PageRepository();
 		
 		Site site = (Site) session.getAttribute("site");
 		IPage page = (IPage) session.getAttribute("page");
@@ -62,7 +62,7 @@ public class Controller {
 	
 	private String getComponents(IPage page) {
 		
-		PageRepository pageRepository = PageRepository.getInstance();
+		PageRepository pageRepository =  new PageRepository();
 		
 		StringBuilder sb = new StringBuilder();
 		
@@ -108,7 +108,7 @@ public class Controller {
 	
 	public Map<String, String> edit(Map<String, String> form, HttpSession session) throws Exception {
 		
-		PageRepository pageRepository = PageRepository.getInstance();
+		PageRepository pageRepository =  new PageRepository();
 		
 		IPage page = (IPage) session.getAttribute("page");
 		
@@ -152,7 +152,7 @@ public class Controller {
 	
 	public Map<String, String> remove(String componentId, HttpSession session) throws InstantiationException, IllegalAccessException{
 		
-		PageRepository pageRepository = PageRepository.getInstance();
+		PageRepository pageRepository =  new PageRepository();
 		
 		IComponent component = componentRepository.get(componentId);
 		

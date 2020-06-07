@@ -33,7 +33,7 @@ public class SelectInputRepository extends RepositoryImpl implements Repository<
 	}
 	
 	public SelectInput get(String uuid) {
-		return (SelectInput) get(uuid, "SELECT * FROM SELECTINPUT WHERE UUID = ?", SelectInput.class);
+		return (SelectInput) get(getMode(), uuid, "SELECT * FROM SELECTINPUT WHERE UUID = ?", SelectInput.class);
 	}
 
 	public void edit(SelectInput selectInput) {
@@ -54,9 +54,24 @@ public class SelectInputRepository extends RepositoryImpl implements Repository<
 	}
 
 	public void remove(SelectInput component) {
-		remove(component.getUuid(), "DELETE FROM SELECTINPUT WHERE UUID = ?");
+		remove(getMode(), component.getUuid(), "DELETE FROM SELECTINPUT WHERE UUID = ?");
 	}
 
 	public List<IComponent> list(String uuid) {return null;}
+	
+	public void setMode(String mode) {
+		
+		super.setMode(mode);
+
+		
+		if (this.getMode().equals(DbConnection.TEST_MODE)) {
+			
+			handle = DbConnection.getInstance(getMode()).getHandle();
+			
+			handle.useHandle(handle -> {
+				handle.execute("CREATE TABLE IF NOT EXISTS SELECTINPUT (UUID VARCHAR, TYPE VARCHAR, LABEL VARCHAR, PLACEHOLDER VARCHAR, READONLY VARCHAR, VALUE VARCHAR, OPTIONVALUES VARCHAR)");
+			});
+		}
+	}
 	
 }

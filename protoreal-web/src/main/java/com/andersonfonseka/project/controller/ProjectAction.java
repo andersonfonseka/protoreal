@@ -39,7 +39,7 @@ public class ProjectAction extends DispatchAction {
 		
 		Site site = repository.get(request.getParameter("id"));
 		
-		PageRepository pageRepository = PageRepository.getInstance();
+		PageRepository pageRepository =  new PageRepository();
 		site.setChildren(pageRepository.list(site.getUuid()));
 		
 		ProjectForm projectForm = new ProjectForm(site.getUuid());
@@ -106,7 +106,7 @@ public class ProjectAction extends DispatchAction {
 		SiteRepository repository = SiteRepository.getInstance();
 		Site site = repository.get(request.getParameter("siteId"));
 
-		PageRepository pageRepository = PageRepository.getInstance();
+		PageRepository pageRepository =  new PageRepository();
 		site.setChildren(pageRepository.list(site.getUuid()));
 		
 		if (request.getParameter("pageId") != null) {

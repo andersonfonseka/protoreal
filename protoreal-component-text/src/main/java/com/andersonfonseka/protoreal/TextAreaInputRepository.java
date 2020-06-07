@@ -26,7 +26,7 @@ public class TextAreaInputRepository extends RepositoryImpl implements Repositor
 	}
 	
 	public TextAreaInput get(String uuid) {
-		return (TextAreaInput) get(uuid, "SELECT * FROM TEXTAREAINPUT WHERE UUID = ?", TextAreaInput.class);
+		return (TextAreaInput) get(getMode(), uuid, "SELECT * FROM TEXTAREAINPUT WHERE UUID = ?", TextAreaInput.class);
 	}
 
 	public void edit(TextAreaInput textInput) {
@@ -43,9 +43,23 @@ public class TextAreaInputRepository extends RepositoryImpl implements Repositor
 	}
 
 	public void remove(TextAreaInput component) {
-		remove(component.getUuid(), "DELETE FROM TEXTAREAINPUT WHERE UUID = ?");
+		remove(getMode(), component.getUuid(), "DELETE FROM TEXTAREAINPUT WHERE UUID = ?");
 	}
 
 	public List<TextAreaInput> list(String uuid) {return null;}
+	
+	public void setMode(String mode) {
+		
+		super.setMode(mode);
+		
+		if (this.getMode().equals(DbConnection.TEST_MODE)) {
+			
+			handle = DbConnection.getInstance(getMode()).getHandle();
+			
+			handle.useHandle(handle -> {
+				handle.execute("CREATE TABLE IF NOT EXISTS TEXTAREAINPUT (UUID VARCHAR, LABEL VARCHAR, ROWCOUNT VARCHAR)");
+			});
+		}
+	}
 	
 }

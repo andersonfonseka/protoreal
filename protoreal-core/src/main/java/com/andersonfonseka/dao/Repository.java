@@ -18,4 +18,6 @@ public interface Repository<T extends IComponent> {
 	
 	public void setComponentRepository(Repository<IComponent> componentRepository);
 	
+	public void setMode(String pMode);
+	
 }

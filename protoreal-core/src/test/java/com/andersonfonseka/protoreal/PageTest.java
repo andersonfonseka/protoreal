@@ -1,7 +1,7 @@
 package com.andersonfonseka.protoreal;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.jboss.weld.junit5.EnableWeld;
@@ -10,12 +10,13 @@ import org.jboss.weld.junit5.WeldSetup;
 import org.junit.jupiter.api.Test;
 
 import com.andersonfonseka.ComponentFactory;
+import com.andersonfonseka.IPage;
 import com.andersonfonseka.dao.ComponentRepositoryFactory;
 import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.dao.Repository;
 
 @EnableWeld
-public class ButtonTest {
+public class PageTest {
 	
 	
 	@WeldSetup
@@ -24,69 +25,69 @@ public class ButtonTest {
 	
 	@Test
 	void create(ComponentFactory absFactory) {
-		IButton button = (IButton) absFactory.create("button");
-		assertNotNull(button);
+		IPage page = (IPage) absFactory.create("page");
+		assertNotNull(page);
 	}
 	
 	@Test
 	void add(ComponentFactory componentFactory, ComponentRepositoryFactory componentRepository) {
-		IButton button = (IButton) componentFactory.create("button");
+		IPage page = (IPage) componentFactory.create("page");
 		
 		Repository repository = componentRepository.getComponentRepository();
 		repository.setMode(DbConnection.TEST_MODE);
-		repository.add(button);
+		repository.add(page);
 		
-		assertNotNull(button);
+		assertNotNull(page);
 	}
 
 	@Test
 	void edit(ComponentFactory componentFactory, ComponentRepositoryFactory componentRepository) {
-		IButton button = (IButton) componentFactory.create("button");
-
+		IPage page = (IPage) componentFactory.create("page");
+		
 		Repository repository = componentRepository.getComponentRepository();
 		repository.setMode(DbConnection.TEST_MODE);
-		repository.add(button);
-
-		button = (IButton) repository.get(button.getUuid());
+		repository.add(page);
 		
-		button.setTitle("Hello Button");
+		page = (IPage) repository.get(page.getUuid());
+		page.setTitle("Hello Test");
 		
-		repository.edit(button);
+		repository.edit(page);
 		
-		button = (IButton) repository.get(button.getUuid());
+		page = (IPage) repository.get(page.getUuid());
 		
-		assertEquals("Hello Button", button.getTitle());
+		assertEquals("Hello Test", page.getTitle());
 	}
 
 	@Test
 	void get(ComponentFactory componentFactory, ComponentRepositoryFactory componentRepository) {
-		IButton button = (IButton) componentFactory.create("button");
-
+		
+		IPage page = (IPage) componentFactory.create("page");
+		
 		Repository repository = componentRepository.getComponentRepository();
 		repository.setMode(DbConnection.TEST_MODE);
-		repository.add(button);
+		repository.add(page);
 
-		button = (IButton) repository.get(button.getUuid());
-
-		assertNotNull(button);
+		page = (IPage) repository.get(page.getUuid());
+		
+		assertNotNull(page);
 	}
 	
 	@Test
 	void remove(ComponentFactory componentFactory, ComponentRepositoryFactory componentRepository) {
 		
-		IButton button = (IButton) componentFactory.create("button");
-
+		IPage page = (IPage) componentFactory.create("page");
+		
 		Repository repository = componentRepository.getComponentRepository();
 		repository.setMode(DbConnection.TEST_MODE);
-		repository.add(button);
-
-		button = (IButton) repository.get(button.getUuid());
+		repository.add(page);
 		
-		repository.remove(button);
+		page = (IPage) repository.get(page.getUuid());
 		
-		button = (IButton) repository.get(button.getUuid());
+		repository.remove(page);
 		
-		assertNull(button);
+		page = (IPage) repository.get(page.getUuid());
+		
+		assertNull(page);
 	}
 
 

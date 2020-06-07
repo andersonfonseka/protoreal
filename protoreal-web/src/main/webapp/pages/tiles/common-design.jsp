@@ -133,7 +133,7 @@
 											<bean:message key="label.select" />
 										</html:option>
 										<html:optionsCollection name="designForm"
-											property="componentList" label="name" value="uuid" />
+											property="componentList" label="simpleName" value="uuid" />
 									</html:select>
 								</div>
 
@@ -150,7 +150,7 @@
 					</div>
 				</html:form>
 
-				<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1"
+				<div class="modal fade" id="modalCentralized" tabindex="-1"
 					role="dialog" aria-labelledby="TituloModalCentralizado"
 					aria-hidden="true">
 					<div class="modal-dialog shadow" role="document">

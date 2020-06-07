@@ -29,7 +29,7 @@ public class TextInputRepository extends RepositoryImpl implements Repository<Te
 	}
 	
 	public TextInput get(String uuid) {
-		return (TextInput) get(uuid, "SELECT * FROM TEXTINPUT WHERE UUID = ?", TextInput.class);
+		return (TextInput) get(getMode(), uuid, "SELECT * FROM TEXTINPUT WHERE UUID = ?", TextInput.class);
 	}
 
 	public void edit(TextInput textInput) {
@@ -49,9 +49,23 @@ public class TextInputRepository extends RepositoryImpl implements Repository<Te
 	}
 
 	public void remove(TextInput component) {
-		remove(component.getUuid(), "DELETE FROM TEXTINPUT WHERE UUID = ?");
+		remove(getMode(), component.getUuid(), "DELETE FROM TEXTINPUT WHERE UUID = ?");
 	}
 
 	public List<TextInput> list(String uuid) {return null;}
+	
+	public void setMode(String mode) {
+		
+		super.setMode(mode);
+		
+		if (this.getMode().equals(DbConnection.TEST_MODE)) {
+			
+			handle = DbConnection.getInstance(getMode()).getHandle();
+			
+			handle.useHandle(handle -> {
+				handle.execute("CREATE TABLE IF NOT EXISTS TEXTINPUT (UUID VARCHAR, TYPE VARCHAR, LABEL VARCHAR, PLACEHOLDER VARCHAR, READONLY VARCHAR, VALUE VARCHAR)");
+			});
+		}
+	}
 	
 }

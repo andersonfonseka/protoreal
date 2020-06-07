@@ -19,7 +19,7 @@ public class ProjectForm extends ValidatorForm {
 	
 	private SiteRepository siteRepository = SiteRepository.getInstance();
 	
-	private PageRepository repository = PageRepository.getInstance();
+	private PageRepository repository =  new PageRepository();
 	
 	private Site site;
 	

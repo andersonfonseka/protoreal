@@ -31,7 +31,7 @@ public class CellRepository extends RepositoryImpl implements Repository<Cell> {
 		
 		ComponentRepository componentRepository = new ComponentRepository();
 		
-		Cell cell  = (Cell) get(uuid, "SELECT * FROM CELL WHERE UUID = ?", Cell.class);
+		Cell cell  = (Cell) get(getMode(), uuid, "SELECT * FROM CELL WHERE UUID = ?", Cell.class);
 		cell.setChildren(componentRepository.list(cell.getUuid()));
 		
 		return cell;
@@ -43,6 +43,18 @@ public class CellRepository extends RepositoryImpl implements Repository<Cell> {
 
 	public List<IComponent> list(String uuid) {return null;}
 	
-	
+	public void setMode(String mode) {
+		
+		super.setMode(mode);
+		
+		if (this.getMode().equals(DbConnection.TEST_MODE)) {
+			
+			handle = DbConnection.getInstance(getMode()).getHandle();
+			
+			handle.useHandle(handle -> {
+				handle.execute("CREATE TABLE IF NOT EXISTS CELL (UUID VARCHAR)");
+			});
+		}
+	}
 	
 }

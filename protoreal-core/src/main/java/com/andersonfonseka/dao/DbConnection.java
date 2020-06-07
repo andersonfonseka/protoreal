@@ -11,23 +11,27 @@ public class DbConnection {
 	private static DbConnection instance;
 	
 	private DataSource dataSource = null;
-
+	
+	public static final String RUN_MODE = "run";
+	
+	public static final String TEST_MODE = "test";
+	
+	private static String mode = "run";
+	
 	private DbConnection(){
 		
-		try {
-
-			Context initContext = new InitialContext();
-			Context envContext  = (Context)initContext.lookup("java:/comp/env");
-			
-			dataSource = (DataSource) envContext.lookup("jdbc/protoreal");
-
-			
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (mode.equals(RUN_MODE)) {
+			try {
+				Context initContext = new InitialContext();
+				Context envContext  = (Context)initContext.lookup("java:/comp/env");
+				dataSource = (DataSource) envContext.lookup("jdbc/protoreal");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-
+		
 	}
-
+	
 	public static DbConnection getInstance() {
 		if (instance == null) {
 			instance = new DbConnection();
@@ -35,10 +39,29 @@ public class DbConnection {
 
 		return instance;
 	}
+
+	public static DbConnection getInstance(String pMode) {
+		if (instance == null) {
+			mode = pMode;
+			instance = new DbConnection();
+
+		}
+
+		return instance;
+	}
 	
 	public Jdbi getHandle() {
 		
-		Jdbi jdbi = Jdbi.create(dataSource);
+		Jdbi jdbi = null;
+		
+		if (mode.equals(RUN_MODE)) {
+			jdbi = Jdbi.create(dataSource);
+			
+		} else if (mode.equals(TEST_MODE)) {
+			jdbi = Jdbi.create("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1");
+		}
+		
+		
 		return jdbi;
 	}
 

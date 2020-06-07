@@ -42,7 +42,7 @@ public class ContainerRepository extends RepositoryImpl implements Repository<IC
 	
 	public IContainer get(String uuid) {
 		
-		IContainer container = (IContainer) get(uuid, "SELECT * FROM CONTAINER WHERE UUID = ?", Container.class);
+		IContainer container = (IContainer) get(getMode(), uuid, "SELECT * FROM CONTAINER WHERE UUID = ?", Container.class);
 		
 		if (null != container) {
 			((Component) container).setChildren(super.getComponentRepository().list(container.getUuid()));
@@ -53,7 +53,7 @@ public class ContainerRepository extends RepositoryImpl implements Repository<IC
 
 	public void edit(IContainer container) {
 		
-		remove(container.getUuid(),  "DELETE FROM COMPONENTS WHERE PARENT = ?");
+		remove(getMode(), container.getUuid(),  "DELETE FROM COMPONENTS WHERE PARENT = ?");
 		
 		handle = DbConnection.getInstance().getHandle();
 		handle.useHandle(handle -> {
@@ -78,9 +78,22 @@ public class ContainerRepository extends RepositoryImpl implements Repository<IC
 	}
 
 	public void remove(IContainer component) {
-		remove(component.getUuid(), "DELETE FROM CONTAINER WHERE UUID=?");
+		remove(getMode(), component.getUuid(), "DELETE FROM CONTAINER WHERE UUID=?");
 	}
 
 	public List<IContainer> list(String uuid) {return null;}
+	
+	public void setMode(String mode) {
+		super.setMode(mode);
+		
+		if (this.getMode().equals(DbConnection.TEST_MODE)) {
+			
+			handle = DbConnection.getInstance(getMode()).getHandle();
+			
+			handle.useHandle(handle -> {
+				handle.execute("CREATE TABLE IF NOT EXISTS CONTAINER (UUID VARCHAR, ROWCOUNT VARCHAR, COLUMNS VARCHAR)");
+			});
+		}
+	}
 	
 }

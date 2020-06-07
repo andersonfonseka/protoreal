@@ -31,7 +31,7 @@ public class CardRepository extends RepositoryImpl implements Repository<Card> {
 	}
 
 	public Card get(String uuid) {
-		return (Card) get(uuid, "SELECT * FROM CARD WHERE UUID=?", Card.class);
+		return (Card) get(getMode(), uuid, "SELECT * FROM CARD WHERE UUID=?", Card.class);
 	}
 
 
@@ -51,9 +51,23 @@ public class CardRepository extends RepositoryImpl implements Repository<Card> {
 	}
 
 	public void remove(Card component) {
-		remove(component.getUuid(), "DELETE FROM CARD WHERE UUID=?");
+		remove(getMode(), component.getUuid(), "DELETE FROM CARD WHERE UUID=?");
 	}
 
 	public List<IComponent> list(String uuid) {return null;}
+	
+	public void setMode(String mode) {
+		
+		super.setMode(mode);
+		
+		if (this.getMode().equals(DbConnection.TEST_MODE)) {
+			
+			handle = DbConnection.getInstance(getMode()).getHandle();
+			
+			handle.useHandle(handle -> {
+				handle.execute("CREATE TABLE IF NOT EXISTS CARD (UUID VARCHAR, TITLE VARCHAR, SUBTITLE VARCHAR, CONTENT VARCHAR)");
+			});
+		}
+	}
 	
 }

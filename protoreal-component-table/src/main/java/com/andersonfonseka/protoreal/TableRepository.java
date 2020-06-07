@@ -29,7 +29,7 @@ public class TableRepository extends RepositoryImpl implements Repository<Table>
 	}
 	
 	public Table get(String uuid) {
-		return (Table) get(uuid, "SELECT * FROM TABLEINPUT WHERE UUID = ?", Table.class);
+		return (Table) get(getMode(), uuid, "SELECT * FROM TABLEINPUT WHERE UUID = ?", Table.class);
 	}
 
 	public void edit(Table table) {
@@ -47,9 +47,25 @@ public class TableRepository extends RepositoryImpl implements Repository<Table>
 	}
 
 	public void remove(Table component) {
-		remove(component.getUuid(), "DELETE FROM TABLEINPUT WHERE UUID = ?");
+		remove(getMode(), component.getUuid(), "DELETE FROM TABLEINPUT WHERE UUID = ?");
 	}
 
 	public List<Table> list(String uuid) {return null;}
+	
+	public void setMode(String mode) {
+
+		super.setMode(mode);
+
+		
+		if (this.getMode().equals(DbConnection.TEST_MODE)) {
+			
+			handle = DbConnection.getInstance(getMode()).getHandle();
+			
+			handle.useHandle(handle -> {
+				handle.execute("CREATE TABLE IF NOT EXISTS TABLEINPUT (UUID VARCHAR, TYPE VARCHAR, HEADERVALUES VARCHAR, DATAVALUES VARCHAR)");
+			});
+		}
+	}
+	
 	
 }
