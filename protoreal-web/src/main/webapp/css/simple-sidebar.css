@@ -77,3 +77,7 @@ body {
   z-index: -1;
   background-color: transparent;
 }
+
+.bg-purple {
+    background-color: #c70000!important;
+}
