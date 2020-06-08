@@ -101,7 +101,7 @@ public class PageAction extends DispatchAction {
 		Site site = siteRepository.get(request.getSession().getAttribute("siteId").toString());
 
 		if (pageForm.getOp().equals("X")) {
-			request.setAttribute("pages", site.getPages());
+			request.setAttribute("pages", pageRepository.list(request.getSession().getAttribute("siteId").toString()));
 			return mapping.findForward("success");
 		}
 		
@@ -197,7 +197,7 @@ public class PageAction extends DispatchAction {
 		Site site = siteRepository.get(request.getSession().getAttribute("siteId").toString());
 		site.removeChild(page);
 
-		request.setAttribute("pages", site.getPages());
+		request.setAttribute("pages", repository.list(request.getSession().getAttribute("siteId").toString()));
 
 		return mapping.findForward("success");
 	}

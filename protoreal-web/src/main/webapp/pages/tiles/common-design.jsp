@@ -39,9 +39,9 @@
 		<!-- Sidebar -->
 		<div class="border-right" id="sidebar-wrapper">
 			<div class="sidebar-heading">
-				<html:link forward="home">
+				<a href="Pages.do?method=main&siteId=<%= request.getSession().getAttribute("siteId").toString() %>">
 					<img src="icons/icons8-prototype-32.png">
-				</html:link>
+				</a>
 			</div>
 
 			<div class="list-group list-group-flush">
