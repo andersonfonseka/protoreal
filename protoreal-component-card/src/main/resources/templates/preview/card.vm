@@ -1,9 +1,10 @@
-<div class="card">
-  <div class="card-header">
-     <h6>$CardRenderer.title</h6>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">$CardRenderer.subtitle</h5>
-    <p class="card-text">$CardRenderer.content</p>
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="images/286x180.png">
+
+  <div class="card-body" id="$CardRenderer.uuid">   
+	#foreach($item in $CardRenderer.getChildrenList())
+		$item.doPreview()
+	#end
   </div>
 </div>
+

@@ -1,5 +1,15 @@
-<form>
+<form id="$FormRenderer.uuid" class="card" method="POST" action="$FormRenderer.url">
+  <div class="card-header">
+     <h6>$FormRenderer.title</h6>
+  </div>
+
+<div class="col-sm" id="$FormRenderer.uuid" style="border: solid #D3D3D3 1px; margin: 0px 0px 0px 0px;" ondrop="drop(event)" ondragover="allowDrop(event)">
 #foreach($item in $FormRenderer.getChildrenList())
 	$item.doRender()
 #end
+<br/><br/>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn-primary" onclick="submit();">Enviar</button>
+</div>
 </form>

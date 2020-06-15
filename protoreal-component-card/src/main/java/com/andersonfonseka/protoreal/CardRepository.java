@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.jdbi.v3.core.Jdbi;
 
+import com.andersonfonseka.Component;
 import com.andersonfonseka.IComponent;
 import com.andersonfonseka.dao.DbConnection;
 import com.andersonfonseka.dao.Repository;
@@ -31,7 +32,15 @@ public class CardRepository extends RepositoryImpl implements Repository<Card> {
 	}
 
 	public Card get(String uuid) {
-		return (Card) get(getMode(), uuid, "SELECT * FROM CARD WHERE UUID=?", Card.class);
+		
+		Card card = (Card) get(getMode(), uuid, "SELECT * FROM CARD WHERE UUID=?", Card.class);
+		
+		if (null != card) {
+			((Component) card).setChildren(super.getComponentRepository().list(card.getUuid()));
+		}
+		
+		return card;
+		
 	}
 
 

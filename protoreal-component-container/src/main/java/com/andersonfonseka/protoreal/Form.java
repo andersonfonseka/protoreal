@@ -2,8 +2,18 @@ package com.andersonfonseka.protoreal;
 
 import com.andersonfonseka.Component;
 
-public class Form extends Component {
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
+public class Form extends Component {
+	
+	private String url = "";
+	
+	public Form() {
+		setTitle("");
+	}
 	
 	public String doRender() {
 		return new FormRenderer(this).execute();
@@ -11,14 +21,12 @@ public class Form extends Component {
 
 	
 	public String doEdit() {
-		// TODO Auto-generated method stub
-		return null;
+		return new FormRenderer(this).executeProperties();
 	}
 
 	
 	public String doPreview() {
-		// TODO Auto-generated method stub
-		return null;
+		return new FormRenderer(this).executePreview();
 	}
 	
 }

@@ -14,6 +14,7 @@ public class ComponentFactory extends ComponentAbsFactory {
 		
 		mapComponents.put("page", "com.andersonfonseka.Page");
 		
+		mapComponents.put("form", "com.andersonfonseka.protoreal.Form");
 		mapComponents.put("container", "com.andersonfonseka.protoreal.Container");
 		mapComponents.put("textInput", "com.andersonfonseka.protoreal.TextInput");
 		mapComponents.put("textArea", "com.andersonfonseka.protoreal.TextAreaInput");

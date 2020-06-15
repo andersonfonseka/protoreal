@@ -11,7 +11,6 @@ import com.andersonfonseka.Component;
 import com.andersonfonseka.IComponent;
 
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
 public class ComponentRepository extends RepositoryImpl implements Repository<IComponent> {
@@ -26,6 +25,7 @@ public class ComponentRepository extends RepositoryImpl implements Repository<IC
 		
 		this.repositories.put("com.andersonfonseka.Page", "com.andersonfonseka.dao.PageRepository");
 		
+		this.repositories.put("com.andersonfonseka.protoreal.Form", "com.andersonfonseka.protoreal.FormRepository");
 		this.repositories.put("com.andersonfonseka.protoreal.Button", "com.andersonfonseka.protoreal.ButtonRepository");
 		this.repositories.put("com.andersonfonseka.protoreal.Container", "com.andersonfonseka.protoreal.ContainerRepository");
 		this.repositories.put("com.andersonfonseka.protoreal.Row", "com.andersonfonseka.protoreal.RowsRepository");

@@ -45,6 +45,10 @@
 			</div>
 
 			<div class="list-group list-group-flush">
+			
+					<a href="#" class="list-group-item list-group-item-action"><img
+					id="form" src="icons/icons8-application-window-32.png"
+					draggable="true" ondragstart="drag(event)"></a> 
 
 					<a href="#" class="list-group-item list-group-item-action"><img
 					id="container" src="icons/icons8-health-data-32.png"

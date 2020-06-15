@@ -22,7 +22,7 @@ public class Container extends Component implements IContainer {
 	private Map<Integer, Row> rowsMap = new HashMap<Integer, Row>();
 	
 	public Container() {
-		this("2", "2");
+		this("1", "2");
 	}
 	
 	public Container(String rows, String columns) {

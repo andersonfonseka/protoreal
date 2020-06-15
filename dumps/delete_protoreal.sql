@@ -1,0 +1,14 @@
+DELETE FROM protoreal.button;
+DELETE FROM protoreal.card;
+DELETE FROM protoreal.cell;
+DELETE FROM protoreal.components;
+DELETE FROM protoreal.container;
+DELETE FROM protoreal.jumbotron;
+DELETE FROM protoreal.label;
+DELETE FROM protoreal.page;
+DELETE FROM protoreal.rowscount;
+DELETE FROM protoreal.selectinput;
+DELETE FROM protoreal.site;
+DELETE FROM protoreal.tableinput;
+DELETE FROM protoreal.textareainput;
+DELETE FROM protoreal.textinput;

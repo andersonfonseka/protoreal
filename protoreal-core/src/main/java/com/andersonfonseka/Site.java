@@ -35,6 +35,7 @@ public class Site extends Component {
 		
 		Navbar navbar = new Navbar();
 		navbar.setTitle(this.title);
+		navbar.setSiteUuid(this.getUuid());
 		
 		if (!render) {
 			
