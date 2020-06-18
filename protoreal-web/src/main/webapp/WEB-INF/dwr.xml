@@ -1,6 +1,7 @@
 <dwr>
 	<allow>
 		<create creator="new" javascript="Controller" class="com.andersonfonseka.dwr.service.Controller" />
+		<create creator="new" javascript="UploadDownload" class="com.andersonfonseka.dwr.service.UploadDownload" />
 	</allow>
 	<convert match="java.lang.Exception" converter="exception"/>
 </dwr>

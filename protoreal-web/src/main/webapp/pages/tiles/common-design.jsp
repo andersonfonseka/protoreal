@@ -26,6 +26,7 @@
 <script src='dwr/engine.js'></script>
 <script src='dwr/util.js'></script>
 <script src='dwr/interface/Controller.js'></script>
+<script src='dwr/interface/UploadDownload.js'></script>
 
 <!-- Custom styles for this template -->
 <link href="css/simple-sidebar.css" rel="stylesheet">

@@ -11,7 +11,7 @@
 	<packaging>war</packaging>
 
 	<dependencies>
-	
+
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts-tiles</artifactId>
@@ -49,7 +49,7 @@
 			<artifactId>dwr</artifactId>
 			<version>3.0.0-RELEASE</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.andersonfonseka</groupId>
 			<artifactId>protoreal-core</artifactId>
@@ -67,19 +67,19 @@
 			<artifactId>protoreal-component-container</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.andersonfonseka</groupId>
 			<artifactId>protoreal-component-card</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.andersonfonseka</groupId>
 			<artifactId>protoreal-component-text</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.andersonfonseka</groupId>
 			<artifactId>protoreal-component-select</artifactId>
@@ -91,11 +91,17 @@
 			<artifactId>protoreal-component-jumbotron</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.andersonfonseka</groupId>
 			<artifactId>protoreal-component-table</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.4</version>
 		</dependency>
 
 	</dependencies>

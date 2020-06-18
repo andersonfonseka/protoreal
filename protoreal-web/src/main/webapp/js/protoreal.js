@@ -83,3 +83,12 @@ function showHide(id){
 	}
 	
 }
+
+function uploadFiles(id) {
+	  var image = dwr.util.getValue(id + '_uploadImage');
+
+	  UploadDownload.uploadFiles(image, id, function(data) {
+	    dwr.util.setValue(data['id']+'_image', data['imagem']);
+	  });
+
+}

@@ -1,6 +1,12 @@
 <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="images/286x180.png">
-
+ 
+    <img id="${CardRenderer.uuid}_image" src="data:image/png;base64, $CardRenderer.getImagem()" class="card-img-top" alt="...">
+	
+	<div class="form-group">
+		<input type="file" id="${CardRenderer.uuid}_uploadImage" class="form-control" size="25" />
+		<button onclick="uploadFiles('$CardRenderer.uuid')">Enviar</button>
+	</div>
+  
   <div class="card-body" id="$CardRenderer.uuid" style="border: solid #D3D3D3 1px; margin: 0px 0px 0px 0px;" ondrop="drop(event)" ondragover="allowDrop(event)">   
 	#foreach($item in $CardRenderer.getChildrenList())
 		$item.doRender()

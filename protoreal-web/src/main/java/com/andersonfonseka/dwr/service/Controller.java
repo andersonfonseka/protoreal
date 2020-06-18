@@ -87,19 +87,11 @@ public class Controller {
 	
 	public Map<String, String> startEdit(String componentId, HttpSession session) throws InstantiationException, IllegalAccessException{
 		
-		Site site = (Site) session.getAttribute("site");
-		
 		Map<String, String> result = new HashMap<String, String>();
 		
 		IComponent component = componentRepository.get(componentId);
 		
 		if (null != component) {
-			
-//			if (component instanceof IButton) {
-//				IButton btn = (IButton) component;
-//				btn.setPages(site.getPages());
-//			}
-			
 			result.put("data", component.doEdit());
 		}
 		
@@ -127,17 +119,6 @@ public class Controller {
 
 			method.invoke(component, form.get(fieldName));
 		}
-		
-//		if (component instanceof IButton) {
-//			IButton btn = (IButton) component;
-//			btn.setPage(pageRepository.get(btn.getPageUuid()));
-//		
-//		} else 
-			
-//		if (component instanceof IContainer) {
-//			IContainer container = (IContainer) component;
-//			container.configure(container.getRows(), container.getColumns());
-//		}
 
 		componentRepository.edit(component);
 		

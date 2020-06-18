@@ -1,7 +1,6 @@
 <div class="form" id="frmInput">
 	<form id="frmInput" action="" method="">
 	<input type="hidden" id="setUuid" value="$CardRenderer.uuid" />
-		
 		<div class="form-group">
 			<label for="inputProjectTitle" class="col-form-label">Titulo</label> 
 			<input type="text" id="setTitle" class="form-control" value="$CardRenderer.title" size="25" />
