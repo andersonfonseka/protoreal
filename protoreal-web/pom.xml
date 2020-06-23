@@ -97,6 +97,12 @@
 			<artifactId>protoreal-component-table</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.andersonfonseka</groupId>
+			<artifactId>protoreal-component-image</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 
 		<dependency>
 			<groupId>commons-fileupload</groupId>

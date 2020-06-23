@@ -85,10 +85,11 @@ function showHide(id){
 }
 
 function uploadFiles(id) {
-	  var image = dwr.util.getValue(id + '_uploadImage');
+	  var image = dwr.util.getValue('setFile');
 
 	  UploadDownload.uploadFiles(image, id, function(data) {
-	    dwr.util.setValue(data['id']+'_image', data['imagem']);
+			dwr.util.setValue('container-designer', data['data']);
+			dwr.util.setValue('componentSelected', data['components']);
 	  });
 
 }

@@ -60,7 +60,7 @@ public class Controller {
 		return result;
 	}
 	
-	private String getComponents(IPage page) {
+	public String getComponents(IPage page) {
 		
 		PageRepository pageRepository =  new PageRepository();
 		

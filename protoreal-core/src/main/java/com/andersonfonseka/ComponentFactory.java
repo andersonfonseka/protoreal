@@ -25,6 +25,7 @@ public class ComponentFactory extends ComponentAbsFactory {
 		mapComponents.put("jumbotron", "com.andersonfonseka.protoreal.Jumbotron");
 		mapComponents.put("cards", "com.andersonfonseka.protoreal.Card");
 		mapComponents.put("carousel", "com.andersonfonseka.protoreal.Carousel");
+		mapComponents.put("image", "com.andersonfonseka.protoreal.Image");
 		
 	}
 	

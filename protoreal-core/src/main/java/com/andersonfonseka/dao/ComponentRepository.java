@@ -37,6 +37,7 @@ public class ComponentRepository extends RepositoryImpl implements Repository<IC
 		this.repositories.put("com.andersonfonseka.protoreal.Table", "com.andersonfonseka.protoreal.TableRepository");
 		this.repositories.put("com.andersonfonseka.protoreal.Jumbotron", "com.andersonfonseka.protoreal.JumbotronRepository");
 		this.repositories.put("com.andersonfonseka.protoreal.Card", "com.andersonfonseka.protoreal.CardRepository");
+		this.repositories.put("com.andersonfonseka.protoreal.Image", "com.andersonfonseka.protoreal.ImageRepository");
 	}
 	
 	public void add(IComponent component) {

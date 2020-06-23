@@ -18,6 +18,7 @@
 		<module>protoreal-component-select</module>
 		<module>protoreal-component-jumbotron</module>
 		<module>protoreal-component-table</module>
+		<module>protoreal-component-image</module>
 	</modules>
 
 	<properties>

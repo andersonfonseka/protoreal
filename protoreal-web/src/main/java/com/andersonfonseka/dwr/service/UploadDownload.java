@@ -3,16 +3,25 @@ package com.andersonfonseka.dwr.service;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-public class UploadDownload {
+import com.andersonfonseka.IComponent;
+import com.andersonfonseka.IPage;
+import com.andersonfonseka.dao.ComponentRepositoryFactory;
+import com.andersonfonseka.dao.PageRepository;
+import com.andersonfonseka.dao.Repository;
 
-	public Map<String, String> uploadFiles(BufferedImage uploadImage, String componentId, HttpServletRequest request) {
+public class UploadDownload extends Controller {
+	
+	private Repository<IComponent> componentRepository = ComponentRepositoryFactory.getComponentRepository();
+	
+	public Map<String, String> uploadFiles(BufferedImage images, String componentId, HttpSession session) {
 		
 		Map<String, String> result = new HashMap<String, String>();
 		
@@ -21,7 +30,7 @@ public class UploadDownload {
 		
 		try {
 
-			ImageIO.write(uploadImage, "jpg", baos );
+			ImageIO.write(images, "jpg", baos );
 			baos.flush();
 			byte[] imageInByte = baos.toByteArray();
 			baos.close();
@@ -32,10 +41,30 @@ public class UploadDownload {
 			e.printStackTrace();
 		}
 		
-		result.put("id", componentId);
-		result.put("imagem", "data:image/png;base64," + resultado + "");
+		PageRepository pageRepository =  new PageRepository();
 		
+		IPage page = (IPage) session.getAttribute("page");
+		
+		IComponent component = componentRepository.get(componentId);
+		
+		Method method;
+		try {
+			method = component.getClass().getMethod("setFile", String.class);
+			method.invoke(component, resultado);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+		componentRepository.edit(component);
+		
+		page = pageRepository.getFull(page.getUuid());
+		
+		result.put("data", page.doRender());
+		result.put("components", getComponents(page));
+			
 		return result;
+		
+		
 	}
 
 }

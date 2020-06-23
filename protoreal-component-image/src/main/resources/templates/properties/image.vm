@@ -1,0 +1,15 @@
+<div class="form" id="frmInput">
+	<form id="frmInput" action="" method="">
+	<input type="hidden" id="setUuid" value="$ImageRenderer.uuid" />
+		<div class="form-group">
+			<label for="inputProjectTitle" class="col-form-label">Imagem</label> 
+			<input type="file" id="setFile" class="form-control" size="25" />
+		</div>
+		<p>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary"	data-dismiss="modal">Fechar</button>
+			<button type="button" class="btn btn-primary" onclick="uploadFiles('$ImageRenderer.uuid');">Salvar</button>
+		</div>
+	</div>
+	</form>
+</div>
