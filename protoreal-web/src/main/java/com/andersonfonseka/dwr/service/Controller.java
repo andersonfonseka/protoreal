@@ -154,5 +154,16 @@ public class Controller {
 		
 		return result;
 	}
+	
+	public Map<String, String> submitForm(Map<String, String> form, HttpSession session) throws InstantiationException, IllegalAccessException{
+		
+		PageRepository pageRepository =  new PageRepository();
+		
+		IComponent component = componentRepository.get(form.get("setUuid"));
+		
+		Map<String, String> result = new HashMap<String, String>();
+		
+		return result;
+	}
 
 }

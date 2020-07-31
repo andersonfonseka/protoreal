@@ -35,7 +35,7 @@ public class UploadDownload extends Controller {
 			byte[] imageInByte = baos.toByteArray();
 			baos.close();
 			
-			resultado = Base64.getEncoder().encodeToString(imageInByte);
+			resultado = "data:image/png;base64," + Base64.getEncoder().encodeToString(imageInByte);
 		
 		} catch (IOException e) {
 			e.printStackTrace();

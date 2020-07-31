@@ -17,7 +17,8 @@
 <title>Protoreal</title>
 
 <!-- Bootstrap core CSS -->
-<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">  
+<!-- <link href="vendor/bootstrap-md/css/bootstrap-material-design.css" rel="stylesheet"> -->
 
 <script src="vendor/jquery/jquery.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>

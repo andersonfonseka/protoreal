@@ -39,6 +39,15 @@ function edit(id){
 	
 }
 
+function submitForm(id){
+	
+	Controller.submitForm(dwr.util.getValues(id), function(data){
+		dwr.util.setEscapeHtml(false);
+		dwr.util.setValue('container-designer', data['data']);
+	});
+	
+}
+
 function remove(){
 	
 	var sel = $('select[name ="componentSelected"]');
@@ -85,6 +94,7 @@ function showHide(id){
 }
 
 function uploadFiles(id) {
+
 	  var image = dwr.util.getValue('setFile');
 
 	  UploadDownload.uploadFiles(image, id, function(data) {

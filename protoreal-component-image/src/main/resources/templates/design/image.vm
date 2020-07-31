@@ -1,2 +1,2 @@
-<img id="${ImageRenderer.uuid}_image" src="data:image/png;base64, $ImageRenderer.getFile()" class="card-img-top">
+<img id="${ImageRenderer.uuid}_image" src="$ImageRenderer.getFile()" class="card-img-top">
 

@@ -3,12 +3,12 @@
 	<input type="hidden" id="setUuid" value="$FormRenderer.uuid" />
 	    
 		<div class="form-group">
-			<label for="inputProjectTitle" class="col-form-label">Linhas</label> 
+			<label for="inputProjectTitle" class="col-form-label">Titulo</label> 
 			<input type="text" id="setTitle" class="form-control" property="title" value="$FormRenderer.title" size="25" />
 		</div>
 
 		<div class="form-group">
-			<label for="inputProjectTitle" class="col-form-label">Colunas</label> 
+			<label for="inputProjectTitle" class="col-form-label">Url</label> 
 			<input type="text" id="setUrl" class="form-control" property="title" value="$FormRenderer.url" size="25" />
 		</div>
 		

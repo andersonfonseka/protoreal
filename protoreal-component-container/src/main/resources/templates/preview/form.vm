@@ -1,4 +1,6 @@
-<form id="$FormRenderer.uuid" class="card" method="POST" action="$FormRenderer.url">
+<form id="$FormRenderer.uuid" class="card">
+<input type="hidden" id="setUuid" value="$FormRenderer.uuid" />
+
   <div class="card-header">
      <h6>$FormRenderer.title</h6>
   </div>
@@ -9,6 +11,6 @@
 #end
 </div>
 <div class="modal-footer">
-	<button type="button" class="btn-primary" onclick="submit();">Enviar</button>
+	<button type="button" class="btn-primary" onclick="submitForm('${FormRenderer.uuid}');">Enviar</button>
 </div>
 </form>

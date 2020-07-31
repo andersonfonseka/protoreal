@@ -1,6 +1,7 @@
-<section class="jumbotron jumbotron-fluid text-center">
-     <div class="container">
-     <h1 class="jumbotron-heading">$JumbotronRenderer.title</h1>
-     <p class="lead text-muted">$JumbotronRenderer.subtitle</p>
+<section class="jumbotron", style="background-image: url('$JumbotronRenderer.getFile()');background-size: cover; background-position: center;background-color: #d0d0d0;">
+     <div class="jumbotron-container-heading">
+     <h1 class="jumbotron-heading" style="color:$JumbotronRenderer.fontColor;">$JumbotronRenderer.title</h1>
+     <p class="about__banner__description" style="color:$JumbotronRenderer.fontColor;">$JumbotronRenderer.subtitle</p>
+     <button type="button" class="btn btn-success" onclick="window.open('$JumbotronRenderer.buttonUrl')">$JumbotronRenderer.buttonText</button>
      </div>
 </section>

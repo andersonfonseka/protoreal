@@ -60,7 +60,7 @@ public class PageRepository extends RepositoryImpl implements Repository<IPage> 
 		handle = DbConnection.getInstance().getHandle();
 		
 		List<Page> resultPage = handle.withHandle(handle -> 
-			 handle.createQuery("SELECT * FROM PAGE WHERE SITEUUID = ?")
+			 handle.createQuery("SELECT * FROM PAGE WHERE SITEUUID = ?  ORDER BY TIMESTAMP")
 			 .bind(0, uuid)
              .mapToBean(Page.class)
             .list());
@@ -88,7 +88,7 @@ public class PageRepository extends RepositoryImpl implements Repository<IPage> 
 		handle = DbConnection.getInstance().getHandle();
 		
 		List<Page> resultPage = handle.withHandle(handle -> 
-			 handle.createQuery("SELECT * FROM PAGE WHERE PARENT = ?")
+			 handle.createQuery("SELECT * FROM PAGE WHERE PARENT = ? ORDER BY TIMESTAMP")
 			 .bind(0, uuid)
              .mapToBean(Page.class)
             .list());
@@ -156,7 +156,7 @@ public class PageRepository extends RepositoryImpl implements Repository<IPage> 
 	
 	public Page get(String uuid) {
 		
-		Page page = (Page) get(getMode(), uuid, "SELECT * FROM PAGE WHERE UUID = ?", Page.class);
+		Page page = (Page) get(getMode(), uuid, "SELECT * FROM PAGE WHERE UUID = ? ORDER BY TIMESTAMP", Page.class);
 		
 		Page parent = new Page();
 		
@@ -177,7 +177,11 @@ public class PageRepository extends RepositoryImpl implements Repository<IPage> 
 	public Page getFull(String uuid) {
 		
 		Page page = get(uuid);
-		page.setChildren(componentRepository.list(page.getUuid()));
+		
+		if (null != page) {
+			page.setChildren(componentRepository.list(page.getUuid()));
+		}
+
 		return page;
 		
 	}
