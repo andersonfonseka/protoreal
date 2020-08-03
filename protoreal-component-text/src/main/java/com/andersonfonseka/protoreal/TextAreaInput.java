@@ -2,9 +2,16 @@ package com.andersonfonseka.protoreal;
 
 import com.andersonfonseka.Input;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class TextAreaInput extends Input {
 
 	private int rows = 1;
+	
+	private String content;
 	
 	public TextAreaInput() {
 		this("Rotulo", 10);

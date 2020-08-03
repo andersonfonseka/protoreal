@@ -10,19 +10,22 @@ import lombok.Setter;
 public class Card extends Component {
 	
 	private String title;
-	
-	private String subtitle;
 
 	private String content;
 	
+	private String fileCard;
+	
+	private String buttonText="";
+	
+	private String buttonUrl="";
+	
 	public Card() {
-		this("Teste", "Teste XXXX", "");
+		this("Teste", "");
 	}
 	
-	public Card(String title, String subtitle, String content) {
+	public Card(String title, String content) {
 		super();
 		this.title = title;
-		this.subtitle = subtitle;
 		this.content = content;
 	}
 

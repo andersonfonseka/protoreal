@@ -21,11 +21,13 @@ public class CardRepository extends RepositoryImpl implements Repository<Card> {
 		handle = DbConnection.getInstance().getHandle();
 		handle.useHandle(handle -> {
 					handle
-						.createUpdate("INSERT INTO CARD (UUID, TITLE, SUBTITLE, CONTENT) VALUES (?,?,?,?)") 
+						.createUpdate("INSERT INTO CARD (UUID, TITLE, CONTENT, FILECARD, BUTTONTEXT, BUTTONURL) VALUES (?,?,?,?,?,?)") 
 							.bind(0, card.getUuid())
 							.bind(1, card.getTitle())
-							.bind(2, card.getSubtitle())
-							.bind(3, card.getContent())
+							.bind(2, card.getContent())
+							.bind(3, card.getFileCard())
+							.bind(4, card.getButtonText())
+							.bind(5, card.getButtonUrl())
 						.execute();
 			});
 		
@@ -49,12 +51,14 @@ public class CardRepository extends RepositoryImpl implements Repository<Card> {
 		handle = DbConnection.getInstance().getHandle();
 		handle.useHandle(handle -> {
 					handle
-						.createUpdate("UPDATE CARD SET TITLE=?, SUBTITLE=?, CONTENT=? WHERE UUID=?") 
-							.bind(3, card.getUuid())
+						.createUpdate("UPDATE CARD SET TITLE=?, CONTENT=?, FILECARD=?, BUTTONTEXT=?, BUTTONURL=? WHERE UUID=?") 
+							.bind(5, card.getUuid())
 							.bind(0, card.getTitle())
-							.bind(1, card.getSubtitle())
-							.bind(2, card.getContent())
-						.execute();
+							.bind(1, card.getContent())
+							.bind(2, card.getFileCard())
+							.bind(3, card.getButtonText())
+							.bind(4, card.getButtonUrl())
+							.execute();
 			});
 
 	}
@@ -74,7 +78,7 @@ public class CardRepository extends RepositoryImpl implements Repository<Card> {
 			handle = DbConnection.getInstance(getMode()).getHandle();
 			
 			handle.useHandle(handle -> {
-				handle.execute("CREATE TABLE IF NOT EXISTS CARD (UUID VARCHAR, TITLE VARCHAR, SUBTITLE VARCHAR, CONTENT VARCHAR)");
+				handle.execute("CREATE TABLE IF NOT EXISTS CARD (UUID VARCHAR, TITLE VARCHAR, CONTENT VARCHAR)");
 			});
 		}
 	}

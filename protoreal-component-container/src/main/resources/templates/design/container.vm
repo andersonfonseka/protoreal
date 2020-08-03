@@ -1,7 +1,7 @@
 #foreach($item in $ContainerRenderer.getChildrenList())
 	<div class="row">
   		#foreach($itemCell in $item.getChildrenList())
-			<div class="col-sm" id="$itemCell.uuid" style="border: solid #D3D3D3 1px; min-height: 40px; margin: 0px 5px 0px 10px;" ondrop="drop(event)" ondragover="allowDrop(event)">$itemCell.doRender()<p></div>
+			<div class="col-sm" id="$itemCell.uuid" style="border: solid #D3D3D3 1px; min-height: 40px; margin: 0px 5px 0px 10px;" ondrop="drop(event)" ondragover="allowDrop(event)">$itemCell.doRender()</div>
 		#end
 	</div>	
 #end

@@ -37,7 +37,7 @@
 
 	<div class="d-flex" id="wrapper">
 
-		<!-- Sidebar -->
+		<!-- Sidebar 
 		<div class="border-right" id="sidebar-wrapper">
 			<div class="sidebar-heading">
 				<html:link forward="home">

@@ -12,6 +12,11 @@
 			<input type="number" id="setRows" class="form-control" property="title" value="$TextAreaInputRenderer.rows" size="25" />
 		</div>
 		
+		<div class="form-group">
+			<label for="inputProjectTitle" class="col-form-label">Descricao</label> 
+			<textarea id="setContent" class="form-control" property="title" rows="10">$TextAreaInputRenderer.content</textarea>
+		</div>
+		
 		<div class="modal-footer">
 			<button type="button" class="btn btn-secondary"	data-dismiss="modal">Fechar</button>
 			<button type="button" class="btn btn-primary" onclick="edit('frmInput')">Salvar</button>

@@ -18,12 +18,12 @@
 		</div>
 		
 		<div class="form-group">
-			<label for="inputProjectTitle" class="col-form-label">Text do Botão</label> 
+			<label for="inputProjectTitle" class="col-form-label">Texto do Botao</label> 
 			<input type="text" id="setButtonText" class="form-control" value="$JumbotronRenderer.buttonText" size="25" />
 		</div>
 
 		<div class="form-group">
-			<label for="inputProjectTitle" class="col-form-label">Text do Botão</label> 
+			<label for="inputProjectTitle" class="col-form-label">Url do Botao</label> 
 			<input type="text" id="setButtonUrl" class="form-control" value="$JumbotronRenderer.buttonUrl" size="25" />
 		</div>
 		<p>

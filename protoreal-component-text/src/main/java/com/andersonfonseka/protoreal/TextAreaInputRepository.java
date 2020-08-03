@@ -17,10 +17,11 @@ public class TextAreaInputRepository extends RepositoryImpl implements Repositor
 		handle = DbConnection.getInstance().getHandle();
 		handle.useHandle(handle -> {
 					handle
-						.createUpdate("INSERT INTO TEXTAREAINPUT (UUID, LABEL, ROWCOUNT) VALUES (?,?,?)") 
+						.createUpdate("INSERT INTO TEXTAREAINPUT (UUID, LABEL, ROWCOUNT, CONTENT) VALUES (?,?,?,?)") 
 							.bind(0, textInput.getUuid())
 							.bind(1, textInput.getLabel())
 							.bind(2, textInput.getRows())
+							.bind(3, textInput.getContent())
 						.execute();
 			});
 	}
@@ -34,10 +35,11 @@ public class TextAreaInputRepository extends RepositoryImpl implements Repositor
 		handle = DbConnection.getInstance().getHandle();
 		handle.useHandle(handle -> {
 					handle
-						.createUpdate("UPDATE TEXTAREAINPUT SET LABEL=?, ROWCOUNT=? WHERE UUID=?") 
-							.bind(2, textInput.getUuid())
+						.createUpdate("UPDATE TEXTAREAINPUT SET LABEL=?, ROWCOUNT=?, CONTENT=? WHERE UUID=?") 
+							.bind(3, textInput.getUuid())
 							.bind(0, textInput.getLabel())
 							.bind(1, textInput.getRows())
+							.bind(2, textInput.getContent())
 						.execute();
 			});
 	}

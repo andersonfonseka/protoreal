@@ -1,10 +1,13 @@
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="images/286x180.png">
+ <div class="card" style="width: 18rem;" id="$CardRenderer.uuid">
 
-  <div class="card-body" id="$CardRenderer.uuid">   
-	#foreach($item in $CardRenderer.getChildrenList())
-		$item.doPreview()
-	#end
+#if($CardRenderer.fileCard)
+  <img id="${CardRenderer.uuid}_image" src="$CardRenderer.fileCard" class="card-img-top" alt="...">
+#end
+
+  <div class="card-body">
+    <h5 class="card-title_page">${CardRenderer.title}</h5>
+   <p class="card-text">${CardRenderer.content}</p>
+     <button type="button" class="btn btn-success" onclick="window.open('$CardRenderer.buttonUrl')">$CardRenderer.buttonText</button>
   </div>
-</div>
-
+	
+  </div>

@@ -1,20 +1,20 @@
-<section class="jumbotron", style="background-image: url('$JumbotronRenderer.getFile()');background-size: cover; background-position: center;background-color: #d0d0d0;">
-     <div class="jumbotron-container-heading">
+<div class="jumbotron", style="background-image: url('$JumbotronRenderer.getFile()');background-size: cover; background-position: center;background-color: #d0d0d0;">
+     <div class="jumbotron-container-heading_page">
      <h1 class="jumbotron-heading" style="color:$JumbotronRenderer.fontColor;">$JumbotronRenderer.title</h1>
      <p class="about__banner__description" style="color:$JumbotronRenderer.fontColor;">$JumbotronRenderer.subtitle</p>
      <button type="button" class="btn btn-success" onclick="window.open('$JumbotronRenderer.buttonUrl')">$JumbotronRenderer.buttonText</button>
      </div>
-</section>
 
-     <form id="frmInput" action="" method="">
-		<input type="hidden" id="setUuid" value="$JumbotronRenderer.uuid" />
-		<div class="form-group">
-			<label for="inputProjectTitle" class="col-form-label">Imagem</label> 
-			<input type="file" id="setFile" class="form-control" size="25" />
-		</div>
-		<p>
-		<div class="modal-footer">
-			<button type="button" class="btn btn-primary" onclick="uploadFiles('$JumbotronRenderer.uuid');">Salvar</button>
-		</div>
+
+ <form id="frmInput" action="" method="">
+	<input type="hidden" id="setUuid" value="$JumbotronRenderer.uuid" />
+	<div class="form-group">
+		<label for="inputProjectTitle" class="col-form-label">Imagem</label> 
+		<input type="file" id="setFile_$JumbotronRenderer.uuid" class="form-control" style="width: 115px;/>
 	</div>
-	</form>
+	<p>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-primary" onclick="uploadFiles('$JumbotronRenderer.uuid', 'setFile_$JumbotronRenderer.uuid');">Salvar</button>
+	</div>
+</form>
+</div>     

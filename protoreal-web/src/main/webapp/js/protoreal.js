@@ -93,11 +93,12 @@ function showHide(id){
 	
 }
 
-function uploadFiles(id) {
+function uploadFiles(id, fieldName) {
 
-	  var image = dwr.util.getValue('setFile');
+	  var image = dwr.util.getValue(fieldName);
 
-	  UploadDownload.uploadFiles(image, id, function(data) {
+	  UploadDownload.uploadFiles(image, id, fieldName, function(data) {
+		  	dwr.util.setEscapeHtml(false);
 			dwr.util.setValue('container-designer', data['data']);
 			dwr.util.setValue('componentSelected', data['components']);
 	  });

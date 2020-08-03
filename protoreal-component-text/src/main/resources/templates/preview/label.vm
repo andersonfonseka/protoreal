@@ -1,1 +1,1 @@
-<label for="$LabelRenderer.uuid" class="$LabelRenderer.type $LabelRenderer.style">$LabelRenderer.label</label>
+<label for="$LabelRenderer.uuid" class="label_page d-flex justify-content-center">$LabelRenderer.label</label>

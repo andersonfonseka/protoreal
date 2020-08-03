@@ -7,14 +7,20 @@
 		</div>
 		
 		<div class="form-group">
-			<label for="inputProjectTitle" class="col-form-label">Sub-titulo</label> 
-			<input type="text" id="setSubtitle" class="form-control" value="$CardRenderer.subtitle" size="25" />
-		</div>
-		
-		<div class="form-group">
 			<label for="inputProjectTitle" class="col-form-label">Descricao</label> 
 			<textarea id="setContent" class="form-control" property="title" rows="10">$CardRenderer.content</textarea>
 		</div>
+		
+		<div class="form-group">
+			<label for="inputProjectTitle" class="col-form-label">Texto do Botao</label> 
+			<input type="text" id="setButtonText" class="form-control" value="$CardRenderer.buttonText" size="25" />
+		</div>
+
+		<div class="form-group">
+			<label for="inputProjectTitle" class="col-form-label">Url do Botao</label> 
+			<input type="text" id="setButtonUrl" class="form-control" value="$CardRenderer.buttonUrl" size="25" />
+		</div>
+		
 		<p>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-secondary"	data-dismiss="modal">Fechar</button>

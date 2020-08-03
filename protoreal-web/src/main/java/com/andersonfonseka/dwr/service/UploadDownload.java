@@ -21,7 +21,7 @@ public class UploadDownload extends Controller {
 	
 	private Repository<IComponent> componentRepository = ComponentRepositoryFactory.getComponentRepository();
 	
-	public Map<String, String> uploadFiles(BufferedImage images, String componentId, HttpSession session) {
+	public Map<String, String> uploadFiles(BufferedImage images, String componentId, String fieldName, HttpSession session) {
 		
 		Map<String, String> result = new HashMap<String, String>();
 		
@@ -49,7 +49,7 @@ public class UploadDownload extends Controller {
 		
 		Method method;
 		try {
-			method = component.getClass().getMethod("setFile", String.class);
+			method = component.getClass().getMethod(fieldName.split("_")[0], String.class);
 			method.invoke(component, resultado);
 		} catch (Exception e) {
 			e.printStackTrace();
